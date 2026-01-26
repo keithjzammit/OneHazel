@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - OneHazel by Elevate AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .glowing-lines {
+            stroke: #60a5fa;
+            stroke-width: 0.5;
+            fill: none;
+            opacity: 0.3;
+        }
+
+        /* Glowing lines animation */
+        @keyframes line-glow {
+            0%, 100% { stroke-opacity: 0.3; }
+            50% { stroke-opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white min-h-screen flex items-center justify-center">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 hero-bg overflow-hidden">
+        <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148, 163, 184, 0.05)" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            
+            <!-- Animated glowing lines -->
+            <g class="glowing-lines">
+                <path d="M100,100 Q300,50 500,100 T900,100" style="animation: line-glow 3s ease-in-out infinite;">
+                    <animate attributeName="d" 
+                        values="M100,100 Q300,50 500,100 T900,100;M100,100 Q300,150 500,100 T900,100;M100,100 Q300,50 500,100 T900,100"
+                        dur="3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M0,200 Q200,150 400,200 T800,200" style="animation: line-glow 4s ease-in-out infinite 1s;">
+                    <animate attributeName="d" 
+                        values="M0,200 Q200,150 400,200 T800,200;M0,200 Q200,250 400,200 T800,200;M0,200 Q200,150 400,200 T800,200"
+                        dur="4s" repeatCount="indefinite"/>
+                </path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Login/Register Container -->
+    <div class="relative z-10 w-full max-w-2xl mx-4">
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6 md:p-8 text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4">
+                    <i class="fas fa-lock text-3xl text-white"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-white mb-2">Welcome to OneHazel</h1>
+                <p class="text-blue-100">Access our exclusive platform</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex border-b border-slate-700">
+                <button id="registerTab" class="flex-1 px-4 md:px-6 py-3 text-center font-semibold text-white bg-slate-700/50 border-b-2 border-blue-500 transition text-sm md:text-base">
+                    <i class="fas fa-user-plus mr-1 md:mr-2"></i>Register
+                </button>
+                <button id="loginTab" class="flex-1 px-4 md:px-6 py-3 text-center font-semibold text-slate-400 hover:text-white transition text-sm md:text-base">
+                    <i class="fas fa-sign-in-alt mr-1 md:mr-2"></i>Login
+                </button>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registrationForm" class="p-6 md:p-8 space-y-5">
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-red-400 text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 text-emerald-400 text-sm">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <div>
+                        <strong>Registration successful!</strong><br>
+                        Please check your email inbox (and spam folder) to confirm your account before logging in.
+                    </div>
+                </div>
+
+                <!-- Two Column Layout for Desktop -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-5">
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Email Address <span class="text-red-400">*</span>
+                            </label>
+                            <input type="email" id="email" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                placeholder="your.email@company.com">
+                        </div>
+
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Full Name <span class="text-red-400">*</span>
+                            </label>
+                            <input type="text" id="fullName" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                placeholder="John Doe">
+                        </div>
+
+                        <!-- Company Name -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Company Name <span class="text-red-400">*</span>
+                            </label>
+                            <input type="text" id="companyName" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                placeholder="Acme Corp">
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-5">
+                        <!-- Job Title -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Job Title <span class="text-red-400">*</span>
+                            </label>
+                            <input type="text" id="jobTitle" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                placeholder="CTO, Engineering Manager, etc.">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Phone Number <span class="text-red-400">*</span>
+                            </label>
+                            <input type="tel" id="phoneNumber" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                placeholder="+1 (555) 123-4567">
+                        </div>
+
+                        <!-- Business Sector -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                Business Sector <span class="text-red-400">*</span>
+                            </label>
+                            <select id="businessSector" required
+                                class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                                <option value="" disabled selected>Select your sector</option>
+                                <option value="iGaming Operator">iGaming Operator</option>
+                                <option value="Casino">Casino</option>
+                                <option value="Sports Betting">Sports Betting</option>
+                                <option value="Lottery">Lottery</option>
+                                <option value="Technology Provider">Technology Provider</option>
+                                <option value="Compliance/Legal">Compliance/Legal</option>
+                                <option value="Payment Provider">Payment Provider</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password (Full Width) -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Password <span class="text-red-400">*</span>
+                    </label>
+                    <input type="password" id="password" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="Create a strong password (min 8 characters)">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn"
+                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition shadow-lg flex items-center justify-center gap-2">
+                    <span id="submitText">Get Access</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <!-- Privacy Notice -->
+                <p class="text-xs text-slate-500 text-center">
+                    By registering, you agree to receive communications from OneHazel.
+                    We respect your privacy and will never share your data.
+                </p>
+            </form>
+
+            <!-- Login Form (Hidden by default) -->
+            <form id="loginForm" class="p-6 md:p-8 space-y-5" style="display: none;">
+                <!-- Error Message -->
+                <div id="loginErrorMessage" class="hidden bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-red-400 text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="loginErrorText"></span>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Email Address <span class="text-red-400">*</span>
+                    </label>
+                    <input type="email" id="loginEmail" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="your@email.com">
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Password <span class="text-red-400">*</span>
+                    </label>
+                    <input type="password" id="loginPassword" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="Enter your password">
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center text-sm text-slate-400">
+                        <input type="checkbox" id="rememberMe" class="mr-2 rounded border-slate-600 bg-slate-900 text-blue-500 focus:ring-blue-500">
+                        Remember me
+                    </label>
+                    <a href="#" class="text-sm text-blue-400 hover:text-blue-300 transition">Forgot password?</a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" id="loginBtn"
+                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition shadow-lg flex items-center justify-center gap-2">
+                    <span id="loginText">Sign In</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
+
+                <!-- Register Link -->
+                <p class="text-xs text-slate-500 text-center">
+                    Don't have an account? 
+                    <a href="#" id="switchToRegister" class="text-blue-400 hover:text-blue-300 transition">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://xrtlnyhfxcxhncxiszdf.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_vngebyux69m74QNEv0OmjA_xbKbWD1E';
+
+        // Initialize Supabase client
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ============================================
+        // FORM ELEMENTS
+        // ============================================
+        const registrationForm = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const successMessage = document.getElementById('successMessage');
+
+        // Login elements
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginText = document.getElementById('loginText');
+        const loginErrorMessage = document.getElementById('loginErrorMessage');
+        const loginErrorText = document.getElementById('loginErrorText');
+
+        // Tab elements
+        const registerTab = document.getElementById('registerTab');
+        const loginTab = document.getElementById('loginTab');
+        const switchToRegister = document.getElementById('switchToRegister');
+
+        // ============================================
+        // TAB SWITCHING
+        // ============================================
+        function showRegistrationForm() {
+            registrationForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            registerTab.classList.add('bg-slate-700/50', 'border-b-2', 'border-blue-500', 'text-white');
+            registerTab.classList.remove('text-slate-400');
+            loginTab.classList.remove('bg-slate-700/50', 'border-b-2', 'border-blue-500', 'text-white');
+            loginTab.classList.add('text-slate-400');
+        }
+
+        function showLoginForm() {
+            registrationForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            loginTab.classList.add('bg-slate-700/50', 'border-b-2', 'border-blue-500', 'text-white');
+            loginTab.classList.remove('text-slate-400');
+            registerTab.classList.remove('bg-slate-700/50', 'border-b-2', 'border-blue-500', 'text-white');
+            registerTab.classList.add('text-slate-400');
+        }
+
+        // Tab event listeners
+        registerTab.addEventListener('click', showRegistrationForm);
+        loginTab.addEventListener('click', showLoginForm);
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            showRegistrationForm();
+        });
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const digitsOnly = phone.replace(/\D/g, '');
+            return digitsOnly.length >= 10;
+        }
+
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+        }
+
+        function showSuccess() {
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+        }
+
+        function showLoginError(message) {
+            loginErrorText.textContent = message;
+            loginErrorMessage.classList.remove('hidden');
+        }
+
+        // ============================================
+        // REGISTRATION HANDLER
+        // ============================================
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const companyName = document.getElementById('companyName').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const businessSector = document.getElementById('businessSector').value;
+            const password = document.getElementById('password').value;
+
+            // Validate all fields
+            if (!email || !fullName || !companyName || !jobTitle || !phoneNumber || !businessSector || !password) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+
+            // Validate password
+            if (password.length < 8) {
+                showError('Password must be at least 8 characters long.');
+                return;
+            }
+
+            // Validate phone number
+            if (!isValidPhone(phoneNumber)) {
+                showError('Please enter a valid phone number (minimum 10 digits).');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Registering...';
+            errorMessage.classList.add('hidden');
+
+            try {
+                // Create Supabase user account
+                const { data: authData, error: authError } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: fullName,
+                            company_name: companyName,
+                            job_title: jobTitle,
+                            phone_number: phoneNumber,
+                            business_sector: businessSector
+                        }
+                    }
+                });
+
+                if (authError) {
+                    if (authError.message.includes('already registered')) {
+                        showError('This email is already registered. Please login instead.');
+                    } else {
+                        showError(`Registration failed: ${authError.message}`);
+                    }
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Get Access';
+                    return;
+                }
+
+                // Add user data to leads table
+                const { data: leadData, error: leadError } = await supabaseClient
+                    .from('leads')
+                    .insert([
+                        {
+                            email: email,
+                            full_name: fullName,
+                            company_name: companyName,
+                            job_title: jobTitle,
+                            phone_number: phoneNumber,
+                            business_sector: businessSector,
+                            user_id: authData.user?.id
+                        }
+                    ])
+                    .select();
+
+                if (leadError) {
+                    console.error('Lead creation error:', leadError);
+                }
+
+                // Success!
+                showSuccess();
+
+                // Store registration status (but don't redirect yet)
+                localStorage.setItem('onehazel_registered', 'true');
+                localStorage.setItem('onehazel_email', email);
+                localStorage.setItem('onehazel_user_id', authData.user?.id);
+
+                // Show additional info about email confirmation
+                setTimeout(() => {
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 text-blue-400 text-sm mt-4';
+                    infoDiv.innerHTML = `
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <div class="space-y-2">
+                            <div class="font-semibold text-blue-300">📧 Important: Email Confirmation Required</div>
+                            <div><strong>Next steps:</strong></div>
+                            <ol class="list-decimal list-inside space-y-1 ml-4">
+                                <li>Check your email inbox for a message from "Supabase" or "OneHazel"</li>
+                                <li><strong>Also check your SPAM/JUNK folder</strong> - confirmation emails often end up there</li>
+                                <li>Click the confirmation link in the email</li>
+                                <li>Return to this page and login with your credentials</li>
+                            </ol>
+                            <div class="mt-2 text-xs">
+                                💡 <strong>Tip:</strong> If you don't see the email within 5 minutes, check your spam folder or try logging in to use the "Resend confirmation" option.
+                            </div>
+                        </div>
+                    `;
+                    registrationForm.appendChild(infoDiv);
+                    
+                    // Switch to login tab after 5 seconds (gave more time to read)
+                    setTimeout(() => {
+                        showLoginForm();
+                        // Pre-fill the email in login form
+                        document.getElementById('loginEmail').value = email;
+                    }, 5000);
+                }, 1000);
+
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                showError('An unexpected error occurred. Please try again.');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Get Access';
+            }
+        });
+
+        // ============================================
+        // LOGIN HANDLER
+        // ============================================
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            // Validate fields
+            if (!email || !password) {
+                showLoginError('Please enter both email and password.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(email)) {
+                showLoginError('Please enter a valid email address.');
+                return;
+            }
+
+            // Show loading state
+            loginBtn.disabled = true;
+            loginText.textContent = 'Signing in...';
+            loginErrorMessage.classList.add('hidden');
+
+            try {
+                // Use Supabase Auth for authentication
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    // Handle email confirmation error specifically
+                    if (error.message.includes('Email not confirmed')) {
+                        showLoginError('Please check your email and confirm your account before logging in. If you didn\'t receive the confirmation email, please check your spam folder or request a new one.');
+                        
+                        // Show resend confirmation option
+                        const resendDiv = document.createElement('div');
+                        resendDiv.className = 'mt-4 text-center';
+                        resendDiv.innerHTML = `
+                            <button type="button" id="resendConfirmation" class="text-blue-400 hover:text-blue-300 text-sm underline">
+                                Resend confirmation email
+                            </button>
+                        `;
+                        loginForm.appendChild(resendDiv);
+                        
+                        // Add resend functionality
+                        document.getElementById('resendConfirmation').addEventListener('click', async () => {
+                            try {
+                                const { error: resendError } = await supabaseClient.auth.resend({
+                                    type: 'signup',
+                                    email: email,
+                                });
+                                
+                                if (resendError) {
+                                    showLoginError(`Failed to resend confirmation: ${resendError.message}`);
+                                } else {
+                                    showLoginError('Confirmation email resent! Please check your inbox.');
+                                    resendDiv.remove();
+                                }
+                            } catch (err) {
+                                showLoginError('Failed to resend confirmation email.');
+                            }
+                        });
+                    } else {
+                        throw new Error(error.message);
+                    }
+                    loginBtn.disabled = false;
+                    loginText.textContent = 'Sign In';
+                    return;
+                }
+
+                // Success! Store login status
+                localStorage.setItem('onehazel_registered', 'true');
+                localStorage.setItem('onehazel_email', email);
+                localStorage.setItem('onehazel_logged_in', 'true');
+                localStorage.setItem('onehazel_user_id', data.user.id);
+
+                // Show success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 text-emerald-400 text-sm mb-4';
+                successDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Login successful! Redirecting...';
+                loginForm.insertBefore(successDiv, loginForm.firstChild);
+
+                // Redirect to main page after successful login
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+
+            } catch (err) {
+                console.error('Login error:', err);
+                showLoginError('Login failed. Please try again.');
+                loginBtn.disabled = false;
+                loginText.textContent = 'Sign In';
+            }
+        });
+
+        // ============================================
+        // AUTHENTICATION CHECK
+        // ============================================
+        async function checkAuthStatus() {
+            const { data: { session }, error } = await supabaseClient.auth.getSession();
+            
+            if (session) {
+                // User is already authenticated, redirect to main page
+                localStorage.setItem('onehazel_registered', 'true');
+                localStorage.setItem('onehazel_email', session.user.email);
+                localStorage.setItem('onehazel_user_id', session.user.id);
+                localStorage.setItem('onehazel_logged_in', 'true');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Check authentication on page load
+        checkAuthStatus();
+
+        console.log('%cOneHazel Login Page with Supabase Auth', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+    </script>
+</body>
+</html>
