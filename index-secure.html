@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneHazel by Elevate AI - The Vertical iPaaS for iGaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glow-point {
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        @keyframes flow {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .flow-line {
+            stroke-dasharray: 10;
+            animation: flow 1s linear infinite;
+        }
+
+        @keyframes server-pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), 0 0 80px rgba(168, 85, 247, 0.3); }
+        }
+
+        .server-glow {
+            animation: server-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes line-glow {
+            0%, 100% { stroke-opacity: 0.3; }
+            50% { stroke-opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Registration Gate Modal -->
+    <div id="registrationGate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/95 backdrop-blur-lg" style="display: none;">
+        <div class="max-w-2xl w-full mx-4 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4">
+                    <i class="fas fa-lock text-3xl text-white"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-2">Welcome to OneHazel</h2>
+                <p class="text-blue-100">Register for exclusive access to our platform</p>
+            </div>
+
+            <!-- Form -->
+            <form id="registrationForm" class="p-8 space-y-5">
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-red-400 text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 text-emerald-400 text-sm">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Registration successful! Welcome to OneHazel.</span>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Email Address <span class="text-red-400">*</span>
+                    </label>
+                    <input type="email" id="email" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="your.email@company.com">
+                </div>
+
+                <!-- Full Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Full Name <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="fullName" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="John Doe">
+                </div>
+
+                <!-- Company Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Company Name <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="companyName" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="Your Company">
+                </div>
+
+                <!-- Job Title -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Job Title <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="jobTitle" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="CTO, Engineering Manager, etc.">
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Phone Number <span class="text-red-400">*</span>
+                    </label>
+                    <input type="tel" id="phoneNumber" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="+1 (555) 123-4567">
+                </div>
+
+                <!-- Business Sector -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Business Sector <span class="text-red-400">*</span>
+                    </label>
+                    <select id="businessSector" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                        <option value="" disabled selected>Select your sector</option>
+                        <option value="iGaming Operator">iGaming Operator</option>
+                        <option value="Casino">Casino</option>
+                        <option value="Sports Betting">Sports Betting</option>
+                        <option value="Lottery">Lottery</option>
+                        <option value="Technology Provider">Technology Provider</option>
+                        <option value="Compliance/Legal">Compliance/Legal</option>
+                        <option value="Payment Provider">Payment Provider</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn"
+                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition shadow-lg flex items-center justify-center gap-2">
+                    <span id="submitText">Get Access</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <!-- Privacy Notice -->
+                <p class="text-xs text-slate-500 text-center">
+                    By registering, you agree to receive communications from OneHazel.
+                    We respect your privacy and will never share your data.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- [REST OF YOUR HTML CONTENT FROM ORIGINAL index.html - Nav, Hero, Sections, etc.] -->
+    <!-- Copy everything from line 77 onwards from the original index.html -->
+
+    <!-- Registration Gate JavaScript - SECURE VERSION -->
+    <script>
+        // ============================================
+        // SECURE CONFIGURATION
+        // ============================================
+        // TODO: Replace this with your actual Edge Function URL after deployment
+        const EDGE_FUNCTION_URL = 'https://YOUR_PROJECT_REF.supabase.co/functions/v1/register-lead';
+
+        // NO SUPABASE KEYS IN CLIENT CODE!
+        // All database operations happen server-side via the Edge Function
+
+        // ============================================
+        // REGISTRATION GATE LOGIC
+        // ============================================
+        const registrationGate = document.getElementById('registrationGate');
+        const registrationForm = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const successMessage = document.getElementById('successMessage');
+
+        // Check if user is already registered
+        function checkRegistrationStatus() {
+            const isRegistered = localStorage.getItem('onehazel_registered');
+
+            if (!isRegistered) {
+                registrationGate.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                registrationGate.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+        }
+
+        // Show success message
+        function showSuccess() {
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+        }
+
+        // Handle form submission
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const companyName = document.getElementById('companyName').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const businessSector = document.getElementById('businessSector').value;
+
+            // Basic client-side validation
+            if (!email || !fullName || !companyName || !jobTitle || !phoneNumber || !businessSector) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Registering...';
+            errorMessage.classList.add('hidden');
+
+            try {
+                // Call Edge Function (NO Supabase client needed!)
+                const response = await fetch(EDGE_FUNCTION_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        full_name: fullName,
+                        company_name: companyName,
+                        job_title: jobTitle,
+                        phone_number: phoneNumber,
+                        business_sector: businessSector,
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    showError(data.error || 'Registration failed. Please try again.');
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Get Access';
+                    return;
+                }
+
+                // Success!
+                showSuccess();
+
+                // Store registration status in localStorage
+                localStorage.setItem('onehazel_registered', 'true');
+                localStorage.setItem('onehazel_email', email);
+
+                // Hide modal after delay
+                setTimeout(() => {
+                    registrationGate.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 2000);
+
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                showError('Network error. Please check your connection and try again.');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Get Access';
+            }
+        });
+
+        // Run check on page load
+        checkRegistrationStatus();
+
+        console.log('%cOneHazel Registration Gate (Secure)', 'color: #10b981; font-size: 16px; font-weight: bold;');
+        console.log('%c✓ Zero credentials in client code', 'color: #10b981;');
+        console.log('%c✓ All operations via Edge Function', 'color: #10b981;');
+        console.log('%cTo test again: localStorage.removeItem("onehazel_registered")', 'color: #94a3b8;');
+    </script>
+
+</body>
+</html>

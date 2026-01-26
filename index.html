@@ -6,6 +6,8 @@
     <title>OneHazel by Elevate AI - The Vertical iPaaS for iGaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
@@ -75,6 +77,117 @@
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Registration Gate Modal -->
+    <div id="registrationGate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/95 backdrop-blur-lg" style="display: none;">
+        <div class="max-w-2xl w-full mx-4 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4">
+                    <i class="fas fa-lock text-3xl text-white"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-2">Welcome to OneHazel</h2>
+                <p class="text-blue-100">Register for exclusive access to our platform</p>
+            </div>
+
+            <!-- Form -->
+            <form id="registrationForm" class="p-8 space-y-5">
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-red-400 text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 text-emerald-400 text-sm">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Registration successful! Welcome to OneHazel.</span>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Email Address <span class="text-red-400">*</span>
+                    </label>
+                    <input type="email" id="email" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="your.email@company.com">
+                </div>
+
+                <!-- Full Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Full Name <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="fullName" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="John Doe">
+                </div>
+
+                <!-- Company Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Company Name <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="companyName" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="Your Company">
+                </div>
+
+                <!-- Job Title -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Job Title <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" id="jobTitle" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="CTO, Engineering Manager, etc.">
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Phone Number <span class="text-red-400">*</span>
+                    </label>
+                    <input type="tel" id="phoneNumber" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        placeholder="+1 (555) 123-4567">
+                </div>
+
+                <!-- Business Sector -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">
+                        Business Sector <span class="text-red-400">*</span>
+                    </label>
+                    <select id="businessSector" required
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                        <option value="" disabled selected>Select your sector</option>
+                        <option value="iGaming Operator">iGaming Operator</option>
+                        <option value="Casino">Casino</option>
+                        <option value="Sports Betting">Sports Betting</option>
+                        <option value="Lottery">Lottery</option>
+                        <option value="Technology Provider">Technology Provider</option>
+                        <option value="Compliance/Legal">Compliance/Legal</option>
+                        <option value="Payment Provider">Payment Provider</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn"
+                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition shadow-lg flex items-center justify-center gap-2">
+                    <span id="submitText">Get Access</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <!-- Privacy Notice -->
+                <p class="text-xs text-slate-500 text-center">
+                    By registering, you agree to receive communications from OneHazel.
+                    We respect your privacy and will never share your data.
+                </p>
+            </form>
+        </div>
+    </div>
 
     <!-- Nav -->
     <nav class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
@@ -875,6 +988,173 @@
             </div>
         </div>
     </section>
+
+    <!-- Registration Gate JavaScript -->
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        // TODO: Replace these with your actual Supabase project credentials
+        // You can find these in your Supabase project settings: https://app.supabase.com
+        const SUPABASE_URL = 'https://xrtlnyhfxcxhncxiszdf.supabase.co'; // e.g., 'https://abcdefgh.supabase.co'
+        const SUPABASE_ANON_KEY = 'sb_publishable_vngebyux69m74QNEv0OmjA_xbKbWD1E'; // Your anon/public key (safe for client-side)
+
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ============================================
+        // REGISTRATION GATE LOGIC
+        // ============================================
+        const registrationGate = document.getElementById('registrationGate');
+        const registrationForm = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const successMessage = document.getElementById('successMessage');
+
+        // Check if user is already registered
+        function checkRegistrationStatus() {
+            const isRegistered = localStorage.getItem('onehazel_registered');
+
+            if (!isRegistered) {
+                // User not registered - show gate modal
+                registrationGate.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                // User already registered - hide gate and allow access
+                registrationGate.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+        }
+
+        // Show success message
+        function showSuccess() {
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+        }
+
+        // Validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Validate phone number (basic validation)
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+            return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
+        }
+
+        // Handle form submission
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const companyName = document.getElementById('companyName').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const businessSector = document.getElementById('businessSector').value;
+
+            // Validate all fields
+            if (!email || !fullName || !companyName || !jobTitle || !phoneNumber || !businessSector) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+
+            // Validate phone number
+            if (!isValidPhone(phoneNumber)) {
+                showError('Please enter a valid phone number (minimum 10 digits).');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Registering...';
+            errorMessage.classList.add('hidden');
+
+            try {
+                // Submit to Supabase
+                const { data, error } = await supabase
+                    .from('leads')
+                    .insert([
+                        {
+                            email: email,
+                            full_name: fullName,
+                            company_name: companyName,
+                            job_title: jobTitle,
+                            phone_number: phoneNumber,
+                            business_sector: businessSector
+                        }
+                    ])
+                    .select();
+
+                if (error) {
+                    // Handle errors
+                    if (error.code === '23505') {
+                        // Unique constraint violation (duplicate email)
+                        showError('This email is already registered. Welcome back!');
+
+                        // Still grant access since they're registered
+                        setTimeout(() => {
+                            localStorage.setItem('onehazel_registered', 'true');
+                            localStorage.setItem('onehazel_email', email);
+                            registrationGate.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }, 2000);
+                    } else {
+                        showError(`Registration failed: ${error.message}`);
+                    }
+
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Get Access';
+                    return;
+                }
+
+                // Success!
+                showSuccess();
+
+                // Store registration status in localStorage
+                localStorage.setItem('onehazel_registered', 'true');
+                localStorage.setItem('onehazel_email', email);
+
+                // Hide modal and show content after a short delay
+                setTimeout(() => {
+                    registrationGate.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 2000);
+
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                showError('An unexpected error occurred. Please try again.');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Get Access';
+            }
+        });
+
+        // Run check on page load
+        checkRegistrationStatus();
+
+        // Optional: Add a way for developers to test by clearing registration
+        // Open browser console and run: localStorage.removeItem('onehazel_registered')
+        console.log('%cOneHazel Registration Gate', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+        console.log('%cTo test the registration gate again, run: localStorage.removeItem("onehazel_registered")', 'color: #94a3b8;');
+    </script>
 
 </body>
 </html>
