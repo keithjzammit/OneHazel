@@ -246,7 +246,7 @@ Click **"Get Access"**.
 9. **⚠️ IMPORTANT**: Copy the **Access Token** immediately
    - It starts with `pat-na1-...`
    - Save it somewhere safe (you won't see it again!)
-   - Example: ``
+   - Example: `pat-na1-11111111-2222-3333-4444-555555555555`
 
 #### Step 4.2: Test HubSpot API (Optional)
 
