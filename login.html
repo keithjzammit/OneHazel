@@ -590,7 +590,7 @@
 
                 // Redirect to main page after successful login
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 }, 1500);
 
             } catch (err) {
@@ -613,7 +613,7 @@
                 localStorage.setItem('onehazel_email', session.user.email);
                 localStorage.setItem('onehazel_user_id', session.user.id);
                 localStorage.setItem('onehazel_logged_in', 'true');
-                window.location.href = 'index.html';
+                window.location.href = '/';
             }
         }
 

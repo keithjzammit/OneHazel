@@ -1062,12 +1062,12 @@
                 document.body.style.overflow = 'auto';
             } else {
                 // User not authenticated, redirect to login page
-                window.location.href = 'login.html';
+                window.location.href = '/login';
             }
         } catch (error) {
             console.error('Authentication check failed:', error);
             // Redirect to login page on error
-            window.location.href = 'login.html';
+            window.location.href = '/login';
         }
     }
 
@@ -1078,7 +1078,7 @@
     supabaseClient.auth.onAuthStateChange((event, session) => {
         if (event === 'SIGNED_OUT' || !session) {
             // User signed out, redirect to login
-            window.location.href = 'login.html';
+            window.location.href = '/login';
         }
     });
 
@@ -1086,7 +1086,7 @@
     async function logout() {
         await supabaseClient.auth.signOut();
         localStorage.clear();
-        window.location.href = 'login.html';
+        window.location.href = '/login';
     }
 
     // Make logout available globally
