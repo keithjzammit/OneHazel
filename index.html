@@ -6,8 +6,6 @@
     <title>OneHazel by Elevate AI - The Vertical iPaaS for iGaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Supabase JS Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
@@ -82,23 +80,19 @@
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Authentication Check -->
-    <div id="authCheck" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/95 backdrop-blur-lg">
-        <div class="text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/20 backdrop-blur-sm mb-4">
-                <i class="fas fa-spinner text-3xl text-blue-400 animate-spin"></i>
-            </div>
-            <p class="text-slate-300">Checking authentication...</p>
-        </div>
-    </div>
 
     <!-- Nav -->
     <nav class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
         <div class="font-bold text-2xl tracking-tighter text-white">
             ONEHAZEL <span class="text-blue-500 font-light">| ELEVATE AI</span>
         </div>
-        <div class="hidden md:block text-xs font-semibold text-blue-400 tracking-[0.2em] uppercase border border-blue-900 bg-blue-900/20 px-3 py-1 rounded-full">
-            Vertical iPaaS Architecture
+        <div class="flex items-center gap-4">
+            <div class="hidden md:block text-xs font-semibold text-blue-400 tracking-[0.2em] uppercase border border-blue-900 bg-blue-900/20 px-3 py-1 rounded-full">
+                Vertical iPaaS Architecture
+            </div>
+            <a href="https://app.onehazel.com" class="px-5 py-2 bg-blue-600 text-white text-sm rounded-lg font-semibold hover:bg-blue-500 transition shadow-[0_0_12px_rgba(37,99,235,0.3)]">
+                Launch App
+            </a>
         </div>
     </nav>
 
@@ -120,9 +114,9 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.3)]">
-                    Secure Early Access
-                </button>
+                <a href="https://app.onehazel.com" class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.3)] text-center">
+                    Get Started Free
+                </a>
                 <a href="#architecture" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
                     View Architecture
                 </a>
@@ -791,9 +785,9 @@
                     Join the operators building the next generation of iGaming platforms with OneHazel.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.3)]">
-                        Schedule Architecture Review
-                    </button>
+                    <a href="https://app.onehazel.com" class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.3)] text-center">
+                        Get Started Free
+                    </a>
                     <button class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition">
                         Download Technical Whitepaper
                     </button>
@@ -892,71 +886,6 @@
         </div>
     </section>
 
-<!-- Authentication JavaScript -->
-<script>
-    // ============================================
-    // SUPABASE CONFIGURATION
-    // ============================================
-    const SUPABASE_URL = 'https://xrtlnyhfxcxhncxiszdf.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_vngebyux69m74QNEv0OmjA_xbKbWD1E';
-
-    // Initialize Supabase client
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // ============================================
-    // AUTHENTICATION CHECK
-    // ============================================
-    const authCheck = document.getElementById('authCheck');
-
-    async function checkAuthentication() {
-        try {
-            // Check if user has a valid Supabase session
-            const { data: { session }, error } = await supabaseClient.auth.getSession();
-            
-            if (session) {
-                // User is authenticated, hide auth check and show content
-                localStorage.setItem('onehazel_registered', 'true');
-                localStorage.setItem('onehazel_email', session.user.email);
-                localStorage.setItem('onehazel_user_id', session.user.id);
-                localStorage.setItem('onehazel_logged_in', 'true');
-                
-                authCheck.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            } else {
-                // User not authenticated, redirect to login page
-                window.location.href = '/login';
-            }
-        } catch (error) {
-            console.error('Authentication check failed:', error);
-            // Redirect to login page on error
-            window.location.href = '/login';
-        }
-    }
-
-    // Run authentication check on page load
-    checkAuthentication();
-
-    // Listen for auth state changes
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-        if (event === 'SIGNED_OUT' || !session) {
-            // User signed out, redirect to login
-            window.location.href = '/login';
-        }
-    });
-
-    // Logout function (available globally)
-    async function logout() {
-        await supabaseClient.auth.signOut();
-        localStorage.clear();
-        window.location.href = '/login';
-    }
-
-    // Make logout available globally
-    window.oneHazelLogout = logout;
-
-    console.log('%cOneHazel Main Page - Authenticated Access', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
-    console.log('%cTo logout, run: oneHazelLogout()', 'color: #94a3b8;');
-</script>
 
 </body>
 </html>
