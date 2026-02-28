@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneHazel for iGaming - The Integration Layer for iGaming Operators</title>
+    <meta name="description" content="OneHazel is the AI-powered integration platform for iGaming. Connect game providers, payment gateways, KYC/AML, and responsible gaming tools through one unified API.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-text-brand {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at 50% 0%, #064e3b 0%, #0f172a 60%);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .vendor-tag {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .vendor-tag:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(30, 41, 59, 1);
+        }
+
+        /* Comparison table row striping */
+        .compare-row:nth-child(odd) {
+            background: rgba(15, 23, 42, 0.3);
+        }
+    </style>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
+<!-- End of HubSpot Embed Code -->
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-white">
+
+
+    <!-- Nav -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
+        <div class="flex items-center gap-6">
+            <a href="/" class="font-bold text-2xl tracking-tighter text-white">
+                ONEHAZEL <span class="text-blue-500 font-light">| ELEVATE AI</span>
+            </a>
+            <a href="/" class="hidden md:flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition">
+                <i class="fas fa-arrow-left text-xs"></i>
+                All Industries
+            </a>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:block text-xs font-semibold text-emerald-400 tracking-[0.2em] uppercase border border-emerald-900 bg-emerald-900/20 px-3 py-1 rounded-full">
+                iGaming
+            </div>
+            <a href="https://app.onehazel.com" class="px-5 py-2 bg-emerald-600 text-white text-sm rounded-lg font-semibold hover:bg-emerald-500 transition shadow-[0_0_12px_rgba(16,185,129,0.3)]">
+                Launch App
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <header class="relative pt-20 pb-24 hero-bg overflow-hidden grid-bg">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs font-bold tracking-wide uppercase">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Sector: iGaming &amp; Online Betting
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight text-white">
+                The Integration Layer <br>
+                <span class="gradient-text">for iGaming</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
+                Dozens of game providers, payment gateways, KYC/AML services, and responsible gaming tools &mdash; each with different APIs, authentication methods, and data formats. OneHazel connects them all through a single AI-powered platform.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.onehazel.com" class="px-8 py-4 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition shadow-[0_0_20px_rgba(16,185,129,0.3)] text-center">
+                    Get Started Free
+                </a>
+                <a href="#how-it-works" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
+                    See How It Works
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- The Problem -->
+    <section class="py-24 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Integration Problem in iGaming</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Every operator faces the same bottleneck: connecting a growing stack of third-party vendors, each with their own way of doing things.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Vendor Sprawl -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-red-600/20"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/10 flex items-center justify-center mb-6 border border-red-500/20">
+                        <i class="fas fa-diagram-project text-2xl text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Vendor Sprawl</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        The average iGaming operator connects to 15&ndash;30 third-party vendors: game aggregators, payment processors, KYC providers, responsible gaming tools. Each vendor has unique APIs, authentication mechanisms, and data schemas that must be individually integrated and maintained.
+                    </p>
+                </div>
+
+                <!-- Card 2: Engineering Drain -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-amber-600/20"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center mb-6 border border-amber-500/20">
+                        <i class="fas fa-people-group text-2xl text-amber-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Engineering Drain</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Building and maintaining custom integrations for each vendor requires dedicated engineering teams. A single payment gateway integration can take 2&ndash;4 weeks. Multiply that across every vendor in your stack, then factor in ongoing maintenance as APIs evolve.
+                    </p>
+                </div>
+
+                <!-- Card 3: Compliance Complexity -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-purple-600/20"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 flex items-center justify-center mb-6 border border-purple-500/20">
+                        <i class="fas fa-scale-balanced text-2xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Compliance Complexity</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Multi-jurisdiction licensing (MGA, UKGC, Cura&ccedil;ao) requires different data flows, reporting formats, and audit trails per market. Each jurisdiction may mandate specific KYC providers, responsible gaming checks, and transaction reporting standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- How OneHazel Solves It -->
+    <section id="how-it-works" class="py-24 bg-[#0B1120]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How OneHazel Solves It</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    An AI-powered integration platform purpose-built for the complexity of iGaming vendor ecosystems.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 1: AI-Powered Connector Generation -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-robot text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3">AI-Powered Connector Generation</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Point our agent swarm at any vendor's API documentation. Seven specialized AI agents analyze endpoints, detect authentication methods, generate OpenAPI specs, map fields to canonical schemas, build TypeScript connectors, validate the output, and fix issues &mdash; automatically.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">DiscoveryAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">AuthAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">SpecAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">SchemaMapAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">BuilderAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">ValidationAgent</span>
+                                <span class="text-xs bg-emerald-900/30 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-800/30">RefactorAgent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2: Universal Gateway -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-network-wired text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3">Universal Gateway</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                One API call translates to any connected vendor. The gateway handles authentication application, request/response schema translation, circuit breaking, and rate limiting. Your code talks to OneHazel; we talk to everyone else.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2.5 py-1 rounded-full border border-blue-800/30">Auth Application</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2.5 py-1 rounded-full border border-blue-800/30">Schema Translation</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2.5 py-1 rounded-full border border-blue-800/30">Circuit Breaker</span>
+                                <span class="text-xs bg-blue-900/30 text-blue-400 px-2.5 py-1 rounded-full border border-blue-800/30">Rate Limiting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3: Canonical Data Model -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-database text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3">Canonical Data Model</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Player data, transactions, game sessions, KYC results &mdash; normalized into a single iGaming-specific schema regardless of which vendor produced it. The SchemaMapAgent classifies each API's domain and maps fields to canonical names. Switch vendors without rewriting your platform.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs bg-purple-900/30 text-purple-400 px-2.5 py-1 rounded-full border border-purple-800/30">Domain Classification</span>
+                                <span class="text-xs bg-purple-900/30 text-purple-400 px-2.5 py-1 rounded-full border border-purple-800/30">Field Mapping</span>
+                                <span class="text-xs bg-purple-900/30 text-purple-400 px-2.5 py-1 rounded-full border border-purple-800/30">Vendor Portability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4: Event-Driven Workflows -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-bolt text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3">Event-Driven Workflows</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Trigger automated workflows on any event &mdash; player deposit exceeds a threshold, KYC status changes, game session anomaly detected. Chain actions across vendors without code. The workflow engine evaluates conditions with dot-notation field access and type-coerced comparisons, then executes actions across any connected service.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2.5 py-1 rounded-full border border-cyan-800/30">Condition Engine</span>
+                                <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2.5 py-1 rounded-full border border-cyan-800/30">Cross-Vendor Actions</span>
+                                <span class="text-xs bg-cyan-900/30 text-cyan-400 px-2.5 py-1 rounded-full border border-cyan-800/30">Webhook Triggers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Key Integrations -->
+    <section class="py-24 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Key Integrations for iGaming</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Generate connectors for any vendor with API documentation. Here are the categories most relevant to iGaming operators.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Game Providers -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                            <i class="fas fa-gamepad text-lg text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Game Providers</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Fundist</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">SoftSwiss</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Evolution</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Pragmatic Play</span>
+                    </div>
+                </div>
+
+                <!-- Payment Gateways -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                            <i class="fas fa-credit-card text-lg text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Payment Gateways</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Stripe</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Nuvei</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">PayRetailers</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">CoinsPaid</span>
+                    </div>
+                </div>
+
+                <!-- KYC/AML -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                            <i class="fas fa-id-card text-lg text-amber-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">KYC / AML</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Sumsub</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Shufti Pro</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">IDnow</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Jumio</span>
+                    </div>
+                </div>
+
+                <!-- Responsible Gaming -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center border border-rose-500/20">
+                            <i class="fas fa-shield-heart text-lg text-rose-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Responsible Gaming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Mindway AI</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">BetBlocker</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Neccton</span>
+                    </div>
+                </div>
+
+                <!-- Analytics -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
+                            <i class="fas fa-chart-line text-lg text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Analytics</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">GameAnalytics</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Mixpanel</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Amplitude</span>
+                    </div>
+                </div>
+
+                <!-- CRM & Engagement -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i class="fas fa-users text-lg text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">CRM &amp; Engagement</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Optimove</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Braze</span>
+                        <span class="vendor-tag px-3 py-1.5 rounded-lg text-sm text-slate-300">Customer.io</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- What You Save -->
+    <section class="py-24 bg-[#0B1120]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What You Save</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    A direct comparison of integration workflows with and without OneHazel.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Without OneHazel -->
+                <div class="glass-card rounded-2xl overflow-hidden border-red-500/10">
+                    <div class="bg-red-500/5 border-b border-red-500/10 px-8 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center">
+                                <i class="fas fa-xmark text-red-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-red-300">Without OneHazel</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-clock text-xs text-red-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">2&ndash;4 weeks per integration</div>
+                                <p class="text-slate-500 text-xs mt-1">Each vendor requires custom code for auth, endpoints, error handling, and data mapping.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-people-group text-xs text-red-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Dedicated team of 3&ndash;5 engineers for maintenance</div>
+                                <p class="text-slate-500 text-xs mt-1">API changes, deprecations, and version upgrades require continuous attention.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-calendar text-xs text-red-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Months to add a new market or vendor</div>
+                                <p class="text-slate-500 text-xs mt-1">New jurisdictions mean new vendors, new compliance rules, new integrations from scratch.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-shuffle text-xs text-red-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Manual data reconciliation between systems</div>
+                                <p class="text-slate-500 text-xs mt-1">Different schemas per vendor means custom ETL pipelines and constant data wrangling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- With OneHazel -->
+                <div class="glass-card rounded-2xl overflow-hidden border-emerald-500/10">
+                    <div class="bg-emerald-500/5 border-b border-emerald-500/10 px-8 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                                <i class="fas fa-check text-emerald-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-emerald-300">With OneHazel</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-bolt text-xs text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Minutes to generate a connector from API docs</div>
+                                <p class="text-slate-500 text-xs mt-1">Provide a URL to the vendor's API documentation. The seven-agent pipeline handles the rest.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-user-slash text-xs text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Zero dedicated integration engineers</div>
+                                <p class="text-slate-500 text-xs mt-1">AI agents generate, validate, and maintain connectors. Your engineers build product features.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-store text-xs text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Add vendors through the marketplace</div>
+                                <p class="text-slate-500 text-xs mt-1">Browse pre-built connectors or generate new ones on demand. Activate with credentials.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-database text-xs text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Unified data model eliminates reconciliation</div>
+                                <p class="text-slate-500 text-xs mt-1">All vendor data normalized to canonical schemas. One format for players, transactions, and events.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="py-24 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center bg-gradient-to-br from-emerald-500/10 to-emerald-900/10 border border-emerald-500/20 rounded-2xl p-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Start Connecting Your iGaming Stack</h2>
+                <p class="text-slate-400 mb-8 max-w-2xl mx-auto">
+                    Generate your first connector in minutes. Point the agent swarm at your vendor's API docs and let it build, validate, and deploy a production-ready integration.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://app.onehazel.com" class="px-8 py-4 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition shadow-[0_0_20px_rgba(16,185,129,0.3)] text-center">
+                        Get Started Free
+                    </a>
+                    <a href="/" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
+                        Back to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b border-slate-800">
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">&lt;100ms</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Latency Overhead</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">100%</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Schema Abstraction</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">ISO/GDPR</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Compliant Hub</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">Global</div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Vendor Reach</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-white font-bold text-lg">OneHazel</h4>
+                    <p class="text-sm text-slate-500">The Vertical iPaaS for Data Intelligence.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">Launch App</a>
+                    <a href="/" class="text-sm font-semibold text-slate-400 hover:text-white transition">Homepage</a>
+                    <a href="#" class="text-sm font-semibold text-slate-400 hover:text-white transition">API Docs</a>
+                    <a href="#" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
