@@ -7,298 +7,366 @@
     <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity - Tailwind Play CDN is a dynamic JIT compiler, SRI not possible -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
+        /* ===== THEME TOKENS ===== */
         :root {
-            --gold: #E8A020;
-            --gold-bright: #FFB84D;
-            --gold-dim: rgba(232, 160, 32, 0.10);
-            --gold-border: rgba(232, 160, 32, 0.22);
-            --bg-base: #06080F;
-            --bg-elevated: #0C1018;
-            --bg-card: #111722;
-            --border-subtle: rgba(255, 255, 255, 0.055);
-            --text-warm: #F5EFE4;
+            --bg: #FAFAF9;
+            --bg-card: #FFFFFF;
+            --bg-subtle: #F4F4F5;
+            --bg-invert: #18181B;
+            --text: #18181B;
+            --text-secondary: #52525B;
+            --text-muted: #A1A1AA;
+            --text-invert: #FAFAFA;
+            --border: #E4E4E7;
+            --border-hover: #D4D4D8;
+            --accent: #B45309;
+            --accent-bright: #D97706;
+            --accent-soft: rgba(217, 119, 6, 0.07);
+            --accent-border: rgba(217, 119, 6, 0.20);
+            --gradient-start: #B45309;
+            --gradient-end: #D97706;
+            --shadow-sm: rgba(0,0,0,0.04);
+            --shadow: rgba(0,0,0,0.08);
+            --marquee-text: #A1A1AA;
+            --marquee-accent: #92400E;
         }
 
-        html {
-            scroll-behavior: smooth;
+        .dark {
+            --bg: #09090B;
+            --bg-card: #18181B;
+            --bg-subtle: #1C1C1F;
+            --bg-invert: #FAFAFA;
+            --text: #FAFAFA;
+            --text-secondary: #A1A1AA;
+            --text-muted: #52525B;
+            --text-invert: #09090B;
+            --border: #27272A;
+            --border-hover: #3F3F46;
+            --accent: #FBBF24;
+            --accent-bright: #FCD34D;
+            --accent-soft: rgba(251, 191, 36, 0.08);
+            --accent-border: rgba(251, 191, 36, 0.20);
+            --gradient-start: #FBBF24;
+            --gradient-end: #FDE68A;
+            --shadow-sm: rgba(0,0,0,0.2);
+            --shadow: rgba(0,0,0,0.4);
+            --marquee-text: #52525B;
+            --marquee-accent: #FBBF24;
         }
+
+        /* ===== BASE ===== */
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg-base);
-            color: #D8E0EC;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text);
         }
 
         .mono {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
+        /* ===== DECORATIVE CLASSES ===== */
         .gradient-text {
-            background: linear-gradient(135deg, var(--gold) 0%, #FFD080 55%, #FFFFFF 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .gold-text {
-            color: var(--gold);
-        }
-
-        .hero-bg {
-            background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232, 160, 32, 0.07) 0%, transparent 60%),
-                        radial-gradient(ellipse 100% 80% at 50% 0%, #0D1525 0%, var(--bg-base) 75%);
-        }
-
-        .glass-card {
+        .card {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px var(--shadow-sm);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .glass-card:hover {
-            border-color: rgba(232, 160, 32, 0.18);
-            box-shadow: 0 4px 32px rgba(232, 160, 32, 0.06);
+        .card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 4px 16px var(--shadow);
         }
 
-        .glow-point {
-            box-shadow: 0 0 20px rgba(232, 160, 32, 0.25);
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            color: var(--accent-bright);
         }
 
-        .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .stat-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            color: var(--accent-bright);
+            line-height: 1;
         }
 
-        /* Marquee strip */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            background: var(--bg-invert);
+            color: var(--text-invert);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: opacity 0.15s ease, box-shadow 0.15s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: border-color 0.15s ease, background 0.15s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-subtle);
+        }
+
+        /* ===== MARQUEE ===== */
         .marquee-track {
             display: flex;
             width: max-content;
-            animation: marquee 35s linear infinite;
+            animation: marquee 40s linear infinite;
         }
 
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
+        .marquee-track:hover { animation-play-state: paused; }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Animation for the data flow */
-        @keyframes flow {
-            0% { stroke-dashoffset: 100; }
-            100% { stroke-dashoffset: 0; }
-        }
-
-        .flow-line {
-            stroke-dasharray: 10;
-            animation: flow 1s linear infinite;
-        }
-
-        /* Pulse animation for server */
-        @keyframes server-pulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(232, 160, 32, 0.2); }
-            50% { box-shadow: 0 0 60px rgba(232, 160, 32, 0.35), 0 0 80px rgba(59, 130, 246, 0.15); }
-        }
-
-        .server-glow {
-            animation: server-pulse 3s ease-in-out infinite;
-        }
-
-        /* Glowing lines animation */
-        @keyframes line-glow {
-            0%, 100% { stroke-opacity: 0.3; }
-            50% { stroke-opacity: 0.8; }
-        }
-
-        /* Entrance fade */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
+            from { opacity: 0; transform: translateY(16px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-up { animation: fadeUp 0.7s ease both; }
-        .fade-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
-        .fade-up-2 { animation: fadeUp 0.7s 0.22s ease both; }
-        .fade-up-3 { animation: fadeUp 0.7s 0.34s ease both; }
+        .fade-up   { animation: fadeUp 0.6s ease both; }
+        .fade-up-1 { animation: fadeUp 0.6s 0.08s ease both; }
+        .fade-up-2 { animation: fadeUp 0.6s 0.18s ease both; }
+        .fade-up-3 { animation: fadeUp 0.6s 0.28s ease both; }
 
-        /* Gold pill badge */
-        .gold-badge {
-            background: var(--gold-dim);
-            border: 1px solid var(--gold-border);
-            color: var(--gold-bright);
+        /* ===== ARCHITECTURE VIZ (always dark) ===== */
+        .arch-dark {
+            background: #0F172A;
+            color: #E2E8F0;
         }
 
-        /* Section divider rule */
-        .rule-gold {
-            width: 48px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 2px;
+        @keyframes server-pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+            50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), 0 0 80px rgba(168, 85, 247, 0.3); }
         }
 
-        /* Stat number style */
-        .stat-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-            color: var(--gold-bright);
-            line-height: 1;
+        .server-glow { animation: server-pulse 3s ease-in-out infinite; }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+            font-size: 15px;
         }
+
+        .theme-toggle:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        /* Hide correct icon per theme */
+        .dark .icon-sun { display: none; }
+        :not(.dark) .icon-moon { display: none; }
+
+        /* ===== SECTION UTILITIES ===== */
+        .section-alt { background: var(--bg-subtle); }
+        .section-base { background: var(--bg); }
+        .divider { border-color: var(--border); }
     </style>
 <!-- Start of HubSpot Embed Code -->
 <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
 <!-- End of HubSpot Embed Code -->
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="antialiased">
 
-
-    <!-- Nav -->
-    <nav class="w-full py-5 px-8 flex justify-between items-center max-w-7xl mx-auto" style="border-bottom: 1px solid rgba(255,255,255,0.055);">
-        <div class="font-bold text-xl tracking-tight text-white" style="font-family: 'Syne', sans-serif; letter-spacing: -0.02em;">
-            ONEHAZEL <span style="color: var(--gold); font-weight: 400; opacity: 0.8;">/ ELEVATE AI</span>
+    <!-- ===== NAV ===== -->
+    <nav class="w-full py-4 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b divider">
+        <div class="font-extrabold text-xl tracking-tight" style="color: var(--text); letter-spacing: -0.02em;">
+            ONEHAZEL <span class="font-normal" style="color: var(--text-muted);">/ Elevate AI</span>
         </div>
-        <div class="flex items-center gap-4">
-            <div class="hidden md:flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase px-3 py-1.5 rounded-full gold-badge" style="font-family: 'JetBrains Mono', monospace;">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+        <div class="flex items-center gap-3">
+            <div class="hidden md:flex badge">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
                 302 Connectors Live
             </div>
-            <a href="https://app.onehazel.com" class="px-5 py-2 text-sm rounded-lg font-semibold transition text-center" style="background: var(--gold); color: #06080F; font-family: 'Syne', sans-serif; letter-spacing: -0.01em; box-shadow: 0 0 20px rgba(232,160,32,0.2);">
-                Launch App →
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-sun icon-sun"></i>
+                <i class="fas fa-moon icon-moon"></i>
+            </button>
+            <a href="https://app.onehazel.com" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">
+                Launch App <i class="fas fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-24 pb-0 hero-bg overflow-hidden grid-bg">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <!-- ===== HERO ===== -->
+    <header class="relative pt-20 md:pt-28 pb-0 overflow-hidden" style="background: var(--bg);">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
 
-            <!-- Status badge -->
-            <div class="fade-up inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full gold-badge text-xs font-semibold tracking-[0.15em] uppercase" style="font-family: 'JetBrains Mono', monospace;">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0"></span>
+            <div class="fade-up badge mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
                 Platform V1.0 Now Live
             </div>
 
-            <!-- Headline -->
-            <h1 class="fade-up-1 font-bold mb-6 leading-none text-white" style="font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: -0.035em; font-family: 'Syne', sans-serif;">
+            <h1 class="fade-up-1 font-extrabold mb-6 leading-[1.05]" style="font-size: clamp(2.6rem, 7vw, 5.5rem); letter-spacing: -0.035em;">
                 The Last Integration<br>
                 <span class="gradient-text">You'll Ever Build.</span>
             </h1>
 
-            <!-- Subheadline -->
-            <p class="fade-up-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color: #8892A0; font-weight: 400;">
-                OneHazel is the Vertical iPaaS that uses <strong style="color: #D8E0EC; font-weight: 500;">autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem —
-                <strong style="color: var(--gold-bright); font-weight: 500;">302 connectors live today</strong>, built in minutes, maintained automatically.
+            <p class="fade-up-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
+                OneHazel is the Vertical iPaaS that uses <strong style="color: var(--text); font-weight: 600;">autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem —
+                <strong style="color: var(--accent-bright); font-weight: 600;">302 connectors live today</strong>, built in minutes, maintained automatically.
             </p>
 
-            <!-- CTAs -->
-            <div class="fade-up-3 flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <a href="https://app.onehazel.com" class="px-8 py-4 rounded-lg font-semibold transition text-center" style="background: var(--gold); color: #06080F; font-family: 'Syne', sans-serif; letter-spacing: -0.01em; font-size: 1rem; box-shadow: 0 0 32px rgba(232,160,32,0.25);">
-                    Get Started Free →
-                </a>
-                <a href="#architecture" class="px-8 py-4 rounded-lg font-semibold transition text-center" style="background: rgba(255,255,255,0.04); color: #D8E0EC; border: 1px solid rgba(255,255,255,0.1); font-family: 'Syne', sans-serif;">
-                    View Architecture
-                </a>
+            <div class="fade-up-3 flex flex-col sm:flex-row gap-3 justify-center mb-16">
+                <a href="https://app.onehazel.com" class="btn-primary">Get Started Free <span class="ml-2">&rarr;</span></a>
+                <a href="#architecture" class="btn-secondary">View Architecture</a>
             </div>
 
-            <!-- Proof row — 4 stats inline -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-px mb-0" style="border: 1px solid rgba(255,255,255,0.055); border-radius: 12px 12px 0 0; overflow: hidden; background: rgba(255,255,255,0.035);">
-                <div class="py-6 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl mb-1">302</div>
-                    <div class="text-xs uppercase tracking-widest" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">Live Connectors</div>
+            <!-- Stats bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-t-2xl overflow-hidden" style="border: 1px solid var(--border); border-bottom: none; background: var(--border);">
+                <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
+                    <div class="stat-num text-2xl md:text-3xl mb-1">302</div>
+                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Live Connectors</div>
                 </div>
-                <div class="py-6 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl mb-1">~10 min</div>
-                    <div class="text-xs uppercase tracking-widest" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">Per Connector Build</div>
+                <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
+                    <div class="stat-num text-2xl md:text-3xl mb-1">~10 min</div>
+                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Per Connector Build</div>
                 </div>
-                <div class="py-6 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl mb-1">22</div>
-                    <div class="text-xs uppercase tracking-widest" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">Workflow Node Types</div>
+                <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
+                    <div class="stat-num text-2xl md:text-3xl mb-1">22</div>
+                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Workflow Node Types</div>
                 </div>
-                <div class="py-6 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl mb-1">0</div>
-                    <div class="text-xs uppercase tracking-widest" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">Quality Failures</div>
+                <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
+                    <div class="stat-num text-2xl md:text-3xl mb-1">0</div>
+                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Quality Failures</div>
                 </div>
             </div>
         </div>
 
-        <!-- Connector marquee strip -->
-        <div class="w-full overflow-hidden py-4" style="background: rgba(232,160,32,0.04); border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); margin-top: 0;">
+        <!-- Marquee strip -->
+        <div class="w-full overflow-hidden py-3.5" style="background: var(--accent-soft); border-top: 1px solid var(--accent-border); border-bottom: 1px solid var(--accent-border);">
             <div class="marquee-track">
-                <span class="flex items-center gap-8 px-4 text-sm font-medium whitespace-nowrap" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">
-                    <span style="color: var(--gold); opacity: 0.7;">Stripe</span> <span class="opacity-30">·</span>
-                    <span>Anthropic</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Slack</span> <span class="opacity-30">·</span>
-                    <span>GitHub</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Shopify</span> <span class="opacity-30">·</span>
-                    <span>Postmark</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Telegram</span> <span class="opacity-30">·</span>
-                    <span>Twilio</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">SendGrid</span> <span class="opacity-30">·</span>
-                    <span>HubSpot</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Salesforce</span> <span class="opacity-30">·</span>
-                    <span>Braintree</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">OpenAI</span> <span class="opacity-30">·</span>
-                    <span>Plaid</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Mixpanel</span> <span class="opacity-30">·</span>
-                    <span>Segment</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Datadog</span> <span class="opacity-30">·</span>
-                    <span>Intercom</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Zendesk</span> <span class="opacity-30">·</span>
-                    <span>Airtable</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Notion</span> <span class="opacity-30">·</span>
-                    <span>Linear</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">PagerDuty</span> <span class="opacity-30">·</span>
-                    <span>Cloudflare</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">AWS</span> <span class="opacity-30">·</span>
-                    <span>Google Cloud</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Vercel</span> <span class="opacity-30">·</span>
-                    <span>Supabase</span> <span class="opacity-30">·</span>
+                <span class="mono flex items-center gap-6 px-4 text-xs font-medium whitespace-nowrap" style="color: var(--marquee-text);">
+                    <span style="color: var(--marquee-accent);">Stripe</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Anthropic</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Slack</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>GitHub</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Shopify</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Postmark</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Telegram</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Twilio</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">SendGrid</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>HubSpot</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Salesforce</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Braintree</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">OpenAI</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Plaid</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Mixpanel</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Segment</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Datadog</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Intercom</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Zendesk</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Airtable</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Notion</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Linear</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">PagerDuty</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Cloudflare</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">AWS</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Google Cloud</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Vercel</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Supabase</span> <span style="opacity:0.3;">&middot;</span>
                     <!-- duplicate for seamless loop -->
-                    <span style="color: var(--gold); opacity: 0.7;">Stripe</span> <span class="opacity-30">·</span>
-                    <span>Anthropic</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Slack</span> <span class="opacity-30">·</span>
-                    <span>GitHub</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Shopify</span> <span class="opacity-30">·</span>
-                    <span>Postmark</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Telegram</span> <span class="opacity-30">·</span>
-                    <span>Twilio</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">SendGrid</span> <span class="opacity-30">·</span>
-                    <span>HubSpot</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Salesforce</span> <span class="opacity-30">·</span>
-                    <span>Braintree</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">OpenAI</span> <span class="opacity-30">·</span>
-                    <span>Plaid</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Mixpanel</span> <span class="opacity-30">·</span>
-                    <span>Segment</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Datadog</span> <span class="opacity-30">·</span>
-                    <span>Intercom</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Zendesk</span> <span class="opacity-30">·</span>
-                    <span>Airtable</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Notion</span> <span class="opacity-30">·</span>
-                    <span>Linear</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">PagerDuty</span> <span class="opacity-30">·</span>
-                    <span>Cloudflare</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">AWS</span> <span class="opacity-30">·</span>
-                    <span>Google Cloud</span> <span class="opacity-30">·</span>
-                    <span style="color: var(--gold); opacity: 0.7;">Vercel</span> <span class="opacity-30">·</span>
-                    <span>Supabase</span> <span class="opacity-30">·</span>
+                    <span style="color: var(--marquee-accent);">Stripe</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Anthropic</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Slack</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>GitHub</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Shopify</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Postmark</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Telegram</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Twilio</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">SendGrid</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>HubSpot</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Salesforce</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Braintree</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">OpenAI</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Plaid</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Mixpanel</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Segment</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Datadog</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Intercom</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Zendesk</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Airtable</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Notion</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Linear</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">PagerDuty</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Cloudflare</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">AWS</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Google Cloud</span> <span style="opacity:0.3;">&middot;</span>
+                    <span style="color: var(--marquee-accent);">Vercel</span> <span style="opacity:0.3;">&middot;</span>
+                    <span>Supabase</span> <span style="opacity:0.3;">&middot;</span>
                 </span>
             </div>
         </div>
     </header>
 
-    <!-- The "Architecture" Visual - Fixed & Improved -->
-    <section class="py-20 relative" style="background: var(--bg-elevated); border-top: 1px solid rgba(255,255,255,0.055); border-bottom: 1px solid rgba(255,255,255,0.055);">
+    <!-- ===== ARCHITECTURE VISUAL (always dark) ===== -->
+    <section class="py-20 arch-dark relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-white">Stop Building Pipes. Start Building Value.</h2>
@@ -306,54 +374,45 @@
             </div>
 
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                
-                <!-- Left: The Problem (Legacy) -->
+
+                <!-- Left: Legacy -->
                 <div class="relative p-10 rounded-2xl bg-slate-800/50 border border-slate-700/50 opacity-70 hover:opacity-100 transition duration-500 group">
                     <div class="absolute -top-3 left-6 bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">
                         Legacy Architecture
                     </div>
                     <h3 class="text-xl font-bold text-slate-300 mb-8 text-center">The "Spaghetti" Reality</h3>
                     <div class="relative h-64 w-full flex justify-center items-center">
-                        <!-- Central Operator Node -->
                         <div class="z-20 bg-slate-700 text-slate-300 px-6 py-3 rounded-lg font-mono text-sm border border-slate-600">Your Platform</div>
-                        
-                        <!-- Chaotic Connections -->
                         <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 10;">
-                            <!-- Random lines to represent chaos -->
                             <path d="M50 50 Q 150 150 280 130" stroke="#475569" stroke-width="1" fill="none" />
                             <path d="M350 50 Q 250 150 280 130" stroke="#475569" stroke-width="1" fill="none" />
                             <path d="M50 200 Q 150 100 280 130" stroke="#475569" stroke-width="1" fill="none" />
                             <path d="M350 200 Q 250 100 280 130" stroke="#475569" stroke-width="1" fill="none" />
                         </svg>
-
-                        <!-- Satellite Nodes (Vendors) -->
                         <div class="absolute top-0 left-0 bg-slate-800 p-2 rounded text-[10px] text-slate-500 border border-slate-700">Vendor A</div>
                         <div class="absolute top-0 right-0 bg-slate-800 p-2 rounded text-[10px] text-slate-500 border border-slate-700">Vendor B</div>
                         <div class="absolute bottom-0 left-10 bg-slate-800 p-2 rounded text-[10px] text-slate-500 border border-slate-700">Vendor C</div>
                         <div class="absolute bottom-10 right-0 bg-slate-800 p-2 rounded text-[10px] text-slate-500 border border-slate-700">Vendor D</div>
                     </div>
-                    <p class="text-center text-xs text-slate-500 mt-4 group-hover:text-slate-400">High maintenance • Security risks • Slow scaling</p>
+                    <p class="text-center text-xs text-slate-500 mt-4 group-hover:text-slate-400">High maintenance &bull; Security risks &bull; Slow scaling</p>
                 </div>
 
-                <!-- Right: The Solution (OneHazel) - FIXED VISUAL -->
+                <!-- Right: OneHazel -->
                 <div class="relative p-1 rounded-2xl bg-gradient-to-b from-blue-500/20 to-purple-500/20 shadow-2xl">
-                    <div class="rounded-2xl p-8 h-full relative overflow-hidden" style="background: var(--bg-base); border: 1px solid rgba(255,255,255,0.06);">
-                        
+                    <div class="bg-slate-900 rounded-2xl p-8 h-full relative overflow-hidden border border-slate-700/50">
+
                         <div class="absolute -top-3 left-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-400/30 px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider z-20 shadow-lg">
-                            <i class="fas fa-robot mr-1"></i> OneHazel iPaaS <span class="text-purple-300">· AI Agents</span>
+                            <i class="fas fa-robot mr-1"></i> OneHazel iPaaS <span class="text-purple-300">&middot; AI Agents</span>
                         </div>
 
-                        <!-- Visual Layout -->
                         <div class="flex items-center justify-between relative z-10 h-96">
-                            
-                            <!-- 1. Input Side -->
+
                             <div class="flex flex-col gap-4 z-20">
                                 <div class="bg-slate-800 text-white px-4 py-3 rounded-lg border border-slate-600 shadow-lg text-sm font-bold w-32 text-center">
                                     Your Platform
                                 </div>
                             </div>
 
-                            <!-- 2. The Hub (Center) -->
                             <div class="relative z-20 flex flex-col items-center justify-center">
                                 <div class="w-28 h-28 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 flex flex-col items-center justify-center server-glow z-30 relative">
                                     <div class="absolute inset-0 rounded-xl border border-blue-400 animate-ping opacity-20"></div>
@@ -363,39 +422,38 @@
                                 </div>
                             </div>
 
-                            <!-- 3. Output Side - 7 Categories -->
                             <div class="flex flex-col gap-2.5 z-20 w-44">
-                                <div class="bg-slate-800 border border-blue-500/30 px-3 py-2 rounded text-xs text-blue-200 flex items-center gap-2 shadow-lg hover:border-blue-500/60 transition group" id="badge-1">
+                                <div class="bg-slate-800 border border-blue-500/30 px-3 py-2 rounded text-xs text-blue-200 flex items-center gap-2 shadow-lg hover:border-blue-500/60 transition group">
                                     <i class="fas fa-plug text-blue-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">API Integrations</span>
                                 </div>
-                                <div class="bg-slate-800 border border-purple-500/30 px-3 py-2 rounded text-xs text-purple-200 flex items-center gap-2 shadow-lg hover:border-purple-500/60 transition group" id="badge-2">
+                                <div class="bg-slate-800 border border-purple-500/30 px-3 py-2 rounded text-xs text-purple-200 flex items-center gap-2 shadow-lg hover:border-purple-500/60 transition group">
                                     <i class="fas fa-project-diagram text-purple-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">Workflow Automation</span>
                                 </div>
-                                <div class="bg-slate-800 border border-emerald-500/30 px-3 py-2 rounded text-xs text-emerald-200 flex items-center gap-2 shadow-lg hover:border-emerald-500/60 transition group" id="badge-3">
+                                <div class="bg-slate-800 border border-emerald-500/30 px-3 py-2 rounded text-xs text-emerald-200 flex items-center gap-2 shadow-lg hover:border-emerald-500/60 transition group">
                                     <i class="fas fa-brain text-emerald-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">AI/ML Tools</span>
                                 </div>
-                                <div class="bg-slate-800 border border-yellow-500/30 px-3 py-2 rounded text-xs text-yellow-200 flex items-center gap-2 shadow-lg hover:border-yellow-500/60 transition group" id="badge-4">
+                                <div class="bg-slate-800 border border-yellow-500/30 px-3 py-2 rounded text-xs text-yellow-200 flex items-center gap-2 shadow-lg hover:border-yellow-500/60 transition group">
                                     <i class="fas fa-credit-card text-yellow-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">Payment Processors</span>
                                 </div>
-                                <div class="bg-slate-800 border border-cyan-500/30 px-3 py-2 rounded text-xs text-cyan-200 flex items-center gap-2 shadow-lg hover:border-cyan-500/60 transition group" id="badge-5">
+                                <div class="bg-slate-800 border border-cyan-500/30 px-3 py-2 rounded text-xs text-cyan-200 flex items-center gap-2 shadow-lg hover:border-cyan-500/60 transition group">
                                     <i class="fas fa-comment-dots text-cyan-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">Communication Tools</span>
                                 </div>
-                                <div class="bg-slate-800 border border-orange-500/30 px-3 py-2 rounded text-xs text-orange-200 flex items-center gap-2 shadow-lg hover:border-orange-500/60 transition group" id="badge-6">
+                                <div class="bg-slate-800 border border-orange-500/30 px-3 py-2 rounded text-xs text-orange-200 flex items-center gap-2 shadow-lg hover:border-orange-500/60 transition group">
                                     <i class="fas fa-chart-line text-orange-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">Analytics Platforms</span>
                                 </div>
-                                <div class="bg-slate-800 border border-red-500/30 px-3 py-2 rounded text-xs text-red-200 flex items-center gap-2 shadow-lg hover:border-red-500/60 transition group" id="badge-7">
+                                <div class="bg-slate-800 border border-red-500/30 px-3 py-2 rounded text-xs text-red-200 flex items-center gap-2 shadow-lg hover:border-red-500/60 transition group">
                                     <i class="fas fa-shield-alt text-red-400 group-hover:scale-110 transition"></i>
                                     <span class="font-semibold">Compliance & Security</span>
                                 </div>
                             </div>
 
-                            <!-- SVG Connections Layer with AI Agents -->
+                            <!-- SVG Connections -->
                             <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 15;">
                                 <defs>
                                     <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -404,99 +462,38 @@
                                         <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1" />
                                     </linearGradient>
                                 </defs>
-
-                                <!-- Line from Platform to Core -->
                                 <line x1="120" y1="192" x2="200" y2="192" stroke="url(#lineGrad)" stroke-width="2.5" />
                                 <circle cx="160" cy="192" r="3" fill="#60a5fa" class="animate-pulse" />
-
-                                <!-- Lines from Core to 7 Outputs -->
-                                <!-- Product 1: Fraud Detection -->
                                 <path d="M 250 192 L 280 192 L 280 30 L 320 30" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 2: Compliance AI -->
                                 <path d="M 250 192 L 285 192 L 285 80 L 320 80" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 3: Analytics Hub -->
                                 <path d="M 250 192 L 290 192 L 290 130 L 320 130" fill="none" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 4: Responsible Gaming -->
                                 <path d="M 250 192 L 295 192 L 295 180 L 320 180" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 5: Player Behavior AI -->
                                 <path d="M 250 192 L 295 192 L 295 230 L 320 230" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 6: Payment Intelligence -->
                                 <path d="M 250 192 L 285 192 L 285 280 L 320 280" fill="none" stroke="#eab308" stroke-width="1.5" stroke-opacity="0.3" />
-                                <!-- Product 7: Risk Management -->
                                 <path d="M 250 192 L 280 192 L 280 330 L 320 330" fill="none" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.3" />
-
-                                <!-- AI Agents as animated circles with robot icons -->
-                                <!-- Agent 1 - Red -->
-                                <circle r="4" fill="#ef4444" opacity="0.8">
-                                    <animateMotion dur="3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 30 L 320 30" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 30 L 320 30" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 2 - Blue -->
-                                <circle r="4" fill="#3b82f6" opacity="0.8">
-                                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 80 L 320 80" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 80 L 320 80" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 3 - Green -->
-                                <circle r="4" fill="#10b981" opacity="0.8">
-                                    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 250 192 L 290 192 L 290 130 L 320 130" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 250 192 L 290 192 L 290 130 L 320 130" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 4 - Purple -->
-                                <circle r="4" fill="#a855f7" opacity="0.8">
-                                    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 180 L 320 180" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 180 L 320 180" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 5 - Cyan -->
-                                <circle r="4" fill="#06b6d4" opacity="0.8">
-                                    <animateMotion dur="3.2s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 230 L 320 230" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="3.2s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 230 L 320 230" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 6 - Yellow -->
-                                <circle r="4" fill="#eab308" opacity="0.8">
-                                    <animateMotion dur="2.7s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 280 L 320 280" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="2.7s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 280 L 320 280" />
-                                    🤖
-                                </text>
-
-                                <!-- Agent 7 - Orange -->
-                                <circle r="4" fill="#f97316" opacity="0.8">
-                                    <animateMotion dur="3.3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 330 L 320 330" />
-                                </circle>
-                                <text font-size="8" fill="#fff" text-anchor="middle">
-                                    <animateMotion dur="3.3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 330 L 320 330" />
-                                    🤖
-                                </text>
+                                <circle r="4" fill="#ef4444" opacity="0.8"><animateMotion dur="3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 30 L 320 30" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 30 L 320 30" />&#x1F916;</text>
+                                <circle r="4" fill="#3b82f6" opacity="0.8"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 80 L 320 80" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 80 L 320 80" />&#x1F916;</text>
+                                <circle r="4" fill="#10b981" opacity="0.8"><animateMotion dur="3.5s" repeatCount="indefinite" path="M 250 192 L 290 192 L 290 130 L 320 130" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="3.5s" repeatCount="indefinite" path="M 250 192 L 290 192 L 290 130 L 320 130" />&#x1F916;</text>
+                                <circle r="4" fill="#a855f7" opacity="0.8"><animateMotion dur="2.8s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 180 L 320 180" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="2.8s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 180 L 320 180" />&#x1F916;</text>
+                                <circle r="4" fill="#06b6d4" opacity="0.8"><animateMotion dur="3.2s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 230 L 320 230" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="3.2s" repeatCount="indefinite" path="M 250 192 L 295 192 L 295 230 L 320 230" />&#x1F916;</text>
+                                <circle r="4" fill="#eab308" opacity="0.8"><animateMotion dur="2.7s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 280 L 320 280" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="2.7s" repeatCount="indefinite" path="M 250 192 L 285 192 L 285 280 L 320 280" />&#x1F916;</text>
+                                <circle r="4" fill="#f97316" opacity="0.8"><animateMotion dur="3.3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 330 L 320 330" /></circle>
+                                <text font-size="8" fill="#fff" text-anchor="middle"><animateMotion dur="3.3s" repeatCount="indefinite" path="M 250 192 L 280 192 L 280 330 L 320 330" />&#x1F916;</text>
                             </svg>
                         </div>
 
-                        <!-- AI Agent Legend -->
+                        <!-- Legend -->
                         <div class="mt-8 pt-6 border-t border-slate-700/50">
                             <div class="flex items-center justify-center gap-6 text-xs">
                                 <div class="flex items-center gap-2">
                                     <div class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
-                                    <span class="text-slate-400">🤖 <strong class="text-white">AI Agents</strong> actively managing connections</span>
+                                    <span class="text-slate-400">&#x1F916; <strong class="text-white">AI Agents</strong> actively managing connections</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-server text-blue-400"></i>
@@ -512,380 +509,294 @@
         </div>
     </section>
 
-    <!-- Architecture Deep Dive Section -->
-    <section id="architecture" class="py-24 border-y" style="background: var(--bg-base); border-color: rgba(255,255,255,0.055);">
+    <!-- ===== ARCHITECTURE DEEP DIVE ===== -->
+    <section id="architecture" class="py-24 border-t divider section-base">
         <div class="max-w-7xl mx-auto px-6">
 
-            <!-- Hero Header -->
             <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full gold-badge text-xs font-bold tracking-wide uppercase" style="font-family: 'JetBrains Mono', monospace;">
+                <div class="badge mb-6">
                     <i class="fas fa-sitemap"></i>
                     Technical Architecture
                 </div>
-                <h2 class="text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
                     The Intelligence Layer for <span class="gradient-text">Your Industry</span>
                 </h2>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                    OneHazel is a <strong class="text-white">Vertical iPaaS (Integration Platform as a Service)</strong>
+                <p class="text-lg max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                    OneHazel is a <strong style="color: var(--text); font-weight: 600;">Vertical iPaaS (Integration Platform as a Service)</strong>
                     purpose-built for regulated industries. We abstract the complexity of connecting to dozens of
                     specialized AI vendors into a single, unified API.
                 </p>
             </div>
 
             <!-- What is Vertical iPaaS -->
-            <div class="grid lg:grid-cols-2 gap-12 mb-20">
-                <div class="glass-card p-10 rounded-2xl">
+            <div class="grid lg:grid-cols-2 gap-8 mb-20">
+                <div class="card p-10">
                     <div class="flex items-start gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-question text-2xl text-blue-400"></i>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--accent-soft);">
+                            <i class="fas fa-question text-2xl" style="color: var(--accent-bright);"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-2">What is a Vertical iPaaS?</h3>
-                            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
+                            <h3 class="text-2xl font-bold mb-2">What is a Vertical iPaaS?</h3>
+                            <div class="w-16 h-0.5 rounded" style="background: var(--accent);"></div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-slate-300 leading-relaxed">
+                    <div class="space-y-4 leading-relaxed" style="color: var(--text-secondary);">
                         <p>
-                            Traditional iPaaS platforms (like Zapier or Mulesoft) are <strong class="text-white">horizontal</strong>—they
+                            Traditional iPaaS platforms (like Zapier or Mulesoft) are <strong style="color: var(--text);">horizontal</strong>&mdash;they
                             connect generic tools (CRMs, email, databases) across many industries.
                         </p>
                         <p>
-                            A <strong class="text-white">Vertical iPaaS</strong> is laser-focused on a single industry. OneHazel
-                            specializes in <strong class="text-blue-400">industry-specific intelligence</strong>—fraud detection, compliance,
+                            A <strong style="color: var(--text);">Vertical iPaaS</strong> is laser-focused on a single industry. OneHazel
+                            specializes in <strong style="color: var(--accent-bright);">industry-specific intelligence</strong>&mdash;fraud detection, compliance,
                             risk management, analytics, payment intelligence, and operational automation.
                         </p>
-                        <p class="text-sm text-slate-400 rounded-lg p-4" style="background: var(--gold-dim); border: 1px solid var(--gold-border);">
-                            <i class="fas fa-lightbulb mr-2" style="color: var(--gold);"></i>
-                            <strong style="color: var(--text-warm);">Think of us as the "Stripe for Data Intelligence"</strong> – one integration
+                        <p class="text-sm rounded-xl p-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border); color: var(--text-secondary);">
+                            <i class="fas fa-lightbulb mr-2" style="color: var(--accent-bright);"></i>
+                            <strong style="color: var(--text);">Think of us as the "Stripe for Data Intelligence"</strong> &ndash; one integration
                             unlocks access to an entire ecosystem of specialized AI vendors.
                         </p>
                     </div>
                 </div>
 
-                <div class="glass-card p-10 rounded-2xl">
+                <div class="card p-10">
                     <div class="flex items-start gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-network-wired text-2xl text-emerald-400"></i>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(239,68,68,0.07);">
+                            <i class="fas fa-network-wired text-2xl text-red-500"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-2">The Problem We Solve</h3>
-                            <div class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded"></div>
+                            <h3 class="text-2xl font-bold mb-2">The Problem We Solve</h3>
+                            <div class="w-16 h-0.5 rounded bg-red-400"></div>
                         </div>
                     </div>
                     <div class="space-y-4">
                         <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-xs text-red-400"></i>
+                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-times text-[10px] text-red-500"></i>
                             </div>
                             <div>
-                                <p class="text-white font-semibold">Integration Hell</p>
-                                <p class="text-sm text-slate-400">Each vendor has different APIs, data formats, and authentication methods</p>
+                                <p class="font-semibold" style="color: var(--text);">Integration Hell</p>
+                                <p class="text-sm" style="color: var(--text-secondary);">Each vendor has different APIs, data formats, and authentication methods</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-xs text-red-400"></i>
+                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-times text-[10px] text-red-500"></i>
                             </div>
                             <div>
-                                <p class="text-white font-semibold">Maintenance Nightmare</p>
-                                <p class="text-sm text-slate-400">Every API update requires engineering resources to fix broken integrations</p>
+                                <p class="font-semibold" style="color: var(--text);">Maintenance Nightmare</p>
+                                <p class="text-sm" style="color: var(--text-secondary);">Every API update requires engineering resources to fix broken integrations</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-xs text-red-400"></i>
+                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-times text-[10px] text-red-500"></i>
                             </div>
                             <div>
-                                <p class="text-white font-semibold">Vendor Lock-in</p>
-                                <p class="text-sm text-slate-400">Switching providers means rebuilding entire integrations from scratch</p>
+                                <p class="font-semibold" style="color: var(--text);">Vendor Lock-in</p>
+                                <p class="text-sm" style="color: var(--text-secondary);">Switching providers means rebuilding entire integrations from scratch</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-xs text-red-400"></i>
+                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-times text-[10px] text-red-500"></i>
                             </div>
                             <div>
-                                <p class="text-white font-semibold">Slow Time-to-Market</p>
-                                <p class="text-sm text-slate-400">Adding new tools used to take 3-6 months per integration</p>
+                                <p class="font-semibold" style="color: var(--text);">Slow Time-to-Market</p>
+                                <p class="text-sm" style="color: var(--text-secondary);">Adding new tools used to take 3-6 months per integration</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Industry Benefits -->
+            <!-- Benefits -->
             <div class="mb-20">
                 <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-white mb-4">
-                        <i class="fas fa-trophy text-yellow-500 mr-3"></i>
-                        Why Operators Win with OneHazel
-                    </h3>
-                    <p class="text-slate-400 max-w-2xl mx-auto">
+                    <h3 class="text-3xl font-bold mb-4">Why Operators Win with OneHazel</h3>
+                    <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                         Stop spending engineering cycles on infrastructure. Focus on what makes your platform unique.
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Benefit 1 -->
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition"></div>
-                        <div class="relative glass-card p-8 rounded-2xl h-full">
-                            <div class="text-5xl font-bold mb-4 stat-num">80%</div>
-                            <h4 class="text-xl font-bold text-white mb-3">Engineering Cost Reduction</h4>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Eliminate dedicated integration teams. Our AI agents handle the heavy lifting of
-                                connecting, mapping, and maintaining vendor APIs.
-                            </p>
-                        </div>
+                    <div class="card p-8">
+                        <div class="stat-num text-5xl mb-4">80%</div>
+                        <h4 class="text-xl font-bold mb-3">Engineering Cost Reduction</h4>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Eliminate dedicated integration teams. Our AI agents handle the heavy lifting of
+                            connecting, mapping, and maintaining vendor APIs.
+                        </p>
                     </div>
-
-                    <!-- Benefit 2 -->
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition"></div>
-                        <div class="relative glass-card p-8 rounded-2xl h-full">
-                            <div class="text-5xl font-bold mb-4 stat-num">1000x</div>
-                            <h4 class="text-xl font-bold text-white mb-3">Faster Integration Speed</h4>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                From months to minutes. Add any connector, build workflows visually,
-                                or test new tools — all without custom development.
-                            </p>
-                        </div>
+                    <div class="card p-8">
+                        <div class="stat-num text-5xl mb-4">1000x</div>
+                        <h4 class="text-xl font-bold mb-3">Faster Integration Speed</h4>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            From months to minutes. Add any connector, build workflows visually,
+                            or test new tools &mdash; all without custom development.
+                        </p>
                     </div>
-
-                    <!-- Benefit 3 -->
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition"></div>
-                        <div class="relative glass-card p-8 rounded-2xl h-full">
-                            <div class="text-5xl font-bold mb-4 stat-num">∞</div>
-                            <h4 class="text-xl font-bold text-white mb-3">Future-Proof Architecture</h4>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                As we add new vendors to the network, you gain instant access. No code changes,
-                                no re-certification, no vendor negotiation.
-                            </p>
-                        </div>
+                    <div class="card p-8">
+                        <div class="stat-num text-5xl mb-4">&infin;</div>
+                        <h4 class="text-xl font-bold mb-3">Future-Proof Architecture</h4>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            As we add new vendors to the network, you gain instant access. No code changes,
+                            no re-certification, no vendor negotiation.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- AI-Powered Scaling Section -->
-            <div class="relative overflow-hidden rounded-3xl p-12 mb-20" style="background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-
+            <!-- AI-Powered Scaling -->
+            <div class="card p-10 md:p-12 mb-20 relative overflow-hidden">
                 <div class="relative z-10">
                     <div class="text-center mb-12">
-                        <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full gold-badge text-xs font-bold tracking-wide uppercase" style="font-family: 'JetBrains Mono', monospace;">
+                        <div class="badge mb-4">
                             <i class="fas fa-robot"></i>
                             AI-Powered Scale
                         </div>
-                        <h3 class="text-4xl font-bold text-white mb-4">
+                        <h3 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">
                             From 0 to 302 Connectors in <span class="gradient-text">Record Time</span>
                         </h3>
-                        <p class="text-xl text-slate-400 max-w-3xl mx-auto">
-                            Traditional integration teams take <strong>3-6 months per vendor</strong>.
-                            Our AI agents build production connectors in <strong>minutes</strong>.
+                        <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">
+                            Traditional integration teams take <strong style="color: var(--text);">3-6 months per vendor</strong>.
+                            Our AI agents build production connectors in <strong style="color: var(--text);">minutes</strong>.
                         </p>
                     </div>
 
-                    <!-- Timeline Visualization -->
-                    <div class="grid lg:grid-cols-3 gap-8 mb-12">
-                        <!-- Phase 1 — Done -->
-                        <div class="relative">
-                            <div class="absolute -top-2 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Complete</div>
-                            <div class="text-center mb-6">
-                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 mb-4">
-                                    <i class="fas fa-check text-2xl text-emerald-400"></i>
+                    <!-- Timeline -->
+                    <div class="grid lg:grid-cols-3 gap-6 mb-12">
+                        <!-- Phase 1 -->
+                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                            <div class="absolute -top-2 right-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-700" style=".dark & { background: rgba(16,185,129,0.15); color: #34d399; }">Complete</div>
+                            <div class="text-center mb-4">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(16,185,129,0.1); border: 2px solid #10b981;">
+                                    <i class="fas fa-check text-xl text-emerald-500"></i>
                                 </div>
-                                <h4 class="text-lg font-bold text-white mb-2">Launch (Q1 2026)</h4>
-                                <div class="text-3xl font-bold text-emerald-400 mb-2">302</div>
-                                <p class="text-xs text-slate-400 uppercase tracking-wider">Connectors Live</p>
+                                <h4 class="text-base font-bold mb-1">Launch (Q1 2026)</h4>
+                                <div class="stat-num text-3xl mb-1">302</div>
+                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Connectors Live</p>
                             </div>
-                            <div class="bg-slate-800/50 border border-emerald-500/20 rounded-lg p-4">
-                                <ul class="space-y-2 text-sm text-slate-300">
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-check text-emerald-400 mt-1 text-xs"></i>
-                                        <span>302 production connectors built and audited</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-check text-emerald-400 mt-1 text-xs"></i>
-                                        <span>7-agent AI pipeline generating connectors in minutes</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-check text-emerald-400 mt-1 text-xs"></i>
-                                        <span>Visual workflow builder with 22 node types</span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>302 production connectors built and audited</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>7-agent AI pipeline generating connectors in minutes</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>Visual workflow builder with 22 node types</span></li>
+                            </ul>
                         </div>
-
                         <!-- Phase 2 -->
-                        <div class="relative">
-                            <div class="absolute -top-2 right-4 bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">In Progress</div>
-                            <div class="text-center mb-6">
-                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500 mb-4">
-                                    <span class="text-2xl font-bold text-blue-400">2</span>
+                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                            <div class="absolute -top-2 right-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-700">In Progress</div>
+                            <div class="text-center mb-4">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(59,130,246,0.1); border: 2px solid #3b82f6;">
+                                    <span class="text-xl font-bold text-blue-500">2</span>
                                 </div>
-                                <h4 class="text-lg font-bold text-white mb-2">Scale (Q2-Q3 2026)</h4>
-                                <div class="text-3xl font-bold text-blue-400 mb-2">500+</div>
-                                <p class="text-xs text-slate-400 uppercase tracking-wider">Connector Network</p>
+                                <h4 class="text-base font-bold mb-1">Scale (Q2-Q3 2026)</h4>
+                                <div class="stat-num text-3xl mb-1">500+</div>
+                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Connector Network</p>
                             </div>
-                            <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                                <ul class="space-y-2 text-sm text-slate-300">
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-robot text-blue-400 mt-1 text-xs"></i>
-                                        <span>AI agents adding new connectors daily</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-robot text-blue-400 mt-1 text-xs"></i>
-                                        <span>Operator self-service connector builder</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-robot text-blue-400 mt-1 text-xs"></i>
-                                        <span>Multi-vertical expansion: SaaS, eCommerce, FinTech</span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>AI agents adding new connectors daily</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>Operator self-service connector builder</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>Multi-vertical expansion: SaaS, eCommerce, FinTech</span></li>
+                            </ul>
                         </div>
-
                         <!-- Phase 3 -->
-                        <div class="relative">
-                            <div class="text-center mb-6">
-                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-500/20 border-2 border-purple-500 mb-4">
-                                    <span class="text-2xl font-bold text-purple-400">3</span>
+                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                            <div class="text-center mb-4">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(168,85,247,0.1); border: 2px solid #a855f7;">
+                                    <span class="text-xl font-bold text-purple-500">3</span>
                                 </div>
-                                <h4 class="text-lg font-bold text-white mb-2">Dominance (Q4 2026+)</h4>
-                                <div class="text-3xl font-bold text-purple-400 mb-2">1,000+</div>
-                                <p class="text-xs text-slate-400 uppercase tracking-wider">Global Ecosystem</p>
+                                <h4 class="text-base font-bold mb-1">Dominance (Q4 2026+)</h4>
+                                <div class="stat-num text-3xl mb-1">1,000+</div>
+                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Global Ecosystem</p>
                             </div>
-                            <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                                <ul class="space-y-2 text-sm text-slate-300">
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-rocket text-purple-400 mt-1 text-xs"></i>
-                                        <span>Network effect accelerates growth</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-rocket text-purple-400 mt-1 text-xs"></i>
-                                        <span>Vendors request to join platform</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-rocket text-purple-400 mt-1 text-xs"></i>
-                                        <span>Industry standard for vertical integration</span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Network effect accelerates growth</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Vendors request to join platform</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Industry standard for vertical integration</span></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- How AI Agents Work -->
-                    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-8">
-                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <i class="fas fa-cogs text-blue-400"></i>
+                    <!-- Pipeline Details -->
+                    <div class="rounded-xl p-8" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                        <h4 class="text-2xl font-bold mb-2 flex items-center gap-3">
+                            <i class="fas fa-cogs" style="color: var(--accent-bright);"></i>
                             How Our 7-Agent Pipeline Works
                         </h4>
-                        <p class="text-slate-400 mb-8 text-sm">Our AI pipeline analyzes OpenAPI specs and generates production connectors in minutes. <strong class="text-white">302 connectors built and audited — 0 quality failures.</strong></p>
+                        <p class="text-sm mb-8" style="color: var(--text-secondary);">Our AI pipeline analyzes OpenAPI specs and generates production connectors in minutes. <strong style="color: var(--text);">302 connectors built and audited &mdash; 0 quality failures.</strong></p>
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-blue-400">1</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent-soft);"><span class="font-bold" style="color: var(--accent-bright);">1</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Spec Ingestion</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Agents ingest OpenAPI specs, analyze every endpoint, authentication method,
-                                            and data schema from our curated registry of 302 APIs.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Spec Ingestion</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Agents ingest OpenAPI specs, analyze every endpoint, authentication method, and data schema from our curated registry of 302 APIs.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-purple-400">2</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(168,85,247,0.07);"><span class="font-bold text-purple-500">2</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Connector Generation</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Production-grade connectors generated with error handling,
-                                            retry logic, auth flows, and per-endpoint type safety.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Connector Generation</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Production-grade connectors generated with error handling, retry logic, auth flows, and per-endpoint type safety.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-emerald-400">3</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.07);"><span class="font-bold text-emerald-500">3</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Smoke Testing</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Per-endpoint smoke tests auto-generated for every connector.
-                                            Automated validation before production deployment.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Smoke Testing</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Per-endpoint smoke tests auto-generated for every connector. Automated validation before production deployment.</p>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-yellow-400">4</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(234,179,8,0.07);"><span class="font-bold text-yellow-600">4</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Workflow Nodes</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Each connector automatically appears as its own node in the visual
-                                            workflow builder — drag, drop, and chain across 22 node types.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Workflow Nodes</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Each connector automatically appears as its own node in the visual workflow builder &mdash; drag, drop, and chain across 22 node types.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-red-400">5</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(239,68,68,0.07);"><span class="font-bold text-red-500">5</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Quality Audit</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Every connector passes multi-stage quality checks: schema validation,
-                                            auth verification, and response mapping — 0 failures across 302 builds.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Quality Audit</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Every connector passes multi-stage quality checks: schema validation, auth verification, and response mapping &mdash; 0 failures across 302 builds.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
-                                        <span class="font-bold text-cyan-400">6</span>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(6,182,212,0.07);"><span class="font-bold text-cyan-500">6</span></div>
                                     <div>
-                                        <h5 class="text-white font-bold mb-2">Marketplace Listing</h5>
-                                        <p class="text-sm text-slate-400">
-                                            Connectors are published to the searchable marketplace with logos,
-                                            docs, and one-click activation for any operator.
-                                        </p>
+                                        <h5 class="font-bold mb-1">Marketplace Listing</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">Connectors are published to the searchable marketplace with logos, docs, and one-click activation for any operator.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Speed Comparison -->
-                        <div class="mt-8 pt-8 border-t border-slate-700">
+                        <div class="mt-8 pt-8 border-t divider">
                             <div class="grid md:grid-cols-2 gap-6">
-                                <div class="bg-red-500/5 border border-red-500/20 rounded-lg p-6">
-                                    <div class="text-xs font-bold text-red-400 uppercase tracking-wider mb-3">Traditional Approach</div>
-                                    <div class="text-4xl font-bold text-white mb-2">3-6 months</div>
-                                    <p class="text-sm text-slate-400">per vendor integration</p>
-                                    <div class="mt-4 space-y-2 text-xs text-slate-500">
-                                        <div>• Manual API documentation review</div>
-                                        <div>• Custom code for each vendor</div>
-                                        <div>• Manual testing & QA cycles</div>
-                                        <div>• Ongoing maintenance overhead</div>
+                                <div class="rounded-xl p-6" style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.15);">
+                                    <div class="mono text-xs font-bold text-red-500 uppercase tracking-wider mb-3">Traditional Approach</div>
+                                    <div class="text-4xl font-extrabold mb-2" style="color: var(--text);">3-6 months</div>
+                                    <p class="text-sm" style="color: var(--text-secondary);">per vendor integration</p>
+                                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                                        <div>&bull; Manual API documentation review</div>
+                                        <div>&bull; Custom code for each vendor</div>
+                                        <div>&bull; Manual testing &amp; QA cycles</div>
+                                        <div>&bull; Ongoing maintenance overhead</div>
                                     </div>
                                 </div>
-                                <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-6 relative">
+                                <div class="rounded-xl p-6 relative" style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.15);">
                                     <div class="absolute -top-3 right-4 bg-emerald-500 text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Proven</div>
-                                    <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
-                                    <div class="text-4xl font-bold text-white mb-2">~10 minutes</div>
-                                    <p class="text-sm text-slate-400">per production connector</p>
-                                    <div class="mt-4 space-y-2 text-xs text-slate-500">
-                                        <div>• OpenAPI spec ingested and parsed automatically</div>
-                                        <div>• Production connector generated with auth & types</div>
-                                        <div>• Per-endpoint smoke tests auto-generated</div>
-                                        <div>• 302 connectors built this way — 0 failures</div>
+                                    <div class="mono text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
+                                    <div class="text-4xl font-extrabold mb-2" style="color: var(--text);">~10 minutes</div>
+                                    <p class="text-sm" style="color: var(--text-secondary);">per production connector</p>
+                                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                                        <div>&bull; OpenAPI spec ingested and parsed automatically</div>
+                                        <div>&bull; Production connector generated with auth &amp; types</div>
+                                        <div>&bull; Per-endpoint smoke tests auto-generated</div>
+                                        <div>&bull; 302 connectors built this way &mdash; 0 failures</div>
                                     </div>
                                 </div>
                             </div>
@@ -894,129 +805,96 @@
                 </div>
             </div>
 
-            <!-- Technical Architecture Stack -->
+            <!-- Technical Stack -->
             <div class="mb-20">
                 <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-white mb-4">
-                        <i class="fas fa-layer-group text-purple-400 mr-3"></i>
-                        Technical Stack
-                    </h3>
-                    <p class="text-slate-400 max-w-2xl mx-auto">
+                    <h3 class="text-3xl font-bold mb-4">Technical Stack</h3>
+                    <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                         Enterprise-grade infrastructure built for scale, security, and reliability.
                     </p>
                 </div>
 
-                <div class="glass-card rounded-2xl p-8">
+                <div class="card p-8">
                     <div class="grid md:grid-cols-5 gap-6">
-                        <!-- Layer 1 -->
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <i class="fas fa-plug text-2xl text-white"></i>
+                            <div class="w-14 h-14 rounded-xl bg-blue-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-plug text-xl text-white"></i>
                             </div>
-                            <h4 class="text-white font-bold mb-2">302 OpenAPI Specs</h4>
-                            <p class="text-xs text-slate-400">
-                                Curated auth registry with per-connector credentials
-                            </p>
+                            <h4 class="font-bold mb-2 text-sm">302 OpenAPI Specs</h4>
+                            <p class="text-xs" style="color: var(--text-muted);">Curated auth registry with per-connector credentials</p>
                         </div>
-
-                        <!-- Layer 2 -->
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <i class="fas fa-project-diagram text-2xl text-white"></i>
+                            <div class="w-14 h-14 rounded-xl bg-purple-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-project-diagram text-xl text-white"></i>
                             </div>
-                            <h4 class="text-white font-bold mb-2">Visual Workflow Builder</h4>
-                            <p class="text-xs text-slate-400">
-                                Drag-and-drop canvas with 22 node types, AI-assisted
-                            </p>
+                            <h4 class="font-bold mb-2 text-sm">Visual Workflow Builder</h4>
+                            <p class="text-xs" style="color: var(--text-muted);">Drag-and-drop canvas with 22 node types, AI-assisted</p>
                         </div>
-
-                        <!-- Layer 3 -->
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <i class="fas fa-bolt text-2xl text-white"></i>
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-bolt text-xl text-white"></i>
                             </div>
-                            <h4 class="text-white font-bold mb-2">Real-Time Gateway</h4>
-                            <p class="text-xs text-slate-400">
-                                Circuit breaker, rate limiting, request capture
-                            </p>
+                            <h4 class="font-bold mb-2 text-sm">Real-Time Gateway</h4>
+                            <p class="text-xs" style="color: var(--text-muted);">Circuit breaker, rate limiting, request capture</p>
                         </div>
-
-                        <!-- Layer 4 -->
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <i class="fas fa-chart-bar text-2xl text-white"></i>
+                            <div class="w-14 h-14 rounded-xl bg-yellow-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-chart-bar text-xl text-white"></i>
                             </div>
-                            <h4 class="text-white font-bold mb-2">AI Token Tracking</h4>
-                            <p class="text-xs text-slate-400">
-                                Per-operator usage dashboards and cost controls
-                            </p>
+                            <h4 class="font-bold mb-2 text-sm">AI Token Tracking</h4>
+                            <p class="text-xs" style="color: var(--text-muted);">Per-operator usage dashboards and cost controls</p>
                         </div>
-
-                        <!-- Layer 5 -->
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <i class="fas fa-lock text-2xl text-white"></i>
+                            <div class="w-14 h-14 rounded-xl bg-cyan-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-lock text-xl text-white"></i>
                             </div>
-                            <h4 class="text-white font-bold mb-2">Tenant Isolation</h4>
-                            <p class="text-xs text-slate-400">
-                                AES-256-GCM encryption, per-operator data boundaries
-                            </p>
+                            <h4 class="font-bold mb-2 text-sm">Tenant Isolation</h4>
+                            <p class="text-xs" style="color: var(--text-muted);">AES-256-GCM encryption, per-operator data boundaries</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CTA removed from here — consolidated in footer -->
-
         </div>
     </section>
 
-    <!-- FOMO / Marketplace Growth Section -->
-    <section class="py-24" style="background: var(--bg-elevated);">
+    <!-- ===== LIVING MARKETPLACE ===== -->
+    <section class="py-24 section-alt">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="max-w-2xl">
-                    <h2 class="text-4xl font-bold text-white mb-4">The Living Marketplace</h2>
-                    <p class="text-xl text-slate-400">
-                        302 connectors live today — Stripe, Anthropic, Slack, GitHub, Shopify, Postmark, Telegram, and hundreds more.
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">The Living Marketplace</h2>
+                    <p class="text-lg" style="color: var(--text-secondary);">
+                        302 connectors live today &mdash; Stripe, Anthropic, Slack, GitHub, Shopify, Postmark, Telegram, and hundreds more.
                         Our Autonomous Integration Agents handle the translation layer between you and the world's best tools.
                     </p>
                 </div>
-                <div class="mt-6 md:mt-0 text-right">
-                    <div class="text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--gold); font-family: 'JetBrains Mono', monospace;">Growth Trajectory</div>
-                    <div class="text-5xl font-bold stat-num">302 <span class="text-3xl" style="color: rgba(255,255,255,0.2);">→</span> 500+</div>
-                    <div class="text-sm mt-1" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">Live Connectors → Next Milestone</div>
+                <div class="text-right flex-shrink-0">
+                    <div class="mono text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--accent-bright);">Growth Trajectory</div>
+                    <div class="stat-num text-4xl md:text-5xl">302 <span class="text-2xl md:text-3xl" style="color: var(--text-muted);">&rarr;</span> 500+</div>
+                    <div class="mono text-xs mt-1" style="color: var(--text-muted);">Live Connectors &rarr; Next Milestone</div>
                 </div>
             </div>
 
-            <!-- The Grid of "Why Now" -->
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-blue-600/20"></div>
-                    <i class="fas fa-robot text-3xl text-blue-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-2">Agent-Driven Integration</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <div class="card p-8">
+                    <i class="fas fa-robot text-2xl mb-4" style="color: var(--accent-bright);"></i>
+                    <h3 class="text-lg font-bold mb-2">Agent-Driven Integration</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Our 7-agent AI pipeline autonomously maps data schemas between your platform and any vendor. While others spend months on manual API mapping, OneHazel builds production connectors in minutes.
                     </p>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-purple-600/20"></div>
-                    <i class="fas fa-chart-network text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-2">Network Effect</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        302 connectors live across API integrations, payments, AI/ML, communications, analytics, and compliance. As we scale to 500+, you gain instant access to every new tool added. <span class="text-white font-semibold">Zero code changes required.</span>
+                <div class="card p-8">
+                    <i class="fas fa-diagram-project text-2xl text-purple-500 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Network Effect</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                        302 connectors live across API integrations, payments, AI/ML, communications, analytics, and compliance. As we scale to 500+, you gain instant access to every new tool added. <strong style="color: var(--text);">Zero code changes required.</strong>
                     </p>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group border border-yellow-500/30">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-yellow-600/20"></div>
-                    <i class="fas fa-hourglass-half text-3xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-2">Don't Get Left Behind</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <div class="card p-8" style="border-color: var(--accent-border);">
+                    <i class="fas fa-hourglass-half text-2xl mb-4" style="color: var(--accent-bright);"></i>
+                    <h3 class="text-lg font-bold mb-2">Don't Get Left Behind</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Competitors are moving to vertical iPaaS to cut engineering overhead by 80%. Every day you spend maintaining legacy pipes is a day lost on product innovation.
                     </p>
                 </div>
@@ -1024,196 +902,214 @@
         </div>
     </section>
 
-    <!-- What's Live Section -->
-    <section class="py-24 border-t" style="background: var(--bg-base); border-color: rgba(255,255,255,0.055);">
+    <!-- ===== WHAT'S LIVE ===== -->
+    <section class="py-24 section-base border-t divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full gold-badge text-xs font-bold tracking-wide uppercase" style="font-family: 'JetBrains Mono', monospace;">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                <div class="badge mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                     Live Now
                 </div>
-                <h2 class="text-4xl font-bold text-white mb-4">Built, Shipped, Running</h2>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
-                    These features are live in production today. Not a roadmap — a product.
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">Built, Shipped, Running</h2>
+                <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">
+                    These features are live in production today. Not a roadmap &mdash; a product.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-store text-xl text-blue-400"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(59,130,246,0.07);">
+                        <i class="fas fa-store text-lg text-blue-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Connector Marketplace</h3>
-                    <p class="text-slate-400 text-sm">302 connectors, searchable with logos. One-click activation.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Connector Marketplace</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">302 connectors, searchable with logos. One-click activation.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-project-diagram text-xl text-purple-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(168,85,247,0.07);">
+                        <i class="fas fa-project-diagram text-lg text-purple-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Visual Workflow Canvas</h3>
-                    <p class="text-slate-400 text-sm">Drag-and-drop automation with 22 node types. Like Make.com, but for your stack.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Visual Workflow Canvas</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Drag-and-drop automation with 22 node types. Like Make.com, but for your stack.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-magic text-xl text-emerald-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);">
+                        <i class="fas fa-magic text-lg text-emerald-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">AI Workflow Builder</h3>
-                    <p class="text-slate-400 text-sm">Describe what you want in natural language. AI generates the workflow.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">AI Workflow Builder</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Describe what you want in natural language. AI generates the workflow.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-hammer text-xl text-yellow-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);">
+                        <i class="fas fa-hammer text-lg text-yellow-600"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Self-Service Build</h3>
-                    <p class="text-slate-400 text-sm">Operators build their own connectors from the UI. No engineering tickets.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Self-Service Build</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Operators build their own connectors from the UI. No engineering tickets.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-puzzle-piece text-xl text-cyan-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);">
+                        <i class="fas fa-puzzle-piece text-lg text-cyan-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Per-Connector Nodes</h3>
-                    <p class="text-slate-400 text-sm">Each connected tool appears as its own node in the workflow palette.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Per-Connector Nodes</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Each connected tool appears as its own node in the workflow palette.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-tags text-xl text-orange-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(249,115,22,0.07);">
+                        <i class="fas fa-tags text-lg text-orange-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Subscription Tiers</h3>
-                    <p class="text-slate-400 text-sm">Starter, Core, Pro, Teams, Enterprise. Scale as you grow.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Subscription Tiers</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Starter, Core, Pro, Teams, Enterprise. Scale as you grow.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-sliders-h text-xl text-red-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(239,68,68,0.07);">
+                        <i class="fas fa-sliders-h text-lg text-red-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Connection Defaults</h3>
-                    <p class="text-slate-400 text-sm">Set default headers and params once. Applied to every API call automatically.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Connection Defaults</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Set default headers and params once. Applied to every API call automatically.</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-history text-xl text-indigo-400"></i>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(99,102,241,0.07);">
+                        <i class="fas fa-history text-lg text-indigo-500"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Execution History</h3>
-                    <p class="text-slate-400 text-sm">Full request/response capture for every execution. Debug anything.</p>
+                    <h3 class="font-bold mb-1.5 text-sm">Execution History</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Full request/response capture for every execution. Debug anything.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Industries Section -->
-    <section class="py-24 border-t" style="background: var(--bg-elevated); border-color: rgba(255,255,255,0.055);">
+    <!-- ===== INDUSTRIES ===== -->
+    <section class="py-24 section-alt border-t divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full gold-badge text-xs font-bold tracking-wide uppercase" style="font-family: 'JetBrains Mono', monospace;">
+                <div class="badge mb-6">
                     <i class="fas fa-industry"></i>
                     Industry Solutions
                 </div>
-                <h2 class="text-4xl font-bold text-white mb-4">Built for Regulated, Complex Industries</h2>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">Built for Regulated, Complex Industries</h2>
+                <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">
                     Where generic automation tools fall short, OneHazel delivers. Purpose-built integration for industries with specialized vendors, strict compliance, and complex data flows.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="/igaming" class="glass-card p-8 rounded-xl group hover:border-emerald-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-dice text-2xl text-emerald-400"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <a href="/igaming" class="card p-8 group hover:border-emerald-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);">
+                        <i class="fas fa-dice text-2xl text-emerald-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition">iGaming</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Game providers, payment gateways, KYC/AML, responsible gaming — connected through one API.</p>
-                    <span class="text-emerald-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-emerald-500 transition">iGaming</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Game providers, payment gateways, KYC/AML, responsible gaming &mdash; connected through one API.</p>
+                    <span class="text-emerald-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
-
-                <a href="/healthcare" class="glass-card p-8 rounded-xl group hover:border-cyan-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-heartbeat text-2xl text-cyan-400"></i>
+                <a href="/healthcare" class="card p-8 group hover:border-cyan-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);">
+                        <i class="fas fa-heartbeat text-2xl text-cyan-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition">Healthcare</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">EHR systems, billing, telehealth, labs, patient engagement — bridging HL7, FHIR, and REST.</p>
-                    <span class="text-cyan-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-cyan-500 transition">Healthcare</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">EHR systems, billing, telehealth, labs, patient engagement &mdash; bridging HL7, FHIR, and REST.</p>
+                    <span class="text-cyan-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
-
-                <a href="/construction" class="glass-card p-8 rounded-xl group hover:border-amber-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-hard-hat text-2xl text-amber-400"></i>
+                <a href="/construction" class="card p-8 group hover:border-amber-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(245,158,11,0.07);">
+                        <i class="fas fa-hard-hat text-2xl text-amber-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition">Construction</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Project management, accounting ERPs, scheduling, safety — from cloud to on-prem legacy systems.</p>
-                    <span class="text-amber-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-amber-500 transition">Construction</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Project management, accounting ERPs, scheduling, safety &mdash; from cloud to on-prem legacy systems.</p>
+                    <span class="text-amber-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
-
-                <a href="/cannabis" class="glass-card p-8 rounded-xl group hover:border-lime-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-lime-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-leaf text-2xl text-lime-400"></i>
+                <a href="/cannabis" class="card p-8 group hover:border-lime-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(132,204,22,0.07);">
+                        <i class="fas fa-leaf text-2xl text-lime-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-lime-400 transition">Cannabis</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Track-and-trace, POS, seed-to-sale, lab testing — multi-state compliance handled automatically.</p>
-                    <span class="text-lime-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-lime-500 transition">Cannabis</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Track-and-trace, POS, seed-to-sale, lab testing &mdash; multi-state compliance handled automatically.</p>
+                    <span class="text-lime-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
-
-                <a href="/lifesciences" class="glass-card p-8 rounded-xl group hover:border-violet-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-flask text-2xl text-violet-400"></i>
+                <a href="/lifesciences" class="card p-8 group hover:border-violet-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(139,92,246,0.07);">
+                        <i class="fas fa-flask text-2xl text-violet-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition">Life Sciences</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">EDC, CTMS, safety databases, labs, eTMF — clinical trial systems unified through one API.</p>
-                    <span class="text-violet-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-violet-500 transition">Life Sciences</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">EDC, CTMS, safety databases, labs, eTMF &mdash; clinical trial systems unified through one API.</p>
+                    <span class="text-violet-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
-
-                <a href="/energy" class="glass-card p-8 rounded-xl group hover:border-yellow-500/30 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4">
-                        <i class="fas fa-bolt text-2xl text-yellow-400"></i>
+                <a href="/energy" class="card p-8 group hover:border-yellow-400 transition-all duration-300" style="text-decoration: none;">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);">
+                        <i class="fas fa-bolt text-2xl text-yellow-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition">Energy & Utilities</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">ERP, asset management, compliance, GIS — bridging the IT side of OT/IT convergence.</p>
-                    <span class="text-yellow-400 text-sm font-semibold mt-4 inline-block">Learn more →</span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-yellow-500 transition">Energy & Utilities</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">ERP, asset management, compliance, GIS &mdash; bridging the IT side of OT/IT convergence.</p>
+                    <span class="text-yellow-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <section class="border-t py-16" style="background: var(--bg-base); border-color: rgba(255,255,255,0.055);">
+    <!-- ===== FOOTER ===== -->
+    <section class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- CTA Banner -->
-            <div class="rounded-2xl p-10 mb-12 text-center relative overflow-hidden" style="background: var(--bg-card); border: 1px solid var(--gold-border);">
-                <div class="absolute inset-0 opacity-30" style="background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(232,160,32,0.08), transparent);"></div>
-                <div class="relative z-10">
-                    <h3 class="text-3xl font-bold text-white mb-3">Ready to Transform Your Integration Strategy?</h3>
-                    <p class="mb-7" style="color: #8892A0; max-width: 40ch; margin-left: auto; margin-right: auto; margin-bottom: 1.75rem;">302 connectors. Visual workflows. AI-powered automation. Live today.</p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://app.onehazel.com" class="px-8 py-3.5 rounded-lg font-semibold transition text-center" style="background: var(--gold); color: #06080F; font-family: 'Syne', sans-serif; box-shadow: 0 0 24px rgba(232,160,32,0.2);">
-                            Get Started Free →
-                        </a>
-                        <a href="https://app.onehazel.com" class="px-8 py-3.5 rounded-lg font-semibold transition text-center" style="border: 1px solid rgba(255,255,255,0.1); color: #D8E0EC; background: rgba(255,255,255,0.03); font-family: 'Syne', sans-serif;">
-                            Explore Marketplace
-                        </a>
-                    </div>
+            <div class="card p-10 mb-12 text-center" style="border-color: var(--accent-border);">
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Ready to Transform Your Integration Strategy?</h3>
+                <p class="mb-7 max-w-xl mx-auto" style="color: var(--text-secondary);">302 connectors. Visual workflows. AI-powered automation. Live today.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="https://app.onehazel.com" class="btn-primary">Get Started Free <span class="ml-2">&rarr;</span></a>
+                    <a href="https://app.onehazel.com" class="btn-secondary">Explore Marketplace</a>
                 </div>
             </div>
 
-            <!-- Footer bottom row -->
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8" style="border-top: 1px solid rgba(255,255,255,0.055);">
+            <!-- Footer bottom -->
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t divider">
                 <div class="mb-6 md:mb-0">
-                    <div class="font-bold text-lg mb-1" style="font-family: 'Syne', sans-serif; color: #F5EFE4;">OneHazel</div>
-                    <p class="text-sm" style="color: #4B5563; font-family: 'JetBrains Mono', monospace;">The Vertical iPaaS for Data Intelligence.</p>
+                    <div class="font-extrabold text-lg" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="mono text-xs" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence.</p>
                 </div>
                 <div class="flex gap-8">
-                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:text-white" style="color: #4B5563; font-family: 'DM Sans', sans-serif;">Launch App</a>
-                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:text-white" style="color: #4B5563; font-family: 'DM Sans', sans-serif;">API Docs</a>
-                    <a href="mailto:hello@onehazel.com" class="text-sm font-medium transition" style="color: var(--gold); font-family: 'DM Sans', sans-serif;">Contact Us</a>
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Launch App</a>
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">API Docs</a>
+                    <a href="mailto:hello@onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--accent-bright); text-decoration: none;">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== THEME TOGGLE SCRIPT ===== -->
+    <script>
+        (function() {
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+                localStorage.setItem('onehazel-theme', theme);
+            }
+
+            // Init: check stored, then system preference
+            const stored = localStorage.getItem('onehazel-theme');
+            if (stored) {
+                setTheme(stored);
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme('dark');
+            }
+
+            // Toggle
+            toggle.addEventListener('click', function() {
+                const isDark = html.classList.contains('dark');
+                setTheme(isDark ? 'light' : 'dark');
+            });
+
+            // Listen for system changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('onehazel-theme')) {
+                    setTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
