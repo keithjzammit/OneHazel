@@ -289,298 +289,80 @@
         </div>
     </section>
 
-    <!-- ===== ARCHITECTURE DEEP DIVE ===== -->
+    <!-- ===== HOW IT WORKS ===== -->
     <section id="architecture" class="py-24 border-t divider section-base">
         <div class="max-w-7xl mx-auto px-6">
 
-            <div class="text-center mb-20">
+            <div class="text-center mb-16">
                 <div class="badge mb-6">
-                    <i class="fas fa-sitemap"></i>
-                    Technical Architecture
+                    <i class="fas fa-cogs"></i>
+                    How It Works
                 </div>
                 <h2 class="text-4xl md:text-5xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
-                    The Intelligence Layer for <span class="gradient-text">Your Industry</span>
+                    From API Spec to Production <span class="gradient-text">in 6 Steps</span>
                 </h2>
-                <p class="text-lg max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
-                    OneHazel is a <strong style="color: var(--text); font-weight: 600;">Vertical iPaaS (Integration Platform as a Service)</strong>
-                    purpose-built for regulated industries. We abstract the complexity of connecting to dozens of
-                    specialized AI vendors into a single, unified API.
+                <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                    Our AI pipeline ingests any OpenAPI spec and ships a production connector &mdash; tested, documented, and marketplace-ready.
                 </p>
             </div>
 
-            <!-- What is Vertical iPaaS -->
-            <div class="grid lg:grid-cols-2 gap-8 mb-20">
-                <div class="card p-10">
-                    <div class="flex items-start gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--accent-soft);">
-                            <i class="fas fa-question text-2xl" style="color: var(--accent-bright);"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">What is a Vertical iPaaS?</h3>
-                            <div class="w-16 h-0.5 rounded" style="background: var(--accent);"></div>
-                        </div>
-                    </div>
-                    <div class="space-y-4 leading-relaxed" style="color: var(--text-secondary);">
-                        <p>
-                            Traditional iPaaS platforms (like Zapier or Mulesoft) are <strong style="color: var(--text);">horizontal</strong>&mdash;they
-                            connect generic tools (CRMs, email, databases) across many industries.
-                        </p>
-                        <p>
-                            A <strong style="color: var(--text);">Vertical iPaaS</strong> is laser-focused on a single industry. OneHazel
-                            specializes in <strong style="color: var(--accent-bright);">industry-specific intelligence</strong>&mdash;fraud detection, compliance,
-                            risk management, analytics, payment intelligence, and operational automation.
-                        </p>
-                        <p class="text-sm rounded-xl p-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border); color: var(--text-secondary);">
-                            <i class="fas fa-lightbulb mr-2" style="color: var(--accent-bright);"></i>
-                            <strong style="color: var(--text);">Think of us as the "Stripe for Data Intelligence"</strong> &ndash; one integration
-                            unlocks access to an entire ecosystem of specialized AI vendors.
-                        </p>
-                    </div>
+            <!-- 6 Steps -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: var(--accent-soft);"><span class="font-bold text-lg" style="color: var(--accent-bright);">1</span></div>
+                    <h4 class="font-bold mb-1.5">Spec Ingestion</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Agents ingest the OpenAPI spec, analyze every endpoint, authentication method, and data schema.</p>
                 </div>
-
-                <div class="card p-10">
-                    <div class="flex items-start gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(239,68,68,0.07);">
-                            <i class="fas fa-network-wired text-2xl text-red-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">The Problem We Solve</h3>
-                            <div class="w-16 h-0.5 rounded bg-red-400"></div>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="fas fa-times text-[10px] text-red-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold" style="color: var(--text);">Integration Hell</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Each vendor has different APIs, data formats, and authentication methods</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="fas fa-times text-[10px] text-red-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold" style="color: var(--text);">Maintenance Nightmare</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Every API update requires engineering resources to fix broken integrations</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="fas fa-times text-[10px] text-red-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold" style="color: var(--text);">Vendor Lock-in</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Switching providers means rebuilding entire integrations from scratch</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="fas fa-times text-[10px] text-red-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold" style="color: var(--text);">Slow Time-to-Market</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Adding new tools used to take 3-6 months per integration</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(168,85,247,0.07);"><span class="font-bold text-lg text-purple-500">2</span></div>
+                    <h4 class="font-bold mb-1.5">Connector Generation</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Production-grade connector generated with error handling, retry logic, auth flows, and per-endpoint type safety.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);"><span class="font-bold text-lg text-emerald-500">3</span></div>
+                    <h4 class="font-bold mb-1.5">Smoke Testing</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Per-endpoint smoke tests auto-generated. Automated validation before production deployment.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);"><span class="font-bold text-lg text-yellow-600">4</span></div>
+                    <h4 class="font-bold mb-1.5">Workflow Nodes</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Each connector automatically appears as its own node in the visual workflow builder &mdash; drag, drop, and chain across 22 node types.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(239,68,68,0.07);"><span class="font-bold text-lg text-red-500">5</span></div>
+                    <h4 class="font-bold mb-1.5">Quality Audit</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Multi-stage quality checks: schema validation, auth verification, and response mapping &mdash; 0 failures across 300+ builds.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);"><span class="font-bold text-lg text-cyan-500">6</span></div>
+                    <h4 class="font-bold mb-1.5">Marketplace Listing</h4>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Published to the searchable marketplace with logos, docs, and one-click activation for any operator.</p>
                 </div>
             </div>
 
-            <!-- Benefits -->
-            <div class="mb-20">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold mb-4">Why Operators Win with OneHazel</h3>
-                    <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
-                        Stop spending engineering cycles on infrastructure. Focus on what makes your platform unique.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card p-8">
-                        <div class="stat-num text-5xl mb-4">80%</div>
-                        <h4 class="text-xl font-bold mb-3">Engineering Cost Reduction</h4>
-                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                            Eliminate dedicated integration teams. Our AI agents handle the heavy lifting of
-                            connecting, mapping, and maintaining vendor APIs.
-                        </p>
-                    </div>
-                    <div class="card p-8">
-                        <div class="stat-num text-5xl mb-4">1000x</div>
-                        <h4 class="text-xl font-bold mb-3">Faster Integration Speed</h4>
-                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                            From months to minutes. Add any connector, build workflows visually,
-                            or test new tools &mdash; all without custom development.
-                        </p>
-                    </div>
-                    <div class="card p-8">
-                        <div class="stat-num text-5xl mb-4">&infin;</div>
-                        <h4 class="text-xl font-bold mb-3">Future-Proof Architecture</h4>
-                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                            As we add new vendors to the network, you gain instant access. No code changes,
-                            no re-certification, no vendor negotiation.
-                        </p>
+            <!-- Speed Comparison -->
+            <div class="grid md:grid-cols-2 gap-6 mb-20">
+                <div class="card p-7" style="border-color: rgba(239,68,68,0.20);">
+                    <div class="mono text-xs font-bold text-red-500 uppercase tracking-wider mb-3">Traditional Approach</div>
+                    <div class="text-4xl font-extrabold mb-2">3-6 months</div>
+                    <p class="text-sm" style="color: var(--text-secondary);">per vendor integration</p>
+                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                        <div>&bull; Manual API documentation review</div>
+                        <div>&bull; Custom code for each vendor</div>
+                        <div>&bull; Manual testing &amp; QA cycles</div>
+                        <div>&bull; Ongoing maintenance overhead</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- AI-Powered Scaling -->
-            <div class="card p-10 md:p-12 mb-20 relative overflow-hidden">
-                <div class="relative z-10">
-                    <div class="text-center mb-12">
-                        <div class="badge mb-4">
-                            <i class="fas fa-robot"></i>
-                            AI-Powered Scale
-                        </div>
-                        <h3 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">
-                            From 0 to 300+ Connectors in <span class="gradient-text">Record Time</span>
-                        </h3>
-                        <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">
-                            Traditional integration teams take <strong style="color: var(--text);">3-6 months per vendor</strong>.
-                            Our AI agents build production connectors in <strong style="color: var(--text);">minutes</strong>.
-                        </p>
-                    </div>
-
-                    <!-- Timeline -->
-                    <div class="grid lg:grid-cols-3 gap-6 mb-12">
-                        <!-- Phase 1 -->
-                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                            <div class="absolute -top-2 right-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-700" style=".dark & { background: rgba(16,185,129,0.15); color: #34d399; }">Complete</div>
-                            <div class="text-center mb-4">
-                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(16,185,129,0.1); border: 2px solid #10b981;">
-                                    <i class="fas fa-check text-xl text-emerald-500"></i>
-                                </div>
-                                <h4 class="text-base font-bold mb-1">Launch (Q1 2026)</h4>
-                                <div class="stat-num text-3xl mb-1">300+</div>
-                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Connectors Live</p>
-                            </div>
-                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>300+ production connectors built and audited</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>7-agent AI pipeline generating connectors in minutes</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-1 text-xs"></i><span>Visual workflow builder with 22 node types</span></li>
-                            </ul>
-                        </div>
-                        <!-- Phase 2 -->
-                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                            <div class="absolute -top-2 right-4 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-700">In Progress</div>
-                            <div class="text-center mb-4">
-                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(59,130,246,0.1); border: 2px solid #3b82f6;">
-                                    <span class="text-xl font-bold text-blue-500">2</span>
-                                </div>
-                                <h4 class="text-base font-bold mb-1">Scale (Q2-Q3 2026)</h4>
-                                <div class="stat-num text-3xl mb-1">500+</div>
-                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Connector Network</p>
-                            </div>
-                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
-                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>AI agents adding new connectors daily</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>Operator self-service connector builder</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-robot text-blue-500 mt-1 text-xs"></i><span>Multi-vertical expansion: SaaS, eCommerce, FinTech</span></li>
-                            </ul>
-                        </div>
-                        <!-- Phase 3 -->
-                        <div class="relative rounded-xl p-6" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                            <div class="text-center mb-4">
-                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style="background: rgba(168,85,247,0.1); border: 2px solid #a855f7;">
-                                    <span class="text-xl font-bold text-purple-500">3</span>
-                                </div>
-                                <h4 class="text-base font-bold mb-1">Dominance (Q4 2026+)</h4>
-                                <div class="stat-num text-3xl mb-1">1,000+</div>
-                                <p class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Global Ecosystem</p>
-                            </div>
-                            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
-                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Network effect accelerates growth</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Vendors request to join platform</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-rocket text-purple-500 mt-1 text-xs"></i><span>Industry standard for vertical integration</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pipeline Details -->
-                    <div class="rounded-xl p-8" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                        <h4 class="text-2xl font-bold mb-2 flex items-center gap-3">
-                            <i class="fas fa-cogs" style="color: var(--accent-bright);"></i>
-                            How Our 7-Agent Pipeline Works
-                        </h4>
-                        <p class="text-sm mb-8" style="color: var(--text-secondary);">Our AI pipeline analyzes OpenAPI specs and generates production connectors in minutes. <strong style="color: var(--text);">300+ connectors built and audited &mdash; 0 quality failures.</strong></p>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--accent-soft);"><span class="font-bold" style="color: var(--accent-bright);">1</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Spec Ingestion</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Agents ingest OpenAPI specs, analyze every endpoint, authentication method, and data schema from our curated registry of 300+ APIs.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(168,85,247,0.07);"><span class="font-bold text-purple-500">2</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Connector Generation</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Production-grade connectors generated with error handling, retry logic, auth flows, and per-endpoint type safety.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.07);"><span class="font-bold text-emerald-500">3</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Smoke Testing</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Per-endpoint smoke tests auto-generated for every connector. Automated validation before production deployment.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(234,179,8,0.07);"><span class="font-bold text-yellow-600">4</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Workflow Nodes</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Each connector automatically appears as its own node in the visual workflow builder &mdash; drag, drop, and chain across 22 node types.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4 mb-6">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(239,68,68,0.07);"><span class="font-bold text-red-500">5</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Quality Audit</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Every connector passes multi-stage quality checks: schema validation, auth verification, and response mapping &mdash; 0 failures across 300+ builds.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(6,182,212,0.07);"><span class="font-bold text-cyan-500">6</span></div>
-                                    <div>
-                                        <h5 class="font-bold mb-1">Marketplace Listing</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Connectors are published to the searchable marketplace with logos, docs, and one-click activation for any operator.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Speed Comparison -->
-                        <div class="mt-8 pt-8 border-t divider">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="rounded-xl p-6" style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.15);">
-                                    <div class="mono text-xs font-bold text-red-500 uppercase tracking-wider mb-3">Traditional Approach</div>
-                                    <div class="text-4xl font-extrabold mb-2" style="color: var(--text);">3-6 months</div>
-                                    <p class="text-sm" style="color: var(--text-secondary);">per vendor integration</p>
-                                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
-                                        <div>&bull; Manual API documentation review</div>
-                                        <div>&bull; Custom code for each vendor</div>
-                                        <div>&bull; Manual testing &amp; QA cycles</div>
-                                        <div>&bull; Ongoing maintenance overhead</div>
-                                    </div>
-                                </div>
-                                <div class="rounded-xl p-6 relative" style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.15);">
-                                    <div class="absolute -top-3 right-4 bg-emerald-500 text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Proven</div>
-                                    <div class="mono text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
-                                    <div class="text-4xl font-extrabold mb-2" style="color: var(--text);">~10 minutes</div>
-                                    <p class="text-sm" style="color: var(--text-secondary);">per production connector</p>
-                                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
-                                        <div>&bull; OpenAPI spec ingested and parsed automatically</div>
-                                        <div>&bull; Production connector generated with auth &amp; types</div>
-                                        <div>&bull; Per-endpoint smoke tests auto-generated</div>
-                                        <div>&bull; 300+ connectors built this way &mdash; 0 failures</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card p-7 relative" style="border-color: rgba(16,185,129,0.20);">
+                    <div class="absolute -top-3 right-4 bg-emerald-500 text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Proven</div>
+                    <div class="mono text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
+                    <div class="text-4xl font-extrabold mb-2">~10 minutes</div>
+                    <p class="text-sm" style="color: var(--text-secondary);">per production connector</p>
+                    <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                        <div>&bull; OpenAPI spec ingested and parsed automatically</div>
+                        <div>&bull; Production connector generated with auth &amp; types</div>
+                        <div>&bull; Per-endpoint smoke tests auto-generated</div>
+                        <div>&bull; 300+ connectors built this way &mdash; 0 failures</div>
                     </div>
                 </div>
             </div>
@@ -635,50 +417,6 @@
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- ===== LIVING MARKETPLACE ===== -->
-    <section class="py-24 section-alt">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div class="max-w-2xl">
-                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">The Living Marketplace</h2>
-                    <p class="text-lg" style="color: var(--text-secondary);">
-                        300+ connectors live today &mdash; Stripe, Anthropic, Slack, GitHub, Shopify, Postmark, Telegram, and hundreds more.
-                        Our Autonomous Integration Agents handle the translation layer between you and the world's best tools.
-                    </p>
-                </div>
-                <div class="text-right flex-shrink-0">
-                    <div class="mono text-xs font-bold uppercase tracking-widest mb-1" style="color: var(--accent-bright);">Growth Trajectory</div>
-                    <div class="stat-num text-4xl md:text-5xl">300+ <span class="text-2xl md:text-3xl" style="color: var(--text-muted);">&rarr;</span> 500+</div>
-                    <div class="mono text-xs mt-1" style="color: var(--text-muted);">Live Connectors &rarr; Next Milestone</div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card p-8">
-                    <i class="fas fa-robot text-2xl mb-4" style="color: var(--accent-bright);"></i>
-                    <h3 class="text-lg font-bold mb-2">Agent-Driven Integration</h3>
-                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        Our 7-agent AI pipeline autonomously maps data schemas between your platform and any vendor. While others spend months on manual API mapping, OneHazel builds production connectors in minutes.
-                    </p>
-                </div>
-                <div class="card p-8">
-                    <i class="fas fa-diagram-project text-2xl text-purple-500 mb-4"></i>
-                    <h3 class="text-lg font-bold mb-2">Network Effect</h3>
-                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        300+ connectors live across API integrations, payments, AI/ML, communications, analytics, and compliance. As we scale to 500+, you gain instant access to every new tool added. <strong style="color: var(--text);">Zero code changes required.</strong>
-                    </p>
-                </div>
-                <div class="card p-8" style="border-color: var(--accent-border);">
-                    <i class="fas fa-hourglass-half text-2xl mb-4" style="color: var(--accent-bright);"></i>
-                    <h3 class="text-lg font-bold mb-2">Don't Get Left Behind</h3>
-                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        Competitors are moving to vertical iPaaS to cut engineering overhead by 80%. Every day you spend maintaining legacy pipes is a day lost on product innovation.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
