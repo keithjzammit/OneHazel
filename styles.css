@@ -339,19 +339,6 @@ h1, h2, h3, h4, h5, h6 {
 .fade-up-2 { animation: fadeUp 0.6s 0.18s ease both; }
 .fade-up-3 { animation: fadeUp 0.6s 0.28s ease both; }
 
-/* ===== ARCHITECTURE VIZ (index.html — always dark) ===== */
-.arch-dark {
-    background: #0F172A;
-    color: #E2E8F0;
-}
-
-@keyframes server-pulse {
-    0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
-    50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), 0 0 80px rgba(168, 85, 247, 0.3); }
-}
-
-.server-glow { animation: server-pulse 3s ease-in-out infinite; }
-
 /* ===== THEME TOGGLE ===== */
 .theme-toggle {
     width: 36px;
