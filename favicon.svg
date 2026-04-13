@@ -1,14 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- "1" — gold, simple straight bar with horizontal cut -->
-  <g fill="#D08B1A">
-    <rect x="5" y="14" width="5.5" height="14" rx="2.5"/>
-    <rect x="5" y="3" width="5.5" height="9" rx="2.5"/>
-  </g>
-
+  <!-- "1" — solid gold bar -->
+  <rect x="5" y="3" width="5.5" height="25" rx="2.5" fill="#D08B1A"/>
   <!-- "H" — black, two pillars with connecting circle -->
-  <g fill="#18181B">
-    <rect x="15" y="3" width="5" height="25" rx="2.5"/>
-    <rect x="24.5" y="3" width="5" height="25" rx="2.5"/>
-    <circle cx="22.25" cy="15.5" r="3.8"/>
-  </g>
+  <rect x="15" y="3" width="5" height="25" rx="2.5" fill="#18181B"/>
+  <rect x="24.5" y="3" width="5" height="25" rx="2.5" fill="#18181B"/>
+  <circle cx="22.25" cy="15.5" r="3.8" fill="#18181B"/>
 </svg>
