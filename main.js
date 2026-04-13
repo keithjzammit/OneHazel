@@ -21,6 +21,43 @@
         });
     }
 
+    // ===== MOBILE MENU =====
+    var burger = document.getElementById('burger-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var mobileClose = document.getElementById('mobile-menu-close');
+    var mobileTheme = document.getElementById('mobile-theme-toggle');
+
+    function openMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.add('open');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.remove('open');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (burger) burger.addEventListener('click', openMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    if (mobileTheme) {
+        mobileTheme.addEventListener('click', function () {
+            setTheme(html.classList.contains('dark') ? 'light' : 'dark');
+        });
+    }
+
+    // Close menu on link click (navigation)
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('a[href]:not([onclick])').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+
     // ===== SECTOR BACKGROUND DECORATIONS =====
     var sector = html.dataset.sector || 'default';
 
