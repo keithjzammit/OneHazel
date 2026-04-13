@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sector="cannabis">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,467 +7,504 @@
     <meta name="description" content="The integration layer for cannabis operations. AI-powered connectors for METRC, BioTrackTHC, Dutchie, Treez, LeafLink, Confident Cannabis, and every cannabis platform — across every jurisdiction.">
     <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .accent-text {
-            background: linear-gradient(135deg, #4ade80 0%, #a3e635 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-bg {
-            background: radial-gradient(circle at 50% 0%, #1a2e1a 0%, #0f172a 70%);
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-
-        .glow-green {
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-        }
-
-        .integration-card:hover {
-            border-color: rgba(74, 222, 128, 0.3);
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 <!-- Start of HubSpot Embed Code -->
 <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
 <!-- End of HubSpot Embed Code -->
 </head>
-<body class="antialiased selection:bg-green-500 selection:text-white">
+<body class="antialiased">
 
     <!-- Nav -->
-    <nav class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
-        <div class="font-bold text-2xl tracking-tighter text-white">
-            ONEHAZEL <span class="text-blue-500 font-light">| ELEVATE AI</span>
-        </div>
-        <div class="flex items-center gap-4">
-            <a href="/" class="text-sm text-slate-400 hover:text-white transition">
-                <i class="fas fa-arrow-left mr-1"></i> All Industries
+    <nav class="w-full py-4 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b divider">
+        <div class="flex items-center gap-6">
+            <a href="/" class="font-extrabold text-xl tracking-tight" style="color: var(--text); letter-spacing: -0.02em; text-decoration: none;">
+                ONEHAZEL <span class="font-normal" style="color: var(--text-muted);">/ Elevate AI</span>
             </a>
-            <a href="https://app.onehazel.com" class="px-5 py-2 bg-green-600 text-white text-sm rounded-lg font-semibold hover:bg-green-500 transition shadow-[0_0_12px_rgba(22,163,74,0.3)]">
-                Launch App
+            <a href="/" class="hidden md:flex items-center gap-1.5 text-sm transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">
+                <i class="fas fa-arrow-left text-xs"></i> All Industries
+            </a>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="hidden md:flex badge badge-sector">
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+                Cannabis
+            </div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i>
+            </button>
+            <a href="https://app.onehazel.com" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">
+                Launch App <i class="fas fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </nav>
 
+
     <!-- Hero Section -->
-    <header class="relative pt-20 pb-24 hero-bg overflow-hidden grid-bg">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="max-w-4xl">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/30 flex items-center justify-center glow-green">
-                        <i class="fas fa-leaf text-green-400 text-xl"></i>
-                    </div>
-                    <span class="text-xs font-semibold text-green-400 tracking-[0.2em] uppercase border border-green-900 bg-green-900/20 px-3 py-1 rounded-full">
-                        Cannabis & Regulated Substances
-                    </span>
-                </div>
-                <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-                    The Integration Layer for <span class="accent-text">Cannabis Operations</span>
-                </h1>
-                <p class="text-lg text-slate-400 leading-relaxed max-w-3xl mb-10">
-                    Every legal cannabis business must integrate with state-mandated track-and-trace systems, POS platforms, seed-to-sale ERPs, lab testing providers, and delivery logistics — each varying by jurisdiction. No horizontal automation platform has a single connector for this industry.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://app.onehazel.com" class="px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-500 transition shadow-[0_0_20px_rgba(22,163,74,0.3)] text-sm">
-                        Start Building Connectors <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                    <a href="#how-it-works" class="px-8 py-3 border border-slate-700 text-slate-300 rounded-lg font-semibold hover:border-green-500/50 hover:text-white transition text-sm">
-                        See How It Works
-                    </a>
-                </div>
+    <header class="section-base relative pt-20 pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-up badge badge-sector mb-6">
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+                Sector: Cannabis &amp; Regulated Substances
+            </div>
+            <h1 class="fade-up-1 text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+                The Integration Layer <br>
+                <span class="gradient-text-sector">for Cannabis Operations</span>
+            </h1>
+            <p class="fade-up-2 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
+                Every legal cannabis business must integrate with state-mandated track-and-trace systems, POS platforms, seed-to-sale ERPs, lab testing providers, and delivery logistics &mdash; each varying by jurisdiction. No horizontal automation platform has a single connector for this industry.
+            </p>
+
+            <div class="fade-up-3 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.onehazel.com" class="btn-primary">
+                    Start Building Connectors <span class="ml-2">&rarr;</span>
+                </a>
+                <a href="#how-it-works" class="btn-secondary">
+                    See How It Works
+                </a>
             </div>
         </div>
-
-        <!-- Decorative gradient orbs -->
-        <div class="absolute top-20 right-20 w-72 h-72 bg-green-500/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-40 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl"></div>
     </header>
 
-    <!-- The Problem Section -->
-    <section class="py-24 relative">
+
+    <!-- The Problem -->
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    The <span class="accent-text">Integration Gap</span> in Cannabis
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">The <span class="gradient-text-sector">Integration Gap</span> in Cannabis</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     Cannabis operators face integration challenges that no existing platform addresses.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Problem 1 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group border border-red-500/20">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-red-600/20"></div>
-                    <i class="fas fa-ban text-3xl text-red-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Zero Generic Support</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Zero Generic Support -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-ban text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Zero Generic Support</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Zapier and Make.com have no connectors for METRC, BioTrackTHC, Dutchie, Treez, LeafLink, or any cannabis-specific platform. The industry is invisible to horizontal automation tools, leaving operators to build everything custom or operate manually.
                     </p>
                 </div>
 
-                <!-- Problem 2 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group border border-orange-500/20">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-orange-600/20"></div>
-                    <i class="fas fa-map-marked-alt text-3xl text-orange-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Per-State Compliance</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <!-- Card 2: Per-State Compliance -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-map-marked-alt text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Per-State Compliance</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         A multi-state operator running dispensaries in 5 states needs 5 different track-and-trace integrations, 5 different tax calculation rules, and 5 different compliance reporting formats. Any lag between POS and track-and-trace risks regulatory violations.
                     </p>
                 </div>
 
-                <!-- Problem 3 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group border border-yellow-500/20">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-yellow-600/20"></div>
-                    <i class="fas fa-exclamation-triangle text-3xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Fragile, Manual Processes</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        When track-and-trace APIs malfunction — which happens regularly — entire retail operations halt. Manual data entry between systems increases error rates and creates audit liability that can cost licenses.
+                <!-- Card 3: Fragile, Manual Processes -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-exclamation-triangle text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fragile, Manual Processes</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                        When track-and-trace APIs malfunction &mdash; which happens regularly &mdash; entire retail operations halt. Manual data entry between systems increases error rates and creates audit liability that can cost licenses.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- How OneHazel Solves It -->
-    <section id="how-it-works" class="py-24 relative bg-slate-900/50">
+    <section id="how-it-works" class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    How <span class="gradient-text">OneHazel</span> Solves It
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">How OneHazel Solves It</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     Purpose-built infrastructure for cannabis integration complexity.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Solution 1 -->
-                <div class="glass-card p-8 rounded-xl border border-green-500/20 hover:border-green-500/40 transition">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center">
-                            <i class="fas fa-robot text-green-400 text-xl"></i>
+                <!-- 1: AI-Powered Connector Generation -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-robot text-2xl" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">AI-Powered Connector Generation</h3>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3">AI-Powered Connector Generation</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                                Point our AI agent swarm at any cannabis platform's API documentation. Seven specialized agents analyze endpoints, detect auth methods, generate OpenAPI specs, map to a canonical compliance data model, and produce production-ready connectors &mdash; automatically.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">DiscoveryAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">AuthAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">SpecAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">SchemaMapAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">BuilderAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">ValidationAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">RefactorAgent</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Point our AI agent swarm at any cannabis platform's API documentation. Seven specialized agents analyze endpoints, detect auth methods, generate OpenAPI specs, map to a canonical compliance data model, and produce production-ready connectors — automatically.
-                    </p>
                 </div>
 
-                <!-- Solution 2 -->
-                <div class="glass-card p-8 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                            <i class="fas fa-network-wired text-blue-400 text-xl"></i>
+                <!-- 2: Universal Gateway -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-network-wired text-2xl" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Universal Gateway</h3>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3">Universal Gateway</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                                One API call translates to METRC in Colorado, BioTrackTHC in Florida, and Dutchie in California. Auth application, schema translation, circuit breaking, rate limiting &mdash; all handled per jurisdiction. Your code talks to OneHazel; we handle the state-by-state complexity.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Auth Application</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Schema Translation</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Circuit Breaker</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Rate Limiting</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        One API call translates to METRC in Colorado, BioTrackTHC in Florida, and Dutchie in California. Auth application, schema translation, circuit breaking, rate limiting — all handled per jurisdiction. Your code talks to OneHazel; we handle the state-by-state complexity.
-                    </p>
                 </div>
 
-                <!-- Solution 3 -->
-                <div class="glass-card p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                            <i class="fas fa-database text-purple-400 text-xl"></i>
+                <!-- 3: Canonical Compliance Data Model -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-database text-2xl" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Canonical Compliance Data Model</h3>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3">Canonical Compliance Data Model</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                                Inventory, transfers, sales, lab results, manifests &mdash; normalized into a unified schema regardless of which state system or vendor produced the data. Expand to new states without rebuilding your platform.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Domain Classification</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Field Mapping</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Vendor Portability</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Inventory, transfers, sales, lab results, manifests — normalized into a unified schema regardless of which state system or vendor produced the data. Expand to new states without rebuilding your platform.
-                    </p>
                 </div>
 
-                <!-- Solution 4 -->
-                <div class="glass-card p-8 rounded-xl border border-lime-500/20 hover:border-lime-500/40 transition">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-lime-500/10 flex items-center justify-center">
-                            <i class="fas fa-bolt text-lime-400 text-xl"></i>
+                <!-- 4: Event-Driven Compliance Workflows -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-bolt text-2xl" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Event-Driven Compliance Workflows</h3>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3">Event-Driven Compliance Workflows</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                                Trigger automated actions when inventory drops below threshold, a lab COA is received, or a delivery manifest needs filing. Chain operations across POS, track-and-trace, and accounting &mdash; no custom code required.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Condition Engine</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Cross-Vendor Actions</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Webhook Triggers</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Trigger automated actions when inventory drops below threshold, a lab COA is received, or a delivery manifest needs filing. Chain operations across POS, track-and-trace, and accounting — no custom code required.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Key Integrations -->
-    <section class="py-24 relative">
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Key <span class="accent-text">Integrations</span>
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Key <span class="gradient-text-sector">Integrations</span></h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     AI-generated connectors for every layer of the cannabis technology stack.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Track-and-Trace -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                            <i class="fas fa-route text-green-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-route text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Track-and-Trace</h3>
+                        <h3 class="text-lg font-bold">Track-and-Trace</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">METRC</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">BioTrackTHC</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Leaf Data Systems</span>
+                        <span class="vendor-tag">METRC</span>
+                        <span class="vendor-tag">BioTrackTHC</span>
+                        <span class="vendor-tag">Leaf Data Systems</span>
                     </div>
                 </div>
 
-                <!-- POS/Retail -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                            <i class="fas fa-cash-register text-blue-400"></i>
+                <!-- POS / Retail -->
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-cash-register text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">POS / Retail</h3>
+                        <h3 class="text-lg font-bold">POS / Retail</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Dutchie</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Flowhub</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Cova</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Treez</span>
+                        <span class="vendor-tag">Dutchie</span>
+                        <span class="vendor-tag">Flowhub</span>
+                        <span class="vendor-tag">Cova</span>
+                        <span class="vendor-tag">Treez</span>
                     </div>
                 </div>
 
                 <!-- Seed-to-Sale ERP -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                            <i class="fas fa-seedling text-purple-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-seedling text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Seed-to-Sale ERP</h3>
+                        <h3 class="text-lg font-bold">Seed-to-Sale ERP</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Distru</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Canix</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Flourish</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">LeafLink</span>
+                        <span class="vendor-tag">Distru</span>
+                        <span class="vendor-tag">Canix</span>
+                        <span class="vendor-tag">Flourish</span>
+                        <span class="vendor-tag">LeafLink</span>
                     </div>
                 </div>
 
                 <!-- Lab Testing -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-                            <i class="fas fa-flask text-cyan-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-flask text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Lab Testing</h3>
+                        <h3 class="text-lg font-bold">Lab Testing</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Confident Cannabis</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">SC Labs</span>
+                        <span class="vendor-tag">Confident Cannabis</span>
+                        <span class="vendor-tag">SC Labs</span>
                     </div>
                 </div>
 
                 <!-- Delivery & Logistics -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
-                            <i class="fas fa-truck text-orange-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-truck text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Delivery & Logistics</h3>
+                        <h3 class="text-lg font-bold">Delivery &amp; Logistics</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Dutchie</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">OnFleet</span>
+                        <span class="vendor-tag">Dutchie</span>
+                        <span class="vendor-tag">OnFleet</span>
                     </div>
                 </div>
 
                 <!-- Accounting & CRM -->
-                <div class="glass-card p-6 rounded-xl integration-card border border-slate-700/50 transition-all duration-300">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-yellow-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-chart-line text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Accounting & CRM</h3>
+                        <h3 class="text-lg font-bold">Accounting &amp; CRM</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">QuickBooks</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Alpine IQ</span>
-                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">springbig</span>
+                        <span class="vendor-tag">QuickBooks</span>
+                        <span class="vendor-tag">Alpine IQ</span>
+                        <span class="vendor-tag">springbig</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- What You Save -->
-    <section class="py-24 relative bg-slate-900/50">
+    <section class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    What You <span class="gradient-text">Save</span>
-                </h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">What You Save</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
+                    A direct comparison of integration workflows with and without OneHazel.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Without OneHazel -->
-                <div class="glass-card p-8 rounded-xl border border-red-500/20">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
-                            <i class="fas fa-times text-red-400"></i>
+                <div class="card rounded-2xl overflow-hidden">
+                    <div class="px-8 py-5 border-b divider" style="background: rgba(239, 68, 68, 0.04);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-xmark" style="color: #ef4444;"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: #ef4444;">Without OneHazel</h3>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Without OneHazel</h3>
                     </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">Custom-built integrations per state per vendor</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">Dedicated compliance engineers monitoring each connection</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">New state expansion takes months of integration work</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">Track-and-trace failures halt operations with no fallback</span>
-                        </li>
-                    </ul>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-clock text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Custom-built integrations per state per vendor</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Each jurisdiction requires unique track-and-trace, tax, and compliance integrations built from scratch.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-people-group text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Dedicated compliance engineers monitoring each connection</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">API changes, regulatory updates, and version upgrades require continuous attention.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-calendar text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">New state expansion takes months of integration work</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">New jurisdictions mean new track-and-trace systems, new compliance rules, new integrations from scratch.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-shuffle text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Track-and-trace failures halt operations with no fallback</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">API outages stop retail operations; manual data entry creates audit liability that can cost licenses.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- With OneHazel -->
-                <div class="glass-card p-8 rounded-xl border border-green-500/20">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                            <i class="fas fa-check text-green-400"></i>
+                <div class="card rounded-2xl overflow-hidden" style="border-color: var(--sector-border);">
+                    <div class="px-8 py-5 border-b" style="background: var(--sector-soft); border-color: var(--sector-border);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--sector-soft);">
+                                <i class="fas fa-check" style="color: var(--sector);"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: var(--sector-bright);">With OneHazel</h3>
                         </div>
-                        <h3 class="text-xl font-bold text-white">With OneHazel</h3>
                     </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-green-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">AI generates connectors from vendor API docs in minutes</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-green-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">One unified API handles multi-state compliance translation</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-green-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">Expand to new states by adding connectors — zero platform changes</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-green-400 text-[6px] mt-2 shrink-0"></i>
-                            <span class="text-slate-400 text-sm leading-relaxed">Circuit breaker and retry logic keeps operations running through API instability</span>
-                        </li>
-                    </ul>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-bolt text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">AI generates connectors from vendor API docs in minutes</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Provide a URL to the platform's API documentation. The seven-agent pipeline handles the rest.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-user-slash text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">One unified API handles multi-state compliance translation</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Your code talks to OneHazel; we handle per-jurisdiction track-and-trace, tax, and reporting differences.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-store text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Expand to new states by adding connectors &mdash; zero platform changes</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Browse pre-built connectors or generate new ones on demand. Activate with credentials.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-database text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Circuit breaker and retry logic keeps operations running through API instability</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Automatic failover and queuing ensures no data loss during track-and-trace outages.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="glass-card p-12 md:p-16 rounded-2xl border border-green-500/20 relative overflow-hidden">
-                <!-- Background decoration -->
-                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-green-500/5 to-lime-500/5"></div>
-                <div class="absolute top-10 right-10 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-10 left-10 w-40 h-40 bg-lime-500/10 rounded-full blur-3xl"></div>
 
-                <div class="relative z-10">
-                    <div class="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-6 glow-green">
-                        <i class="fas fa-leaf text-green-400 text-2xl"></i>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Start connecting your cannabis operations
-                    </h2>
-                    <p class="text-slate-400 max-w-xl mx-auto mb-8">
-                        Generate connectors for any cannabis platform API. Unify multi-state compliance under one integration layer.
-                    </p>
-                    <a href="https://app.onehazel.com" class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-500 transition shadow-[0_0_20px_rgba(22,163,74,0.3)] text-sm">
-                        Launch OneHazel <i class="fas fa-arrow-right ml-2"></i>
+    <!-- CTA -->
+    <section class="section-alt py-24 border-t divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="card text-center p-12 rounded-2xl" style="border-color: var(--sector-border);">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Start connecting your cannabis operations</h2>
+                <p class="mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary);">
+                    Generate connectors for any cannabis platform API. Unify multi-state compliance under one integration layer.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://app.onehazel.com" class="btn-primary">
+                        Launch OneHazel <span class="ml-2">&rarr;</span>
+                    </a>
+                    <a href="/" class="btn-secondary">
+                        Back to Homepage
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
-    <section class="bg-slate-900 border-t border-slate-800 py-16">
+    <footer class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b border-slate-800">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b divider">
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">&lt;100ms</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Latency Overhead</div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">&lt;100ms</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Latency Overhead</div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">100%</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Schema Abstraction</div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">100%</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Schema Abstraction</div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">ISO/GDPR</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Compliant Hub</div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">ISO/GDPR</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Compliant Hub</div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">Global</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Vendor Reach</div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">Global</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Vendor Reach</div>
                 </div>
             </div>
 
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <h4 class="text-white font-bold text-lg">OneHazel</h4>
-                    <p class="text-sm text-slate-500">The Vertical iPaaS for Data Intelligence.</p>
+                    <div class="font-extrabold text-lg" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="mono text-xs" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence.</p>
                 </div>
-                <div class="flex gap-6">
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">Launch App</a>
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">API Docs</a>
-                    <a href="mailto:hello@onehazel.com" class="text-sm font-semibold text-blue-400 hover:text-blue-300 transition">Contact Us</a>
+                <div class="flex gap-8">
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Launch App</a>
+                    <a href="/" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Homepage</a>
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">API Docs</a>
+                    <a href="mailto:hello@onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--accent-bright); text-decoration: none;">Contact Us</a>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
+
+
+    <!-- Theme Toggle Script -->
+    <script>
+    (function() {
+        var html = document.documentElement;
+        var toggle = document.getElementById('theme-toggle');
+        function setTheme(t) { if (t === 'dark') html.classList.add('dark'); else html.classList.remove('dark'); localStorage.setItem('onehazel-theme', t); }
+        var s = localStorage.getItem('onehazel-theme');
+        if (s) setTheme(s); else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+        toggle.addEventListener('click', function() { setTheme(html.classList.contains('dark') ? 'light' : 'dark'); });
+    })();
+    </script>
 
 </body>
 </html>

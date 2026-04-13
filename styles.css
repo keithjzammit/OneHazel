@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ===== THEME TOKENS ===== */
+:root {
+    --bg: #FAFAF9;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F4F4F5;
+    --bg-invert: #18181B;
+    --text: #18181B;
+    --text-secondary: #52525B;
+    --text-muted: #A1A1AA;
+    --text-invert: #FAFAFA;
+    --border: #E4E4E7;
+    --border-hover: #D4D4D8;
+    --accent: #B45309;
+    --accent-bright: #D97706;
+    --accent-soft: rgba(217, 119, 6, 0.07);
+    --accent-border: rgba(217, 119, 6, 0.20);
+    --gradient-start: #B45309;
+    --gradient-end: #D97706;
+    --shadow-sm: rgba(0,0,0,0.04);
+    --shadow: rgba(0,0,0,0.08);
+    --marquee-text: #A1A1AA;
+    --marquee-accent: #92400E;
+}
+
+.dark {
+    --bg: #09090B;
+    --bg-card: #18181B;
+    --bg-subtle: #1C1C1F;
+    --bg-invert: #FAFAFA;
+    --text: #FAFAFA;
+    --text-secondary: #A1A1AA;
+    --text-muted: #52525B;
+    --text-invert: #09090B;
+    --border: #27272A;
+    --border-hover: #3F3F46;
+    --accent: #FBBF24;
+    --accent-bright: #FCD34D;
+    --accent-soft: rgba(251, 191, 36, 0.08);
+    --accent-border: rgba(251, 191, 36, 0.20);
+    --gradient-start: #FBBF24;
+    --gradient-end: #FDE68A;
+    --shadow-sm: rgba(0,0,0,0.2);
+    --shadow: rgba(0,0,0,0.4);
+    --marquee-text: #52525B;
+    --marquee-accent: #FBBF24;
+}
+
+/* ===== SECTOR-SPECIFIC ACCENT OVERRIDES =====
+   Add data-sector on <html> to override the default amber accent
+   with a sector-appropriate color. */
+
+[data-sector="igaming"] {
+    --sector: #10b981;
+    --sector-bright: #34d399;
+    --sector-soft: rgba(16, 185, 129, 0.07);
+    --sector-border: rgba(16, 185, 129, 0.20);
+}
+.dark[data-sector="igaming"] {
+    --sector: #34d399;
+    --sector-bright: #6ee7b7;
+    --sector-soft: rgba(52, 211, 153, 0.10);
+    --sector-border: rgba(52, 211, 153, 0.25);
+}
+
+[data-sector="healthcare"] {
+    --sector: #0891b2;
+    --sector-bright: #06b6d4;
+    --sector-soft: rgba(6, 182, 212, 0.07);
+    --sector-border: rgba(6, 182, 212, 0.20);
+}
+.dark[data-sector="healthcare"] {
+    --sector: #22d3ee;
+    --sector-bright: #67e8f9;
+    --sector-soft: rgba(34, 211, 238, 0.10);
+    --sector-border: rgba(34, 211, 238, 0.25);
+}
+
+[data-sector="construction"] {
+    --sector: #d97706;
+    --sector-bright: #f59e0b;
+    --sector-soft: rgba(245, 158, 11, 0.07);
+    --sector-border: rgba(245, 158, 11, 0.20);
+}
+.dark[data-sector="construction"] {
+    --sector: #fbbf24;
+    --sector-bright: #fcd34d;
+    --sector-soft: rgba(251, 191, 36, 0.10);
+    --sector-border: rgba(251, 191, 36, 0.25);
+}
+
+[data-sector="cannabis"] {
+    --sector: #65a30d;
+    --sector-bright: #84cc16;
+    --sector-soft: rgba(132, 204, 22, 0.07);
+    --sector-border: rgba(132, 204, 22, 0.20);
+}
+.dark[data-sector="cannabis"] {
+    --sector: #a3e635;
+    --sector-bright: #bef264;
+    --sector-soft: rgba(163, 230, 53, 0.10);
+    --sector-border: rgba(163, 230, 53, 0.25);
+}
+
+[data-sector="lifesciences"] {
+    --sector: #7c3aed;
+    --sector-bright: #8b5cf6;
+    --sector-soft: rgba(139, 92, 246, 0.07);
+    --sector-border: rgba(139, 92, 246, 0.20);
+}
+.dark[data-sector="lifesciences"] {
+    --sector: #a78bfa;
+    --sector-bright: #c4b5fd;
+    --sector-soft: rgba(167, 139, 250, 0.10);
+    --sector-border: rgba(167, 139, 250, 0.25);
+}
+
+[data-sector="energy"] {
+    --sector: #ca8a04;
+    --sector-bright: #eab308;
+    --sector-soft: rgba(234, 179, 8, 0.07);
+    --sector-border: rgba(234, 179, 8, 0.20);
+}
+.dark[data-sector="energy"] {
+    --sector: #facc15;
+    --sector-bright: #fde047;
+    --sector-soft: rgba(253, 224, 71, 0.10);
+    --sector-border: rgba(253, 224, 71, 0.25);
+}
+
+/* ===== BASE ===== */
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.mono {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ===== DECORATIVE CLASSES ===== */
+.gradient-text {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Sector-colored gradient for industry pages */
+.gradient-text-sector {
+    background: linear-gradient(135deg, var(--sector) 0%, var(--sector-bright) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px var(--shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    color: var(--accent-bright);
+}
+
+/* Sector-colored badge for industry pages */
+.badge-sector {
+    background: var(--sector-soft);
+    border: 1px solid var(--sector-border);
+    color: var(--sector-bright);
+}
+
+.stat-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--accent-bright);
+    line-height: 1;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: var(--bg-invert);
+    color: var(--text-invert);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    opacity: 0.88;
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-subtle);
+}
+
+/* ===== VENDOR TAGS (industry pages) ===== */
+.vendor-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: border-color 0.2s ease;
+}
+
+.vendor-tag:hover {
+    border-color: var(--sector-border, var(--border-hover));
+}
+
+/* ===== COMPARISON TABLE (industry pages) ===== */
+.compare-row:nth-child(odd) {
+    background: var(--bg-subtle);
+}
+
+/* ===== MARQUEE ===== */
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up   { animation: fadeUp 0.6s ease both; }
+.fade-up-1 { animation: fadeUp 0.6s 0.08s ease both; }
+.fade-up-2 { animation: fadeUp 0.6s 0.18s ease both; }
+.fade-up-3 { animation: fadeUp 0.6s 0.28s ease both; }
+
+/* ===== ARCHITECTURE VIZ (index.html — always dark) ===== */
+.arch-dark {
+    background: #0F172A;
+    color: #E2E8F0;
+}
+
+@keyframes server-pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+    50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), 0 0 80px rgba(168, 85, 247, 0.3); }
+}
+
+.server-glow { animation: server-pulse 3s ease-in-out infinite; }
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+    font-size: 15px;
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+}
+
+.dark .icon-sun { display: none; }
+:not(.dark) .icon-moon { display: none; }
+
+/* ===== SECTION UTILITIES ===== */
+.section-alt { background: var(--bg-subtle); }
+.section-base { background: var(--bg); }
+.divider { border-color: var(--border); }

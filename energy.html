@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sector="energy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,176 +7,102 @@
     <meta name="description" content="Connect ERP, asset management, GIS, environmental compliance, trading, and IoT platforms through one AI-powered integration layer. OneHazel bridges the IT side of OT/IT convergence automatically.">
     <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-bg {
-            background: radial-gradient(ellipse at 50% -10%, rgba(234, 179, 8, 0.12) 0%, transparent 60%),
-                        radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 40%),
-                        #0f172a;
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .glass-card-hover {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-card-hover:hover {
-            border-color: rgba(234, 179, 8, 0.3);
-            box-shadow: 0 8px 32px rgba(234, 179, 8, 0.08);
-        }
-
-        .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        .accent-glow {
-            box-shadow: 0 0 30px rgba(234, 179, 8, 0.2);
-        }
-
-        .cta-glow {
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
-        }
-
-        .cta-glow:hover {
-            box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
-        }
-
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        .pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
-        }
-    </style>
-    <!-- Start of HubSpot Embed Code -->
+    <link rel="stylesheet" href="/styles.css">
     <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
-    <!-- End of HubSpot Embed Code -->
 </head>
-<body class="antialiased selection:bg-yellow-500 selection:text-white">
+<body class="antialiased">
 
     <!-- Nav -->
-    <nav class="w-full py-6 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
-        <div class="font-bold text-xl md:text-2xl tracking-tighter text-white">
-            ONEHAZEL <span class="text-blue-500 font-light">| ELEVATE AI</span>
-        </div>
-        <div class="flex items-center gap-3 md:gap-4">
-            <a href="/" class="text-sm text-slate-400 hover:text-white transition flex items-center gap-1.5">
-                <i class="fas fa-arrow-left text-xs"></i>
-                <span class="hidden sm:inline">All Industries</span>
+    <nav class="w-full py-4 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b divider">
+        <div class="flex items-center gap-6">
+            <a href="/" class="font-extrabold text-xl tracking-tight" style="color: var(--text); letter-spacing: -0.02em; text-decoration: none;">
+                ONEHAZEL <span class="font-normal" style="color: var(--text-muted);">/ Elevate AI</span>
             </a>
-            <a href="https://app.onehazel.com" class="px-5 py-2 bg-yellow-600 text-white text-sm rounded-lg font-semibold hover:bg-yellow-500 transition cta-glow">
-                Launch App
+            <a href="/" class="hidden md:flex items-center gap-1.5 text-sm transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">
+                <i class="fas fa-arrow-left text-xs"></i> All Industries
+            </a>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="hidden md:flex badge badge-sector">
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+                Energy &amp; Utilities
+            </div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i>
+            </button>
+            <a href="https://app.onehazel.com" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">
+                Launch App <i class="fas fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-20 pb-24 hero-bg overflow-hidden grid-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-4xl">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
-                        <i class="fas fa-bolt text-yellow-400 text-lg"></i>
-                    </div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-400">Energy, Utilities & Oil/Gas</span>
-                </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                    The Integration Layer for <span class="gradient-text">Energy & Utilities</span>
-                </h1>
-                <p class="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl">
-                    Energy companies operate across two worlds &mdash; operational technology (SCADA, historians, PLCs) and information technology (ERP, CMMS, compliance systems). These worlds speak different protocols, sit on different networks, and are managed by different teams. Bridging them is the industry's most critical integration challenge.
-                </p>
-                <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                    <a href="https://app.onehazel.com" class="px-8 py-4 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-500 transition cta-glow text-center">
-                        Start Building Connectors
-                    </a>
-                    <a href="#how-it-works" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
-                        See How It Works
-                    </a>
-                </div>
+    <header class="section-base relative pt-20 pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-up badge badge-sector mb-6">
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+                Sector: Energy, Utilities &amp; Oil/Gas
+            </div>
+            <h1 class="fade-up-1 text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+                The Integration Layer <br>
+                <span class="gradient-text-sector">for Energy &amp; Utilities</span>
+            </h1>
+            <p class="fade-up-2 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
+                Energy companies operate across two worlds &mdash; operational technology (SCADA, historians, PLCs) and information technology (ERP, CMMS, compliance systems). These worlds speak different protocols, sit on different networks, and are managed by different teams. Bridging them is the industry's most critical integration challenge.
+            </p>
+
+            <div class="fade-up-3 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.onehazel.com" class="btn-primary">
+                    Start Building Connectors <span class="ml-2">&rarr;</span>
+                </a>
+                <a href="#how-it-works" class="btn-secondary">
+                    See How It Works
+                </a>
             </div>
         </div>
-        <!-- Decorative element -->
-        <div class="absolute top-20 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none pulse-slow"></div>
     </header>
 
     <!-- The Problem -->
-    <section class="py-24 bg-[#0B1120]">
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Why Energy Integration Is Uniquely Hard
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Why Energy Integration Is Uniquely Hard</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     Energy and utilities face integration challenges that no horizontal platform was built to solve. Three structural problems define the landscape.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Problem 1 -->
-                <div class="glass-card-hover rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-600/10 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-network-wired text-red-400 text-xl"></i>
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-network-wired text-2xl" style="color: var(--sector);"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">OT/IT Divide</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3">OT/IT Divide</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Operational systems use industrial protocols (Modbus, DNP3, OPC-UA) in secured, often air-gapped networks. Business systems use REST APIs in the cloud. Generic automation platforms like Zapier and Make.com exist entirely in the IT world &mdash; they cannot reach operational technology.
                     </p>
                 </div>
 
                 <!-- Problem 2 -->
-                <div class="glass-card-hover rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-600/10 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-gavel text-amber-400 text-xl"></i>
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-gavel text-2xl" style="color: var(--sector);"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Regulatory Burden</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3">Regulatory Burden</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         NERC CIP for utilities, EPA emissions reporting, FERC filings, IEC 62443 for industrial cybersecurity &mdash; compliance requires operational data to flow to reporting systems with full audit trails. Manual compilation is error-prone and expensive.
                     </p>
                 </div>
 
                 <!-- Problem 3 -->
-                <div class="glass-card-hover rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-600/10 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-clock-rotate-left text-orange-400 text-xl"></i>
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-clock-rotate-left text-2xl" style="color: var(--sector);"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Legacy at Scale</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3">Legacy at Scale</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Many facilities run 20&ndash;30 year old DCS and SCADA systems alongside modern cloud analytics. The integration challenge isn't just technical &mdash; it's bridging decades of technology evolution within a single operation.
                     </p>
                 </div>
@@ -185,27 +111,25 @@
     </section>
 
     <!-- How OneHazel Solves It -->
-    <section id="how-it-works" class="py-24">
+    <section id="how-it-works" class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    How OneHazel Solves It
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">How OneHazel Solves It</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     OneHazel is the IT-side integration layer that complements your OT middleware. With 302 live connectors spanning 500+ energy vendors, we built the integration layer that eliminates custom code for every cloud-accessible system in your energy stack.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Solution 1 -->
-                <div class="glass-card-hover rounded-2xl p-8">
+                <div class="card p-8 rounded-2xl">
                     <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-robot text-2xl text-white"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-robot text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">AI-Powered Connector Generation</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">AI-Powered Connector Generation</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Our AI agent swarm analyzes any energy vendor's REST/cloud API documentation &mdash; including OSIsoft PI, Schneider Electric, Siemens, ABB, Honeywell, and Aveva. Seven specialized agents analyze endpoints, detect auth, generate OpenAPI specs, map to a canonical asset data model, and produce connectors in ~10 minutes per connector. With 302 live connectors now available, OneHazel eliminates custom integration code for ERP, CMMS, compliance, and analytics systems.
                             </p>
                         </div>
@@ -213,14 +137,14 @@
                 </div>
 
                 <!-- Solution 2 -->
-                <div class="glass-card-hover rounded-2xl p-8">
+                <div class="card p-8 rounded-2xl">
                     <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-server text-2xl text-white"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-server text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Universal Gateway</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Universal Gateway</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 One API call handles translation between your ERP, CMMS, GIS, compliance, and analytics systems. Auth application, schema translation, circuit breaking, rate limiting &mdash; all managed. Your platform talks to OneHazel; we talk to every cloud-connected vendor.
                             </p>
                         </div>
@@ -228,14 +152,14 @@
                 </div>
 
                 <!-- Solution 3 -->
-                <div class="glass-card-hover rounded-2xl p-8">
+                <div class="card p-8 rounded-2xl">
                     <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-database text-2xl text-white"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-database text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Canonical Asset Data Model</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Canonical Asset Data Model</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Assets, measurements, maintenance records, compliance events, production data &mdash; normalized into a unified schema regardless of source system. Replace an ERP or CMMS without rebuilding downstream integrations.
                             </p>
                         </div>
@@ -243,14 +167,14 @@
                 </div>
 
                 <!-- Solution 4 -->
-                <div class="glass-card-hover rounded-2xl p-8">
+                <div class="card p-8 rounded-2xl">
                     <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-bolt text-2xl text-white"></i>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-bolt text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Event-Driven Operations Workflows</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Event-Driven Operations Workflows</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Trigger automated actions when a maintenance threshold is reached, an emissions reading exceeds limits, or production data requires regulatory reporting. Chain operations across systems &mdash; no custom code.
                             </p>
                         </div>
@@ -261,120 +185,118 @@
     </section>
 
     <!-- Key Integrations -->
-    <section class="py-24 bg-[#0B1120]">
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Key Integrations
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Key Integrations</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     302 live connectors span the energy IT stack today. Generate new connectors for any vendor with public API documentation in ~10 minutes.
                 </p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- ERP & Finance -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
-                            <i class="fas fa-building text-yellow-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-building text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">ERP & Finance</h3>
+                        <h3 class="text-lg font-bold">ERP & Finance</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">SAP S/4HANA</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Oracle EBS</span>
+                        <span class="vendor-tag">SAP S/4HANA</span>
+                        <span class="vendor-tag">Oracle EBS</span>
                     </div>
                 </div>
 
                 <!-- Asset Management -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                            <i class="fas fa-gears text-amber-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-gears text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">Asset Management</h3>
+                        <h3 class="text-lg font-bold">Asset Management</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">IBM Maximo</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">SAP PM</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Infor EAM</span>
+                        <span class="vendor-tag">IBM Maximo</span>
+                        <span class="vendor-tag">SAP PM</span>
+                        <span class="vendor-tag">Infor EAM</span>
                     </div>
                 </div>
 
                 <!-- GIS & Mapping -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                            <i class="fas fa-map-location-dot text-emerald-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-map-location-dot text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">GIS & Mapping</h3>
+                        <h3 class="text-lg font-bold">GIS & Mapping</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Esri ArcGIS</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Smallworld (GE)</span>
+                        <span class="vendor-tag">Esri ArcGIS</span>
+                        <span class="vendor-tag">Smallworld (GE)</span>
                     </div>
                 </div>
 
                 <!-- Environmental Compliance -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center">
-                            <i class="fas fa-leaf text-teal-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-leaf text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">Environmental Compliance</h3>
+                        <h3 class="text-lg font-bold">Environmental Compliance</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Enviance</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">EHS Insight</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Sphera</span>
+                        <span class="vendor-tag">Enviance</span>
+                        <span class="vendor-tag">EHS Insight</span>
+                        <span class="vendor-tag">Sphera</span>
                     </div>
                 </div>
 
                 <!-- Trading & Risk -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-violet-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-chart-line text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">Trading & Risk</h3>
+                        <h3 class="text-lg font-bold">Trading & Risk</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Allegro</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Openlink/ION</span>
+                        <span class="vendor-tag">Allegro</span>
+                        <span class="vendor-tag">Openlink/ION</span>
                     </div>
                 </div>
 
                 <!-- IoT & Edge -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                            <i class="fas fa-microchip text-blue-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-microchip text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">IoT & Edge</h3>
+                        <h3 class="text-lg font-bold">IoT & Edge</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">AWS IoT Greengrass</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Azure IoT Edge</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">PTC ThingWorx</span>
+                        <span class="vendor-tag">AWS IoT Greengrass</span>
+                        <span class="vendor-tag">Azure IoT Edge</span>
+                        <span class="vendor-tag">PTC ThingWorx</span>
                     </div>
                 </div>
 
                 <!-- Industrial & OT Vendors -->
-                <div class="glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-                            <i class="fas fa-industry text-red-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-industry text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-base font-bold text-white">Industrial & OT Vendors</h3>
+                        <h3 class="text-lg font-bold">Industrial & OT Vendors</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">OSIsoft PI</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Schneider Electric</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Siemens</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">ABB</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Honeywell</span>
-                        <span class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Aveva</span>
+                        <span class="vendor-tag">OSIsoft PI</span>
+                        <span class="vendor-tag">Schneider Electric</span>
+                        <span class="vendor-tag">Siemens</span>
+                        <span class="vendor-tag">ABB</span>
+                        <span class="vendor-tag">Honeywell</span>
+                        <span class="vendor-tag">Aveva</span>
                     </div>
                 </div>
             </div>
@@ -382,120 +304,187 @@
     </section>
 
     <!-- What You Save -->
-    <section class="py-24">
+    <section class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    What You Save
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">What You Save</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     The difference between building energy integrations the old way and using an AI-powered integration layer.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Without OneHazel -->
-                <div class="glass-card rounded-2xl p-8 border-red-500/20 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500/50 to-transparent"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-                            <i class="fas fa-times text-red-400"></i>
+                <div class="card rounded-2xl overflow-hidden">
+                    <div class="px-8 py-5 border-b divider" style="background: rgba(239, 68, 68, 0.04);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-xmark" style="color: #ef4444;"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: #ef4444;">Without OneHazel</h3>
                         </div>
-                        <h3 class="text-lg font-bold text-white">Without OneHazel</h3>
                     </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Custom integrations between each business system</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Dedicated integration team maintaining point-to-point connections</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Compliance reports compiled manually from multiple sources</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Vendor switches require 3&ndash;6 months of rebuild</span>
-                        </li>
-                    </ul>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-clock text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Custom integrations between each business system</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Each vendor requires bespoke code for auth, endpoints, error handling, and data mapping.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-people-group text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Dedicated integration team maintaining point-to-point connections</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">API changes, deprecations, and version upgrades require continuous attention.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-shuffle text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Compliance reports compiled manually from multiple sources</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Different schemas per vendor means custom ETL pipelines and constant data wrangling.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-lock text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Vendor switches require 3&ndash;6 months of rebuild</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Each connection is a brittle point-to-point link that breaks when vendors change.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- With OneHazel -->
-                <div class="glass-card rounded-2xl p-8 border-emerald-500/20 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/50 to-transparent"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                            <i class="fas fa-check text-emerald-400"></i>
+                <div class="card rounded-2xl overflow-hidden" style="border-color: var(--sector-border);">
+                    <div class="px-8 py-5 border-b" style="background: var(--sector-soft); border-color: var(--sector-border);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--sector-soft);">
+                                <i class="fas fa-check" style="color: var(--sector);"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: var(--sector-bright);">With OneHazel</h3>
                         </div>
-                        <h3 class="text-lg font-bold text-white">With OneHazel</h3>
                     </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">AI built 302 live connectors &mdash; each generated in ~10 minutes from vendor API docs</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">One unified API replaces dozens of point-to-point connections</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Canonical data model feeds compliance reporting automatically</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-400/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <span class="text-slate-400 text-sm">Swap vendors by changing a connector &mdash; zero downstream changes</span>
-                        </li>
-                    </ul>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-bolt text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">AI built 302 live connectors &mdash; each generated in ~10 minutes from vendor API docs</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Provide a URL to the vendor's API documentation. The seven-agent pipeline handles the rest.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-network-wired text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">One unified API replaces dozens of point-to-point connections</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Your code talks to OneHazel; we translate to each vendor's protocol and format.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-database text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Canonical data model feeds compliance reporting automatically</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">All vendor data normalized to canonical schemas. One format for assets, measurements, and events.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-arrow-right-arrow-left text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Swap vendors by changing a connector &mdash; zero downstream changes</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Canonical schema means your application never knows the difference.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-24 bg-[#0B1120]">
+    <section class="section-alt py-24 border-t divider">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center bg-gradient-to-br from-yellow-500/10 to-amber-500/10 border border-yellow-500/20 rounded-2xl p-12 md:p-16 relative overflow-hidden">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="relative">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Your energy integration layer is live today
-                    </h2>
-                    <p class="text-slate-400 mb-8 max-w-2xl mx-auto">
-                        302 live connectors are ready today &mdash; spanning OSIsoft PI, Schneider Electric, Siemens, ABB, Honeywell, Aveva, and 500+ energy vendors. Our AI agent pipeline built production-ready connectors in ~10 minutes each, mapped to a canonical asset data model, delivering one unified API for your entire IT stack.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://app.onehazel.com" class="px-8 py-4 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-500 transition cta-glow text-center">
-                            Get Started
-                        </a>
-                        <a href="https://app.onehazel.com" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
-                            Explore the Marketplace
-                        </a>
-                    </div>
+            <div class="card text-center p-12 rounded-2xl" style="border-color: var(--sector-border);">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Your energy integration layer is live today</h2>
+                <p class="mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary);">
+                    302 live connectors are ready today &mdash; spanning OSIsoft PI, Schneider Electric, Siemens, ABB, Honeywell, Aveva, and 500+ energy vendors. Our AI agent pipeline built production-ready connectors in ~10 minutes each, mapped to a canonical asset data model, delivering one unified API for your entire IT stack.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://app.onehazel.com" class="btn-primary">
+                        Get Started <span class="ml-2">&rarr;</span>
+                    </a>
+                    <a href="https://app.onehazel.com" class="btn-secondary">
+                        Explore the Marketplace
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-16">
+    <footer class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b divider">
+                <div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">302</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Live Connectors</div>
+                </div>
+                <div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">500+</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Energy Vendors</div>
+                </div>
+                <div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">&lt;100ms</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Latency Overhead</div>
+                </div>
+                <div>
+                    <div class="stat-num text-3xl md:text-4xl mb-2">~10min</div>
+                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Per Connector</div>
+                </div>
+            </div>
+
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <h4 class="text-white font-bold text-lg">OneHazel</h4>
-                    <p class="text-sm text-slate-500">The Vertical iPaaS for Data Intelligence.</p>
+                    <div class="font-extrabold text-lg" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="mono text-xs" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence.</p>
                 </div>
-                <div class="flex gap-6">
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">Launch App</a>
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">API Docs</a>
-                    <a href="mailto:hello@onehazel.com" class="text-sm font-semibold text-blue-400 hover:text-blue-300 transition">Contact Us</a>
+                <div class="flex gap-8">
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Launch App</a>
+                    <a href="/" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Homepage</a>
+                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">API Docs</a>
+                    <a href="mailto:hello@onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--accent-bright); text-decoration: none;">Contact Us</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+    (function() {
+        var html = document.documentElement;
+        var toggle = document.getElementById('theme-toggle');
+        function setTheme(t) { if (t === 'dark') html.classList.add('dark'); else html.classList.remove('dark'); localStorage.setItem('onehazel-theme', t); }
+        var s = localStorage.getItem('onehazel-theme');
+        if (s) setTheme(s); else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+        toggle.addEventListener('click', function() { setTheme(html.classList.contains('dark') ? 'light' : 'dark'); });
+    })();
+    </script>
 
 </body>
 </html>
