@@ -67,45 +67,40 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-                <!-- Left: Contact Form -->
+                <!-- Left: HubSpot Embedded Form -->
                 <div class="card p-8 md:p-10 fade-up-1">
                     <h2 class="text-xl font-bold mb-6">Send Us a Message</h2>
-                    <form action="#" method="POST" class="flex flex-col gap-5">
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Name</label>
-                            <input type="text" name="name" required placeholder="Your full name"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Email</label>
-                            <input type="email" name="email" required placeholder="you@company.com"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Company</label>
-                            <input type="text" name="company" placeholder="Your company name"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Subject</label>
-                            <select name="subject" required
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                                <option value="" disabled selected>Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="enterprise">Enterprise Sales</option>
-                                <option value="support">Support</option>
-                                <option value="partnership">Partnership</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Message</label>
-                            <textarea name="message" rows="5" required placeholder="Tell us how we can help..."
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit; resize: vertical;"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary mt-2">
-                            Send Message <i class="fas fa-paper-plane ml-2 text-sm"></i>
-                        </button>
-                    </form>
+                    <!--
+                        HubSpot Form Embed
+                        Portal ID: 146772601
+                        Form GUID: Replace YOUR_FORM_GUID below with the actual form ID from HubSpot.
+                        To find it: HubSpot → Marketing → Forms → select form → Embed → copy the formId value.
+                    -->
+                    <div id="hubspot-form-container"></div>
+                    <script>
+                        // Load HubSpot Forms SDK
+                        (function() {
+                            var s = document.createElement('script');
+                            s.src = '//js-eu1.hsforms.net/forms/embed/v2.js';
+                            s.charset = 'utf-8';
+                            s.onload = function() {
+                                if (window.hbspt) {
+                                    window.hbspt.forms.create({
+                                        region: 'eu1',
+                                        portalId: '146772601',
+                                        formId: 'YOUR_FORM_GUID',
+                                        target: '#hubspot-form-container',
+                                        css: '',
+                                        cssClass: 'hs-onehazel-form'
+                                    });
+                                }
+                            };
+                            document.head.appendChild(s);
+                        })();
+                    </script>
+                    <noscript>
+                        <p style="color: var(--text-secondary);">Please enable JavaScript to use the contact form, or email us directly at <a href="mailto:hello@onehazel.com" style="color: var(--accent-bright);">hello@onehazel.com</a>.</p>
+                    </noscript>
                 </div>
 
                 <!-- Right: Contact Info Cards -->
