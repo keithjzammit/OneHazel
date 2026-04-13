@@ -22,6 +22,8 @@
     --shadow: rgba(0,0,0,0.08);
     --marquee-text: #A1A1AA;
     --marquee-accent: #92400E;
+    /* Theme gradient for section-alt backgrounds */
+    --glow-color: rgba(217, 119, 6, 0.06);
 }
 
 .dark {
@@ -45,6 +47,7 @@
     --shadow: rgba(0,0,0,0.4);
     --marquee-text: #52525B;
     --marquee-accent: #FBBF24;
+    --glow-color: rgba(251, 191, 36, 0.05);
 }
 
 /* ===== SECTOR-SPECIFIC ACCENT OVERRIDES =====
@@ -56,12 +59,14 @@
     --sector-bright: #34d399;
     --sector-soft: rgba(16, 185, 129, 0.07);
     --sector-border: rgba(16, 185, 129, 0.20);
+    --glow-color: rgba(16, 185, 129, 0.06);
 }
 .dark[data-sector="igaming"] {
     --sector: #34d399;
     --sector-bright: #6ee7b7;
     --sector-soft: rgba(52, 211, 153, 0.10);
     --sector-border: rgba(52, 211, 153, 0.25);
+    --glow-color: rgba(52, 211, 153, 0.05);
 }
 
 [data-sector="healthcare"] {
@@ -69,12 +74,14 @@
     --sector-bright: #06b6d4;
     --sector-soft: rgba(6, 182, 212, 0.07);
     --sector-border: rgba(6, 182, 212, 0.20);
+    --glow-color: rgba(6, 182, 212, 0.06);
 }
 .dark[data-sector="healthcare"] {
     --sector: #22d3ee;
     --sector-bright: #67e8f9;
     --sector-soft: rgba(34, 211, 238, 0.10);
     --sector-border: rgba(34, 211, 238, 0.25);
+    --glow-color: rgba(34, 211, 238, 0.05);
 }
 
 [data-sector="construction"] {
@@ -82,12 +89,14 @@
     --sector-bright: #f59e0b;
     --sector-soft: rgba(245, 158, 11, 0.07);
     --sector-border: rgba(245, 158, 11, 0.20);
+    --glow-color: rgba(245, 158, 11, 0.06);
 }
 .dark[data-sector="construction"] {
     --sector: #fbbf24;
     --sector-bright: #fcd34d;
     --sector-soft: rgba(251, 191, 36, 0.10);
     --sector-border: rgba(251, 191, 36, 0.25);
+    --glow-color: rgba(251, 191, 36, 0.05);
 }
 
 [data-sector="cannabis"] {
@@ -95,12 +104,14 @@
     --sector-bright: #84cc16;
     --sector-soft: rgba(132, 204, 22, 0.07);
     --sector-border: rgba(132, 204, 22, 0.20);
+    --glow-color: rgba(132, 204, 22, 0.06);
 }
 .dark[data-sector="cannabis"] {
     --sector: #a3e635;
     --sector-bright: #bef264;
     --sector-soft: rgba(163, 230, 53, 0.10);
     --sector-border: rgba(163, 230, 53, 0.25);
+    --glow-color: rgba(163, 230, 53, 0.05);
 }
 
 [data-sector="lifesciences"] {
@@ -108,12 +119,14 @@
     --sector-bright: #8b5cf6;
     --sector-soft: rgba(139, 92, 246, 0.07);
     --sector-border: rgba(139, 92, 246, 0.20);
+    --glow-color: rgba(139, 92, 246, 0.06);
 }
 .dark[data-sector="lifesciences"] {
     --sector: #a78bfa;
     --sector-bright: #c4b5fd;
     --sector-soft: rgba(167, 139, 250, 0.10);
     --sector-border: rgba(167, 139, 250, 0.25);
+    --glow-color: rgba(167, 139, 250, 0.05);
 }
 
 [data-sector="energy"] {
@@ -121,12 +134,14 @@
     --sector-bright: #eab308;
     --sector-soft: rgba(234, 179, 8, 0.07);
     --sector-border: rgba(234, 179, 8, 0.20);
+    --glow-color: rgba(234, 179, 8, 0.06);
 }
 .dark[data-sector="energy"] {
     --sector: #facc15;
     --sector-bright: #fde047;
     --sector-soft: rgba(253, 224, 71, 0.10);
     --sector-border: rgba(253, 224, 71, 0.25);
+    --glow-color: rgba(253, 224, 71, 0.05);
 }
 
 /* ===== BASE ===== */
@@ -366,6 +381,10 @@ html:not(.dark) .icon-sun { display: none; }
 html.dark .icon-moon { display: none; }
 
 /* ===== SECTION UTILITIES ===== */
-.section-alt { background: var(--bg-subtle); }
+.section-alt {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, var(--glow-color) 0%, transparent 70%),
+        var(--bg-subtle);
+}
 .section-base { background: var(--bg); }
 .divider { border-color: var(--border); }
