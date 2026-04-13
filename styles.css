@@ -330,8 +330,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text);
 }
 
-.dark .icon-sun { display: none; }
-:not(.dark) .icon-moon { display: none; }
+/* Light mode: show moon (switch-to-dark), hide sun */
+html:not(.dark) .icon-sun { display: none; }
+/* Dark mode: show sun (switch-to-light), hide moon */
+html.dark .icon-moon { display: none; }
 
 /* ===== SECTION UTILITIES ===== */
 .section-alt { background: var(--bg-subtle); }
