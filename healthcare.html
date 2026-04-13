@@ -13,23 +13,35 @@
 </head>
 <body class="antialiased">
 
-    <!-- Nav -->
+    <!-- ===== NAV ===== -->
     <nav class="w-full py-4 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b divider">
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-8">
             <a href="/" class="font-extrabold text-xl tracking-tight" style="color: var(--text); letter-spacing: -0.02em; text-decoration: none;">
                 ONEHAZEL <span class="font-normal" style="color: var(--text-muted);">/ Elevate AI</span>
             </a>
-            <a href="/" class="hidden md:flex items-center gap-1.5 text-sm transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">
-                <i class="fas fa-arrow-left text-xs"></i> All Industries
-            </a>
+            <div class="hidden md:flex items-center gap-5 text-sm font-medium" style="color: var(--text-secondary);">
+                <div class="relative nav-dropdown-trigger">
+                    <button class="flex items-center gap-1.5 hover:opacity-70 transition py-2" style="color: var(--text-secondary); background: none; border: none; cursor: pointer; font: inherit;">
+                        Industries <i class="fas fa-chevron-down text-[9px]" style="color: var(--text-muted);"></i>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/igaming"><i class="fas fa-dice text-emerald-500 w-4 text-center"></i> iGaming</a>
+                        <a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-4 text-center"></i> Healthcare</a>
+                        <a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-4 text-center"></i> Construction</a>
+                        <a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-4 text-center"></i> Cannabis</a>
+                        <a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-4 text-center"></i> Life Sciences</a>
+                        <a href="/energy"><i class="fas fa-bolt text-yellow-500 w-4 text-center"></i> Energy &amp; Utilities</a>
+                    </div>
+                </div>
+                <a href="/pricing" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                <a href="/about" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">About</a>
+                <a href="/contact" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+            </div>
         </div>
         <div class="flex items-center gap-3">
-            <div class="hidden md:flex badge badge-sector">
-                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
-                Healthcare
-            </div>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i>
+                <i class="fas fa-sun icon-sun"></i>
+                <i class="fas fa-moon icon-moon"></i>
             </button>
             <a href="https://app.onehazel.com" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">
                 Sign up to BETA <i class="fas fa-arrow-right ml-2 text-xs"></i>
@@ -424,40 +436,38 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b divider">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t divider mb-10">
                 <div>
-                    <div class="stat-num text-3xl md:text-4xl mb-2">300+</div>
-                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Live Connectors</div>
+                    <div class="font-extrabold text-lg mb-3" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence. Built by Elevate AI.</p>
                 </div>
                 <div>
-                    <div class="stat-num text-3xl md:text-4xl mb-2">&lt;100ms</div>
-                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Latency Overhead</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Product</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/pricing" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                        <a href="https://app.onehazel.com/docs" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">API Docs</a>
+                        <a href="https://app.onehazel.com" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Sign up to BETA</a>
+                    </div>
                 </div>
                 <div>
-                    <div class="stat-num text-3xl md:text-4xl mb-2">HIPAA</div>
-                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Compliant Hub</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Company</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/about" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                        <a href="/contact" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                    </div>
                 </div>
                 <div>
-                    <div class="stat-num text-3xl md:text-4xl mb-2">~10min</div>
-                    <div class="mono text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">Per Connector</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Legal</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/terms" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Terms &amp; Conditions</a>
+                        <a href="/privacy" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="font-extrabold text-lg" style="letter-spacing: -0.02em;">OneHazel</div>
-                    <p class="mono text-xs" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence.</p>
-                </div>
-                <div class="flex gap-8">
-                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Sign up to BETA</a>
-                    <a href="/" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">Homepage</a>
-                    <a href="https://app.onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--text-muted); text-decoration: none;">API Docs</a>
-                    <a href="mailto:hello@onehazel.com" class="text-sm font-medium transition hover:opacity-70" style="color: var(--accent-bright); text-decoration: none;">Contact Us</a>
-                </div>
-            </div>
+            <div class="text-center text-xs" style="color: var(--text-muted);">&copy; 2026 Elevate AI Ltd. All rights reserved.</div>
         </div>
     </footer>
 
