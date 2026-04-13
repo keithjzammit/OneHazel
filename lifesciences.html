@@ -1,131 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-sector="lifesciences">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneHazel for Life Sciences & Clinical Trials - AI-Powered Integration</title>
-    <meta name="description" content="302 live connectors for EDC systems, CTMS, eCOA platforms, lab information systems, and eTMF. OneHazel is the integration layer for clinical trials &mdash; live today, ~10 minutes per connector.">
+    <meta name="description" content="300+ live connectors for EDC systems, CTMS, eCOA platforms, lab information systems, and eTMF. OneHazel is the integration layer for clinical trials &mdash; live today, ~10 minutes per connector.">
     <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-bg {
-            background: radial-gradient(circle at 50% 0%, #2e1065 0%, #0f172a 70%);
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-
-        .section-fade {
-            background: linear-gradient(180deg, #0f172a 0%, #0B1120 100%);
-        }
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 <!-- Start of HubSpot Embed Code -->
 <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
 <!-- End of HubSpot Embed Code -->
 </head>
-<body class="antialiased selection:bg-purple-500 selection:text-white">
+<body class="antialiased">
 
-    <!-- Nav -->
-    <nav class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-800">
-        <a href="/" class="font-bold text-2xl tracking-tighter text-white no-underline">
-            ONEHAZEL <span class="text-blue-500 font-light">| ELEVATE AI</span>
-        </a>
-        <div class="flex items-center gap-4">
-            <a href="/" class="text-sm text-slate-400 hover:text-white transition">
-                <i class="fas fa-arrow-left mr-1"></i> All Industries
+    <!-- ===== NAV ===== -->
+    <nav class="w-full py-4 px-6 md:px-8 flex justify-between items-center max-w-7xl mx-auto border-b divider">
+        <div class="flex items-center gap-8">
+            <a href="/" class="font-extrabold text-xl tracking-tight" style="color: var(--text); letter-spacing: -0.02em; text-decoration: none;">
+                <span class="gradient-text">ONE</span>HAZEL <span class="font-normal" style="color: var(--text-muted);">/ Elevate AI</span>
             </a>
-            <a href="https://app.onehazel.com" class="px-5 py-2 bg-purple-600 text-white text-sm rounded-lg font-semibold hover:bg-purple-500 transition shadow-[0_0_12px_rgba(147,51,234,0.3)]">
-                Launch App
+            <div class="hidden md:flex items-center gap-5 text-sm font-medium" style="color: var(--text-secondary);">
+                <div class="relative nav-dropdown-trigger">
+                    <button class="flex items-center gap-1.5 hover:opacity-70 transition py-2" style="color: var(--text-secondary); background: none; border: none; cursor: pointer; font: inherit;">
+                        Industries <i class="fas fa-chevron-down text-[9px]" style="color: var(--text-muted);"></i>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/igaming"><i class="fas fa-dice text-emerald-500 w-4 text-center"></i> iGaming</a>
+                        <a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-4 text-center"></i> Healthcare</a>
+                        <a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-4 text-center"></i> Construction</a>
+                        <a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-4 text-center"></i> Cannabis</a>
+                        <a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-4 text-center"></i> Life Sciences</a>
+                        <a href="/energy"><i class="fas fa-bolt text-yellow-500 w-4 text-center"></i> Energy &amp; Utilities</a>
+                    </div>
+                </div>
+                <a href="/pricing" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                <a href="/about" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">About</a>
+                <a href="/contact" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-sun icon-sun"></i>
+                <i class="fas fa-moon icon-moon"></i>
+            </button>
+            <a href="https://app.onehazel.com" class="btn-primary" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">
+                Sign up to BETA <i class="fas fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </nav>
 
+
     <!-- Hero Section -->
-    <header class="relative pt-20 pb-24 hero-bg overflow-hidden grid-bg">
+    <header class="section-base relative pt-20 pb-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-block mb-6">
-                <span class="text-xs font-semibold text-purple-400 tracking-[0.2em] uppercase border border-purple-900 bg-purple-900/20 px-4 py-1.5 rounded-full">
-                    <i class="fas fa-flask mr-2"></i>Life Sciences & Clinical Trials
-                </span>
+            <div class="fade-up badge badge-sector mb-6">
+                <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+                Sector: Life Sciences &amp; Clinical Trials
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                The Integration Layer for<br><span class="gradient-text">Life Sciences</span>
+            <h1 class="fade-up-1 text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+                The Integration Layer for<br>
+                <span class="gradient-text-sector">Life Sciences</span>
             </h1>
-            <p class="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
-                With 302 live connectors, OneHazel already connects EDC systems, eCOA patient devices, lab information systems, imaging platforms, wearables, and electronic Trial Master Files &mdash; including Medidata, Veeva, Oracle Health Sciences, LabWare, Benchling, and Dotmatics. The vendor landscape is dominated by proprietary ecosystems that don't integrate well with each other. OneHazel eliminates manual data reconciliation, reducing trial cost and errors.
+            <p class="fade-up-2 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
+                With 300+ live connectors, OneHazel already connects EDC systems, eCOA patient devices, lab information systems, imaging platforms, wearables, and electronic Trial Master Files &mdash; including Medidata, Veeva, Oracle Health Sciences, LabWare, Benchling, and Dotmatics. The vendor landscape is dominated by proprietary ecosystems that don't integrate well with each other. OneHazel eliminates manual data reconciliation, reducing trial cost and errors.
             </p>
-            <a href="https://app.onehazel.com" class="inline-block px-8 py-4 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition shadow-[0_0_20px_rgba(147,51,234,0.3)]">
-                Connect Your Trial Stack <i class="fas fa-arrow-right ml-2"></i>
-            </a>
+
+            <div class="fade-up-3 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.onehazel.com" class="btn-primary">
+                    Connect Your Trial Stack <span class="ml-2">&rarr;</span>
+                </a>
+                <a href="#how-it-works" class="btn-secondary">
+                    See How It Works
+                </a>
+            </div>
         </div>
     </header>
 
+
     <!-- The Problem -->
-    <section class="py-24 section-fade">
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">The Clinical Trial Integration Problem</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">The Clinical Trial Integration Problem</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
                     Running a modern trial means stitching together a fragmented vendor ecosystem under some of the strictest regulatory requirements in any industry.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Problem 1 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-red-600/20"></div>
-                    <i class="fas fa-lock text-3xl text-red-400 mb-4 block"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Proprietary Silos</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Problem 1: Proprietary Silos -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-lock text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Proprietary Silos</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Major platforms &mdash; Medidata Rave, Veeva Vault, Oracle Health Sciences &mdash; lock data into proprietary ecosystems. Running a best-of-breed stack means building custom integrations between every pair of systems: EDC to CTMS, CTMS to safety, safety to regulatory.
                     </p>
                 </div>
 
-                <!-- Problem 2 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-amber-600/20"></div>
-                    <i class="fas fa-gavel text-3xl text-amber-400 mb-4 block"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Regulatory Complexity</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <!-- Problem 2: Regulatory Complexity -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-gavel text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Regulatory Complexity</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         FDA 21 CFR Part 11, GxP validation, ICH-GCP guidelines, and EU Clinical Trials Regulation impose strict requirements on data integrity, audit trails, and electronic records. Generic automation tools cannot meet these standards.
                     </p>
                 </div>
 
-                <!-- Problem 3 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-600/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-orange-600/20"></div>
-                    <i class="fas fa-project-diagram text-3xl text-orange-400 mb-4 block"></i>
-                    <h3 class="text-xl font-bold text-white mb-3">Multiplying Data Sources</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <!-- Problem 3: Multiplying Data Sources -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas fa-project-diagram text-2xl" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multiplying Data Sources</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Decentralized trials add wearables, remote monitoring, and telemedicine data streams that must flow into trial databases with full traceability. Each new data source is another integration to build and validate.
                     </p>
                 </div>
@@ -133,73 +126,99 @@
         </div>
     </section>
 
+
     <!-- How OneHazel Solves It -->
-    <section class="py-24 bg-[#0B1120]">
+    <section id="how-it-works" class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">How OneHazel Solves It</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    302 live connectors and AI-powered integration infrastructure purpose-built for the complexity of clinical trial data ecosystems &mdash; live today.
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">How OneHazel Solves It</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
+                    300+ live connectors and AI-powered integration infrastructure purpose-built for the complexity of clinical trial data ecosystems &mdash; live today.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Solution 1 -->
-                <div class="glass-card p-8 rounded-xl">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-robot text-xl text-white"></i>
+                <!-- Solution 1: AI-Powered Connector Generation -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-robot text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">AI-Powered Connector Generation</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">AI-Powered Connector Generation</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Point our AI agent swarm at any clinical trial vendor's API documentation. Seven specialized agents analyze endpoints, detect auth, generate OpenAPI specs, map to a canonical trial data model, and produce validated connectors &mdash; automatically.
                             </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">DiscoveryAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">AuthAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">SpecAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">SchemaMapAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">BuilderAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">ValidationAgent</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">RefactorAgent</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Solution 2 -->
-                <div class="glass-card p-8 rounded-xl">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-plug text-xl text-white"></i>
+                <!-- Solution 2: Universal Gateway -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-plug text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Universal Gateway</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Universal Gateway</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 One API call handles translation between your EDC, CTMS, safety database, and lab systems. Auth application, schema translation, circuit breaking, rate limiting &mdash; all managed. Your platform talks to OneHazel; we talk to every vendor in your trial stack.
                             </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Auth Application</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Schema Translation</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Circuit Breaker</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Rate Limiting</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Solution 3 -->
-                <div class="glass-card p-8 rounded-xl">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-exchange-alt text-xl text-white"></i>
+                <!-- Solution 3: Canonical Trial Data Model -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-exchange-alt text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Canonical Trial Data Model</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Canonical Trial Data Model</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Subjects, visits, adverse events, lab results, imaging data &mdash; normalized into a unified schema regardless of source system. Replace a vendor without rebuilding your data pipelines.
                             </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Domain Classification</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Field Mapping</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Vendor Portability</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Solution 4 -->
-                <div class="glass-card p-8 rounded-xl">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                            <i class="fas fa-bolt text-xl text-white"></i>
+                <!-- Solution 4: Event-Driven Trial Workflows -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-bolt text-2xl" style="color: var(--sector);"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white mb-2">Event-Driven Trial Workflows</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
+                            <h3 class="text-xl font-bold mb-3">Event-Driven Trial Workflows</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
                                 Trigger automated actions when a lab result arrives, an adverse event is reported, or a site enrollment milestone is reached. Chain operations across EDC, CTMS, and safety systems &mdash; no custom integration code.
                             </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Condition Engine</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Cross-Vendor Actions</span>
+                                <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">Webhook Triggers</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,176 +226,222 @@
         </div>
     </section>
 
+
     <!-- Key Integrations -->
-    <section class="py-24 section-fade">
+    <section class="section-alt py-24 border-y divider">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">Key Integrations</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    302 live connectors for the systems that power clinical trials, from data capture to regulatory submission &mdash; each built in ~10 minutes.
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Key Integrations</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
+                    300+ live connectors for the systems that power clinical trials, from data capture to regulatory submission &mdash; each built in ~10 minutes.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- EDC -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                            <i class="fas fa-database text-purple-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-database text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">EDC Systems</h3>
+                        <h3 class="text-lg font-bold">EDC Systems</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> Medidata Rave</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> Veeva Vault EDC</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> Oracle Health Sciences</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> Castor</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">Medidata Rave</span>
+                        <span class="vendor-tag">Veeva Vault EDC</span>
+                        <span class="vendor-tag">Oracle Health Sciences</span>
+                        <span class="vendor-tag">Castor</span>
                     </div>
                 </div>
 
                 <!-- CTMS -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                            <i class="fas fa-tasks text-blue-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-tasks text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">CTMS</h3>
+                        <h3 class="text-lg font-bold">CTMS</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> Medidata CTMS</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> Veeva Vault CTMS</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> Clinion</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">Medidata CTMS</span>
+                        <span class="vendor-tag">Veeva Vault CTMS</span>
+                        <span class="vendor-tag">Clinion</span>
                     </div>
                 </div>
 
                 <!-- ePRO/eCOA -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                            <i class="fas fa-mobile-alt text-emerald-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-mobile-alt text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">ePRO / eCOA</h3>
+                        <h3 class="text-lg font-bold">ePRO / eCOA</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> YPrime</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> Clario</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> Medidata Patient Cloud</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">YPrime</span>
+                        <span class="vendor-tag">Clario</span>
+                        <span class="vendor-tag">Medidata Patient Cloud</span>
                     </div>
                 </div>
 
                 <!-- Safety -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-red-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-shield-alt text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">Safety & Pharmacovigilance</h3>
+                        <h3 class="text-lg font-bold">Safety & Pharmacovigilance</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-red-400 text-xs"></i> Oracle Argus</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-red-400 text-xs"></i> ArisGlobal</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-red-400 text-xs"></i> Veeva Vault Safety</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">Oracle Argus</span>
+                        <span class="vendor-tag">ArisGlobal</span>
+                        <span class="vendor-tag">Veeva Vault Safety</span>
                     </div>
                 </div>
 
                 <!-- Labs -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                            <i class="fas fa-vial text-cyan-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-vial text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">Labs & Research</h3>
+                        <h3 class="text-lg font-bold">Labs & Research</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> LabWare LIMS</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> Benchling</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> Dotmatics</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> LabCorp Drug Development</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-cyan-400 text-xs"></i> ICON Central Labs</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">LabWare LIMS</span>
+                        <span class="vendor-tag">Benchling</span>
+                        <span class="vendor-tag">Dotmatics</span>
+                        <span class="vendor-tag">LabCorp Drug Development</span>
+                        <span class="vendor-tag">ICON Central Labs</span>
                     </div>
                 </div>
 
                 <!-- eTMF -->
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                            <i class="fas fa-folder-open text-amber-400"></i>
+                <div class="card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                            <i class="fas fa-folder-open text-lg" style="color: var(--sector);"></i>
                         </div>
-                        <h3 class="text-white font-bold">eTMF & Regulatory</h3>
+                        <h3 class="text-lg font-bold">eTMF & Regulatory</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> Veeva Vault eTMF</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> Montrium</div>
-                        <div class="text-sm text-slate-400 flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> IQVIA RIM</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="vendor-tag">Veeva Vault eTMF</span>
+                        <span class="vendor-tag">Montrium</span>
+                        <span class="vendor-tag">IQVIA RIM</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- What You Save -->
-    <section class="py-24 bg-[#0B1120]">
+    <section class="section-base py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">What You Save</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Replace fragile point-to-point integrations with a unified, AI-powered integration layer &mdash; 302 connectors live today.
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">What You Save</h2>
+                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">
+                    Replace fragile point-to-point integrations with a unified, AI-powered integration layer &mdash; 300+ connectors live today.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Without -->
-                <div class="glass-card rounded-xl p-8 border-red-500/20">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-                            <i class="fas fa-times text-red-400"></i>
+                <!-- Without OneHazel -->
+                <div class="card rounded-2xl overflow-hidden">
+                    <div class="px-8 py-5 border-b divider" style="background: rgba(239, 68, 68, 0.04);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-xmark" style="color: #ef4444;"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: #ef4444;">Without OneHazel</h3>
                         </div>
-                        <h3 class="text-lg font-bold text-red-400">Without OneHazel</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">Custom integrations between each pair of trial systems</p>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-clock text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Custom integrations between each pair of trial systems</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Each vendor requires custom code for auth, endpoints, error handling, and data mapping.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">Dedicated data management team for manual reconciliation</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-people-group text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Dedicated data management team for manual reconciliation</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Different schemas per vendor means custom ETL pipelines and constant data wrangling.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">Vendor switches require full re-validation</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-shuffle text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Vendor switches require full re-validation</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Replacing a vendor means rebuilding integrations and re-validating the entire data pipeline.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-red-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">Months to onboard each new data source</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(239, 68, 68, 0.08);">
+                                <i class="fas fa-calendar text-xs" style="color: #ef4444;"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Months to onboard each new data source</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">New data streams from wearables, remote monitoring, and telemedicine require new integrations from scratch.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- With -->
-                <div class="glass-card rounded-xl p-8 border-emerald-500/20">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                            <i class="fas fa-check text-emerald-400"></i>
+                <!-- With OneHazel -->
+                <div class="card rounded-2xl overflow-hidden" style="border-color: var(--sector-border);">
+                    <div class="px-8 py-5 border-b" style="background: var(--sector-soft); border-color: var(--sector-border);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--sector-soft);">
+                                <i class="fas fa-check" style="color: var(--sector);"></i>
+                            </div>
+                            <h3 class="text-lg font-bold" style="color: var(--sector-bright);">With OneHazel</h3>
                         </div>
-                        <h3 class="text-lg font-bold text-emerald-400">With OneHazel</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">AI generates connectors from vendor API docs in ~10 minutes per connector</p>
+                    <div class="p-8 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-bolt text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">AI generates connectors from vendor API docs in ~10 minutes per connector</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Provide a URL to the vendor's API documentation. The seven-agent pipeline handles the rest.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">One unified API replaces point-to-point integrations</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-user-slash text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">One unified API replaces point-to-point integrations</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Your code talks to OneHazel; we talk to every vendor in your trial stack.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">Swap vendors by changing a connector &mdash; reduce re-validation scope</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-store text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">Swap vendors by changing a connector &mdash; reduce re-validation scope</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Replace a vendor without rebuilding your data pipelines or re-validating from scratch.</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fas fa-circle text-emerald-500/60 text-[6px] mt-2 flex-shrink-0"></i>
-                            <p class="text-slate-400 text-sm">New data sources connected in ~10 minutes per connector via the marketplace</p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--sector-soft);">
+                                <i class="fas fa-database text-xs" style="color: var(--sector);"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm">New data sources connected in ~10 minutes per connector via the marketplace</div>
+                                <p class="text-xs mt-1" style="color: var(--text-muted);">Browse pre-built connectors or generate new ones on demand. Activate with credentials.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -384,19 +449,20 @@
         </div>
     </section>
 
+
     <!-- CTA -->
-    <section class="py-24 section-fade">
+    <section class="section-alt py-24 border-t divider">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-2xl p-12">
-                <h3 class="text-3xl font-bold text-white mb-4">Start connecting your clinical trial stack</h3>
-                <p class="text-slate-400 mb-8 max-w-2xl mx-auto">
-                    302 live connectors for EDC, CTMS, safety, labs, and regulatory systems &mdash; now available. One unified API for your entire trial data ecosystem.
+            <div class="card text-center p-12 rounded-2xl" style="border-color: var(--sector-border);">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Start connecting your clinical trial stack</h2>
+                <p class="mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary);">
+                    300+ live connectors for EDC, CTMS, safety, labs, and regulatory systems &mdash; now available. One unified API for your entire trial data ecosystem.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://app.onehazel.com" class="px-8 py-4 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition shadow-[0_0_20px_rgba(147,51,234,0.3)] text-center">
-                        Launch App <i class="fas fa-arrow-right ml-2"></i>
+                    <a href="https://app.onehazel.com" class="btn-primary">
+                        Sign up to BETA <span class="ml-2">&rarr;</span>
                     </a>
-                    <a href="/" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 transition text-center">
+                    <a href="/" class="btn-secondary">
                         Explore All Industries
                     </a>
                 </div>
@@ -404,41 +470,44 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <section class="bg-slate-900 border-t border-slate-800 py-16">
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pb-12 mb-12 border-b border-slate-800">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t divider mb-10">
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">&lt;100ms</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Latency Overhead</div>
+                    <div class="font-extrabold text-lg mb-3" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence. Built by Elevate AI.</p>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">100%</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Schema Abstraction</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Product</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/pricing" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                        <a href="https://app.onehazel.com/docs" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">API Docs</a>
+                        <a href="https://app.onehazel.com" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Sign up to BETA</a>
+                    </div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">ISO/GDPR</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Compliant Hub</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Company</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/about" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                        <a href="/contact" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                    </div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-white mb-2">Global</div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Vendor Reach</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Legal</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/terms" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Terms &amp; Conditions</a>
+                        <a href="/privacy" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h4 class="text-white font-bold text-lg">OneHazel</h4>
-                    <p class="text-sm text-slate-500">The Vertical iPaaS for Data Intelligence.</p>
-                </div>
-                <div class="flex gap-6">
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">Launch App</a>
-                    <a href="https://app.onehazel.com" class="text-sm font-semibold text-slate-400 hover:text-white transition">API Docs</a>
-                    <a href="mailto:hello@onehazel.com" class="text-sm font-semibold text-blue-400 hover:text-blue-300 transition">Contact Us</a>
-                </div>
-            </div>
+            <div class="text-center text-xs" style="color: var(--text-muted);">&copy; 2026 ZS Digital Ltd. All rights reserved.</div>
         </div>
-    </section>
+    </footer>
 
+
+    <!-- Theme Toggle Script -->
+    <script src="/main.js"></script>
 </body>
 </html>
