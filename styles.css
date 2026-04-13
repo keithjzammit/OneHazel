@@ -494,7 +494,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
 }
 
-.mobile-menu a {
+.mobile-menu a:not(.btn-primary) {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -506,7 +506,7 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid var(--border);
 }
 
-.mobile-menu a:last-child {
+.mobile-menu a:not(.btn-primary):last-child {
     border-bottom: none;
 }
 
