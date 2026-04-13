@@ -67,45 +67,15 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-                <!-- Left: Contact Form -->
+                <!-- Left: HubSpot Embedded Form -->
                 <div class="card p-8 md:p-10 fade-up-1">
                     <h2 class="text-xl font-bold mb-6">Send Us a Message</h2>
-                    <form action="#" method="POST" class="flex flex-col gap-5">
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Name</label>
-                            <input type="text" name="name" required placeholder="Your full name"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Email</label>
-                            <input type="email" name="email" required placeholder="you@company.com"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Company</label>
-                            <input type="text" name="company" placeholder="Your company name"
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Subject</label>
-                            <select name="subject" required
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit;">
-                                <option value="" disabled selected>Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="enterprise">Enterprise Sales</option>
-                                <option value="support">Support</option>
-                                <option value="partnership">Partnership</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-sm font-medium block mb-1.5" style="color: var(--text);">Message</label>
-                            <textarea name="message" rows="5" required placeholder="Tell us how we can help..."
-                                style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: inherit; resize: vertical;"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary mt-2">
-                            Send Message <i class="fas fa-paper-plane ml-2 text-sm"></i>
-                        </button>
-                    </form>
+                    <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+                    <script src="https://js-eu1.hsforms.net/forms/embed/146772601.js" defer></script>
+                    <div class="hs-form-frame hs-onehazel-form" data-region="eu1" data-form-id="c8a5a62f-acd5-48be-959b-e6eb8a652cbd" data-portal-id="146772601"></div>
+                    <noscript>
+                        <p style="color: var(--text-secondary);">Please enable JavaScript to use the contact form, or email us directly at <a href="mailto:hello@onehazel.com" style="color: var(--accent-bright);">hello@onehazel.com</a>.</p>
+                    </noscript>
                 </div>
 
                 <!-- Right: Contact Info Cards -->
