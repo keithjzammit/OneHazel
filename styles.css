@@ -22,10 +22,10 @@
     --shadow: rgba(0,0,0,0.08);
     --marquee-text: #A1A1AA;
     --marquee-accent: #92400E;
-    /* Theme gradient for section-alt backgrounds — vivid layered mesh */
-    --glow-1: rgba(217, 119, 6, 0.12);
-    --glow-2: rgba(234, 88, 12, 0.07);
-    --glow-3: rgba(251, 191, 36, 0.06);
+    /* Theme gradient for section-alt backgrounds */
+    --glow-1: rgba(217, 119, 6, 0.25);
+    --glow-2: rgba(234, 88, 12, 0.15);
+    --glow-3: rgba(251, 191, 36, 0.12);
 }
 
 .dark {
@@ -49,9 +49,9 @@
     --shadow: rgba(0,0,0,0.4);
     --marquee-text: #52525B;
     --marquee-accent: #FBBF24;
-    --glow-1: rgba(251, 191, 36, 0.10);
-    --glow-2: rgba(245, 158, 11, 0.06);
-    --glow-3: rgba(217, 119, 6, 0.04);
+    --glow-1: rgba(251, 191, 36, 0.18);
+    --glow-2: rgba(245, 158, 11, 0.10);
+    --glow-3: rgba(217, 119, 6, 0.07);
 }
 
 /* ===== SECTOR-SPECIFIC ACCENT OVERRIDES =====
@@ -63,18 +63,18 @@
     --sector-bright: #34d399;
     --sector-soft: rgba(16, 185, 129, 0.07);
     --sector-border: rgba(16, 185, 129, 0.20);
-    --glow-1: rgba(16, 185, 129, 0.14);
-    --glow-2: rgba(5, 150, 105, 0.08);
-    --glow-3: rgba(52, 211, 153, 0.06);
+    --glow-1: rgba(16, 185, 129, 0.25);
+    --glow-2: rgba(5, 150, 105, 0.15);
+    --glow-3: rgba(52, 211, 153, 0.12);
 }
 .dark[data-sector="igaming"] {
     --sector: #34d399;
     --sector-bright: #6ee7b7;
     --sector-soft: rgba(52, 211, 153, 0.10);
     --sector-border: rgba(52, 211, 153, 0.25);
-    --glow-1: rgba(52, 211, 153, 0.10);
-    --glow-2: rgba(16, 185, 129, 0.06);
-    --glow-3: rgba(110, 231, 183, 0.04);
+    --glow-1: rgba(52, 211, 153, 0.18);
+    --glow-2: rgba(16, 185, 129, 0.10);
+    --glow-3: rgba(110, 231, 183, 0.07);
 }
 
 [data-sector="healthcare"] {
@@ -82,18 +82,18 @@
     --sector-bright: #06b6d4;
     --sector-soft: rgba(6, 182, 212, 0.07);
     --sector-border: rgba(6, 182, 212, 0.20);
-    --glow-1: rgba(6, 182, 212, 0.14);
-    --glow-2: rgba(14, 116, 144, 0.08);
-    --glow-3: rgba(34, 211, 238, 0.06);
+    --glow-1: rgba(6, 182, 212, 0.25);
+    --glow-2: rgba(14, 116, 144, 0.15);
+    --glow-3: rgba(34, 211, 238, 0.12);
 }
 .dark[data-sector="healthcare"] {
     --sector: #22d3ee;
     --sector-bright: #67e8f9;
     --sector-soft: rgba(34, 211, 238, 0.10);
     --sector-border: rgba(34, 211, 238, 0.25);
-    --glow-1: rgba(34, 211, 238, 0.10);
-    --glow-2: rgba(6, 182, 212, 0.06);
-    --glow-3: rgba(103, 232, 249, 0.04);
+    --glow-1: rgba(34, 211, 238, 0.18);
+    --glow-2: rgba(6, 182, 212, 0.10);
+    --glow-3: rgba(103, 232, 249, 0.07);
 }
 
 [data-sector="construction"] {
@@ -101,18 +101,18 @@
     --sector-bright: #f59e0b;
     --sector-soft: rgba(245, 158, 11, 0.07);
     --sector-border: rgba(245, 158, 11, 0.20);
-    --glow-1: rgba(245, 158, 11, 0.14);
-    --glow-2: rgba(217, 119, 6, 0.08);
-    --glow-3: rgba(251, 191, 36, 0.06);
+    --glow-1: rgba(245, 158, 11, 0.25);
+    --glow-2: rgba(217, 119, 6, 0.15);
+    --glow-3: rgba(251, 191, 36, 0.12);
 }
 .dark[data-sector="construction"] {
     --sector: #fbbf24;
     --sector-bright: #fcd34d;
     --sector-soft: rgba(251, 191, 36, 0.10);
     --sector-border: rgba(251, 191, 36, 0.25);
-    --glow-1: rgba(251, 191, 36, 0.10);
-    --glow-2: rgba(245, 158, 11, 0.06);
-    --glow-3: rgba(252, 211, 77, 0.04);
+    --glow-1: rgba(251, 191, 36, 0.18);
+    --glow-2: rgba(245, 158, 11, 0.10);
+    --glow-3: rgba(252, 211, 77, 0.07);
 }
 
 [data-sector="cannabis"] {
@@ -120,18 +120,18 @@
     --sector-bright: #84cc16;
     --sector-soft: rgba(132, 204, 22, 0.07);
     --sector-border: rgba(132, 204, 22, 0.20);
-    --glow-1: rgba(132, 204, 22, 0.14);
-    --glow-2: rgba(101, 163, 13, 0.08);
-    --glow-3: rgba(163, 230, 53, 0.06);
+    --glow-1: rgba(132, 204, 22, 0.25);
+    --glow-2: rgba(101, 163, 13, 0.15);
+    --glow-3: rgba(163, 230, 53, 0.12);
 }
 .dark[data-sector="cannabis"] {
     --sector: #a3e635;
     --sector-bright: #bef264;
     --sector-soft: rgba(163, 230, 53, 0.10);
     --sector-border: rgba(163, 230, 53, 0.25);
-    --glow-1: rgba(163, 230, 53, 0.10);
-    --glow-2: rgba(132, 204, 22, 0.06);
-    --glow-3: rgba(190, 242, 100, 0.04);
+    --glow-1: rgba(163, 230, 53, 0.18);
+    --glow-2: rgba(132, 204, 22, 0.10);
+    --glow-3: rgba(190, 242, 100, 0.07);
 }
 
 [data-sector="lifesciences"] {
@@ -139,18 +139,18 @@
     --sector-bright: #8b5cf6;
     --sector-soft: rgba(139, 92, 246, 0.07);
     --sector-border: rgba(139, 92, 246, 0.20);
-    --glow-1: rgba(139, 92, 246, 0.14);
-    --glow-2: rgba(124, 58, 237, 0.08);
-    --glow-3: rgba(167, 139, 250, 0.06);
+    --glow-1: rgba(139, 92, 246, 0.25);
+    --glow-2: rgba(124, 58, 237, 0.15);
+    --glow-3: rgba(167, 139, 250, 0.12);
 }
 .dark[data-sector="lifesciences"] {
     --sector: #a78bfa;
     --sector-bright: #c4b5fd;
     --sector-soft: rgba(167, 139, 250, 0.10);
     --sector-border: rgba(167, 139, 250, 0.25);
-    --glow-1: rgba(167, 139, 250, 0.10);
-    --glow-2: rgba(139, 92, 246, 0.06);
-    --glow-3: rgba(196, 181, 253, 0.04);
+    --glow-1: rgba(167, 139, 250, 0.18);
+    --glow-2: rgba(139, 92, 246, 0.10);
+    --glow-3: rgba(196, 181, 253, 0.07);
 }
 
 [data-sector="energy"] {
@@ -158,18 +158,18 @@
     --sector-bright: #eab308;
     --sector-soft: rgba(234, 179, 8, 0.07);
     --sector-border: rgba(234, 179, 8, 0.20);
-    --glow-1: rgba(234, 179, 8, 0.14);
-    --glow-2: rgba(202, 138, 4, 0.08);
-    --glow-3: rgba(253, 224, 71, 0.06);
+    --glow-1: rgba(234, 179, 8, 0.25);
+    --glow-2: rgba(202, 138, 4, 0.15);
+    --glow-3: rgba(253, 224, 71, 0.12);
 }
 .dark[data-sector="energy"] {
     --sector: #facc15;
     --sector-bright: #fde047;
     --sector-soft: rgba(253, 224, 71, 0.10);
     --sector-border: rgba(253, 224, 71, 0.25);
-    --glow-1: rgba(253, 224, 71, 0.10);
-    --glow-2: rgba(234, 179, 8, 0.06);
-    --glow-3: rgba(254, 240, 138, 0.04);
+    --glow-1: rgba(253, 224, 71, 0.18);
+    --glow-2: rgba(234, 179, 8, 0.10);
+    --glow-3: rgba(254, 240, 138, 0.07);
 }
 
 /* ===== BASE ===== */
@@ -411,12 +411,12 @@ html.dark .icon-moon { display: none; }
 /* ===== SECTION UTILITIES ===== */
 .section-alt {
     background:
-        /* Primary glow — vivid, top-center */
-        radial-gradient(ellipse 70% 45% at 50% 0%, var(--glow-1) 0%, transparent 70%),
+        /* Primary glow — vivid, top-center, wide coverage */
+        radial-gradient(ellipse 90% 55% at 50% 0%, var(--glow-1) 0%, transparent 65%),
         /* Secondary glow — offset left, creates asymmetry */
-        radial-gradient(ellipse 50% 40% at 20% 30%, var(--glow-2) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 15% 25%, var(--glow-2) 0%, transparent 55%),
         /* Tertiary glow — offset right, completes the mesh */
-        radial-gradient(ellipse 50% 40% at 80% 60%, var(--glow-3) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 65%, var(--glow-3) 0%, transparent 55%),
         /* Noise grain texture for depth */
         url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
         var(--bg-subtle);
