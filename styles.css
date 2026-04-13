@@ -357,6 +357,10 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg-subtle);
 }
 
+/* ===== LOGO MARQUEE ===== */
+/* Dark mode: override all brand colors to white */
+.dark .logo-marquee i { color: #FFFFFF !important; opacity: 0.85; }
+
 /* ===== MARQUEE ===== */
 .marquee-track {
     display: flex;
