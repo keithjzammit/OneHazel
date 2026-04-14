@@ -153,12 +153,35 @@
         </div>
     </section>
 
+    <!-- ===== EARLY VENDOR PROGRAMME BANNER ===== -->
+    <section class="section-base border-t divider" style="padding-top: 3rem;">
+        <div class="max-w-4xl mx-auto px-6 pb-10 fade-up-1">
+            <div class="rounded-2xl p-8 md:p-10 text-center" style="background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%); border: 2px solid var(--accent-border);">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <i class="fas fa-crown text-sm" style="color: var(--accent-bright);"></i>
+                    <span class="mono text-xs font-semibold uppercase tracking-wider" style="color: var(--accent-bright);">Early Vendor Programme</span>
+                </div>
+                <p class="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-6" style="color: var(--text-secondary);">
+                    Vendors who join the OneHazel marketplace during beta lock in reduced rates when we go to production launch. Early Verified vendors pay <strong style="color: var(--text);">&euro;249/mo</strong> and early Strategic vendors pay <strong style="color: var(--text);">&euro;749/mo</strong> -- locked for life as long as you maintain an active plan.
+                </p>
+                <a href="https://app.onehazel.com" class="btn-primary inline-flex" style="padding: 12px 24px; font-size: 14px; border-radius: 10px;">
+                    Join the Marketplace <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== SELF-SERVE PRICING TIERS ===== -->
-    <section class="section-base border-t divider py-20">
+    <section id="pricing-container" class="section-base pb-20 billing-annual">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12 fade-up-1">
+            <div class="text-center mb-10 fade-up-1">
                 <span class="badge mb-6"><i class="fas fa-tags text-[10px]"></i> PRICING</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold" style="letter-spacing: -0.03em;">Self-serve plans</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8" style="letter-spacing: -0.03em;">Self-serve plans</h2>
+                <!-- Billing Toggle -->
+                <div class="inline-flex rounded-full p-1" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                    <button class="billing-btn active" data-billing="annual">Annual <span class="ml-1.5 text-[10px] font-bold" style="color: var(--success);">Save 20%</span></button>
+                    <button class="billing-btn" data-billing="monthly">Monthly</button>
+                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-up-2">
 
@@ -198,8 +221,14 @@
                     <div class="mb-6">
                         <h3 class="text-lg font-bold mb-1">Verified</h3>
                         <div class="flex items-baseline gap-1 mb-1">
-                            <span class="text-3xl font-extrabold">&euro;299</span>
+                            <span class="text-3xl font-extrabold price-annual">&euro;399</span>
+                            <span class="text-3xl font-extrabold price-monthly">&euro;499</span>
                             <span class="text-sm" style="color: var(--text-muted);">/mo</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: var(--success-soft); color: var(--success); border: 1px solid var(--success-border);">FOUNDING</span>
+                            <span class="text-sm font-bold price-annual" style="color: var(--success);">&euro;199/mo</span>
+                            <span class="text-sm font-bold price-monthly" style="color: var(--success);">&euro;249/mo</span>
                         </div>
                         <p class="text-xs mt-2" style="color: var(--text-muted);">Stand out, convert more operators, and understand your usage</p>
                     </div>
@@ -234,8 +263,14 @@
                     <div class="mb-6">
                         <h3 class="text-lg font-bold mb-1">Strategic</h3>
                         <div class="flex items-baseline gap-1 mb-1">
-                            <span class="text-3xl font-extrabold">&euro;799</span>
+                            <span class="text-3xl font-extrabold price-annual">&euro;1,199</span>
+                            <span class="text-3xl font-extrabold price-monthly">&euro;1,499</span>
                             <span class="text-sm" style="color: var(--text-muted);">/mo</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="mono text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background: var(--success-soft); color: var(--success); border: 1px solid var(--success-border);">FOUNDING</span>
+                            <span class="text-sm font-bold price-annual" style="color: var(--success);">&euro;599/mo</span>
+                            <span class="text-sm font-bold price-monthly" style="color: var(--success);">&euro;749/mo</span>
                         </div>
                         <p class="text-xs mt-2" style="color: var(--text-muted);">Maximum visibility, co-marketing, and deep integration support</p>
                     </div>
@@ -478,6 +513,16 @@
                     </summary>
                     <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
                         Yes. You can move from Listed to Verified or Strategic at any time. Upgrades take effect immediately. To join the Partner Programme, you need to apply separately regardless of your current tier.
+                    </p>
+                </details>
+
+                <details class="card p-6 group">
+                    <summary class="flex items-center justify-between cursor-pointer list-none font-semibold" style="color: var(--text);">
+                        Do you offer annual billing for vendors?
+                        <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
+                    </summary>
+                    <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                        Yes. Annual billing saves 20% compared to monthly on all paid tiers. Annual plans are billed upfront for the full year.
                     </p>
                 </details>
 
