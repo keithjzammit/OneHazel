@@ -230,10 +230,15 @@
             <div class="card p-0 overflow-hidden fade-up">
                 <div class="grid grid-cols-1 md:grid-cols-5">
 
-                    <!-- Photo: 2 cols -->
-                    <div class="md:col-span-2 relative min-h-[260px] md:min-h-0">
-                        <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit, CEO & Founder" class="w-full h-full object-cover object-top" style="min-height: 280px;">
-                        <div class="absolute inset-0 md:hidden" style="background: linear-gradient(to top, var(--bg-card) 20%, transparent 60%);"></div>
+                    <!-- Conference photo: 2 cols -->
+                    <div class="md:col-span-2 relative min-h-[280px] md:min-h-0">
+                        <img src="/images/keith-conference.jpg" alt="Keith Zammit speaking at AIBC" class="w-full h-full object-cover object-center" style="min-height: 280px;">
+                        <!-- Mobile gradient fade into card -->
+                        <div class="absolute inset-0 md:hidden" style="background: linear-gradient(to top, var(--bg-card) 15%, transparent 55%);"></div>
+                        <!-- Subtle context label on photo -->
+                        <div class="absolute bottom-3 left-3 hidden md:block">
+                            <span class="mono text-[9px] px-2 py-1 rounded" style="background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.75); backdrop-filter: blur(4px);">AIBC Summit, Malta</span>
+                        </div>
                     </div>
 
                     <!-- Quote: 3 cols -->
@@ -246,6 +251,7 @@
                             "We started OneHazel because we saw brilliant companies held back by a problem that shouldn't exist. The tools to transform your business are already out there. The only thing standing between you and them is the integration. We're removing that barrier entirely."
                         </blockquote>
                         <div class="flex items-center gap-3">
+                            <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit" class="w-10 h-10 rounded-full object-cover flex-shrink-0" style="border: 2px solid var(--accent-border);">
                             <div>
                                 <p class="font-bold text-sm">Keith Zammit</p>
                                 <p class="text-xs" style="color: var(--text-muted);">CEO &amp; Founder, OneHazel</p>
@@ -410,8 +416,20 @@
 
             </div>
 
-            <p class="text-sm text-center fade-up-3" style="color: var(--text-muted);">Based in Malta, at the heart of the global iGaming industry. Backed by strategic partners with deep roots in regulated markets.</p>
+        </div>
+    </section>
 
+    <!-- ===== MALTA BANNER ===== -->
+    <section class="relative overflow-hidden border-t divider" style="min-height: 220px;">
+        <img src="/images/malta.jpg" alt="Valletta, Malta" class="absolute inset-0 w-full h-full object-cover object-center" style="filter: brightness(0.55) saturate(0.9);">
+        <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-14 md:py-20">
+            <span class="mono text-[10px] uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.55);">Headquarters</span>
+            <h3 class="font-extrabold text-white mb-2" style="font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -0.02em; text-shadow: 0 2px 12px rgba(0,0,0,0.4);">
+                Based in Malta
+            </h3>
+            <p class="text-sm max-w-md leading-relaxed" style="color: rgba(255,255,255,0.72); text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
+                At the heart of the global iGaming industry. Backed by strategic partners with deep roots in regulated markets.
+            </p>
         </div>
     </section>
 
