@@ -431,9 +431,32 @@
                         What counts as an AI agent action?
                         <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
                     </summary>
-                    <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        Each time an AI agent performs a discrete task -- discovering a vendor API, generating integration code, running a test suite, detecting an API change, or self-healing a broken connection -- that counts as one action. AI agents also run daily sweeps on your private vendor connections; if a change is detected and remediation is needed, that counts as an additional action. Each private connection uses roughly 30--90 agent actions per month depending on vendor API volatility. Calling a OneHazel agent within a workflow for data manipulation, inference, or creation counts as one action. Each message sent to the AI Workflow Builder or the AI on the analytics dashboard also counts as one action.
-                    </p>
+                    <div class="mt-4">
+                        <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">
+                            An AI agent action is consumed each time an agent performs a discrete task on your behalf. Actions fall into four categories:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">Connector lifecycle</div>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Discovering a vendor API, generating integration code, running a test suite, detecting an API change, or self-healing a broken connection.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">Private connection monitoring</div>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">AI agents run daily sweeps on your private vendor connections. If a change is detected and remediation is needed, that counts as an additional action. Each private connection typically uses 30--90 actions per month depending on the vendor's API volatility.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">In-workflow agents</div>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Calling a OneHazel agent within a workflow for data manipulation, inference, or content creation counts as one action per call.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
+                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">AI assistants</div>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Each message sent to the AI Workflow Builder or the AI on the analytics dashboard counts as one action.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-relaxed pt-3" style="color: var(--text-muted); border-top: 1px solid var(--border);">
+                            In short: if an AI agent thinks, builds, analyses, or responds on your behalf, that is one action. Standard API calls flowing through the unified API to vendors do not consume agent actions -- those are metered separately as API calls.
+                        </p>
+                    </div>
                 </details>
 
                 <details class="card p-6 group">
