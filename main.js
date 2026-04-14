@@ -58,6 +58,22 @@
         });
     }
 
+    // ===== PRICING BILLING TOGGLE =====
+    var pricingContainer = document.getElementById('pricing-container');
+    if (pricingContainer) {
+        var billingBtns = pricingContainer.querySelectorAll('.billing-btn');
+        pricingContainer.classList.add('billing-annual');
+        billingBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var billing = btn.dataset.billing;
+                pricingContainer.classList.remove('billing-annual', 'billing-monthly');
+                pricingContainer.classList.add('billing-' + billing);
+                billingBtns.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+            });
+        });
+    }
+
     // ===== SECTOR BACKGROUND DECORATIONS =====
     var sector = html.dataset.sector || 'default';
 
