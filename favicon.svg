@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- "1" — solid gold bar -->
-  <rect x="5" y="3" width="5.5" height="25" rx="2.5" fill="#D08B1A"/>
-  <!-- "H" — black, two pillars with connecting circle -->
-  <rect x="15" y="3" width="5" height="25" rx="2.5" fill="#18181B"/>
-  <rect x="24.5" y="3" width="5" height="25" rx="2.5" fill="#18181B"/>
-  <circle cx="22.25" cy="15.5" r="3.8" fill="#18181B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="6" fill="url(#g)"/>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="white">1H</text>
 </svg>

@@ -20,6 +20,10 @@
     --gradient-end: #D97706;
     --shadow-sm: rgba(0,0,0,0.04);
     --shadow: rgba(0,0,0,0.08);
+    --success: #059669;
+    --success-bright: #10b981;
+    --success-soft: rgba(5, 150, 105, 0.08);
+    --success-border: rgba(5, 150, 105, 0.20);
     --marquee-text: #A1A1AA;
     --marquee-accent: #92400E;
     /* Theme gradient for section-alt backgrounds */
@@ -47,6 +51,10 @@
     --gradient-end: #FDE68A;
     --shadow-sm: rgba(0,0,0,0.2);
     --shadow: rgba(0,0,0,0.4);
+    --success: #34d399;
+    --success-bright: #6ee7b7;
+    --success-soft: rgba(52, 211, 153, 0.10);
+    --success-border: rgba(52, 211, 153, 0.25);
     --marquee-text: #52525B;
     --marquee-accent: #FBBF24;
     --glow-1: rgba(251, 191, 36, 0.18);
@@ -651,6 +659,33 @@ html.dark .icon-moon { display: none; }
     background-size: 20px 40px;
     opacity: 0.08;
 }
+
+/* ===== PRICING BILLING TOGGLE ===== */
+.billing-btn {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.billing-btn.active {
+    background: var(--bg-card);
+    color: var(--text);
+    box-shadow: 0 1px 3px var(--shadow-sm);
+}
+
+.billing-btn:hover:not(.active) {
+    color: var(--text-secondary);
+}
+
+#pricing-container.billing-annual .price-monthly { display: none; }
+#pricing-container.billing-monthly .price-annual { display: none; }
 
 .section-base { background: var(--bg); }
 .divider { border-color: var(--border); }
