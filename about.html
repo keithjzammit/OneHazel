@@ -12,6 +12,75 @@
 <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
 <!-- End of HubSpot Embed Code -->
+<style>
+    /* About page — section-specific styles */
+    .about-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+    .about-stat-num {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--accent-bright);
+        line-height: 1;
+    }
+    .about-stat-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        font-family: 'IBM Plex Mono', monospace;
+        white-space: nowrap;
+    }
+    .problem-num {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 700;
+        line-height: 0.9;
+        color: var(--accent-bright);
+        opacity: 0.15;
+        position: absolute;
+        top: -0.15em;
+        left: -0.05em;
+        pointer-events: none;
+        user-select: none;
+    }
+    .trust-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .trust-row:last-child {
+        border-bottom: none;
+    }
+    .trust-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-border);
+    }
+    /* Pull quote decoration */
+    .pull-quote::before {
+        content: '\201C';
+        font-size: 6rem;
+        line-height: 0.5;
+        color: var(--accent-bright);
+        opacity: 0.2;
+        display: block;
+        margin-bottom: -1rem;
+        font-family: Georgia, serif;
+    }
+</style>
 </head>
 <body class="antialiased">
 
@@ -19,87 +88,174 @@
     <div id="site-nav"></div>
 
     <!-- ===== HERO ===== -->
-    <section class="section-base pt-20 md:pt-28 pb-16">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="fade-up badge mb-8">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
-                About Us
+    <section class="section-base pt-20 md:pt-28 pb-10">
+        <div class="max-w-5xl mx-auto px-6">
+
+            <!-- Top row: badge + heading -->
+            <div class="text-center mb-12">
+                <div class="fade-up badge mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
+                    Built by Elevate AI
+                </div>
+                <h1 class="fade-up-1 font-extrabold leading-[1.05] mb-5" style="font-size: clamp(2.8rem, 7vw, 5rem); letter-spacing: -0.04em;">
+                    We made the last integration<br>
+                    <span class="gradient-text">you'll ever build.</span>
+                </h1>
+                <p class="fade-up-2 text-lg max-w-xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                    OneHazel was born from the same frustration you've felt -- and built by people who've lived it firsthand.
+                </p>
             </div>
-            <h1 class="fade-up-1 font-extrabold mb-6 leading-[1.05]" style="font-size: clamp(2.4rem, 6vw, 4.5rem); letter-spacing: -0.035em;">
-                About <span class="gradient-text">OneHazel</span>
-            </h1>
-            <p class="fade-up-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
-                Built by Elevate AI to solve the integration problem once and for all.
-            </p>
+
+            <!-- Stat strip -->
+            <div class="fade-up-2 flex items-center justify-center gap-8 md:gap-16 flex-wrap py-8 border-t border-b divider">
+                <div class="about-stat">
+                    <span class="about-stat-num">300+</span>
+                    <span class="about-stat-label">Connectors</span>
+                </div>
+                <div class="w-px h-8 hidden md:block" style="background: var(--border);"></div>
+                <div class="about-stat">
+                    <span class="about-stat-num">22</span>
+                    <span class="about-stat-label">Workflow Node Types</span>
+                </div>
+                <div class="w-px h-8 hidden md:block" style="background: var(--border);"></div>
+                <div class="about-stat">
+                    <span class="about-stat-num">6</span>
+                    <span class="about-stat-label">Industry Verticals</span>
+                </div>
+                <div class="w-px h-8 hidden md:block" style="background: var(--border);"></div>
+                <div class="about-stat">
+                    <span class="about-stat-num">~10 min</span>
+                    <span class="about-stat-label">Per Connector</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- ===== OUR STORY ===== -->
     <section class="section-alt py-16 md:py-20 border-t divider">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="fade-up text-center mb-10">
+        <div class="max-w-5xl mx-auto px-6">
+
+            <div class="fade-up mb-10">
                 <div class="badge mb-5">
                     <i class="fas fa-book-open text-xs"></i>
                     Our Story
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
-                    Born from <span class="gradient-text">Frustration</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold" style="letter-spacing: -0.03em;">
+                    Born at a gaming conference. <span class="gradient-text">Built for every industry.</span>
                 </h2>
             </div>
-            <div class="card p-8 md:p-10 fade-up-1">
-                <div class="flex flex-col gap-5 text-base md:text-lg leading-relaxed" style="color: var(--text-secondary);">
-                    <p>OneHazel was born at a gaming conference. Not from a pitch deck or a whiteboard session, but from the same conversation repeated dozens of times across the exhibition floor: "We know the tools exist. We just don't have the engineering capacity to integrate them."</p>
-                    <p>Every operator we spoke to was fighting the same battle. Months spent building custom connectors. Vendor APIs changing without warning and breaking integrations overnight. Engineering teams buried in maintenance instead of building product. The frustration was universal, and the cost was enormous.</p>
-                    <p>We built OneHazel to make that problem disappear. Our AI agents read vendor documentation, generate production-ready connectors, test them, and monitor them for changes. What used to take an engineering team months now takes minutes. And when an API changes, the platform detects it and repairs the connector automatically.</p>
-                    <p style="color: var(--text);" class="font-medium">No more integration debt. No more vendor lock-in. No more 2am fires because a provider updated their API.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 fade-up-1">
+
+                <!-- Main text: 3 columns -->
+                <div class="md:col-span-3 flex flex-col gap-5 text-base leading-relaxed" style="color: var(--text-secondary);">
+                    <p>OneHazel was born at a gaming conference -- not from a pitch deck, but from the same conversation repeated dozens of times: <em style="color: var(--text);">"We know the tools exist. We just don't have the engineering capacity to integrate them."</em></p>
+                    <p>Every operator we spoke to was fighting the same battle: months building custom connectors, vendor APIs breaking overnight, engineering teams buried in maintenance. The frustration was universal.</p>
+                    <p>So we built OneHazel. Our AI agents generate production connectors in minutes, monitor them continuously, and repair them automatically when APIs change.</p>
                 </div>
+
+                <!-- Pull quote: 2 columns -->
+                <div class="md:col-span-2">
+                    <div class="card p-7 h-full flex flex-col justify-center" style="border-color: var(--accent-border);">
+                        <div class="pull-quote"></div>
+                        <p class="text-base md:text-lg font-semibold leading-snug mb-4" style="color: var(--text);">
+                            No more integration debt. No more vendor lock-in. No more 2am fires.
+                        </p>
+                        <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--accent-bright);">The OneHazel promise</div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 
     <!-- ===== WHAT WE'RE SOLVING ===== -->
     <section class="section-base py-16 md:py-20 border-t divider">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="fade-up text-center mb-10">
+        <div class="max-w-5xl mx-auto px-6">
+
+            <div class="fade-up mb-12">
                 <div class="badge mb-5">
                     <i class="fas fa-puzzle-piece text-xs"></i>
-                    What We're Solving
+                    The Problem
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
-                    The Problem with <span class="gradient-text">Enterprise Integration</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold" style="letter-spacing: -0.03em;">
+                    Why integration keeps<br><span class="gradient-text">breaking businesses</span>
                 </h2>
             </div>
-            <div class="card p-8 md:p-10 fade-up-1">
-                <div class="flex flex-col gap-5 text-base md:text-lg leading-relaxed" style="color: var(--text-secondary);">
-                    <p>Integrations are invisible plumbing. Nobody's customers care how many connectors are running behind the scenes, but when one breaks, everyone notices.</p>
-                    <p>The traditional approach is unsustainable: hire engineers, read documentation, build bespoke code, maintain it forever, and repeat for every new vendor. It doesn't scale, and it pulls your best people away from work that actually moves your business forward.</p>
-                    <p>OneHazel replaces that entire cycle with a single platform. You connect once to OneHazel, and through our unified API you can reach any vendor in our marketplace using the same format, the same data model, the same monitoring dashboard. We handle the authentication, the field mapping, the error handling, and the retries.</p>
-                    <p style="color: var(--accent-bright);" class="font-bold text-lg">One integration. Every vendor. That's it.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 fade-up-1">
+
+                <div class="card p-7 relative overflow-hidden">
+                    <span class="problem-num">01</span>
+                    <div class="relative">
+                        <h3 class="font-bold text-sm mb-2">Integration debt compounds</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Every custom connector you build is technical debt with a ticking clock. APIs change, teams move on, and maintenance becomes a second full-time job.</p>
+                    </div>
                 </div>
+
+                <div class="card p-7 relative overflow-hidden">
+                    <span class="problem-num">02</span>
+                    <div class="relative">
+                        <h3 class="font-bold text-sm mb-2">Custom code doesn't scale</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Building one-off integrations for each vendor is expensive and slow. The more vendors you need, the further engineering falls behind the business.</p>
+                    </div>
+                </div>
+
+                <div class="card p-7 relative overflow-hidden">
+                    <span class="problem-num">03</span>
+                    <div class="relative">
+                        <h3 class="font-bold text-sm mb-2">Your engineers deserve better</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Your best people should be building your product -- not babysitting API plumbing. Integration maintenance pulls them away from the work that actually moves your business.</p>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Big typographic moment -->
+            <div class="fade-up-2 text-center py-8 px-6 rounded-2xl" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
+                <p class="font-extrabold gradient-text" style="font-size: clamp(1.6rem, 4vw, 2.8rem); letter-spacing: -0.03em; -webkit-text-fill-color: transparent;">
+                    One integration. Every vendor. That's it.
+                </p>
+                <p class="mt-3 text-sm" style="color: var(--text-secondary);">You connect to OneHazel once. We handle every vendor from there.</p>
+            </div>
+
         </div>
     </section>
 
     <!-- ===== CEO QUOTE ===== -->
     <section class="section-alt py-16 md:py-20 border-t divider">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="fade-up text-center mb-10">
-                <div class="badge mb-5">
-                    <i class="fas fa-quote-left text-xs"></i>
-                    A Message from Our CEO
-                </div>
-            </div>
-            <div class="card p-8 md:p-12 fade-up-1 text-center">
-                <i class="fas fa-quote-left text-3xl mb-6" style="color: var(--accent-soft);"></i>
-                <p class="text-xl md:text-2xl font-semibold leading-relaxed mb-8" style="color: var(--text);">
-                    We started OneHazel because we saw brilliant companies held back by a problem that shouldn't exist. The tools to transform your business are already out there. The only thing standing between you and them is the integration. We're removing that barrier entirely, so you can focus on what actually matters: building products your customers love.
-                </p>
-                <div class="flex items-center justify-center gap-3">
-                    <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit" class="w-10 h-10 rounded-full object-cover flex-shrink-0" style="border: 2px solid var(--accent-border);">
-                    <div class="text-left">
-                        <p class="text-sm font-bold">Keith Zammit</p>
-                        <p class="text-xs" style="color: var(--text-muted);">CEO &amp; Founder, OneHazel</p>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="card p-0 overflow-hidden fade-up">
+                <div class="grid grid-cols-1 md:grid-cols-5">
+
+                    <!-- Photo: 2 cols -->
+                    <div class="md:col-span-2 relative min-h-[260px] md:min-h-0">
+                        <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit, CEO & Founder" class="w-full h-full object-cover object-top" style="min-height: 280px;">
+                        <div class="absolute inset-0 md:hidden" style="background: linear-gradient(to top, var(--bg-card) 20%, transparent 60%);"></div>
                     </div>
+
+                    <!-- Quote: 3 cols -->
+                    <div class="md:col-span-3 p-8 md:p-10 flex flex-col justify-center">
+                        <div class="badge mb-6 self-start">
+                            <i class="fas fa-quote-left text-[10px]"></i>
+                            From the CEO
+                        </div>
+                        <blockquote class="text-lg md:text-xl font-semibold leading-relaxed mb-8" style="color: var(--text);">
+                            "We started OneHazel because we saw brilliant companies held back by a problem that shouldn't exist. The tools to transform your business are already out there. The only thing standing between you and them is the integration. We're removing that barrier entirely."
+                        </blockquote>
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <p class="font-bold text-sm">Keith Zammit</p>
+                                <p class="text-xs" style="color: var(--text-muted);">CEO &amp; Founder, OneHazel</p>
+                            </div>
+                            <a href="https://www.linkedin.com/in/keithjzammit/" target="_blank" rel="noopener noreferrer" class="ml-auto hover:opacity-70 transition">
+                                <i class="fab fa-linkedin text-xl" style="color: #0A66C2;"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -108,55 +264,64 @@
     <!-- ===== WHY COMPANIES TRUST ONEHAZEL ===== -->
     <section class="section-base py-16 md:py-20 border-t divider">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="fade-up text-center mb-10">
-                <div class="badge mb-5">
-                    <i class="fas fa-shield-alt text-xs"></i>
-                    Why Companies Trust OneHazel
-                </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold" style="letter-spacing: -0.03em;">
-                    Security and Reliability <span class="gradient-text">by Design</span>
-                </h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up-1">
 
-                <div class="card p-7">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                        <i class="fas fa-database text-sm" style="color: var(--accent-bright);"></i>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+
+                <!-- Left: heading -->
+                <div class="md:col-span-2 fade-up">
+                    <div class="badge mb-5">
+                        <i class="fas fa-shield-alt text-xs"></i>
+                        Trust &amp; Security
                     </div>
-                    <h3 class="text-sm font-bold mb-2">Your data stays yours</h3>
-                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Every operator's data is completely isolated through row-level security. No other company on the platform can see your connections, logs, or events. We never store request or response payloads permanently.</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.03em;">
+                        Why companies <span class="gradient-text">trust us</span> with their data
+                    </h2>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Security is architecture, not an afterthought. Every layer of OneHazel is built with isolation and protection by default.</p>
                 </div>
 
-                <div class="card p-7">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                        <i class="fas fa-lock text-sm" style="color: var(--accent-bright);"></i>
-                    </div>
-                    <h3 class="text-sm font-bold mb-2">Security built in, not bolted on</h3>
-                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">API keys are hashed with SHA-256 and never stored in plain text. Provider credentials are encrypted with AES-256-GCM at rest. All traffic runs over HTTPS/TLS. Every action is recorded in an immutable audit trail that cannot be deleted or tampered with.</p>
-                </div>
+                <!-- Right: trust rows -->
+                <div class="md:col-span-3 fade-up-1">
 
-                <div class="card p-7">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                        <i class="fas fa-robot text-sm" style="color: var(--accent-bright);"></i>
+                    <div class="trust-row">
+                        <div class="trust-icon"><i class="fas fa-database text-xs" style="color: var(--accent-bright);"></i></div>
+                        <div>
+                            <p class="font-semibold text-sm mb-0.5">Your data stays yours</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Complete isolation through row-level security. No other company sees your connections, logs, or events. Payloads are never stored permanently.</p>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-bold mb-2">Integrations that heal themselves</h3>
-                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Our AI agents continuously monitor connected APIs for changes. When a vendor updates their documentation or modifies an endpoint, OneHazel detects the drift and repairs the connector automatically, before it affects your operations.</p>
-                </div>
 
-                <div class="card p-7">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                        <i class="fas fa-bolt text-sm" style="color: var(--accent-bright);"></i>
+                    <div class="trust-row">
+                        <div class="trust-icon"><i class="fas fa-lock text-xs" style="color: var(--accent-bright);"></i></div>
+                        <div>
+                            <p class="font-semibold text-sm mb-0.5">Security built in, not bolted on</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">SHA-256 hashed API keys. AES-256-GCM encrypted credentials. HTTPS/TLS throughout. Immutable audit trail on every action.</p>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-bold mb-2">Resilience by design</h3>
-                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Circuit breakers and rate limiting are built into the gateway, so a misbehaving provider cannot cascade failures into your other integrations. If a vendor degrades, we isolate the problem and alert you in real time.</p>
-                </div>
 
-                <div class="card p-7 md:col-span-2">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                        <i class="fas fa-clipboard-check text-sm" style="color: var(--accent-bright);"></i>
+                    <div class="trust-row">
+                        <div class="trust-icon"><i class="fas fa-robot text-xs" style="color: var(--accent-bright);"></i></div>
+                        <div>
+                            <p class="font-semibold text-sm mb-0.5">Integrations that heal themselves</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">AI agents monitor APIs continuously. When a vendor changes an endpoint, OneHazel detects and repairs the connector before it affects your operations.</p>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-bold mb-2">Compliance-ready from day one</h3>
-                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Full GDPR data export and account anonymisation are built into the platform. Your data, your rules.</p>
+
+                    <div class="trust-row">
+                        <div class="trust-icon"><i class="fas fa-bolt text-xs" style="color: var(--accent-bright);"></i></div>
+                        <div>
+                            <p class="font-semibold text-sm mb-0.5">Resilience by design</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Circuit breakers isolate misbehaving vendors. Rate limiting is built into the gateway. Failures never cascade across your integrations.</p>
+                        </div>
+                    </div>
+
+                    <div class="trust-row">
+                        <div class="trust-icon"><i class="fas fa-clipboard-check text-xs" style="color: var(--accent-bright);"></i></div>
+                        <div>
+                            <p class="font-semibold text-sm mb-0.5">Compliance-ready from day one</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Full GDPR data export and account anonymisation built in. Your data, your rules.</p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -172,15 +337,11 @@
                     <i class="fas fa-users text-xs"></i>
                     The Team
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5" style="letter-spacing: -0.03em;">
-                    The <span class="gradient-text">Team</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.03em;">
+                    Operators and technologists,<br><span class="gradient-text">not outsiders</span>
                 </h2>
-            </div>
-
-            <!-- Not outsiders -->
-            <div class="card p-7 mb-10 fade-up-1">
-                <p class="text-base leading-relaxed" style="color: var(--text-secondary);">
-                    We are not outsiders building for an industry we have read about. We have spent our careers inside it -- across iGaming, financial services, AML, risk management, and enterprise technology. We understand the regulatory pressures, the vendor landscape, and the operational realities, because we have lived them.
+                <p class="text-base max-w-xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                    We have spent our careers inside iGaming, financial services, AML, risk management, and enterprise technology -- not reading about them.
                 </p>
             </div>
 
@@ -188,9 +349,8 @@
             <p class="text-xs font-bold uppercase tracking-widest mb-5 fade-up-1" style="color: var(--text-muted);">Leadership</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 fade-up-2">
 
-                <!-- Keith Zammit -->
                 <div class="card p-7 text-center">
-                    <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit" class="w-24 h-24 rounded-full object-cover mx-auto mb-4" style="border: 2px solid var(--accent-border);">
+                    <img src="/images/team/keith-zammit.jpg" alt="Keith Zammit" class="w-24 h-24 rounded-full object-cover object-top mx-auto mb-4" style="border: 2px solid var(--accent-border);">
                     <h3 class="font-bold text-base mb-0.5">Keith Zammit</h3>
                     <p class="text-sm mb-3" style="color: var(--text-muted);">CEO &amp; Founder</p>
                     <a href="https://www.linkedin.com/in/keithjzammit/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs hover:opacity-70 transition" style="color: var(--text-muted);">
@@ -198,7 +358,6 @@
                     </a>
                 </div>
 
-                <!-- Christian Harms -->
                 <div class="card p-7 text-center">
                     <img src="/images/team/christian-harms.jpg" alt="Christian Harms" class="w-24 h-24 rounded-full object-cover mx-auto mb-4" style="border: 2px solid var(--accent-border);">
                     <h3 class="font-bold text-base mb-0.5">Christian Harms</h3>
@@ -208,7 +367,6 @@
                     </a>
                 </div>
 
-                <!-- Ella Beaumont -->
                 <div class="card p-7 text-center">
                     <img src="/images/team/ella-beaumont.jpg" alt="Ella Beaumont" class="w-24 h-24 rounded-full object-cover mx-auto mb-4" style="border: 2px solid var(--accent-border);">
                     <h3 class="font-bold text-base mb-0.5">Ella Beaumont</h3>
@@ -224,7 +382,6 @@
             <p class="text-xs font-bold uppercase tracking-widest mb-5 fade-up-2" style="color: var(--text-muted);">Advisory Board</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10 fade-up-3">
 
-                <!-- Michael Earley -->
                 <div class="card p-6 flex items-center gap-4">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-semibold text-sm mono" style="background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border);">ME</div>
                     <div class="flex-1 min-w-0">
@@ -238,7 +395,6 @@
                     </div>
                 </div>
 
-                <!-- Mikko Puhakka -->
                 <div class="card p-6 flex items-center gap-4">
                     <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-semibold text-sm mono" style="background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border);">MP</div>
                     <div class="flex-1 min-w-0">
@@ -254,42 +410,8 @@
 
             </div>
 
-            <!-- Closing line -->
             <p class="text-sm text-center fade-up-3" style="color: var(--text-muted);">Based in Malta, at the heart of the global iGaming industry. Backed by strategic partners with deep roots in regulated markets.</p>
 
-        </div>
-    </section>
-
-    <!-- ===== KEY NUMBERS ===== -->
-    <section class="section-base py-16 md:py-20 border-t divider">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-10">
-                <div class="badge mb-5">
-                    <i class="fas fa-chart-bar text-xs"></i>
-                    Key Numbers
-                </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold" style="letter-spacing: -0.03em;">
-                    OneHazel <span class="gradient-text">at a Glance</span>
-                </h2>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="border: 1px solid var(--border); background: var(--border);">
-                <div class="py-8 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl md:text-4xl mb-2">300+</div>
-                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Connectors</div>
-                </div>
-                <div class="py-8 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl md:text-4xl mb-2">22</div>
-                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Workflow Node Types</div>
-                </div>
-                <div class="py-8 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl md:text-4xl mb-2">6</div>
-                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Industry Verticals</div>
-                </div>
-                <div class="py-8 px-4 text-center" style="background: var(--bg-card);">
-                    <div class="stat-num text-3xl md:text-4xl mb-2">~10 min</div>
-                    <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Per Connector</div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -297,9 +419,8 @@
     <section class="section-base border-t divider py-16">
         <div class="max-w-7xl mx-auto px-6">
 
-            <!-- CTA Banner -->
             <div class="card p-10 mb-12 text-center" style="border-color: var(--accent-border);">
-                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Ready to Transform Your Integration Strategy?</h3>
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Ready to eliminate integration debt?</h3>
                 <p class="mb-7 max-w-xl mx-auto" style="color: var(--text-secondary);">300+ connectors. AI-powered automation. Self-healing integrations. Live today.</p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
                     <a href="https://app.onehazel.com" class="btn-primary">Sign up to BETA <span class="ml-2">&rarr;</span></a>
@@ -307,7 +428,6 @@
                 </div>
             </div>
 
-            <!-- Footer bottom -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t divider mb-10">
                 <div>
                     <div class="font-extrabold text-lg mb-3" style="letter-spacing: -0.02em;">OneHazel</div>
