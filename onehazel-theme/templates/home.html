@@ -9,102 +9,26 @@
    OneHazel — Homepage Template
    Portal: 146772601
 
-   Strategy: Pixel-perfect coded sections for the complex
-   visual elements (SVG diagrams, stats bar, marquee).
-   A DnD area is available at the bottom of main content
-   for editors to add rich-text or simple content blocks
-   without touching code.
+   Strategy: DnD modules for text-heavy sections (hero, steps,
+   feature cards) so editors can update copy without code.
+   Complex visual sections (SVG diagrams, industries grid) are
+   coded and locked — change only via template edits.
    ========================================================= #}
 
 {% block body %}
 
-<!-- ===== HERO ===== -->
-<header class="relative pt-20 md:pt-28 pb-0 overflow-hidden" style="background: var(--bg);">
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-
-        <div class="fade-up badge mb-8">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
-            Platform V1.0 Now Live
-        </div>
-
-        <h1 class="fade-up-1 font-extrabold mb-6 leading-[1.05]" style="font-size: clamp(2.6rem, 7vw, 5.5rem); letter-spacing: -0.035em;">
-            The Last Integration<br>
-            <span class="gradient-text">You'll Ever Build.</span>
-        </h1>
-
-        <p class="fade-up-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
-            OneHazel is the Vertical iPaaS that uses <strong style="color: var(--text); font-weight: 600;">autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem —
-            <strong style="color: var(--accent-bright); font-weight: 600;">300+ connectors live today</strong>, built in minutes, maintained automatically.
-        </p>
-
-        <div class="fade-up-3 flex flex-col sm:flex-row gap-3 justify-center mb-16">
-            <a href="https://app.onehazel.com" class="btn-primary">Get Started Free <span class="ml-2">&rarr;</span></a>
-            <a href="#architecture" class="btn-secondary">View Architecture</a>
-        </div>
-
-        <!-- Stats bar -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-t-2xl overflow-hidden" style="border: 1px solid var(--border); border-bottom: none; background: var(--border);">
-            <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
-                <div class="stat-num text-2xl md:text-3xl mb-1">300+</div>
-                <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Live Connectors</div>
-            </div>
-            <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
-                <div class="stat-num text-2xl md:text-3xl mb-1">~10 min</div>
-                <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Per Connector Build</div>
-            </div>
-            <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
-                <div class="stat-num text-2xl md:text-3xl mb-1">22</div>
-                <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Workflow Node Types</div>
-            </div>
-            <div class="py-5 px-4 text-center" style="background: var(--bg-card);">
-                <div class="stat-num text-2xl md:text-3xl mb-1">0</div>
-                <div class="mono text-[10px] uppercase tracking-widest" style="color: var(--text-muted);">Quality Failures</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Logo marquee -->
-    <div class="w-full overflow-hidden py-5" style="border-top: 1px solid var(--border);">
-        <div class="marquee-track logo-marquee" style="gap: 0;">
-            <div class="flex items-center gap-14 px-7">
-                <i class="fa-brands fa-stripe text-4xl" style="color: #635BFF;"></i>
-                <i class="fa-brands fa-slack text-3xl" style="color: #4A154B;"></i>
-                <i class="fa-brands fa-github text-3xl" style="color: #24292F;"></i>
-                <i class="fa-brands fa-shopify text-3xl" style="color: #96BF48;"></i>
-                <i class="fa-brands fa-hubspot text-3xl" style="color: #FF7A59;"></i>
-                <i class="fa-brands fa-salesforce text-3xl" style="color: #00A1E0;"></i>
-                <i class="fa-brands fa-aws text-3xl" style="color: #FF9900;"></i>
-                <i class="fa-brands fa-google text-3xl" style="color: #4285F4;"></i>
-                <i class="fa-brands fa-cloudflare text-3xl" style="color: #F48120;"></i>
-                <i class="fa-brands fa-telegram text-3xl" style="color: #26A5E4;"></i>
-                <i class="fa-brands fa-paypal text-3xl" style="color: #003087;"></i>
-                <i class="fa-brands fa-dropbox text-3xl" style="color: #0061FF;"></i>
-                <i class="fa-brands fa-microsoft text-3xl" style="color: #00A4EF;"></i>
-                <i class="fa-brands fa-linkedin text-3xl" style="color: #0A66C2;"></i>
-                <i class="fa-brands fa-digital-ocean text-3xl" style="color: #0080FF;"></i>
-                <i class="fa-brands fa-docker text-3xl" style="color: #2496ED;"></i>
-            </div>
-            <div class="flex items-center gap-14 px-7" aria-hidden="true">
-                <i class="fa-brands fa-stripe text-4xl" style="color: #635BFF;"></i>
-                <i class="fa-brands fa-slack text-3xl" style="color: #4A154B;"></i>
-                <i class="fa-brands fa-github text-3xl" style="color: #24292F;"></i>
-                <i class="fa-brands fa-shopify text-3xl" style="color: #96BF48;"></i>
-                <i class="fa-brands fa-hubspot text-3xl" style="color: #FF7A59;"></i>
-                <i class="fa-brands fa-salesforce text-3xl" style="color: #00A1E0;"></i>
-                <i class="fa-brands fa-aws text-3xl" style="color: #FF9900;"></i>
-                <i class="fa-brands fa-google text-3xl" style="color: #4285F4;"></i>
-                <i class="fa-brands fa-cloudflare text-3xl" style="color: #F48120;"></i>
-                <i class="fa-brands fa-telegram text-3xl" style="color: #26A5E4;"></i>
-                <i class="fa-brands fa-paypal text-3xl" style="color: #003087;"></i>
-                <i class="fa-brands fa-dropbox text-3xl" style="color: #0061FF;"></i>
-                <i class="fa-brands fa-microsoft text-3xl" style="color: #00A4EF;"></i>
-                <i class="fa-brands fa-linkedin text-3xl" style="color: #0A66C2;"></i>
-                <i class="fa-brands fa-digital-ocean text-3xl" style="color: #0080FF;"></i>
-                <i class="fa-brands fa-docker text-3xl" style="color: #2496ED;"></i>
-            </div>
-        </div>
-    </div>
-</header>
+<!-- ===== HERO (DnD) ===== -->
+{% dnd_area "hero" label="Hero Section" %}
+    {% dnd_module path="onehazel-theme/modules/hero-home.module",
+        badge_text="Platform V1.0 Now Live",
+        headline="The Last Integration",
+        headline_gradient="You'll Ever Build.",
+        subheadline="OneHazel is the Vertical iPaaS that uses <strong style=\"color: var(--text); font-weight: 600;\">autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem — <strong style=\"color: var(--accent-bright); font-weight: 600;\">300+ connectors live today</strong>, built in minutes, maintained automatically.",
+        cta_primary_text="Get Started Free",
+        cta_secondary_text="View Architecture"
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
 
 <!-- ===== ARCHITECTURE VISUAL ===== -->
 <section class="py-20 md:py-28 section-alt relative overflow-hidden">
@@ -195,89 +119,44 @@
     </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section id="architecture" class="py-24 border-t divider section-base">
+<!-- ===== HOW IT WORKS (DnD) ===== -->
+{% dnd_area "how_it_works" label="How It Works — Steps" %}
+    {% dnd_module path="onehazel-theme/modules/steps.module",
+        section_heading="From API Spec to Production",
+        section_heading_gradient="in 6 Steps",
+        section_subheading="Our AI pipeline ingests any OpenAPI spec and ships a production connector — tested, documented, and marketplace-ready."
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
+
+<!-- ===== TECHNICAL STACK (coded — visual grid) ===== -->
+<section class="py-16 section-base border-t divider">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <div class="badge mb-6"><i class="fas fa-cogs"></i> How It Works</div>
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
-                From API Spec to Production <span class="gradient-text">in 6 Steps</span>
-            </h2>
-            <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
-                Our AI pipeline ingests any OpenAPI spec and ships a production connector &mdash; tested, documented, and marketplace-ready.
-            </p>
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold mb-4">Technical Stack</h3>
+            <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">Enterprise-grade infrastructure built for scale, security, and reliability.</p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: var(--accent-soft);"><span class="font-bold text-lg" style="color: var(--accent-bright);">1</span></div><h4 class="font-bold mb-1.5">Spec Ingestion</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Agents ingest the OpenAPI spec, analyze every endpoint, authentication method, and data schema.</p></div>
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(168,85,247,0.07);"><span class="font-bold text-lg text-purple-500">2</span></div><h4 class="font-bold mb-1.5">Connector Generation</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Production-grade connector generated with error handling, retry logic, auth flows, and per-endpoint type safety.</p></div>
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);"><span class="font-bold text-lg text-emerald-500">3</span></div><h4 class="font-bold mb-1.5">Smoke Testing</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Per-endpoint smoke tests auto-generated. Automated validation before production deployment.</p></div>
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);"><span class="font-bold text-lg text-yellow-600">4</span></div><h4 class="font-bold mb-1.5">Workflow Nodes</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Each connector automatically appears as its own node in the visual workflow builder &mdash; drag, drop, and chain across 22 node types.</p></div>
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(239,68,68,0.07);"><span class="font-bold text-lg text-red-500">5</span></div><h4 class="font-bold mb-1.5">Quality Audit</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Multi-stage quality checks: schema validation, auth verification, and response mapping &mdash; 0 failures across 300+ builds.</p></div>
-            <div class="card p-7"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);"><span class="font-bold text-lg text-cyan-500">6</span></div><h4 class="font-bold mb-1.5">Marketplace Listing</h4><p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Published to the searchable marketplace with logos, docs, and one-click activation for any operator.</p></div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 mb-20">
-            <div class="card p-7" style="border-color: rgba(239,68,68,0.20);">
-                <div class="mono text-xs font-bold text-red-500 uppercase tracking-wider mb-3">Traditional Approach</div>
-                <div class="text-4xl font-extrabold mb-2">3-6 months</div>
-                <p class="text-sm" style="color: var(--text-secondary);">per vendor integration</p>
-                <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
-                    <div>&bull; Manual API documentation review</div>
-                    <div>&bull; Custom code for each vendor</div>
-                    <div>&bull; Manual testing &amp; QA cycles</div>
-                    <div>&bull; Ongoing maintenance overhead</div>
-                </div>
-            </div>
-            <div class="card p-7 relative" style="border-color: rgba(16,185,129,0.20);">
-                <div class="absolute -top-3 right-4 bg-emerald-500 text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Proven</div>
-                <div class="mono text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
-                <div class="text-4xl font-extrabold mb-2">~10 minutes</div>
-                <p class="text-sm" style="color: var(--text-secondary);">per production connector</p>
-                <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
-                    <div>&bull; OpenAPI spec ingested and parsed automatically</div>
-                    <div>&bull; Production connector generated with auth &amp; types</div>
-                    <div>&bull; Per-endpoint smoke tests auto-generated</div>
-                    <div>&bull; 300+ connectors built this way &mdash; 0 failures</div>
-                </div>
-            </div>
-        </div>
-        <div class="mb-20">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold mb-4">Technical Stack</h3>
-                <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">Enterprise-grade infrastructure built for scale, security, and reliability.</p>
-            </div>
-            <div class="card p-8">
-                <div class="grid md:grid-cols-5 gap-6">
-                    <div class="text-center"><div class="w-14 h-14 rounded-xl bg-blue-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-plug text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">300+ OpenAPI Specs</h4><p class="text-xs" style="color: var(--text-muted);">Curated auth registry with per-connector credentials</p></div>
-                    <div class="text-center"><div class="w-14 h-14 rounded-xl bg-purple-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-project-diagram text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Visual Workflow Builder</h4><p class="text-xs" style="color: var(--text-muted);">Drag-and-drop canvas with 22 node types, AI-assisted</p></div>
-                    <div class="text-center"><div class="w-14 h-14 rounded-xl bg-emerald-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-bolt text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Real-Time Gateway</h4><p class="text-xs" style="color: var(--text-muted);">Circuit breaker, rate limiting, request capture</p></div>
-                    <div class="text-center"><div class="w-14 h-14 rounded-xl bg-yellow-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-chart-bar text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">AI Token Tracking</h4><p class="text-xs" style="color: var(--text-muted);">Per-operator usage dashboards and cost controls</p></div>
-                    <div class="text-center"><div class="w-14 h-14 rounded-xl bg-cyan-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-lock text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Tenant Isolation</h4><p class="text-xs" style="color: var(--text-muted);">AES-256-GCM encryption, per-operator data boundaries</p></div>
-                </div>
+        <div class="card p-8">
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="text-center"><div class="w-14 h-14 rounded-xl bg-blue-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-plug text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">300+ OpenAPI Specs</h4><p class="text-xs" style="color: var(--text-muted);">Curated auth registry with per-connector credentials</p></div>
+                <div class="text-center"><div class="w-14 h-14 rounded-xl bg-purple-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-project-diagram text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Visual Workflow Builder</h4><p class="text-xs" style="color: var(--text-muted);">Drag-and-drop canvas with 22 node types, AI-assisted</p></div>
+                <div class="text-center"><div class="w-14 h-14 rounded-xl bg-emerald-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-bolt text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Real-Time Gateway</h4><p class="text-xs" style="color: var(--text-muted);">Circuit breaker, rate limiting, request capture</p></div>
+                <div class="text-center"><div class="w-14 h-14 rounded-xl bg-yellow-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-chart-bar text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">AI Token Tracking</h4><p class="text-xs" style="color: var(--text-muted);">Per-operator usage dashboards and cost controls</p></div>
+                <div class="text-center"><div class="w-14 h-14 rounded-xl bg-cyan-500 flex items-center justify-center mx-auto mb-4 shadow-md"><i class="fas fa-lock text-xl text-white"></i></div><h4 class="font-bold mb-2 text-sm">Tenant Isolation</h4><p class="text-xs" style="color: var(--text-muted);">AES-256-GCM encryption, per-operator data boundaries</p></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== WHAT'S LIVE ===== -->
-<section class="py-24 section-base border-t divider">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <div class="badge mb-6"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Live Now</div>
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">Built, Shipped, Running</h2>
-            <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">These features are live in production today. Not a roadmap &mdash; a product.</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(59,130,246,0.07);"><i class="fas fa-store text-lg text-blue-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Connector Marketplace</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">300+ connectors, searchable with logos. One-click activation.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(168,85,247,0.07);"><i class="fas fa-project-diagram text-lg text-purple-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Visual Workflow Canvas</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Drag-and-drop automation with 22 node types. Like Make.com, but for your stack.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);"><i class="fas fa-magic text-lg text-emerald-500"></i></div><h3 class="font-bold mb-1.5 text-sm">AI Workflow Builder</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Describe what you want in natural language. AI generates the workflow.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);"><i class="fas fa-hammer text-lg text-yellow-600"></i></div><h3 class="font-bold mb-1.5 text-sm">Self-Service Build</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Operators build their own connectors from the UI. No engineering tickets.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);"><i class="fas fa-puzzle-piece text-lg text-cyan-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Per-Connector Nodes</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Each connected tool appears as its own node in the workflow palette.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(249,115,22,0.07);"><i class="fas fa-tags text-lg text-orange-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Subscription Tiers</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Starter, Core, Pro, Teams, Enterprise. Scale as you grow.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(239,68,68,0.07);"><i class="fas fa-sliders-h text-lg text-red-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Connection Defaults</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Set default headers and params once. Applied to every API call automatically.</p></div>
-            <div class="card p-6"><div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(99,102,241,0.07);"><i class="fas fa-history text-lg text-indigo-500"></i></div><h3 class="font-bold mb-1.5 text-sm">Execution History</h3><p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Full request/response capture for every execution. Debug anything.</p></div>
-        </div>
-    </div>
-</section>
+<!-- ===== WHAT'S LIVE (DnD) ===== -->
+{% dnd_area "features" label="Feature Cards — What's Live" %}
+    {% dnd_module path="onehazel-theme/modules/feature-cards.module",
+        section_badge="Live Now",
+        section_heading="Built, Shipped, Running",
+        section_subheading="These features are live in production today. Not a roadmap — a product."
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
 
 <!-- ===== INDUSTRIES ===== -->
 <section class="py-24 section-alt border-t divider">
@@ -297,10 +176,5 @@
         </div>
     </div>
 </section>
-
-{# ===== DnD AREA =====
-   Editors can add/edit content blocks here via the HubSpot page editor
-   without touching the coded sections above. #}
-{% dnd_area "extra_content" label="Additional Page Content (optional)" %}{% end_dnd_area %}
 
 {% endblock %}

@@ -1,0 +1,75 @@
+[
+  {
+    "id": "section_badge",
+    "name": "section_badge",
+    "label": "Badge Text",
+    "type": "text",
+    "default": "Live Now"
+  },
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section Heading",
+    "type": "text",
+    "default": "Built, Shipped, Running"
+  },
+  {
+    "id": "section_subheading",
+    "name": "section_subheading",
+    "label": "Section Subheading",
+    "type": "text",
+    "default": "These features are live in production today. Not a roadmap — a product."
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 8,
+      "sorting_label_field": "title"
+    },
+    "children": [
+      {
+        "id": "icon",
+        "name": "icon",
+        "label": "Font Awesome Icon Class (e.g. fa-store)",
+        "type": "text",
+        "default": "fa-star"
+      },
+      {
+        "id": "icon_color",
+        "name": "icon_color",
+        "label": "Icon Color (hex or Tailwind class color)",
+        "type": "text",
+        "default": "#3b82f6"
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Card Title",
+        "type": "text",
+        "default": "Feature"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Card Description",
+        "type": "text",
+        "default": "Description of the feature."
+      }
+    ],
+    "default": [
+      { "icon": "fa-store", "icon_color": "#3b82f6", "title": "Connector Marketplace", "description": "300+ connectors, searchable with logos. One-click activation." },
+      { "icon": "fa-project-diagram", "icon_color": "#a855f7", "title": "Visual Workflow Canvas", "description": "Drag-and-drop automation with 22 node types. Like Make.com, but for your stack." },
+      { "icon": "fa-magic", "icon_color": "#10b981", "title": "AI Workflow Builder", "description": "Describe what you want in natural language. AI generates the workflow." },
+      { "icon": "fa-hammer", "icon_color": "#ca8a04", "title": "Self-Service Build", "description": "Operators build their own connectors from the UI. No engineering tickets." },
+      { "icon": "fa-puzzle-piece", "icon_color": "#06b6d4", "title": "Per-Connector Nodes", "description": "Each connected tool appears as its own node in the workflow palette." },
+      { "icon": "fa-tags", "icon_color": "#f97316", "title": "Subscription Tiers", "description": "Starter, Core, Pro, Teams, Enterprise. Scale as you grow." },
+      { "icon": "fa-sliders-h", "icon_color": "#ef4444", "title": "Connection Defaults", "description": "Set default headers and params once. Applied to every API call automatically." },
+      { "icon": "fa-history", "icon_color": "#6366f1", "title": "Execution History", "description": "Full request/response capture for every execution. Debug anything." }
+    ]
+  }
+]
