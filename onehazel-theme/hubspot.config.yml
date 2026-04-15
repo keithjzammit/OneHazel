@@ -1,0 +1,5 @@
+defaultPortal: elevate-ai
+portals:
+  - name: elevate-ai
+    portalId: 146772601
+    authType: personalaccesskey

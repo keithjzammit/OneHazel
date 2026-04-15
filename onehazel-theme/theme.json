@@ -1,0 +1,13 @@
+{
+  "label": "OneHazel",
+  "preview_path": "templates/home.html",
+  "screenshot_path": null,
+  "enable_domain_stylesheets": false,
+  "version": "1.0.0",
+  "author": {
+    "name": "ZS Digital Ltd / Elevate AI",
+    "url": "https://onehazel.com"
+  },
+  "documentation": "https://onehazel.com",
+  "license": "Private"
+}
