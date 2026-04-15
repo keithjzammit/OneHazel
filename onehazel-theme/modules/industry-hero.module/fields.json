@@ -1,0 +1,10 @@
+[
+  { "id": "sector_label", "name": "sector_label", "label": "Sector Badge Label", "type": "text", "default": "iGaming & Online Betting" },
+  { "id": "headline", "name": "headline", "label": "Headline (first line)", "type": "text", "default": "The Integration Layer" },
+  { "id": "headline_gradient", "name": "headline_gradient", "label": "Headline (gradient — second line)", "type": "text", "default": "for iGaming" },
+  { "id": "subheadline", "name": "subheadline", "label": "Subheadline", "type": "text", "default": "Dozens of game providers, payment gateways, KYC/AML services, and responsible gaming tools — each with different APIs, authentication methods, and data formats. OneHazel connects them all through a single AI-powered platform." },
+  { "id": "cta_primary_text", "name": "cta_primary_text", "label": "Primary CTA Text", "type": "text", "default": "Get Started Free" },
+  { "id": "cta_primary_url", "name": "cta_primary_url", "label": "Primary CTA URL", "type": "link", "default": { "url": { "href": "https://app.onehazel.com" } } },
+  { "id": "cta_secondary_text", "name": "cta_secondary_text", "label": "Secondary CTA Text", "type": "text", "default": "See How It Works" },
+  { "id": "cta_secondary_anchor", "name": "cta_secondary_anchor", "label": "Secondary CTA Anchor (e.g. #how-it-works)", "type": "text", "default": "#how-it-works" }
+]

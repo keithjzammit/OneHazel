@@ -1,0 +1,86 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Industry
+-->
+{% extends "onehazel-theme/templates/base.html" %}
+
+{# =========================================================
+   OneHazel — Industry Page Template
+   Portal: 146772601
+
+   Used for all 6 sector pages: iGaming, Healthcare,
+   Construction, Cannabis, Life Sciences, Energy & Utilities.
+
+   The data-sector attribute is driven by the page URL slug
+   (e.g. slug "igaming" → data-sector="igaming") so the CSS
+   sector colour system activates automatically.
+
+   Create one HubSpot page per sector using this template.
+   Set the page URL slug to the sector key and the content
+   fields below to sector-specific copy.
+   ========================================================= #}
+
+{% block html_attrs %}{% if content.slug %}data-sector="{{ content.slug }}"{% endif %}{% endblock %}
+
+{% block body %}
+
+<!-- ===== HERO ===== -->
+{% dnd_area "hero" label="Hero" %}
+    {% dnd_module path="onehazel-theme/modules/industry-hero.module",
+        sector_label="Sector",
+        headline="The Integration Layer",
+        headline_gradient="for Your Industry",
+        subheadline="Connect all your third-party vendors through a single AI-powered platform. OneHazel builds, tests, and maintains your connectors automatically.",
+        cta_primary_text="Get Started Free",
+        cta_secondary_text="See How It Works"
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
+
+<!-- ===== THE PROBLEM (3 cards) ===== -->
+{% dnd_area "problem" label="The Problem — 3 Cards" %}
+    {% dnd_module path="onehazel-theme/modules/content-cards.module",
+        section_heading="The Integration Problem in Your Industry",
+        section_subheading="Every operator faces the same bottleneck: connecting a growing stack of third-party vendors, each with their own way of doing things.",
+        columns="3",
+        use_sector_colors=true
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
+
+<!-- ===== HOW ONEHAZEL SOLVES IT (2-col cards) ===== -->
+{% dnd_area "solutions" label="How OneHazel Solves It — 2-col Cards" %}
+    {% dnd_module path="onehazel-theme/modules/content-cards.module",
+        section_heading="How OneHazel Solves It",
+        section_subheading="An AI-powered integration platform purpose-built for the complexity of your vendor ecosystem.",
+        columns="2",
+        use_sector_colors=true
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
+
+<!-- ===== KEY INTEGRATIONS ===== -->
+{% dnd_area "integrations" label="Key Integrations — Vendor Category Grid" %}
+    {% dnd_module path="onehazel-theme/modules/vendor-categories.module",
+        section_heading="Key Integrations",
+        section_subheading="Generate connectors for any vendor with API documentation. Here are the categories most relevant to your industry."
+    %}
+    {% end_dnd_module %}
+{% end_dnd_area %}
+
+<!-- ===== CTA ===== -->
+<section class="section-base border-t divider py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="card p-10 text-center" style="border-color: var(--accent-border);">
+            <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Ready to connect your entire vendor stack?</h3>
+            <p class="mb-7 max-w-xl mx-auto" style="color: var(--text-secondary);">300+ connectors. AI-powered automation. Self-healing integrations. Live today.</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://app.onehazel.com" class="btn-primary">Sign up to BETA <span class="ml-2">&rarr;</span></a>
+                <a href="/contact" class="btn-secondary">Talk to Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

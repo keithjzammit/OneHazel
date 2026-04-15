@@ -1,0 +1,66 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section Heading",
+    "type": "text",
+    "default": "From API Spec to Production"
+  },
+  {
+    "id": "section_heading_gradient",
+    "name": "section_heading_gradient",
+    "label": "Section Heading (gradient suffix)",
+    "type": "text",
+    "default": "in 6 Steps"
+  },
+  {
+    "id": "section_subheading",
+    "name": "section_subheading",
+    "label": "Section Subheading",
+    "type": "text",
+    "default": "Our AI pipeline ingests any OpenAPI spec and ships a production connector — tested, documented, and marketplace-ready."
+  },
+  {
+    "id": "steps",
+    "name": "steps",
+    "label": "Steps",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 9,
+      "default": 6,
+      "sorting_label_field": "title"
+    },
+    "children": [
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Step Title",
+        "type": "text",
+        "default": "Step"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Step Description",
+        "type": "text",
+        "default": "Description."
+      },
+      {
+        "id": "accent_color",
+        "name": "accent_color",
+        "label": "Number Color (hex)",
+        "type": "text",
+        "default": "#D97706"
+      }
+    ],
+    "default": [
+      { "title": "Spec Ingestion", "description": "Agents ingest the OpenAPI spec, analyze every endpoint, authentication method, and data schema.", "accent_color": "#D97706" },
+      { "title": "Connector Generation", "description": "Production-grade connector generated with error handling, retry logic, auth flows, and per-endpoint type safety.", "accent_color": "#a855f7" },
+      { "title": "Smoke Testing", "description": "Per-endpoint smoke tests auto-generated. Automated validation before production deployment.", "accent_color": "#10b981" },
+      { "title": "Workflow Nodes", "description": "Each connector automatically appears as its own node in the visual workflow builder — drag, drop, and chain across 22 node types.", "accent_color": "#ca8a04" },
+      { "title": "Quality Audit", "description": "Multi-stage quality checks: schema validation, auth verification, and response mapping — 0 failures across 300+ builds.", "accent_color": "#ef4444" },
+      { "title": "Marketplace Listing", "description": "Published to the searchable marketplace with logos, docs, and one-click activation for any operator.", "accent_color": "#06b6d4" }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+<section id="architecture" class="py-24 border-t divider section-base">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="badge mb-6"><i class="fas fa-cogs"></i> How It Works</div>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6" style="letter-spacing: -0.03em;">
+                {{ module.section_heading }} <span class="gradient-text">{{ module.section_heading_gradient }}</span>
+            </h2>
+            <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                {{ module.section_subheading }}
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+            {% for step in module.steps %}
+            <div class="card p-7">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: {{ step.accent_color }}12;">
+                    <span class="font-bold text-lg" style="color: {{ step.accent_color }};">{{ loop.index }}</span>
+                </div>
+                <h4 class="font-bold mb-1.5">{{ step.title }}</h4>
+                <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{{ step.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Speed comparison — coded, product facts -->
+        <div class="grid md:grid-cols-2 gap-6 mb-20">
+            <div class="card p-7" style="border-color: rgba(239,68,68,0.20);">
+                <div class="mono text-xs font-bold text-red-500 uppercase tracking-wider mb-3">Traditional Approach</div>
+                <div class="text-4xl font-extrabold mb-2">3-6 months</div>
+                <p class="text-sm" style="color: var(--text-secondary);">per vendor integration</p>
+                <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                    <div>&bull; Manual API documentation review</div>
+                    <div>&bull; Custom code for each vendor</div>
+                    <div>&bull; Manual testing &amp; QA cycles</div>
+                    <div>&bull; Ongoing maintenance overhead</div>
+                </div>
+            </div>
+            <div class="card p-7 relative" style="border-color: rgba(16,185,129,0.20);">
+                <div class="absolute -top-3 right-4 bg-emerald-500 text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Proven</div>
+                <div class="mono text-xs font-bold text-emerald-600 uppercase tracking-wider mb-3">OneHazel AI Pipeline</div>
+                <div class="text-4xl font-extrabold mb-2">~10 minutes</div>
+                <p class="text-sm" style="color: var(--text-secondary);">per production connector</p>
+                <div class="mt-4 space-y-1.5 text-xs" style="color: var(--text-muted);">
+                    <div>&bull; OpenAPI spec ingested and parsed automatically</div>
+                    <div>&bull; Production connector generated with auth &amp; types</div>
+                    <div>&bull; Per-endpoint smoke tests auto-generated</div>
+                    <div>&bull; 300+ connectors built this way &mdash; 0 failures</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

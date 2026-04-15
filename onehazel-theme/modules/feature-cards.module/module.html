@@ -1,0 +1,24 @@
+<section class="py-24 section-base border-t divider">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="badge mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                {{ module.section_badge }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="letter-spacing: -0.02em;">{{ module.section_heading }}</h2>
+            <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">{{ module.section_subheading }}</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {% for card in module.cards %}
+            <div class="card p-6">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: {{ card.icon_color }}18;">
+                    <i class="fas {{ card.icon }} text-lg" style="color: {{ card.icon_color }};"></i>
+                </div>
+                <h3 class="font-bold mb-1.5 text-sm">{{ card.title }}</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">{{ card.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

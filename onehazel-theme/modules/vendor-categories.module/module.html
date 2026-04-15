@@ -1,0 +1,26 @@
+<section class="section-alt py-24 border-y divider">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">{{ module.section_heading }}</h2>
+            <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">{{ module.section_subheading }}</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for cat in module.categories %}
+            <div class="card p-6 rounded-2xl">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--sector-soft); border: 1px solid var(--sector-border);">
+                        <i class="fas {{ cat.icon }} text-lg" style="color: var(--sector);"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">{{ cat.cat_name }}</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    {% set vendor_list = cat.vendors.split(",") %}
+                    {% for vendor in vendor_list %}
+                    <span class="vendor-tag">{{ vendor|trim }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

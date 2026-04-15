@@ -1,0 +1,23 @@
+<header class="section-base relative pt-20 pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+        <div class="fade-up badge badge-sector mb-6">
+            <span class="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style="background: var(--sector);"></span>
+            Sector: {{ module.sector_label }}
+        </div>
+        <h1 class="fade-up-1 text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+            {{ module.headline }}<br>
+            <span class="gradient-text-sector">{{ module.headline_gradient }}</span>
+        </h1>
+        <p class="fade-up-2 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10" style="color: var(--text-secondary);">
+            {{ module.subheadline }}
+        </p>
+        <div class="fade-up-3 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ module.cta_primary_url.href }}" class="btn-primary">
+                {{ module.cta_primary_text }} <span class="ml-2">&rarr;</span>
+            </a>
+            <a href="{{ module.cta_secondary_anchor }}" class="btn-secondary">
+                {{ module.cta_secondary_text }}
+            </a>
+        </div>
+    </div>
+</header>

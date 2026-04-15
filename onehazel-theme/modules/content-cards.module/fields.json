@@ -1,0 +1,46 @@
+[
+  { "id": "section_heading", "name": "section_heading", "label": "Section Heading", "type": "text", "default": "The Problem" },
+  { "id": "section_subheading", "name": "section_subheading", "label": "Section Subheading", "type": "text", "default": "The challenge facing every operator in this industry." },
+  {
+    "id": "columns",
+    "name": "columns",
+    "label": "Grid Columns (2 or 3)",
+    "type": "choice",
+    "choices": [["2", "2 columns"], ["3", "3 columns"]],
+    "default": "3"
+  },
+  {
+    "id": "use_sector_colors",
+    "name": "use_sector_colors",
+    "label": "Use Sector Colours for Icons",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 8, "default": 3, "sorting_label_field": "title" },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Font Awesome Icon Class (e.g. fa-diagram-project)", "type": "text", "default": "fa-diagram-project" },
+      { "id": "title", "name": "title", "label": "Card Title", "type": "text", "default": "Challenge Title" },
+      { "id": "description", "name": "description", "label": "Card Description", "type": "text", "default": "Describe the challenge or solution here." },
+      {
+        "id": "badges",
+        "name": "badges",
+        "label": "Tags / Badges (optional)",
+        "type": "group",
+        "occurrence": { "min": 0, "max": 10, "default": 0 },
+        "children": [
+          { "id": "badge_text", "name": "badge_text", "label": "Badge Label", "type": "text", "default": "Tag" }
+        ]
+      }
+    ],
+    "default": [
+      { "icon": "fa-diagram-project", "title": "Vendor Sprawl", "description": "The average operator connects to 15–30 third-party vendors, each with unique APIs, authentication mechanisms, and data schemas that must be individually integrated and maintained.", "badges": [] },
+      { "icon": "fa-people-group", "title": "Engineering Drain", "description": "Building and maintaining custom integrations requires dedicated engineering teams. A single integration can take weeks. Multiply that across every vendor in your stack, then factor in ongoing maintenance.", "badges": [] },
+      { "icon": "fa-scale-balanced", "title": "Compliance Complexity", "description": "Multi-jurisdiction requirements mandate different data flows, reporting formats, and audit trails per market. Each jurisdiction may require specific providers and reporting standards.", "badges": [] }
+    ]
+  }
+]
