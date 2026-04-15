@@ -33,7 +33,7 @@
         "type": "group",
         "occurrence": { "min": 0, "max": 10, "default": 0 },
         "children": [
-          { "id": "label", "name": "label", "label": "Badge Label", "type": "text", "default": "Tag" }
+          { "id": "badge_text", "name": "badge_text", "label": "Badge Label", "type": "text", "default": "Tag" }
         ]
       }
     ],

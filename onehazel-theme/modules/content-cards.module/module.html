@@ -19,7 +19,7 @@
                 {% if card.badges %}
                 <div class="mt-4 flex flex-wrap gap-2">
                     {% for badge in card.badges %}
-                    <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">{{ badge.label }}</span>
+                    <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">{{ badge.badge_text }}</span>
                     {% endfor %}
                 </div>
                 {% endif %}
