@@ -1,0 +1,23 @@
+[
+  { "id": "section_heading", "name": "section_heading", "label": "Section Heading", "type": "text", "default": "Key Integrations" },
+  { "id": "section_subheading", "name": "section_subheading", "label": "Section Subheading", "type": "text", "default": "Generate connectors for any vendor with API documentation. Here are the categories most relevant to your industry." },
+  {
+    "id": "categories",
+    "name": "categories",
+    "label": "Vendor Categories",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 9, "default": 5, "sorting_label_field": "name" },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Font Awesome Icon Class (e.g. fa-gamepad)", "type": "text", "default": "fa-plug" },
+      { "id": "name", "name": "name", "label": "Category Name", "type": "text", "default": "Category" },
+      { "id": "vendors", "name": "vendors", "label": "Vendor Names (comma-separated)", "type": "text", "default": "Vendor A, Vendor B, Vendor C" }
+    ],
+    "default": [
+      { "icon": "fa-gamepad", "name": "Game Providers", "vendors": "Fundist, SoftSwiss, Evolution Gaming, Pragmatic Play, Betsoft" },
+      { "icon": "fa-credit-card", "name": "Payment Gateways", "vendors": "Stripe, Nuvei, Trustly, PayRetailers, CoinsPaid" },
+      { "icon": "fa-id-card", "name": "KYC / AML", "vendors": "Onfido, Sumsub, Jumio, ComplyAdvantage, Acuris" },
+      { "icon": "fa-heart-pulse", "name": "Responsible Gaming", "vendors": "GamStop, Gamban, BetBlocker, SPELPAUS" },
+      { "icon": "fa-chart-bar", "name": "BI & Analytics", "vendors": "Looker, Amplitude, Mixpanel, Tableau" }
+    ]
+  }
+]

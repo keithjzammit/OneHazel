@@ -1,0 +1,30 @@
+{% set grid_class = module.columns == "2" ? "md:grid-cols-2" : "md:grid-cols-3" %}
+{% set icon_bg = module.use_sector_colors ? "background: var(--sector-soft); border: 1px solid var(--sector-border);" : "background: var(--bg-subtle); border: 1px solid var(--border);" %}
+{% set icon_color = module.use_sector_colors ? "color: var(--sector);" : "color: var(--accent-bright);" %}
+
+<section class="section-alt py-24 border-y divider">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">{{ module.section_heading }}</h2>
+            <p style="color: var(--text-secondary);" class="max-w-2xl mx-auto">{{ module.section_subheading }}</p>
+        </div>
+        <div class="grid {{ grid_class }} gap-8">
+            {% for card in module.cards %}
+            <div class="card p-8 rounded-2xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="{{ icon_bg }}">
+                    <i class="fas {{ card.icon }} text-2xl" style="{{ icon_color }}"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">{{ card.title }}</h3>
+                <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{{ card.description }}</p>
+                {% if card.badges %}
+                <div class="mt-4 flex flex-wrap gap-2">
+                    {% for badge in card.badges %}
+                    <span class="badge badge-sector" style="padding: 4px 10px; font-size: 10px;">{{ badge.label }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
