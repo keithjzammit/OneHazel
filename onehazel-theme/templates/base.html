@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <!--
-  OneHazel — HubSpot Base Template
-  All page templates extend this via {% extends "base.html" %}
-  Portal: 146772601 (elevate-ai)
+  templateType: page
+  isAvailableForNewContent: false
+  label: OneHazel Base
 -->
+<!DOCTYPE html>
 <html lang="en" class="{{ html_class }}">
 <head>
     <meta charset="UTF-8">
@@ -31,26 +31,25 @@
     <!-- Tailwind Play CDN — dynamic JIT compiler, SRI not possible -->
     <script src="https://cdn.tailwindcss.com"></script><!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
 
-    <!-- Theme stylesheet — served from onehazel.com (GitHub Pages) during migration.
-         Once fully live on HubSpot, upload styles.css to File Manager and update this URL. -->
+    <!-- Theme stylesheet — served from onehazel.com during migration -->
     <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
     <link rel="stylesheet" href="https://onehazel.com/styles.css">
 
-    <!-- HubSpot required head includes (analytics, etc.) -->
+    <!-- HubSpot required head includes -->
     {{ standard_header_includes }}
 </head>
 <body class="antialiased">
 
-    <!-- Nav — server-side HubL partial (SEO-friendly, no JS dependency) -->
-    {% global_partial path="partials/nav.html" %}
+    <!-- Nav partial -->
+    {% global_partial path="onehazel-theme/partials/nav.html" %}
 
-    <!-- Page content — defined in each child template -->
+    <!-- Page content defined in child templates -->
     {% block body %}{% endblock %}
 
-    <!-- Footer -->
-    {% global_partial path="partials/footer.html" %}
+    <!-- Footer partial -->
+    {% global_partial path="onehazel-theme/partials/footer.html" %}
 
-    <!-- Theme JS: theme toggle, mobile menu, billing toggle, sector decorations -->
+    <!-- Theme JS -->
     {% require_js position="footer" %}
     <script src="{{ get_asset_url('../js/main.js') }}"></script>
     {% end_require_js %}
