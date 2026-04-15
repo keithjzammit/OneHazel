@@ -41,13 +41,13 @@
 <body class="antialiased">
 
     <!-- Nav partial -->
-    {% global_partial path="onehazel-theme/partials/nav.html" %}
+    {% include "onehazel-theme/partials/nav.html" %}
 
     <!-- Page content defined in child templates -->
     {% block body %}{% endblock %}
 
     <!-- Footer partial -->
-    {% global_partial path="onehazel-theme/partials/footer.html" %}
+    {% include "onehazel-theme/partials/footer.html" %}
 
     <!-- Theme JS -->
     {% require_js position="footer" %}
