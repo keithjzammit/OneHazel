@@ -17,6 +17,9 @@
         <p class="text-lg leading-relaxed max-w-xl mx-auto" style="color: var(--text-secondary);">
             One integration. Every vendor. AI agents that build, test, and maintain your connections automatically.
         </p>
+        <a href="#roi-calculator" class="btn-secondary inline-flex mt-6" style="font-size: 14px; padding: 10px 20px; border-radius: 10px;">
+            Calculate Your ROI <i class="fas fa-arrow-down ml-2 text-xs"></i>
+        </a>
     </div>
 </section>
 
@@ -177,6 +180,16 @@
             </div>
 
         </div>
+    </div>
+</section>
+
+<!-- ===== ROI CALCULATOR ===== -->
+<section id="roi-calculator" class="section-alt border-t divider py-20">
+    <div class="max-w-5xl mx-auto px-6">
+        {% dnd_area "roi_calculator" label="ROI Calculator" %}
+            {% dnd_module path="onehazel-theme/modules/roi-calculator.module" %}
+            {% end_dnd_module %}
+        {% end_dnd_area %}
     </div>
 </section>
 
