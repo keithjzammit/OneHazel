@@ -123,8 +123,8 @@
     var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
     var tiers = {
-        grow:       { max: 5,  tierName: 'Grow',       annual: {{ module.grow_annual }},  monthly: {{ module.grow_monthly }},  foundingAnnual: {{ module.grow_founding_annual }},  foundingMonthly: {{ module.grow_founding_monthly }}  },
-        scale:      { max: 20, tierName: 'Scale',      annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} },
+        grow:       { max: 15, tierName: 'Grow',       annual: {{ module.grow_annual }},  monthly: {{ module.grow_monthly }},  foundingAnnual: {{ module.grow_founding_annual }},  foundingMonthly: {{ module.grow_founding_monthly }}  },
+        scale:      { max: 30, tierName: 'Scale',      annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} },
         enterprise: { max: 50, tierName: 'Enterprise', annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} }
     };
 

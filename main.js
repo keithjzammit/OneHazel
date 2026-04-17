@@ -249,8 +249,8 @@
         var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
         var tiers = {
-            grow:       { max: 5,  tierName: 'Grow',       annual: 999,  monthly: 1199, foundingAnnual: 499,  foundingMonthly: 749  },
-            scale:      { max: 20, tierName: 'Scale',      annual: 2499, monthly: 2999, foundingAnnual: 1249, foundingMonthly: 1899 },
+            grow:       { max: 15, tierName: 'Grow',       annual: 999,  monthly: 1199, foundingAnnual: 499,  foundingMonthly: 749  },
+            scale:      { max: 30, tierName: 'Scale',      annual: 2499, monthly: 2999, foundingAnnual: 1249, foundingMonthly: 1899 },
             enterprise: { max: 50, tierName: 'Enterprise', annual: 2499, monthly: 2999, foundingAnnual: 1249, foundingMonthly: 1899 }
         };
 
