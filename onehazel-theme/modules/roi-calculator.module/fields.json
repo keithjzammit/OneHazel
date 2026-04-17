@@ -44,57 +44,8 @@
   {
     "id": "grow_annual",
     "name": "grow_annual",
-    "label": "Grow: Annual Price/Mo",
+    "label": "Starting Price (EUR/mo)",
     "type": "number",
     "default": 999
-  },
-  {
-    "id": "grow_monthly",
-    "name": "grow_monthly",
-    "label": "Grow: Monthly Price/Mo",
-    "type": "number",
-    "default": 1199
-  },
-  {
-    "id": "grow_founding_annual",
-    "name": "grow_founding_annual",
-    "label": "Grow: Founding Annual/Mo",
-    "type": "number",
-    "default": 499
-  },
-  {
-    "id": "grow_founding_monthly",
-    "name": "grow_founding_monthly",
-    "label": "Grow: Founding Monthly/Mo",
-    "type": "number",
-    "default": 749
-  },
-  {
-    "id": "scale_annual",
-    "name": "scale_annual",
-    "label": "Scale: Annual Price/Mo",
-    "type": "number",
-    "default": 2499
-  },
-  {
-    "id": "scale_monthly",
-    "name": "scale_monthly",
-    "label": "Scale: Monthly Price/Mo",
-    "type": "number",
-    "default": 2999
-  },
-  {
-    "id": "scale_founding_annual",
-    "name": "scale_founding_annual",
-    "label": "Scale: Founding Annual/Mo",
-    "type": "number",
-    "default": 1249
-  },
-  {
-    "id": "scale_founding_monthly",
-    "name": "scale_founding_monthly",
-    "label": "Scale: Founding Monthly/Mo",
-    "type": "number",
-    "default": 1899
   }
 ]

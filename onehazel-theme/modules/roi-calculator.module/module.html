@@ -51,34 +51,43 @@
 
     {# RIGHT: Results #}
     <div class="card p-8 flex flex-col justify-center">
-        <div id="roi-positive" class="roi-positive-state">
-            <div class="text-center mb-6">
-                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--text-muted);">Annual savings</div>
-                <div id="roi-savings" class="text-4xl md:text-5xl font-extrabold gradient-text roi-results-value" style="-webkit-text-fill-color: transparent;">&euro;189,000</div>
-            </div>
-            <div class="roi-payback-badge mb-6">
-                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--success);">Payback period</div>
-                <div id="roi-payback" class="text-xl font-extrabold" style="color: var(--success);">1.8 months</div>
-            </div>
-            <div class="roi-tier-card mb-5">
-                <div class="text-xs mb-1" style="color: var(--text-muted);">Recommended plan</div>
-                <div id="roi-tier-name" class="text-base font-bold mb-0.5" style="color: var(--accent-bright);">Scale &middot; &euro;2,499/mo</div>
-                <div id="roi-tier-founding" class="text-xs" style="color: var(--text-muted);">Founding price: &euro;1,249/mo</div>
-            </div>
-            <a id="roi-cta" href="https://app.onehazel.com" class="btn-primary w-full text-center" style="font-size: 14px; padding: 12px 20px;">
-                Get Started with Scale <span class="ml-2">&rarr;</span>
-            </a>
+
+        {# In-house cost #}
+        <div class="text-center mb-5" style="padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--text-muted);">Your in-house cost</div>
+            <div id="roi-inhouse" class="text-3xl md:text-4xl font-extrabold roi-results-value" style="color: var(--text);">&euro;255,000</div>
+            <div class="text-xs mt-1" style="color: var(--text-muted);">per year in build + maintenance</div>
         </div>
-        <div id="roi-negative" class="roi-negative-state text-center">
-            <div class="mb-4">
-                <i class="fas fa-comments text-2xl mb-3" style="color: var(--accent-bright);"></i>
-                <p class="text-base font-semibold mb-2">Talk to us about your specific use case</p>
-                <p class="text-sm" style="color: var(--text-secondary);">For smaller integration needs, our team can help find the right plan for your situation.</p>
-            </div>
+
+        {# OneHazel cost #}
+        <div class="text-center mb-5" style="padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--text-muted);">With OneHazel</div>
+            <div class="text-xl font-extrabold" style="color: var(--accent-bright);">From &euro;{{ module.grow_annual }}/mo</div>
+            <div class="text-xs mt-1" style="color: var(--text-muted);">All integrations. AI-built. Self-healing.</div>
+        </div>
+
+        {# Savings #}
+        <div class="text-center mb-5">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--success);">You save</div>
+            <div id="roi-savings" class="text-4xl md:text-5xl font-extrabold gradient-text roi-results-value" style="-webkit-text-fill-color: transparent;">&euro;243,012</div>
+        </div>
+
+        {# Payback #}
+        <div class="roi-payback-badge mb-6">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--success);">Payback period</div>
+            <div id="roi-payback" class="text-xl font-extrabold" style="color: var(--success);">< 1 month</div>
+        </div>
+
+        {# CTA #}
+        <div class="flex flex-col gap-3">
+            <a href="https://app.onehazel.com" class="btn-primary w-full text-center" style="font-size: 14px; padding: 12px 20px;">
+                Start Free Trial <span class="ml-2">&rarr;</span>
+            </a>
             <a href="/contact" class="btn-secondary w-full text-center" style="font-size: 14px; padding: 12px 20px;">
-                Contact Sales <span class="ml-2">&rarr;</span>
+                Talk to Sales
             </a>
         </div>
+
     </div>
 </div>
 
@@ -95,33 +104,13 @@
     var rateVal = document.getElementById('roi-rate-val');
     var buildHoursVal = document.getElementById('roi-build-hours-val');
     var maintHoursVal = document.getElementById('roi-maint-hours-val');
+    var inhouseEl = document.getElementById('roi-inhouse');
     var savingsEl = document.getElementById('roi-savings');
     var paybackEl = document.getElementById('roi-payback');
-    var tierNameEl = document.getElementById('roi-tier-name');
-    var tierFoundingEl = document.getElementById('roi-tier-founding');
-    var ctaEl = document.getElementById('roi-cta');
-    var positiveEl = document.getElementById('roi-positive');
-    var negativeEl = document.getElementById('roi-negative');
 
     var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
-    var tiers = {
-        grow:       { max: 15, tierName: 'Grow',       annual: {{ module.grow_annual }},  monthly: {{ module.grow_monthly }},  foundingAnnual: {{ module.grow_founding_annual }},  foundingMonthly: {{ module.grow_founding_monthly }}  },
-        scale:      { max: 30, tierName: 'Scale',      annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} },
-        enterprise: { max: 50, tierName: 'Enterprise' }
-    };
-
-    function getBilling() {
-        var container = document.getElementById('pricing-container');
-        if (container && container.classList.contains('billing-monthly')) return 'monthly';
-        return 'annual';
-    }
-
-    function getTier(count) {
-        if (count <= tiers.grow.max) return tiers.grow;
-        if (count <= tiers.scale.max) return tiers.scale;
-        return tiers.enterprise;
-    }
+    var oneHazelAnnual = {{ module.grow_annual }} * 12;
 
     function calculate() {
         var n = parseInt(integrations.value, 10);
@@ -138,61 +127,24 @@
         var maintenanceCost = n * mh * r * 12;
         var totalInHouse = buildCost + maintenanceCost;
 
-        var billing = getBilling();
-        var tier = getTier(n);
-        var isEnterprise = tier.tierName === 'Enterprise';
+        inhouseEl.textContent = fmt.format(totalInHouse);
 
-        if (isEnterprise) {
-            positiveEl.classList.remove('hidden');
-            negativeEl.classList.remove('visible');
-            savingsEl.textContent = fmt.format(totalInHouse);
-            paybackEl.textContent = 'Immediate';
-            tierNameEl.textContent = 'Enterprise \u00B7 Custom';
-            tierFoundingEl.textContent = 'Annual commitment \u00B7 tailored to your needs';
-            ctaEl.href = '/contact';
-            ctaEl.textContent = 'Contact Sales \u2192';
-            return;
-        }
-
-        var monthlyPrice = billing === 'annual' ? tier.annual : tier.monthly;
-        var oneHazelAnnual = monthlyPrice * 12;
         var annualSavings = totalInHouse - oneHazelAnnual;
+        savingsEl.textContent = annualSavings > 0 ? fmt.format(annualSavings) : fmt.format(0);
 
-        if (annualSavings <= 0) {
-            positiveEl.classList.add('hidden');
-            negativeEl.classList.add('visible');
-            return;
+        if (totalInHouse > 0) {
+            var paybackMonths = oneHazelAnnual / (totalInHouse / 12);
+            var paybackText;
+            if (paybackMonths < 1) paybackText = '< 1 month';
+            else if (paybackMonths > 12) paybackText = '12+ months';
+            else paybackText = paybackMonths.toFixed(1) + ' months';
+            paybackEl.textContent = paybackText;
+        } else {
+            paybackEl.textContent = '\u2014';
         }
-
-        positiveEl.classList.remove('hidden');
-        negativeEl.classList.remove('visible');
-
-        savingsEl.textContent = fmt.format(annualSavings);
-
-        var paybackMonths = oneHazelAnnual / (totalInHouse / 12);
-        var paybackText;
-        if (paybackMonths < 1) paybackText = '< 1 month';
-        else if (paybackMonths > 12) paybackText = '12+ months';
-        else paybackText = paybackMonths.toFixed(1) + ' months';
-        paybackEl.textContent = paybackText;
-
-        var foundingPrice = billing === 'annual' ? tier.foundingAnnual : tier.foundingMonthly;
-
-        tierNameEl.textContent = tier.tierName + ' \u00B7 ' + fmt.format(monthlyPrice) + '/mo';
-        tierFoundingEl.textContent = 'Founding price: ' + fmt.format(foundingPrice) + '/mo';
-
-        ctaEl.href = 'https://app.onehazel.com';
-        ctaEl.textContent = 'Get Started with ' + tier.tierName + ' \u2192';
     }
 
     [integrations, rate, buildHours, maintHours].forEach(function(s) { s.addEventListener('input', calculate); });
-
-    var container = document.getElementById('pricing-container');
-    if (container) {
-        container.querySelectorAll('.billing-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() { setTimeout(calculate, 10); });
-        });
-    }
 
     calculate();
 })();
