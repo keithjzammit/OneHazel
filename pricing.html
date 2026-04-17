@@ -101,7 +101,7 @@
                     <div class="flex flex-col gap-3 mb-8 flex-1 text-sm" style="color: var(--text-secondary);">
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider" style="color: var(--text-muted);">Unified API</div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> All marketplace vendors</div>
-                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 50,000 tokens</div>
+                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> <span class="action-term" data-tooltip="1 action = 1 API request to a vendor or 1 workflow execution step. Responses and webhooks are excluded.">50,000 actions</span></div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 1 private vendor connection</div>
 
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider mt-3" style="color: var(--text-muted);">AI Agents</div>
@@ -139,7 +139,7 @@
                     <div class="flex flex-col gap-3 mb-8 flex-1 text-sm" style="color: var(--text-secondary);">
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider" style="color: var(--text-muted);">Unified API</div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> All marketplace vendors</div>
-                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 500,000 tokens/mo</div>
+                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> <span class="action-term" data-tooltip="1 action = 1 API request to a vendor or 1 workflow execution step. Responses and webhooks are excluded.">500,000 actions/mo</span></div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 3 private vendor connections</div>
 
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider mt-3" style="color: var(--text-muted);">AI Agents</div>
@@ -179,7 +179,7 @@
                     <div class="flex flex-col gap-3 mb-8 flex-1 text-sm" style="color: var(--text-secondary);">
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider" style="color: var(--text-muted);">Unified API</div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> All marketplace vendors</div>
-                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 2,000,000 tokens/mo</div>
+                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> <span class="action-term" data-tooltip="1 action = 1 API request to a vendor or 1 workflow execution step. Responses and webhooks are excluded.">2,000,000 actions/mo</span></div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> 10 private vendor connections</div>
 
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider mt-3" style="color: var(--text-muted);">AI Agents</div>
@@ -211,7 +211,7 @@
 
                     <div class="flex flex-col gap-3 mb-8 flex-1 text-sm" style="color: var(--text-secondary);">
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider" style="color: var(--text-muted);">Unified API</div>
-                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> Tokens at committed-volume rates</div>
+                        <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> <span class="action-term" data-tooltip="1 action = 1 API request to a vendor or 1 workflow execution step. Responses and webhooks are excluded.">Actions at committed-volume rates</span></div>
                         <div class="flex items-start gap-2"><i class="fas fa-check text-xs mt-1" style="color: var(--accent-bright);"></i> Private connections at committed-volume rates</div>
 
                         <div class="mono text-[10px] font-semibold uppercase tracking-wider mt-3" style="color: var(--text-muted);">AI Agents</div>
@@ -299,7 +299,7 @@
 
                     <div class="mb-5">
                         <div class="flex justify-between mb-2">
-                            <span class="text-sm" style="color: var(--text-secondary);">Tokens / month</span>
+                            <span class="text-sm" style="color: var(--text-secondary);">Actions / month</span>
                             <span id="roi-api-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">500K</span>
                         </div>
                         <input type="range" id="roi-api" class="roi-slider" min="50000" max="5000000" value="500000" step="50000">
@@ -344,7 +344,7 @@
                             <span class="mono text-sm font-bold" id="roi-tier-price" style="color: var(--accent-bright);">&euro;999/mo</span>
                         </div>
                         <div id="roi-topup-api" class="flex justify-between items-baseline mb-1" style="display: none;">
-                            <span class="text-xs" style="color: var(--text-muted);">Token top-up</span>
+                            <span class="text-xs" style="color: var(--text-muted);">Action top-up</span>
                             <span id="roi-topup-api-val" class="mono text-xs" style="color: var(--text-secondary);">&euro;29/mo</span>
                         </div>
                         <div id="roi-topup-ai" class="flex justify-between items-baseline mb-1" style="display: none;">
@@ -407,27 +407,27 @@
                 </p>
             </div>
 
-            <!-- Token Packs -->
+            <!-- Action Packs -->
             <div class="mb-12 fade-up-3">
-                <h3 class="text-lg font-bold mb-5"><i class="fas fa-coins mr-2 text-sm" style="color: var(--accent-bright);"></i> Token Packs</h3>
-                <p class="text-xs mb-5" style="color: var(--text-muted);">Tokens power both your unified API calls and workflow executions.</p>
+                <h3 class="text-lg font-bold mb-5"><i class="fas fa-coins mr-2 text-sm" style="color: var(--accent-bright);"></i> <span class="action-term" data-tooltip="1 action = 1 API request to a vendor or 1 workflow execution step. Responses and webhooks are excluded.">Action Packs</span></h3>
+                <p class="text-xs mb-5" style="color: var(--text-muted);">Actions power both your unified API calls and workflow executions.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div class="card p-5">
-                        <div class="text-sm font-bold mb-1">100K tokens</div>
+                        <div class="text-sm font-bold mb-1">100K actions</div>
                         <div class="text-2xl font-extrabold mb-1">&euro;129</div>
-                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.29 per 1,000 tokens</div>
+                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.29 per 1,000 actions</div>
                     </div>
                     <div class="card p-5 relative" style="border-color: var(--accent-border);">
                         <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 mono text-[9px] font-semibold px-2.5 py-0.5 rounded-full" style="background: var(--accent-soft); color: var(--accent-bright); border: 1px solid var(--accent-border);">MOST POPULAR</span>
-                        <div class="text-sm font-bold mb-1">500K tokens</div>
+                        <div class="text-sm font-bold mb-1">500K actions</div>
                         <div class="text-2xl font-extrabold mb-1">&euro;599</div>
-                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.20 per 1,000 tokens</div>
+                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.20 per 1,000 actions</div>
                         <div class="text-xs font-semibold mt-1" style="color: var(--success);">Save 7%</div>
                     </div>
                     <div class="card p-5">
-                        <div class="text-sm font-bold mb-1">1M tokens</div>
+                        <div class="text-sm font-bold mb-1">1M actions</div>
                         <div class="text-2xl font-extrabold mb-1">&euro;1,149</div>
-                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.15 per 1,000 tokens</div>
+                        <div class="text-xs" style="color: var(--text-muted);">&euro;1.15 per 1,000 actions</div>
                         <div class="text-xs font-semibold mt-1" style="color: var(--success);">Save 11%</div>
                     </div>
                 </div>
@@ -509,12 +509,17 @@
 
                 <details class="card p-6 group">
                     <summary class="flex items-center justify-between cursor-pointer list-none font-semibold" style="color: var(--text);">
-                        What is a token?
+                        What is an action?
                         <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
                     </summary>
-                    <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        A token is the unified unit of consumption for data moving through OneHazel. One token is consumed for each of: An API request that flows through the OneHazel unified API to a connected vendor, or a workflow execution step. Responses, webhooks, and health checks are excluded.
-                    </p>
+                    <div class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                        <p>An action is the unified unit of consumption for data moving through OneHazel. One action is consumed for each of the following:</p>
+                        <ul style="list-style: disc; padding-left: 1.25rem; margin-top: 0.75rem;" class="flex flex-col gap-2">
+                            <li>An API request that flows through the OneHazel unified API to a connected vendor</li>
+                            <li>A workflow execution step</li>
+                        </ul>
+                        <p class="mt-3">Responses, webhooks, and health checks are excluded.</p>
+                    </div>
                 </details>
 
                 <details class="card p-6 group">
@@ -522,31 +527,27 @@
                         What is an AI action?
                         <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
                     </summary>
-                    <div class="mt-4">
-                        <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">
-                            An AI action is consumed each time an AI agent performs a discrete task on your behalf. Actions fall into four categories:
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">Connector lifecycle</div>
-                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Discovering a vendor API, generating integration code, running a test suite, detecting an API change, or self-healing a broken connection.</p>
-                            </div>
-                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">Private connection monitoring</div>
-                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">AI agents run daily sweeps on your private vendor connections. If a change is detected and remediation is needed, that counts as an additional action. Each private connection typically uses 30 to 90 actions per month depending on the vendor's API volatility.</p>
-                            </div>
-                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">In-workflow AI actions</div>
-                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Calling an AI action within a workflow for data manipulation, inference, or content creation counts as one action per call.</p>
-                            </div>
-                            <div class="rounded-xl p-4" style="background: var(--bg-subtle); border: 1px solid var(--border);">
-                                <div class="text-sm font-bold mb-1.5" style="color: var(--text);">AI co-pilots</div>
-                                <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Each message sent to the AI Workflow Builder or the Analytics Dashboard co-pilot counts as one action.</p>
-                            </div>
-                        </div>
-                        <p class="text-xs leading-relaxed pt-3" style="color: var(--text-muted); border-top: 1px solid var(--border);">
-                            Summary: if an AI agent thinks, builds, analyses, or responds on your behalf, that is one AI action. Standard tokens flowing through the unified API to vendors are metered separately.
-                        </p>
+                    <div class="mt-4 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                        <p>An AI action is consumed each time an AI agent performs a discrete task on your behalf. Actions fall into four categories:</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 0.75rem;" class="flex flex-col gap-4">
+                            <li>
+                                <strong style="color: var(--text);">Connector lifecycle</strong>
+                                <p class="mt-1">Discovering a vendor API, generating integration code, running a test suite, detecting an API change, or self-healing a broken connection.</p>
+                            </li>
+                            <li>
+                                <strong style="color: var(--text);">Private connection monitoring</strong>
+                                <p class="mt-1">AI agents run daily sweeps on your private vendor connections. If a change is detected and remediation is needed, that counts as an additional action. Each private connection typically uses 30 to 90 actions per month depending on the vendor's API volatility.</p>
+                            </li>
+                            <li>
+                                <strong style="color: var(--text);">In-workflow AI actions</strong>
+                                <p class="mt-1">Calling an AI action within a workflow for data manipulation, inference, or content creation counts as one action per call.</p>
+                            </li>
+                            <li>
+                                <strong style="color: var(--text);">AI co-pilots</strong>
+                                <p class="mt-1">Each message sent to the AI Workflow Builder or the Analytics Dashboard co-pilot counts as one action.</p>
+                            </li>
+                        </ul>
+                        <p class="mt-3">In short: if an AI agent thinks, builds, analyses, or responds on your behalf, that is one AI action. Standard actions flowing through the unified API to vendors are metered separately.</p>
                     </div>
                 </details>
 
@@ -566,7 +567,7 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
                     </summary>
                     <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        Tokens and AI actions pause at the limit. You can purchase top-up packs or upgrade your plan instantly. No surprise overage bills. We send automatic alerts at 75% and 90% usage.
+                        Actions and AI actions pause at the limit. You can purchase top-up packs or upgrade your plan instantly. No surprise overage bills. We send automatic alerts at 75% and 90% usage.
                     </p>
                 </details>
 
@@ -596,7 +597,7 @@
                         <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-180" style="color: var(--text-muted);"></i>
                     </summary>
                     <p class="mt-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
-                        Enterprise is priced on committed volume rather than fixed monthly allocations. You commit to a volume of tokens, AI actions, and private connections over your annual term, and receive preferential rates on each meter relative to our published pack prices. Custom connector development, advanced security (SSO, RBAC, tenant isolation), and a dedicated account manager are included. Contact sales for a quote based on your expected usage.
+                        Enterprise is priced on committed volume rather than fixed monthly allocations. You commit to a volume of actions, AI actions, and private connections over your annual term, and receive preferential rates on each meter relative to our published pack prices. Custom connector development, advanced security (SSO, RBAC, tenant isolation), and a dedicated account manager are included. Contact sales for a quote based on your expected usage.
                     </p>
                 </details>
 
