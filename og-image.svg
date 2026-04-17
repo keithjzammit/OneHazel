@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1410"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="85%" cy="75%" r="45%">
+      <stop offset="0%" stop-color="#fde68a" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#fde68a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#fde68a" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Wordmark -->
+  <text x="80" y="135" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="800" font-size="44" letter-spacing="-1.5">
+    <tspan fill="url(#gold)">ONE</tspan><tspan fill="#f5f5f4">HAZEL</tspan>
+  </text>
+
+  <!-- Headline -->
+  <text x="80" y="290" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="800" font-size="82" fill="#f5f5f4" letter-spacing="-3">The Last Integration</text>
+  <text x="80" y="385" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="800" font-size="82" fill="url(#gold)" letter-spacing="-3">You'll Ever Build.</text>
+
+  <!-- Subhead -->
+  <text x="80" y="455" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-weight="400" font-size="26" fill="#a8a29e">
+    The AI-powered integration platform — integrations built in minutes.
+  </text>
+
+  <!-- Footer badges -->
+  <g transform="translate(80, 530)" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="600">
+    <!-- BETA LIVE -->
+    <g>
+      <rect x="0" y="0" width="150" height="42" rx="21" fill="#fde68a" fill-opacity="0.08" stroke="#fde68a" stroke-opacity="0.25" stroke-width="1"/>
+      <circle cx="22" cy="21" r="4" fill="#22c55e"/>
+      <text x="38" y="27" fill="#fde68a">BETA LIVE</text>
+    </g>
+    <!-- 300+ CONNECTORS -->
+    <g transform="translate(166, 0)">
+      <rect x="0" y="0" width="200" height="42" rx="21" fill="#fde68a" fill-opacity="0.08" stroke="#fde68a" stroke-opacity="0.25" stroke-width="1"/>
+      <text x="20" y="27" fill="#fde68a">300+ CONNECTORS</text>
+    </g>
+    <!-- AI WORKFLOW AGENTS -->
+    <g transform="translate(382, 0)">
+      <rect x="0" y="0" width="230" height="42" rx="21" fill="#fde68a" fill-opacity="0.08" stroke="#fde68a" stroke-opacity="0.25" stroke-width="1"/>
+      <text x="20" y="27" fill="#fde68a">AI WORKFLOW AGENTS</text>
+    </g>
+  </g>
+
+  <!-- Subtle corner accent -->
+  <g transform="translate(1050, 480)" opacity="0.5">
+    <circle cx="60" cy="60" r="60" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-opacity="0.6"/>
+    <circle cx="60" cy="60" r="40" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <circle cx="60" cy="60" r="20" fill="url(#gold)" fill-opacity="0.6"/>
+  </g>
+</svg>
