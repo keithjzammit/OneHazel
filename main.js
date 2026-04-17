@@ -217,19 +217,16 @@
 
     // ===== ROI CALCULATOR =====
     function initROICalculator() {
-        // In-house sliders
         var integrations = document.getElementById('roi-integrations');
         var rate = document.getElementById('roi-rate');
         var buildHours = document.getElementById('roi-build-hours');
         var maintHours = document.getElementById('roi-maint-hours');
-        // Usage sliders
         var apiSlider = document.getElementById('roi-api');
         var aiSlider = document.getElementById('roi-ai');
         var privateSlider = document.getElementById('roi-private');
 
         if (!integrations || !apiSlider) return;
 
-        // Display elements
         var integrationsVal = document.getElementById('roi-integrations-val');
         var rateVal = document.getElementById('roi-rate-val');
         var buildHoursVal = document.getElementById('roi-build-hours-val');
@@ -238,68 +235,71 @@
         var aiVal = document.getElementById('roi-ai-val');
         var privateVal = document.getElementById('roi-private-val');
         var inhouseEl = document.getElementById('roi-inhouse');
-        var ohCostEl = document.getElementById('roi-oh-cost');
-        var ohBreakdownEl = document.getElementById('roi-oh-breakdown');
+        var tierLabelEl = document.getElementById('roi-tier-label');
+        var tierPriceEl = document.getElementById('roi-tier-price');
+        var topupApiEl = document.getElementById('roi-topup-api');
+        var topupApiValEl = document.getElementById('roi-topup-api-val');
+        var topupAiEl = document.getElementById('roi-topup-ai');
+        var topupAiValEl = document.getElementById('roi-topup-ai-val');
+        var topupPrivEl = document.getElementById('roi-topup-priv');
+        var topupPrivValEl = document.getElementById('roi-topup-priv-val');
+        var ohTotalEl = document.getElementById('roi-oh-total');
+        var ohAnnualEl = document.getElementById('roi-oh-annual');
         var savingsEl = document.getElementById('roi-savings');
         var paybackEl = document.getElementById('roi-payback');
-        var ctaEl = document.getElementById('roi-cta');
+        var ctaTrialEl = document.getElementById('roi-cta-trial');
+        var ctaSalesEl = document.getElementById('roi-cta-sales');
 
         var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
         function fmtCalls(n) {
-            if (n >= 1000000) {
-                var m = n / 1000000;
-                return (m % 1 === 0 ? m : m.toFixed(1)) + 'M';
-            }
+            if (n >= 1000000) { var m = n / 1000000; return (m % 1 === 0 ? m : m.toFixed(1)) + 'M'; }
             return (n / 1000) + 'K';
         }
 
-        // Tier definitions: included allowances
+        // Tiers with included allowances
         var tiers = [
             { name: 'Grow',  monthly: 999,  api: 500000,  ai: 500,  priv: 3  },
             { name: 'Scale', monthly: 2499, api: 2000000, ai: 2000, priv: 10 }
         ];
 
-        // Top-up pack costs (greedy: largest first for best value)
-        function apiPackCost(excessPerMonth) {
-            if (excessPerMonth <= 0) return 0;
-            var annual = excessPerMonth * 12;
+        // Enterprise thresholds: Scale included + largest single pack
+        // API: 2M + 5M = 7M, AI: 2K + 5K = 7K, Private: 10 + 10 = 20
+        var enterpriseLimits = { api: 7000000, ai: 7000, priv: 20 };
+
+        // Pack options: [size, price] — sorted smallest to largest
+        var apiPacks =     [[100000, 29], [500000, 119], [1000000, 199], [5000000, 799]];
+        var aiPacks =      [[100, 79], [500, 299], [1000, 499], [5000, 1999]];
+        var privatePacks = [[1, 149], [3, 349], [5, 499], [10, 799]];
+
+        // Greedy pack cost: covers monthly excess × 12, largest packs first
+        function packCost(packs, excessPerMonth, isMonthly) {
+            if (excessPerMonth <= 0) return { cost: 0, monthly: 0 };
+            var remaining = isMonthly ? excessPerMonth : excessPerMonth * 12;
             var cost = 0;
-            while (annual >= 5000000) { cost += 799; annual -= 5000000; }
-            while (annual >= 1000000) { cost += 199; annual -= 1000000; }
-            while (annual >= 500000)  { cost += 119; annual -= 500000; }
-            while (annual > 0)        { cost += 29;  annual -= 100000; }
-            return cost;
+            for (var i = packs.length - 1; i >= 0; i--) {
+                while (remaining >= packs[i][0]) { cost += packs[i][1]; remaining -= packs[i][0]; }
+            }
+            if (remaining > 0) { cost += packs[0][1]; }
+            var mo = isMonthly ? cost : Math.round(cost / 12);
+            return { cost: isMonthly ? cost * 12 : cost, monthly: mo };
         }
 
-        function aiPackCost(excessPerMonth) {
-            if (excessPerMonth <= 0) return 0;
-            var annual = excessPerMonth * 12;
-            var cost = 0;
-            while (annual >= 5000) { cost += 1999; annual -= 5000; }
-            while (annual >= 1000) { cost += 499;  annual -= 1000; }
-            while (annual >= 500)  { cost += 299;  annual -= 500; }
-            while (annual > 0)     { cost += 79;   annual -= 100; }
-            return cost;
-        }
-
-        function privatePackCost(excess) {
-            if (excess <= 0) return 0;
-            var mo = 0;
-            var rem = excess;
-            while (rem >= 10) { mo += 799; rem -= 10; }
-            while (rem >= 5)  { mo += 499; rem -= 5; }
-            while (rem >= 3)  { mo += 349; rem -= 3; }
-            while (rem > 0)   { mo += 149; rem -= 1; }
-            return mo * 12;
-        }
-
-        function tierCost(tier, apiNeed, aiNeed, privNeed) {
+        function calcTier(tier, apiNeed, aiNeed, privNeed) {
+            var apiEx = Math.max(0, apiNeed - tier.api);
+            var aiEx = Math.max(0, aiNeed - tier.ai);
+            var privEx = Math.max(0, privNeed - tier.priv);
+            var ap = packCost(apiPacks, apiEx, false);
+            var aip = packCost(aiPacks, aiEx, false);
+            var pp = packCost(privatePacks, privEx, true);
             var tierAnnual = tier.monthly * 12;
-            var packs = apiPackCost(Math.max(0, apiNeed - tier.api))
-                      + aiPackCost(Math.max(0, aiNeed - tier.ai))
-                      + privatePackCost(Math.max(0, privNeed - tier.priv));
-            return { name: tier.name, tierMonthly: tier.monthly, tierAnnual: tierAnnual, packs: packs, total: tierAnnual + packs };
+            var totalPacks = ap.cost + aip.cost + pp.cost;
+            return {
+                name: tier.name, tierMonthly: tier.monthly, tierAnnual: tierAnnual,
+                apiPack: ap, aiPack: aip, privPack: pp,
+                totalAnnual: tierAnnual + totalPacks,
+                totalMonthly: tier.monthly + ap.monthly + aip.monthly + pp.monthly
+            };
         }
 
         function calculate() {
@@ -311,7 +311,6 @@
             var aiNeed   = parseInt(aiSlider.value, 10);
             var privNeed = parseInt(privateSlider.value, 10);
 
-            // Update display values
             integrationsVal.textContent = n;
             rateVal.textContent = '\u20AC' + r + '/hr';
             buildHoursVal.textContent = bh;
@@ -322,52 +321,79 @@
 
             // In-house cost
             var totalInHouse = (n * bh * r) + (n * mh * r * 12);
-            inhouseEl.textContent = fmt.format(totalInHouse) + '/yr';
+            inhouseEl.textContent = fmt.format(totalInHouse);
 
-            // Find cheapest tier + packs
+            // Enterprise check
+            var isEnterprise = apiNeed > enterpriseLimits.api || aiNeed > enterpriseLimits.ai || privNeed > enterpriseLimits.priv;
+
+            if (isEnterprise) {
+                tierLabelEl.textContent = 'Enterprise plan';
+                tierPriceEl.textContent = 'Custom';
+                topupApiEl.style.display = 'none';
+                topupAiEl.style.display = 'none';
+                topupPrivEl.style.display = 'none';
+                ohTotalEl.textContent = 'Custom';
+                ohAnnualEl.textContent = 'Tailored to your needs';
+                savingsEl.textContent = fmt.format(totalInHouse) + '+';
+                paybackEl.textContent = 'Contact us';
+                ctaTrialEl.style.opacity = '0.4';
+                ctaTrialEl.style.pointerEvents = 'none';
+                ctaSalesEl.className = 'btn-primary flex-1 text-center';
+                ctaSalesEl.style.cssText = 'font-size: 14px; padding: 12px 20px;';
+                return;
+            }
+
+            // Reset CTA state
+            ctaTrialEl.style.opacity = '1';
+            ctaTrialEl.style.pointerEvents = 'auto';
+            ctaSalesEl.className = 'btn-secondary flex-1 text-center';
+            ctaSalesEl.style.cssText = 'font-size: 14px; padding: 12px 20px;';
+
+            // Find cheapest tier
             var best = null;
             for (var i = 0; i < tiers.length; i++) {
-                var opt = tierCost(tiers[i], apiNeed, aiNeed, privNeed);
-                if (!best || opt.total < best.total) best = opt;
+                var opt = calcTier(tiers[i], apiNeed, aiNeed, privNeed);
+                if (!best || opt.totalAnnual < best.totalAnnual) best = opt;
             }
 
-            // Build breakdown text
-            var monthlyTotal = Math.round(best.total / 12);
-            var breakdown = best.name + ' \u00B7 ' + fmt.format(best.tierMonthly) + '/mo';
-            if (best.packs > 0) {
-                var packsMonthly = Math.round(best.packs / 12);
-                breakdown += ' + ' + fmt.format(packsMonthly) + '/mo top\u2011ups';
-            }
+            // Update breakdown
+            tierLabelEl.textContent = best.name + ' plan';
+            tierPriceEl.textContent = fmt.format(best.tierMonthly) + '/mo';
 
-            ohCostEl.textContent = fmt.format(best.total) + '/yr';
-            ohBreakdownEl.textContent = breakdown;
+            if (best.apiPack.monthly > 0) {
+                topupApiEl.style.display = 'flex';
+                topupApiValEl.textContent = fmt.format(best.apiPack.monthly) + '/mo';
+            } else { topupApiEl.style.display = 'none'; }
+
+            if (best.aiPack.monthly > 0) {
+                topupAiEl.style.display = 'flex';
+                topupAiValEl.textContent = fmt.format(best.aiPack.monthly) + '/mo';
+            } else { topupAiEl.style.display = 'none'; }
+
+            if (best.privPack.monthly > 0) {
+                topupPrivEl.style.display = 'flex';
+                topupPrivValEl.textContent = fmt.format(best.privPack.monthly) + '/mo';
+            } else { topupPrivEl.style.display = 'none'; }
+
+            ohTotalEl.textContent = fmt.format(best.totalMonthly) + '/mo';
+            ohAnnualEl.textContent = fmt.format(best.totalAnnual) + '/yr';
 
             // Savings
-            var annualSavings = totalInHouse - best.total;
-            savingsEl.textContent = annualSavings > 0 ? fmt.format(annualSavings) + '/yr' : fmt.format(0) + '/yr';
+            var savings = totalInHouse - best.totalAnnual;
+            savingsEl.textContent = savings > 0 ? fmt.format(savings) : fmt.format(0);
 
             // Payback
-            if (totalInHouse > 0 && best.total > 0) {
-                var paybackMonths = best.total / (totalInHouse / 12);
-                if (paybackMonths < 1) paybackEl.textContent = '< 1 month';
-                else if (paybackMonths > 12) paybackEl.textContent = '12+ months';
-                else paybackEl.textContent = paybackMonths.toFixed(1) + ' months';
-            } else {
-                paybackEl.textContent = '\u2014';
-            }
-
-            // CTA — Enterprise suggestion if usage is very high
-            if (privNeed > 10 || apiNeed > 4000000 || aiNeed > 4000) {
-                ctaEl.href = '/contact';
-                ctaEl.textContent = 'Talk to Sales \u2192';
-            } else {
-                ctaEl.href = 'https://app.onehazel.com';
-                ctaEl.textContent = 'Start Free Trial \u2192';
-            }
+            if (totalInHouse > 0 && best.totalAnnual > 0) {
+                var pm = best.totalAnnual / (totalInHouse / 12);
+                if (pm < 1) paybackEl.textContent = '< 1 month';
+                else if (pm > 12) paybackEl.textContent = '12+ months';
+                else paybackEl.textContent = pm.toFixed(1) + ' months';
+            } else { paybackEl.textContent = '\u2014'; }
         }
 
-        var allSliders = [integrations, rate, buildHours, maintHours, apiSlider, aiSlider, privateSlider];
-        allSliders.forEach(function (s) { s.addEventListener('input', calculate); });
+        [integrations, rate, buildHours, maintHours, apiSlider, aiSlider, privateSlider].forEach(function (s) {
+            s.addEventListener('input', calculate);
+        });
 
         calculate();
     }
