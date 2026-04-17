@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image Preview — 1200x630</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #222; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .frame {
+      width: 1200px;
+      height: 630px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .note {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      background: #111;
+      color: #fde68a;
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #fde68a33;
+    }
+    img { display: block; width: 1200px; height: 630px; }
+  </style>
+</head>
+<body>
+  <div class="note">Export at exactly 1200×630 → save as <code>og-image.png</code></div>
+  <div class="frame">
+    <img src="/og-image.svg" alt="OneHazel OG image preview">
+  </div>
+</body>
+</html>
