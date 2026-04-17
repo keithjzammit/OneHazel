@@ -733,6 +733,41 @@ input[type="range"].roi-slider::-moz-range-track {
     background: var(--border);
 }
 
+/* ===== ACTION TOOLTIP ===== */
+.action-term {
+    color: var(--accent-bright);
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--accent-border);
+}
+
+.action-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-invert);
+    color: var(--text-invert);
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    white-space: normal;
+    width: 260px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 50;
+    box-shadow: 0 4px 12px var(--shadow);
+    font-weight: 400;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.action-term:hover::after {
+    opacity: 1;
+}
+
 .roi-results-value {
     transition: opacity 0.15s ease;
 }
