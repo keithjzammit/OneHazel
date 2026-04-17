@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Legacy pages — not part of active site
+Disallow: /index-secure.html
+Disallow: /login.html
+
+# Sitemap
+Sitemap: https://onehazel.com/sitemap.xml
