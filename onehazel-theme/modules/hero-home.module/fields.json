@@ -4,7 +4,7 @@
     "name": "badge_text",
     "label": "Badge Text",
     "type": "text",
-    "default": "Platform V1.0 Now Live"
+    "default": "Beta Now Live"
   },
   {
     "id": "headline",
