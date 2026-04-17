@@ -1,4 +1,4 @@
-{# ROI Calculator — mirrors pricing.html GitHub Pages version #}
+{# ROI Calculator — mirrors pricing.html GitHub Pages version (synced 2026-04-17) #}
 
 <div class="text-center mb-12 fade-up">
     <span class="badge mb-6"><i class="fas fa-calculator text-[10px]"></i> ROI CALCULATOR</span>
@@ -10,13 +10,14 @@
     </p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up-1">
+{# Slider panels #}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up-1 mb-6">
 
-    {# LEFT: In-house cost inputs #}
+    {# LEFT: In-house cost #}
     <div class="card p-8">
-        <h3 class="mono text-[10px] font-semibold uppercase tracking-wider mb-6" style="color: var(--text-muted);">Your Setup</h3>
+        <h3 class="mono text-[10px] font-semibold uppercase tracking-wider mb-6" style="color: var(--text-muted);">Your In-House Cost</h3>
 
-        <div class="mb-6">
+        <div class="mb-5">
             <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Vendor integrations needed</span>
                 <span id="roi-integrations-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_integrations }}</span>
@@ -24,7 +25,7 @@
             <input type="range" id="roi-integrations" class="roi-slider" min="1" max="50" value="{{ module.default_integrations }}" step="1">
         </div>
 
-        <div class="mb-6">
+        <div class="mb-5">
             <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Average developer cost</span>
                 <span id="roi-rate-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">&euro;{{ module.default_rate }}/hr</span>
@@ -32,7 +33,7 @@
             <input type="range" id="roi-rate" class="roi-slider" min="30" max="200" value="{{ module.default_rate }}" step="5">
         </div>
 
-        <div class="mb-6">
+        <div class="mb-5">
             <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Hours to build per integration</span>
                 <span id="roi-build-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_build_hours }}</span>
@@ -40,7 +41,7 @@
             <input type="range" id="roi-build-hours" class="roi-slider" min="40" max="300" value="{{ module.default_build_hours }}" step="10">
         </div>
 
-        <div class="mb-6">
+        <div>
             <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Maintenance hrs/mo per integration</span>
                 <span id="roi-maint-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_maint_hours }}</span>
@@ -49,14 +50,13 @@
         </div>
     </div>
 
-    {# RIGHT: Usage sliders + results #}
+    {# RIGHT: OneHazel usage #}
     <div class="card p-8">
-
         <h3 class="mono text-[10px] font-semibold uppercase tracking-wider mb-6" style="color: var(--text-muted);">Your OneHazel Usage</h3>
 
         <div class="mb-5">
             <div class="flex justify-between mb-2">
-                <span class="text-sm" style="color: var(--text-secondary);">API calls / month</span>
+                <span class="text-sm" style="color: var(--text-secondary);">Actions / month</span>
                 <span id="roi-api-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">500K</span>
             </div>
             <input type="range" id="roi-api" class="roi-slider" min="50000" max="5000000" value="500000" step="50000">
@@ -70,50 +70,81 @@
             <input type="range" id="roi-ai" class="roi-slider" min="50" max="5000" value="500" step="50">
         </div>
 
-        <div class="mb-6">
+        <div>
             <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Private vendor connections</span>
                 <span id="roi-private-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">0</span>
             </div>
-            <input type="range" id="roi-private" class="roi-slider" min="0" max="20" value="0" step="1">
+            <input type="range" id="roi-private" class="roi-slider" min="0" max="25" value="0" step="1">
+        </div>
+    </div>
+</div>
+
+{# Results panel — full width #}
+<div class="card fade-up-2 overflow-hidden">
+
+    {# Cost comparison row #}
+    <div class="grid grid-cols-1 md:grid-cols-2">
+
+        {# In-house cost #}
+        <div class="p-6 md:p-8 text-center" style="border-bottom: 1px solid var(--border);">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-3" style="color: var(--text-muted);">In-house cost</div>
+            <div id="roi-inhouse" class="text-3xl md:text-4xl font-extrabold" style="color: var(--text); letter-spacing: -0.03em;">&euro;255,000</div>
+            <div class="mono text-[10px] mt-1" style="color: var(--text-muted);">per year</div>
         </div>
 
-        {# Results #}
-        <div style="border-top: 1px solid var(--border); padding-top: 16px;">
-
-            <div class="flex justify-between items-baseline mb-3">
-                <span class="text-sm" style="color: var(--text-muted);">In-house cost</span>
-                <span id="roi-inhouse" class="mono text-base font-bold" style="color: var(--text);">&euro;255,000/yr</span>
+        {# OneHazel cost breakdown #}
+        <div class="p-6 md:p-8" style="border-bottom: 1px solid var(--border); border-left: 1px solid var(--border);">
+            <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-3 text-center" style="color: var(--text-muted);">OneHazel cost</div>
+            <div class="flex justify-between items-baseline mb-2">
+                <span class="text-sm font-semibold" id="roi-tier-label">Grow plan</span>
+                <span class="mono text-sm font-bold" id="roi-tier-price" style="color: var(--accent-bright);">&euro;999/mo</span>
             </div>
-
-            <div class="flex justify-between items-baseline mb-1">
-                <span class="text-sm" style="color: var(--text-muted);">OneHazel cost</span>
-                <span id="roi-oh-cost" class="mono text-base font-bold" style="color: var(--accent-bright);">&euro;11,988/yr</span>
+            <div id="roi-topup-api" class="flex justify-between items-baseline mb-1" style="display: none;">
+                <span class="text-xs" style="color: var(--text-muted);">Action top-up</span>
+                <span id="roi-topup-api-val" class="mono text-xs" style="color: var(--text-secondary);">&euro;129/mo</span>
             </div>
-            <div class="text-right mb-4">
-                <span id="roi-oh-breakdown" class="mono text-[10px]" style="color: var(--text-muted);">Grow &middot; &euro;999/mo</span>
+            <div id="roi-topup-ai" class="flex justify-between items-baseline mb-1" style="display: none;">
+                <span class="text-xs" style="color: var(--text-muted);">AI top-up</span>
+                <span id="roi-topup-ai-val" class="mono text-xs" style="color: var(--text-secondary);">&euro;129/mo</span>
             </div>
-
-            <div class="text-center mb-4 py-4 rounded-xl" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
-                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--text-muted);">You save</div>
-                <div id="roi-savings" class="text-3xl md:text-4xl font-extrabold gradient-text" style="-webkit-text-fill-color: transparent;">&euro;243,012/yr</div>
+            <div id="roi-topup-priv" class="flex justify-between items-baseline mb-1" style="display: none;">
+                <span class="text-xs" style="color: var(--text-muted);">Private connections</span>
+                <span id="roi-topup-priv-val" class="mono text-xs" style="color: var(--text-secondary);">&euro;249/mo</span>
             </div>
-
-            <div class="roi-payback-badge mb-5">
-                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--success);">Payback period</div>
-                <div id="roi-payback" class="text-lg font-extrabold" style="color: var(--success);">< 1 month</div>
+            <div class="flex justify-between items-baseline pt-2 mt-2" style="border-top: 1px solid var(--border);">
+                <span class="text-sm font-bold">Total</span>
+                <span id="roi-oh-total" class="mono text-sm font-bold" style="color: var(--accent-bright);">&euro;999/mo</span>
             </div>
+            <div class="text-right mt-1">
+                <span id="roi-oh-annual" class="mono text-[10px]" style="color: var(--text-muted);">&euro;11,988/yr</span>
+            </div>
+        </div>
+    </div>
 
-            <div class="flex flex-col gap-3">
-                <a id="roi-cta" href="https://app.onehazel.com" class="btn-primary w-full text-center" style="font-size: 14px; padding: 12px 20px;">
-                    Start Free Trial <span class="ml-2">&rarr;</span>
+    {# Savings + payback + CTAs row #}
+    <div class="p-6 md:p-8" style="background: var(--accent-soft);">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
+            <div class="text-center md:text-left">
+                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--accent);">You save</div>
+                <div class="flex items-baseline gap-3 justify-center md:justify-start">
+                    <span id="roi-savings" class="text-3xl md:text-4xl font-extrabold gradient-text" style="-webkit-text-fill-color: transparent; letter-spacing: -0.03em;">&euro;243,012</span>
+                    <span class="mono text-xs" style="color: var(--text-muted);">per year</span>
+                </div>
+            </div>
+            <div class="text-center flex-shrink-0">
+                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--success);">Payback</div>
+                <div id="roi-payback" class="text-xl font-extrabold" style="color: var(--success);">< 1 month</div>
+            </div>
+            <div class="flex gap-3 flex-shrink-0">
+                <a id="roi-cta-trial" href="https://app.onehazel.com" class="btn-primary text-center" style="font-size: 13px; padding: 10px 20px;">
+                    Start Free Trial <span class="ml-1">&rarr;</span>
                 </a>
-                <a href="/contact" class="btn-secondary w-full text-center" style="font-size: 14px; padding: 12px 20px;">
+                <a id="roi-cta-sales" href="/contact" class="btn-secondary text-center" style="font-size: 13px; padding: 10px 20px;">
                     Talk to Sales
                 </a>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -137,11 +168,20 @@
     var aiVal = document.getElementById('roi-ai-val');
     var privateVal = document.getElementById('roi-private-val');
     var inhouseEl = document.getElementById('roi-inhouse');
-    var ohCostEl = document.getElementById('roi-oh-cost');
-    var ohBreakdownEl = document.getElementById('roi-oh-breakdown');
+    var tierLabelEl = document.getElementById('roi-tier-label');
+    var tierPriceEl = document.getElementById('roi-tier-price');
+    var topupApiEl = document.getElementById('roi-topup-api');
+    var topupApiValEl = document.getElementById('roi-topup-api-val');
+    var topupAiEl = document.getElementById('roi-topup-ai');
+    var topupAiValEl = document.getElementById('roi-topup-ai-val');
+    var topupPrivEl = document.getElementById('roi-topup-priv');
+    var topupPrivValEl = document.getElementById('roi-topup-priv-val');
+    var ohTotalEl = document.getElementById('roi-oh-total');
+    var ohAnnualEl = document.getElementById('roi-oh-annual');
     var savingsEl = document.getElementById('roi-savings');
     var paybackEl = document.getElementById('roi-payback');
-    var ctaEl = document.getElementById('roi-cta');
+    var ctaTrialEl = document.getElementById('roi-cta-trial');
+    var ctaSalesEl = document.getElementById('roi-cta-sales');
 
     var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
@@ -151,50 +191,52 @@
     }
 
     var tiers = [
-        { name: 'Grow',  monthly: {{ module.grow_annual }},  api: 500000,  ai: 500,  priv: 3  },
-        { name: 'Scale', monthly: 2499, api: 2000000, ai: 2000, priv: 10 }
+        { name: 'Grow',  monthly: {{ module.grow_annual }}, api: 500000,  ai: 500,  priv: 3  },
+        { name: 'Scale', monthly: 2499,                     api: 2000000, ai: 2000, priv: 10 }
     ];
 
-    function apiPackCost(ex) {
-        if (ex <= 0) return 0; var a = ex * 12, c = 0;
-        while (a >= 5000000) { c += 799; a -= 5000000; }
-        while (a >= 1000000) { c += 199; a -= 1000000; }
-        while (a >= 500000)  { c += 119; a -= 500000; }
-        while (a > 0)        { c += 29;  a -= 100000; }
-        return c;
-    }
-    function aiPackCost(ex) {
-        if (ex <= 0) return 0; var a = ex * 12, c = 0;
-        while (a >= 5000) { c += 1999; a -= 5000; }
-        while (a >= 1000) { c += 499;  a -= 1000; }
-        while (a >= 500)  { c += 299;  a -= 500; }
-        while (a > 0)     { c += 79;   a -= 100; }
-        return c;
-    }
-    function privatePackCost(ex) {
-        if (ex <= 0) return 0; var mo = 0, r = ex;
-        while (r >= 10) { mo += 799; r -= 10; }
-        while (r >= 5)  { mo += 499; r -= 5; }
-        while (r >= 3)  { mo += 349; r -= 3; }
-        while (r > 0)   { mo += 149; r -= 1; }
-        return mo * 12;
+    var enterpriseLimits = { api: 3000000, ai: 3000, priv: 20 };
+
+    var apiPacks =     [[100000, 129], [500000, 599], [1000000, 1149]];
+    var aiPacks =      [[100, 129], [500, 599], [1000, 1149]];
+    var privatePacks = [[1, 249], [5, 1149]];
+
+    function packCost(packs, excessPerMonth, isMonthly) {
+        if (excessPerMonth <= 0) return { cost: 0, monthly: 0 };
+        var remaining = isMonthly ? excessPerMonth : excessPerMonth * 12;
+        var cost = 0;
+        for (var i = packs.length - 1; i >= 0; i--) {
+            while (remaining >= packs[i][0]) { cost += packs[i][1]; remaining -= packs[i][0]; }
+        }
+        if (remaining > 0) { cost += packs[0][1]; }
+        var mo = isMonthly ? cost : Math.round(cost / 12);
+        return { cost: isMonthly ? cost * 12 : cost, monthly: mo };
     }
 
-    function tierCost(tier, apiNeed, aiNeed, privNeed) {
-        var ta = tier.monthly * 12;
-        var packs = apiPackCost(Math.max(0, apiNeed - tier.api))
-                  + aiPackCost(Math.max(0, aiNeed - tier.ai))
-                  + privatePackCost(Math.max(0, privNeed - tier.priv));
-        return { name: tier.name, tierMonthly: tier.monthly, tierAnnual: ta, packs: packs, total: ta + packs };
+    function calcTier(tier, apiNeed, aiNeed, privNeed) {
+        var apiEx = Math.max(0, apiNeed - tier.api);
+        var aiEx = Math.max(0, aiNeed - tier.ai);
+        var privEx = Math.max(0, privNeed - tier.priv);
+        var ap = packCost(apiPacks, apiEx, false);
+        var aip = packCost(aiPacks, aiEx, false);
+        var pp = packCost(privatePacks, privEx, true);
+        var tierAnnual = tier.monthly * 12;
+        var totalPacks = ap.cost + aip.cost + pp.cost;
+        return {
+            name: tier.name, tierMonthly: tier.monthly, tierAnnual: tierAnnual,
+            apiPack: ap, aiPack: aip, privPack: pp,
+            totalAnnual: tierAnnual + totalPacks,
+            totalMonthly: tier.monthly + ap.monthly + aip.monthly + pp.monthly
+        };
     }
 
     function calculate() {
-        var n = parseInt(integrations.value, 10);
-        var r = parseInt(rate.value, 10);
+        var n  = parseInt(integrations.value, 10);
+        var r  = parseInt(rate.value, 10);
         var bh = parseInt(buildHours.value, 10);
         var mh = parseInt(maintHours.value, 10);
-        var apiNeed = parseInt(apiSlider.value, 10);
-        var aiNeed = parseInt(aiSlider.value, 10);
+        var apiNeed  = parseInt(apiSlider.value, 10);
+        var aiNeed   = parseInt(aiSlider.value, 10);
         var privNeed = parseInt(privateSlider.value, 10);
 
         integrationsVal.textContent = n;
@@ -206,43 +248,74 @@
         privateVal.textContent = privNeed;
 
         var totalInHouse = (n * bh * r) + (n * mh * r * 12);
-        inhouseEl.textContent = fmt.format(totalInHouse) + '/yr';
+        inhouseEl.textContent = fmt.format(totalInHouse);
+
+        var isEnterprise = apiNeed > enterpriseLimits.api || aiNeed > enterpriseLimits.ai || privNeed > enterpriseLimits.priv;
+
+        if (isEnterprise) {
+            tierLabelEl.textContent = 'Enterprise plan';
+            tierPriceEl.textContent = 'Custom';
+            topupApiEl.style.display = 'none';
+            topupAiEl.style.display = 'none';
+            topupPrivEl.style.display = 'none';
+            ohTotalEl.textContent = 'Custom';
+            ohAnnualEl.textContent = 'Tailored to your needs';
+            savingsEl.textContent = fmt.format(totalInHouse) + '+';
+            paybackEl.textContent = 'Contact us';
+            ctaTrialEl.style.opacity = '0.4';
+            ctaTrialEl.style.pointerEvents = 'none';
+            ctaSalesEl.className = 'btn-primary text-center';
+            ctaSalesEl.style.cssText = 'font-size: 13px; padding: 10px 20px;';
+            return;
+        }
+
+        ctaTrialEl.style.opacity = '1';
+        ctaTrialEl.style.pointerEvents = 'auto';
+        ctaSalesEl.className = 'btn-secondary text-center';
+        ctaSalesEl.style.cssText = 'font-size: 13px; padding: 10px 20px;';
 
         var best = null;
         for (var i = 0; i < tiers.length; i++) {
-            var opt = tierCost(tiers[i], apiNeed, aiNeed, privNeed);
-            if (!best || opt.total < best.total) best = opt;
+            var opt = calcTier(tiers[i], apiNeed, aiNeed, privNeed);
+            if (!best || opt.totalAnnual < best.totalAnnual) best = opt;
         }
 
-        var breakdown = best.name + ' \u00B7 ' + fmt.format(best.tierMonthly) + '/mo';
-        if (best.packs > 0) {
-            breakdown += ' + ' + fmt.format(Math.round(best.packs / 12)) + '/mo top\u2011ups';
-        }
-        ohCostEl.textContent = fmt.format(best.total) + '/yr';
-        ohBreakdownEl.textContent = breakdown;
+        tierLabelEl.textContent = best.name + ' plan';
+        tierPriceEl.textContent = fmt.format(best.tierMonthly) + '/mo';
 
-        var annualSavings = totalInHouse - best.total;
-        savingsEl.textContent = annualSavings > 0 ? fmt.format(annualSavings) + '/yr' : fmt.format(0) + '/yr';
+        if (best.apiPack.monthly > 0) {
+            topupApiEl.style.display = 'flex';
+            topupApiValEl.textContent = fmt.format(best.apiPack.monthly) + '/mo';
+        } else { topupApiEl.style.display = 'none'; }
 
-        if (totalInHouse > 0 && best.total > 0) {
-            var pm = best.total / (totalInHouse / 12);
+        if (best.aiPack.monthly > 0) {
+            topupAiEl.style.display = 'flex';
+            topupAiValEl.textContent = fmt.format(best.aiPack.monthly) + '/mo';
+        } else { topupAiEl.style.display = 'none'; }
+
+        if (best.privPack.monthly > 0) {
+            topupPrivEl.style.display = 'flex';
+            topupPrivValEl.textContent = fmt.format(best.privPack.monthly) + '/mo';
+        } else { topupPrivEl.style.display = 'none'; }
+
+        ohTotalEl.textContent = fmt.format(best.totalMonthly) + '/mo';
+        ohAnnualEl.textContent = fmt.format(best.totalAnnual) + '/yr';
+
+        var savings = totalInHouse - best.totalAnnual;
+        savingsEl.textContent = savings > 0 ? fmt.format(savings) : fmt.format(0);
+
+        if (totalInHouse > 0 && best.totalAnnual > 0) {
+            var pm = best.totalAnnual / (totalInHouse / 12);
             if (pm < 1) paybackEl.textContent = '< 1 month';
             else if (pm > 12) paybackEl.textContent = '12+ months';
             else paybackEl.textContent = pm.toFixed(1) + ' months';
         } else { paybackEl.textContent = '\u2014'; }
-
-        if (privNeed > 10 || apiNeed > 4000000 || aiNeed > 4000) {
-            ctaEl.href = '/contact';
-            ctaEl.textContent = 'Talk to Sales \u2192';
-        } else {
-            ctaEl.href = 'https://app.onehazel.com';
-            ctaEl.textContent = 'Start Free Trial \u2192';
-        }
     }
 
     [integrations, rate, buildHours, maintHours, apiSlider, aiSlider, privateSlider].forEach(function(s) {
         s.addEventListener('input', calculate);
     });
+
     calculate();
 })();
 </script>
