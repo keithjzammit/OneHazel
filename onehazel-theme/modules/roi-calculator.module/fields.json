@@ -1,0 +1,51 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "See how much you'd save"
+  },
+  {
+    "id": "section_subheading",
+    "name": "section_subheading",
+    "label": "Subheading",
+    "type": "text",
+    "default": "Compare the cost of building integrations in-house vs using OneHazel."
+  },
+  {
+    "id": "default_integrations",
+    "name": "default_integrations",
+    "label": "Default: Integrations",
+    "type": "number",
+    "default": 10
+  },
+  {
+    "id": "default_rate",
+    "name": "default_rate",
+    "label": "Default: Hourly Rate (EUR)",
+    "type": "number",
+    "default": 85
+  },
+  {
+    "id": "default_build_hours",
+    "name": "default_build_hours",
+    "label": "Default: Hours to Build",
+    "type": "number",
+    "default": 120
+  },
+  {
+    "id": "default_maint_hours",
+    "name": "default_maint_hours",
+    "label": "Default: Maintenance Hrs/Mo",
+    "type": "number",
+    "default": 15
+  },
+  {
+    "id": "grow_annual",
+    "name": "grow_annual",
+    "label": "Starting Price (EUR/mo)",
+    "type": "number",
+    "default": 999
+  }
+]
