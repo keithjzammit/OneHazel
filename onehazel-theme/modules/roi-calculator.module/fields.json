@@ -1,0 +1,107 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "See how much you'd save"
+  },
+  {
+    "id": "section_subheading",
+    "name": "section_subheading",
+    "label": "Subheading",
+    "type": "text",
+    "default": "Compare the cost of building integrations in-house vs using OneHazel."
+  },
+  {
+    "id": "default_integrations",
+    "name": "default_integrations",
+    "label": "Default: Integrations",
+    "type": "number",
+    "default": 10
+  },
+  {
+    "id": "default_devs",
+    "name": "default_devs",
+    "label": "Default: Developers",
+    "type": "number",
+    "default": 2
+  },
+  {
+    "id": "default_rate",
+    "name": "default_rate",
+    "label": "Default: Hourly Rate (EUR)",
+    "type": "number",
+    "default": 85
+  },
+  {
+    "id": "default_build_hours",
+    "name": "default_build_hours",
+    "label": "Default: Hours to Build",
+    "type": "number",
+    "default": 120
+  },
+  {
+    "id": "default_maint_hours",
+    "name": "default_maint_hours",
+    "label": "Default: Maintenance Hrs/Mo",
+    "type": "number",
+    "default": 15
+  },
+  {
+    "id": "grow_annual",
+    "name": "grow_annual",
+    "label": "Grow: Annual Price/Mo",
+    "type": "number",
+    "default": 999
+  },
+  {
+    "id": "grow_monthly",
+    "name": "grow_monthly",
+    "label": "Grow: Monthly Price/Mo",
+    "type": "number",
+    "default": 1199
+  },
+  {
+    "id": "grow_founding_annual",
+    "name": "grow_founding_annual",
+    "label": "Grow: Founding Annual/Mo",
+    "type": "number",
+    "default": 499
+  },
+  {
+    "id": "grow_founding_monthly",
+    "name": "grow_founding_monthly",
+    "label": "Grow: Founding Monthly/Mo",
+    "type": "number",
+    "default": 749
+  },
+  {
+    "id": "scale_annual",
+    "name": "scale_annual",
+    "label": "Scale: Annual Price/Mo",
+    "type": "number",
+    "default": 2499
+  },
+  {
+    "id": "scale_monthly",
+    "name": "scale_monthly",
+    "label": "Scale: Monthly Price/Mo",
+    "type": "number",
+    "default": 2999
+  },
+  {
+    "id": "scale_founding_annual",
+    "name": "scale_founding_annual",
+    "label": "Scale: Founding Annual/Mo",
+    "type": "number",
+    "default": 1249
+  },
+  {
+    "id": "scale_founding_monthly",
+    "name": "scale_founding_monthly",
+    "label": "Scale: Founding Monthly/Mo",
+    "type": "number",
+    "default": 1899
+  }
+]
