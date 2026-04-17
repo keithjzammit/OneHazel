@@ -214,4 +214,131 @@
 
         section.insertBefore(deco, section.firstChild);
     });
+
+    // ===== ROI CALCULATOR =====
+    function initROICalculator() {
+        var integrations = document.getElementById('roi-integrations');
+        var devs = document.getElementById('roi-devs');
+        var rate = document.getElementById('roi-rate');
+        var buildHours = document.getElementById('roi-build-hours');
+        var maintHours = document.getElementById('roi-maint-hours');
+
+        if (!integrations || !devs || !rate) return;
+
+        var integrationsVal = document.getElementById('roi-integrations-val');
+        var devsVal = document.getElementById('roi-devs-val');
+        var rateVal = document.getElementById('roi-rate-val');
+        var savingsEl = document.getElementById('roi-savings');
+        var paybackEl = document.getElementById('roi-payback');
+        var tierNameEl = document.getElementById('roi-tier-name');
+        var tierFoundingEl = document.getElementById('roi-tier-founding');
+        var ctaEl = document.getElementById('roi-cta');
+        var positiveEl = document.getElementById('roi-positive');
+        var negativeEl = document.getElementById('roi-negative');
+
+        var toggleBtn = document.getElementById('roi-toggle-assumptions');
+        var assumptionsPanel = document.getElementById('roi-assumptions');
+
+        if (toggleBtn && assumptionsPanel) {
+            toggleBtn.addEventListener('click', function () {
+                toggleBtn.classList.toggle('open');
+                assumptionsPanel.classList.toggle('open');
+            });
+        }
+
+        var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+
+        var tiers = {
+            grow:       { max: 5,  tierName: 'Grow',       annual: 999,  monthly: 1199, foundingAnnual: 499,  foundingMonthly: 749  },
+            scale:      { max: 20, tierName: 'Scale',      annual: 2499, monthly: 2999, foundingAnnual: 1249, foundingMonthly: 1899 },
+            enterprise: { max: 50, tierName: 'Enterprise', annual: 2499, monthly: 2999, foundingAnnual: 1249, foundingMonthly: 1899 }
+        };
+
+        function getBilling() {
+            var container = document.getElementById('pricing-container');
+            if (container && container.classList.contains('billing-monthly')) return 'monthly';
+            return 'annual';
+        }
+
+        function getTier(count) {
+            if (count <= tiers.grow.max) return tiers.grow;
+            if (count <= tiers.scale.max) return tiers.scale;
+            return tiers.enterprise;
+        }
+
+        function calculate() {
+            var n = parseInt(integrations.value, 10);
+            var r = parseInt(rate.value, 10);
+            var bh = parseInt(buildHours.value, 10);
+            var mh = parseInt(maintHours.value, 10);
+
+            integrationsVal.textContent = n;
+            devsVal.textContent = parseInt(devs.value, 10);
+            rateVal.textContent = '\u20AC' + r + '/hr';
+
+            var buildCost = n * bh * r;
+            var maintenanceCost = n * mh * r * 12;
+            var totalInHouse = buildCost + maintenanceCost;
+
+            var billing = getBilling();
+            var tier = getTier(n);
+            var monthlyPrice = billing === 'annual' ? tier.annual : tier.monthly;
+            var oneHazelAnnual = monthlyPrice * 12;
+            var annualSavings = totalInHouse - oneHazelAnnual;
+
+            if (annualSavings <= 0) {
+                positiveEl.classList.add('hidden');
+                negativeEl.classList.add('visible');
+                return;
+            }
+
+            positiveEl.classList.remove('hidden');
+            negativeEl.classList.remove('visible');
+
+            savingsEl.textContent = fmt.format(annualSavings);
+
+            var paybackMonths = oneHazelAnnual / (totalInHouse / 12);
+            var paybackText;
+            if (paybackMonths < 1) paybackText = '< 1 month';
+            else if (paybackMonths > 12) paybackText = '12+ months';
+            else paybackText = paybackMonths.toFixed(1) + ' months';
+            paybackEl.textContent = paybackText;
+
+            var foundingPrice = billing === 'annual' ? tier.foundingAnnual : tier.foundingMonthly;
+            var isEnterprise = tier.tierName === 'Enterprise';
+
+            tierNameEl.textContent = tier.tierName + ' \u00B7 ' + fmt.format(monthlyPrice) + '/mo';
+            tierFoundingEl.textContent = isEnterprise ? 'Annual commitment' : 'Founding price: ' + fmt.format(foundingPrice) + '/mo';
+
+            if (isEnterprise) {
+                ctaEl.href = '/contact';
+                ctaEl.textContent = 'Contact Sales \u2192';
+            } else {
+                ctaEl.href = 'https://app.onehazel.com';
+                ctaEl.textContent = 'Get Started with ' + tier.tierName + ' \u2192';
+            }
+        }
+
+        [integrations, devs, rate].forEach(function (slider) {
+            slider.addEventListener('input', calculate);
+        });
+
+        [buildHours, maintHours].forEach(function (input) {
+            if (input) input.addEventListener('input', calculate);
+        });
+
+        // Recalculate when billing toggle changes
+        if (pricingContainer) {
+            var billingBtnsROI = pricingContainer.querySelectorAll('.billing-btn');
+            billingBtnsROI.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setTimeout(calculate, 10);
+                });
+            });
+        }
+
+        calculate();
+    }
+
+    initROICalculator();
 })();
