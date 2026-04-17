@@ -217,61 +217,157 @@
 
     // ===== ROI CALCULATOR =====
     function initROICalculator() {
+        // In-house sliders
         var integrations = document.getElementById('roi-integrations');
         var rate = document.getElementById('roi-rate');
         var buildHours = document.getElementById('roi-build-hours');
         var maintHours = document.getElementById('roi-maint-hours');
+        // Usage sliders
+        var apiSlider = document.getElementById('roi-api');
+        var aiSlider = document.getElementById('roi-ai');
+        var privateSlider = document.getElementById('roi-private');
 
-        if (!integrations || !rate || !buildHours || !maintHours) return;
+        if (!integrations || !apiSlider) return;
 
+        // Display elements
         var integrationsVal = document.getElementById('roi-integrations-val');
         var rateVal = document.getElementById('roi-rate-val');
         var buildHoursVal = document.getElementById('roi-build-hours-val');
         var maintHoursVal = document.getElementById('roi-maint-hours-val');
+        var apiVal = document.getElementById('roi-api-val');
+        var aiVal = document.getElementById('roi-ai-val');
+        var privateVal = document.getElementById('roi-private-val');
         var inhouseEl = document.getElementById('roi-inhouse');
+        var ohCostEl = document.getElementById('roi-oh-cost');
+        var ohBreakdownEl = document.getElementById('roi-oh-breakdown');
         var savingsEl = document.getElementById('roi-savings');
         var paybackEl = document.getElementById('roi-payback');
+        var ctaEl = document.getElementById('roi-cta');
 
         var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
-        // Grow annual = €999/mo baseline for savings comparison
-        var oneHazelAnnual = 999 * 12;
+        function fmtCalls(n) {
+            if (n >= 1000000) {
+                var m = n / 1000000;
+                return (m % 1 === 0 ? m : m.toFixed(1)) + 'M';
+            }
+            return (n / 1000) + 'K';
+        }
+
+        // Tier definitions: included allowances
+        var tiers = [
+            { name: 'Grow',  monthly: 999,  api: 500000,  ai: 500,  priv: 3  },
+            { name: 'Scale', monthly: 2499, api: 2000000, ai: 2000, priv: 10 }
+        ];
+
+        // Top-up pack costs (greedy: largest first for best value)
+        function apiPackCost(excessPerMonth) {
+            if (excessPerMonth <= 0) return 0;
+            var annual = excessPerMonth * 12;
+            var cost = 0;
+            while (annual >= 5000000) { cost += 799; annual -= 5000000; }
+            while (annual >= 1000000) { cost += 199; annual -= 1000000; }
+            while (annual >= 500000)  { cost += 119; annual -= 500000; }
+            while (annual > 0)        { cost += 29;  annual -= 100000; }
+            return cost;
+        }
+
+        function aiPackCost(excessPerMonth) {
+            if (excessPerMonth <= 0) return 0;
+            var annual = excessPerMonth * 12;
+            var cost = 0;
+            while (annual >= 5000) { cost += 1999; annual -= 5000; }
+            while (annual >= 1000) { cost += 499;  annual -= 1000; }
+            while (annual >= 500)  { cost += 299;  annual -= 500; }
+            while (annual > 0)     { cost += 79;   annual -= 100; }
+            return cost;
+        }
+
+        function privatePackCost(excess) {
+            if (excess <= 0) return 0;
+            var mo = 0;
+            var rem = excess;
+            while (rem >= 10) { mo += 799; rem -= 10; }
+            while (rem >= 5)  { mo += 499; rem -= 5; }
+            while (rem >= 3)  { mo += 349; rem -= 3; }
+            while (rem > 0)   { mo += 149; rem -= 1; }
+            return mo * 12;
+        }
+
+        function tierCost(tier, apiNeed, aiNeed, privNeed) {
+            var tierAnnual = tier.monthly * 12;
+            var packs = apiPackCost(Math.max(0, apiNeed - tier.api))
+                      + aiPackCost(Math.max(0, aiNeed - tier.ai))
+                      + privatePackCost(Math.max(0, privNeed - tier.priv));
+            return { name: tier.name, tierMonthly: tier.monthly, tierAnnual: tierAnnual, packs: packs, total: tierAnnual + packs };
+        }
 
         function calculate() {
-            var n = parseInt(integrations.value, 10);
-            var r = parseInt(rate.value, 10);
+            var n  = parseInt(integrations.value, 10);
+            var r  = parseInt(rate.value, 10);
             var bh = parseInt(buildHours.value, 10);
             var mh = parseInt(maintHours.value, 10);
+            var apiNeed  = parseInt(apiSlider.value, 10);
+            var aiNeed   = parseInt(aiSlider.value, 10);
+            var privNeed = parseInt(privateSlider.value, 10);
 
+            // Update display values
             integrationsVal.textContent = n;
             rateVal.textContent = '\u20AC' + r + '/hr';
             buildHoursVal.textContent = bh;
             maintHoursVal.textContent = mh;
+            apiVal.textContent = fmtCalls(apiNeed);
+            aiVal.textContent = aiNeed.toLocaleString('en-IE');
+            privateVal.textContent = privNeed;
 
-            var buildCost = n * bh * r;
-            var maintenanceCost = n * mh * r * 12;
-            var totalInHouse = buildCost + maintenanceCost;
+            // In-house cost
+            var totalInHouse = (n * bh * r) + (n * mh * r * 12);
+            inhouseEl.textContent = fmt.format(totalInHouse) + '/yr';
 
-            inhouseEl.textContent = fmt.format(totalInHouse);
+            // Find cheapest tier + packs
+            var best = null;
+            for (var i = 0; i < tiers.length; i++) {
+                var opt = tierCost(tiers[i], apiNeed, aiNeed, privNeed);
+                if (!best || opt.total < best.total) best = opt;
+            }
 
-            var annualSavings = totalInHouse - oneHazelAnnual;
-            savingsEl.textContent = annualSavings > 0 ? fmt.format(annualSavings) : fmt.format(0);
+            // Build breakdown text
+            var monthlyTotal = Math.round(best.total / 12);
+            var breakdown = best.name + ' \u00B7 ' + fmt.format(best.tierMonthly) + '/mo';
+            if (best.packs > 0) {
+                var packsMonthly = Math.round(best.packs / 12);
+                breakdown += ' + ' + fmt.format(packsMonthly) + '/mo top\u2011ups';
+            }
 
-            if (totalInHouse > 0) {
-                var paybackMonths = oneHazelAnnual / (totalInHouse / 12);
-                var paybackText;
-                if (paybackMonths < 1) paybackText = '< 1 month';
-                else if (paybackMonths > 12) paybackText = '12+ months';
-                else paybackText = paybackMonths.toFixed(1) + ' months';
-                paybackEl.textContent = paybackText;
+            ohCostEl.textContent = fmt.format(best.total) + '/yr';
+            ohBreakdownEl.textContent = breakdown;
+
+            // Savings
+            var annualSavings = totalInHouse - best.total;
+            savingsEl.textContent = annualSavings > 0 ? fmt.format(annualSavings) + '/yr' : fmt.format(0) + '/yr';
+
+            // Payback
+            if (totalInHouse > 0 && best.total > 0) {
+                var paybackMonths = best.total / (totalInHouse / 12);
+                if (paybackMonths < 1) paybackEl.textContent = '< 1 month';
+                else if (paybackMonths > 12) paybackEl.textContent = '12+ months';
+                else paybackEl.textContent = paybackMonths.toFixed(1) + ' months';
             } else {
                 paybackEl.textContent = '\u2014';
             }
+
+            // CTA — Enterprise suggestion if usage is very high
+            if (privNeed > 10 || apiNeed > 4000000 || aiNeed > 4000) {
+                ctaEl.href = '/contact';
+                ctaEl.textContent = 'Talk to Sales \u2192';
+            } else {
+                ctaEl.href = 'https://app.onehazel.com';
+                ctaEl.textContent = 'Start Free Trial \u2192';
+            }
         }
 
-        [integrations, rate, buildHours, maintHours].forEach(function (slider) {
-            slider.addEventListener('input', calculate);
-        });
+        var allSliders = [integrations, rate, buildHours, maintHours, apiSlider, aiSlider, privateSlider];
+        allSliders.forEach(function (s) { s.addEventListener('input', calculate); });
 
         calculate();
     }
