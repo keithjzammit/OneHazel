@@ -269,15 +269,6 @@
                         <input type="range" id="roi-integrations" class="roi-slider" min="1" max="50" value="10" step="1">
                     </div>
 
-                    <!-- Slider: Developers -->
-                    <div class="mb-6">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-sm" style="color: var(--text-secondary);">Developers on integrations</span>
-                            <span id="roi-devs-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">2</span>
-                        </div>
-                        <input type="range" id="roi-devs" class="roi-slider" min="1" max="20" value="2" step="1">
-                    </div>
-
                     <!-- Slider: Hourly rate -->
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
@@ -287,21 +278,22 @@
                         <input type="range" id="roi-rate" class="roi-slider" min="30" max="200" value="85" step="5">
                     </div>
 
-                    <!-- Collapsible assumptions -->
-                    <div style="border-top: 1px solid var(--border); padding-top: 16px;">
-                        <button class="roi-assumptions-toggle" id="roi-toggle-assumptions">
-                            <i class="fas fa-chevron-down"></i> Adjust assumptions
-                        </button>
-                        <div class="roi-assumptions-panel" id="roi-assumptions">
-                            <div>
-                                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--text-muted);">Hours to build</div>
-                                <input type="number" id="roi-build-hours" class="roi-assumption-input" value="120" min="40" max="300" step="10">
-                            </div>
-                            <div>
-                                <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--text-muted);">Maintenance hrs/mo</div>
-                                <input type="number" id="roi-maint-hours" class="roi-assumption-input" value="15" min="5" max="40" step="1">
-                            </div>
+                    <!-- Slider: Hours to build -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm" style="color: var(--text-secondary);">Hours to build per integration</span>
+                            <span id="roi-build-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">120</span>
                         </div>
+                        <input type="range" id="roi-build-hours" class="roi-slider" min="40" max="300" value="120" step="10">
+                    </div>
+
+                    <!-- Slider: Maintenance hours -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm" style="color: var(--text-secondary);">Maintenance hrs/mo per integration</span>
+                            <span id="roi-maint-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">15</span>
+                        </div>
+                        <input type="range" id="roi-maint-hours" class="roi-slider" min="5" max="40" value="15" step="1">
                     </div>
                 </div>
 

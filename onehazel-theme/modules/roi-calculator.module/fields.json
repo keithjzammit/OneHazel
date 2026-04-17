@@ -21,13 +21,6 @@
     "default": 10
   },
   {
-    "id": "default_devs",
-    "name": "default_devs",
-    "label": "Default: Developers",
-    "type": "number",
-    "default": 2
-  },
-  {
     "id": "default_rate",
     "name": "default_rate",
     "label": "Default: Hourly Rate (EUR)",

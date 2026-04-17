@@ -26,34 +26,26 @@
 
         <div class="mb-6">
             <div class="flex justify-between mb-2">
-                <span class="text-sm" style="color: var(--text-secondary);">Developers on integrations</span>
-                <span id="roi-devs-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_devs }}</span>
-            </div>
-            <input type="range" id="roi-devs" class="roi-slider" min="1" max="20" value="{{ module.default_devs }}" step="1">
-        </div>
-
-        <div class="mb-6">
-            <div class="flex justify-between mb-2">
                 <span class="text-sm" style="color: var(--text-secondary);">Average developer cost</span>
                 <span id="roi-rate-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">&euro;{{ module.default_rate }}/hr</span>
             </div>
             <input type="range" id="roi-rate" class="roi-slider" min="30" max="200" value="{{ module.default_rate }}" step="5">
         </div>
 
-        <div style="border-top: 1px solid var(--border); padding-top: 16px;">
-            <button class="roi-assumptions-toggle" id="roi-toggle-assumptions">
-                <i class="fas fa-chevron-down"></i> Adjust assumptions
-            </button>
-            <div class="roi-assumptions-panel" id="roi-assumptions">
-                <div>
-                    <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--text-muted);">Hours to build</div>
-                    <input type="number" id="roi-build-hours" class="roi-assumption-input" value="{{ module.default_build_hours }}" min="40" max="300" step="10">
-                </div>
-                <div>
-                    <div class="mono text-[10px] font-semibold uppercase tracking-wider mb-1" style="color: var(--text-muted);">Maintenance hrs/mo</div>
-                    <input type="number" id="roi-maint-hours" class="roi-assumption-input" value="{{ module.default_maint_hours }}" min="5" max="40" step="1">
-                </div>
+        <div class="mb-6">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm" style="color: var(--text-secondary);">Hours to build per integration</span>
+                <span id="roi-build-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_build_hours }}</span>
             </div>
+            <input type="range" id="roi-build-hours" class="roi-slider" min="40" max="300" value="{{ module.default_build_hours }}" step="10">
+        </div>
+
+        <div class="mb-6">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm" style="color: var(--text-secondary);">Maintenance hrs/mo per integration</span>
+                <span id="roi-maint-hours-val" class="mono text-sm font-semibold" style="color: var(--accent-bright);">{{ module.default_maint_hours }}</span>
+            </div>
+            <input type="range" id="roi-maint-hours" class="roi-slider" min="5" max="40" value="{{ module.default_maint_hours }}" step="1">
         </div>
     </div>
 
@@ -94,15 +86,15 @@
 <script>
 (function() {
     var integrations = document.getElementById('roi-integrations');
-    var devs = document.getElementById('roi-devs');
     var rate = document.getElementById('roi-rate');
     var buildHours = document.getElementById('roi-build-hours');
     var maintHours = document.getElementById('roi-maint-hours');
-    if (!integrations || !devs || !rate) return;
+    if (!integrations || !rate || !buildHours || !maintHours) return;
 
     var integrationsVal = document.getElementById('roi-integrations-val');
-    var devsVal = document.getElementById('roi-devs-val');
     var rateVal = document.getElementById('roi-rate-val');
+    var buildHoursVal = document.getElementById('roi-build-hours-val');
+    var maintHoursVal = document.getElementById('roi-maint-hours-val');
     var savingsEl = document.getElementById('roi-savings');
     var paybackEl = document.getElementById('roi-payback');
     var tierNameEl = document.getElementById('roi-tier-name');
@@ -111,21 +103,12 @@
     var positiveEl = document.getElementById('roi-positive');
     var negativeEl = document.getElementById('roi-negative');
 
-    var toggleBtn = document.getElementById('roi-toggle-assumptions');
-    var assumptionsPanel = document.getElementById('roi-assumptions');
-    if (toggleBtn && assumptionsPanel) {
-        toggleBtn.addEventListener('click', function() {
-            toggleBtn.classList.toggle('open');
-            assumptionsPanel.classList.toggle('open');
-        });
-    }
-
     var fmt = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
     var tiers = {
         grow:       { max: 15, tierName: 'Grow',       annual: {{ module.grow_annual }},  monthly: {{ module.grow_monthly }},  foundingAnnual: {{ module.grow_founding_annual }},  foundingMonthly: {{ module.grow_founding_monthly }}  },
         scale:      { max: 30, tierName: 'Scale',      annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} },
-        enterprise: { max: 50, tierName: 'Enterprise', annual: {{ module.scale_annual }}, monthly: {{ module.scale_monthly }}, foundingAnnual: {{ module.scale_founding_annual }}, foundingMonthly: {{ module.scale_founding_monthly }} }
+        enterprise: { max: 50, tierName: 'Enterprise' }
     };
 
     function getBilling() {
@@ -147,8 +130,9 @@
         var mh = parseInt(maintHours.value, 10);
 
         integrationsVal.textContent = n;
-        devsVal.textContent = parseInt(devs.value, 10);
         rateVal.textContent = '\u20AC' + r + '/hr';
+        buildHoursVal.textContent = bh;
+        maintHoursVal.textContent = mh;
 
         var buildCost = n * bh * r;
         var maintenanceCost = n * mh * r * 12;
@@ -156,6 +140,20 @@
 
         var billing = getBilling();
         var tier = getTier(n);
+        var isEnterprise = tier.tierName === 'Enterprise';
+
+        if (isEnterprise) {
+            positiveEl.classList.remove('hidden');
+            negativeEl.classList.remove('visible');
+            savingsEl.textContent = fmt.format(totalInHouse);
+            paybackEl.textContent = 'Immediate';
+            tierNameEl.textContent = 'Enterprise \u00B7 Custom';
+            tierFoundingEl.textContent = 'Annual commitment \u00B7 tailored to your needs';
+            ctaEl.href = '/contact';
+            ctaEl.textContent = 'Contact Sales \u2192';
+            return;
+        }
+
         var monthlyPrice = billing === 'annual' ? tier.annual : tier.monthly;
         var oneHazelAnnual = monthlyPrice * 12;
         var annualSavings = totalInHouse - oneHazelAnnual;
@@ -179,22 +177,15 @@
         paybackEl.textContent = paybackText;
 
         var foundingPrice = billing === 'annual' ? tier.foundingAnnual : tier.foundingMonthly;
-        var isEnterprise = tier.tierName === 'Enterprise';
 
         tierNameEl.textContent = tier.tierName + ' \u00B7 ' + fmt.format(monthlyPrice) + '/mo';
-        tierFoundingEl.textContent = isEnterprise ? 'Annual commitment' : 'Founding price: ' + fmt.format(foundingPrice) + '/mo';
+        tierFoundingEl.textContent = 'Founding price: ' + fmt.format(foundingPrice) + '/mo';
 
-        if (isEnterprise) {
-            ctaEl.href = '/contact';
-            ctaEl.textContent = 'Contact Sales \u2192';
-        } else {
-            ctaEl.href = 'https://app.onehazel.com';
-            ctaEl.textContent = 'Get Started with ' + tier.tierName + ' \u2192';
-        }
+        ctaEl.href = 'https://app.onehazel.com';
+        ctaEl.textContent = 'Get Started with ' + tier.tierName + ' \u2192';
     }
 
-    [integrations, devs, rate].forEach(function(s) { s.addEventListener('input', calculate); });
-    [buildHours, maintHours].forEach(function(i) { if (i) i.addEventListener('input', calculate); });
+    [integrations, rate, buildHours, maintHours].forEach(function(s) { s.addEventListener('input', calculate); });
 
     var container = document.getElementById('pricing-container');
     if (container) {
