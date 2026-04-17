@@ -268,9 +268,9 @@
         var enterpriseLimits = { api: 3000000, ai: 3000, priv: 20 };
 
         // Pack options: [size, price] — sorted smallest to largest
-        var apiPacks =     [[100000, 99], [500000, 449], [1000000, 849]];
-        var aiPacks =      [[100, 99], [500, 449], [1000, 849]];
-        var privatePacks = [[1, 199], [5, 899], [10, 1649]];
+        var apiPacks =     [[100000, 129], [500000, 599], [1000000, 1149]];
+        var aiPacks =      [[100, 129], [500, 599], [1000, 1149]];
+        var privatePacks = [[1, 249], [5, 1149]];
 
         // Greedy pack cost: covers monthly excess × 12, largest packs first
         function packCost(packs, excessPerMonth, isMonthly) {
