@@ -1,0 +1,45 @@
+# OneHazel
+
+> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd in Malta.
+
+## What OneHazel Does
+
+OneHazel connects enterprise platforms to third-party vendor ecosystems through a unified API. AI agents generate production connectors in minutes, monitor them continuously, and self-heal when APIs change. The platform serves regulated industries including iGaming, healthcare, construction, cannabis, life sciences, and energy.
+
+## Key Facts
+
+- 300+ connectors available in the marketplace
+- AI agents build connectors from API documentation automatically
+- Visual workflow builder with 22 node types
+- AI workflow generation from natural language
+- Self-healing integrations that detect and repair API changes
+- Analytics dashboard with AI co-pilot
+- Headquartered in Malta (ZS Digital Ltd)
+- Founded by Keith Zammit
+
+## Pricing
+
+- Free Trial: 14 days, full platform access, 50K actions, 50 AI actions, 1 private connection
+- Grow: €999/mo (annual) — 500K actions/mo, 500 AI actions/mo, 3 private connections
+- Scale: €2,499/mo (annual) — 2M actions/mo, 2,000 AI actions/mo, 10 private connections
+- Enterprise: Custom pricing on committed volume
+- Founding Customer Programme: 50% off for life for early beta customers
+
+## Industries
+
+- iGaming: Payment providers, KYC/AML, game aggregators, responsible gaming, affiliate platforms
+- Healthcare: EHR systems, telehealth, lab integrations, compliance, patient engagement
+- Construction: Project management, BIM, safety compliance, fleet management, procurement
+- Cannabis: Seed-to-sale tracking, compliance, POS, lab testing, distribution
+- Life Sciences: Clinical trial management, regulatory submissions, lab systems, pharmacovigilance
+- Energy: SCADA, grid management, renewable monitoring, regulatory compliance, trading platforms
+
+## Links
+
+- Website: https://onehazel.com
+- App: https://app.onehazel.com
+- Pricing: https://onehazel.com/pricing
+- About: https://onehazel.com/about
+- Contact: https://onehazel.com/contact
+- For Vendors: https://onehazel.com/vendors
+- For Platform Providers: https://onehazel.com/platform-providers

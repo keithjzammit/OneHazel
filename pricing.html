@@ -44,6 +44,102 @@
     });
 </script>
 <!-- End of PostHog Analytics -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is there a free trial?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Every new account gets 14 days of full platform access with no credit card required. Every feature available on Scale is available during the trial, so you can explore the unified API, AI agents, workflow builder, and analytics co-pilot before committing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the Founding Customer Programme?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A limited number of early customers who subscribe when we move to production launch get 50% off their plan price for life. Sign up to the beta now to secure your spot. Founding pricing is locked as long as you maintain an active annual plan. Cancel and return at full price."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is an action?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An action is the unified unit of consumption for data moving through OneHazel. One action is consumed for each of the following: An API request that flows through the OneHazel unified API to a connected vendor; A workflow execution step. Responses, webhooks, and health checks are excluded."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is an AI action?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An AI action is consumed each time an AI agent performs a discrete task on your behalf. Actions fall into four categories: Connector lifecycle — Discovering a vendor API, generating integration code, running a test suite, detecting an API change, or self-healing a broken connection. Private connection monitoring — AI agents run daily sweeps on your private vendor connections. If a change is detected and remediation is needed, that counts as an additional action. Each private connection typically uses 30 to 90 actions per month depending on the vendor's API volatility. In-workflow AI actions — Calling an AI action within a workflow for data manipulation, inference, or content creation counts as one action per call. AI co-pilots — Each message sent to the AI Workflow Builder or the Analytics Dashboard co-pilot counts as one action. In short: if an AI agent thinks, builds, analyses, or responds on your behalf, that is one AI action. Standard actions flowing through the unified API to vendors are metered separately."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a private vendor connection?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A vendor integration not listed on the public OneHazel marketplace. Useful for connecting to proprietary internal systems or niche vendors specific to your operation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if I exceed my plan limits?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Actions and AI actions pause at the limit. You can purchase top-up packs or upgrade your plan instantly. No surprise overage bills. We send automatic alerts at 75% and 90% usage."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I change plans?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Upgrade or downgrade at any time. Upgrades take effect immediately. Downgrades apply at the end of the current billing cycle."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do top-up packs expire?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Unused top-up balance rolls over each month as long as your subscription is active. Top-ups are consumed only after your plan's included allocation is exhausted."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Enterprise pricing work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Enterprise is priced on committed volume rather than fixed monthly allocations. You commit to a volume of actions, AI actions, and private connections over your annual term, and receive preferential rates on each meter relative to our published pack prices. Custom connector development, advanced security (SSO, RBAC, tenant isolation), and a dedicated account manager are included. Contact sales for a quote based on your expected usage."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What payment methods do you accept?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All billing is powered by Stripe. We accept Visa, Mastercard, American Express, and SEPA direct debit."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "I serve multiple operators — which plan is right for me?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If you operate a platform that serves multiple operators (white-label solutions, aggregation platforms, or managed services), our Platform Provider programme is designed for you. It includes volume-based pricing, multi-tenant architecture, centralised billing, and dedicated infrastructure for your entire operator network."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="antialiased">
 

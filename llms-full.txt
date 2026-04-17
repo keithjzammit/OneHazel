@@ -1,0 +1,143 @@
+# OneHazel — Full Context
+
+> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd in Malta.
+
+## What OneHazel Does
+
+OneHazel connects enterprise platforms to third-party vendor ecosystems through a unified API. AI agents generate production connectors in minutes, monitor them continuously, and self-heal when APIs change. The platform serves regulated industries including iGaming, healthcare, construction, cannabis, life sciences, and energy.
+
+## Key Facts
+
+- 300+ connectors available in the marketplace
+- AI agents build connectors from API documentation automatically
+- Visual workflow builder with 22 node types
+- AI workflow generation from natural language
+- Self-healing integrations that detect and repair API changes
+- Analytics dashboard with AI co-pilot
+- Headquartered in Malta (ZS Digital Ltd)
+- Founded by Keith Zammit
+
+## Technical Architecture
+
+### Unified API
+OneHazel exposes a single, consistent API surface across all connected vendors. Customers write once to OneHazel and gain access to every connector in the marketplace without managing individual vendor SDKs or authentication schemes.
+
+### AI Connector Builder
+AI agents read vendor API documentation and automatically generate production-ready connectors — including authentication, pagination, error handling, and schema mapping. Connectors are versioned and stored in the marketplace. When a vendor changes their API, the AI detects the drift and self-heals the connector without human intervention.
+
+### Visual Workflow Builder
+A drag-and-drop canvas with 22 node types for orchestrating multi-vendor data flows. Supports branching, looping, transformation, error handling, and conditional logic. AI workflow generation allows users to describe a workflow in natural language and have the builder populate it automatically.
+
+### Analytics Dashboard
+Real-time observability across all active integrations: throughput, error rates, latency, and action consumption. An AI co-pilot answers questions about integration health, suggests optimisations, and surfaces anomalies.
+
+## Pricing — Full Breakdown
+
+### Plans
+
+| Plan | Price | Actions/mo | AI Actions/mo | Private Connections |
+|------|-------|------------|---------------|---------------------|
+| Free Trial | Free (14 days) | 50K | 50 | 1 |
+| Grow | €999/mo (annual) | 500K | 500 | 3 |
+| Scale | €2,499/mo (annual) | 2M | 2,000 | 10 |
+| Enterprise | Custom | Custom | Custom | Custom |
+
+- Founding Customer Programme: 50% off for life for early beta customers
+- All paid plans include full platform access, priority support, and SLA guarantees
+
+### What Is an Action?
+
+An action is one API request or one workflow execution step. Responses and inbound webhooks are not counted as actions. Examples that consume actions: calling a vendor API endpoint, executing a workflow node, triggering a connector sync.
+
+### What Is an AI Action?
+
+An AI action is consumed by any AI-driven operation on the platform:
+- Connector lifecycle: AI building, testing, or repairing a connector
+- Private connection monitoring: AI continuously checking a private/custom connector for API drift
+- In-workflow AI: AI-powered transformation or decision nodes within a workflow
+- Co-pilots: AI co-pilot queries in the analytics dashboard or workflow builder
+
+### Top-Up Packs (Pay-as-you-go overages)
+
+**Action Packs**
+- 100K actions — €129
+- 500K actions — €599
+- 1M actions — €1,149
+
+**AI Action Packs**
+- 100 AI actions — €129
+- 500 AI actions — €599
+- 1,000 AI actions — €1,149
+
+**Private Connection Add-ons**
+- 1 private connection — €249/mo
+- 5 private connections — €1,149/mo
+
+## Industries
+
+### iGaming
+Integrations for payment providers, KYC/AML compliance platforms, game aggregators, responsible gaming tools, and affiliate tracking platforms. Designed for licensed operators needing fast, auditable data flows.
+
+### Healthcare
+EHR/EMR system integrations, telehealth platform connectivity, lab and diagnostics data pipelines, HIPAA-compliant data handling, and patient engagement platform hooks.
+
+### Construction
+Project management software, BIM (Building Information Modelling) platforms, safety compliance systems, fleet and asset management, and procurement/supply chain tools.
+
+### Cannabis
+Seed-to-sale tracking systems (Metrc, BioTrack), state compliance reporting, POS integrations, lab testing data pipelines, and distribution platform connectivity.
+
+### Life Sciences
+Clinical trial management systems, regulatory submission platforms (FDA, EMA), LIMS integrations, pharmacovigilance data feeds, and medical device data streams.
+
+### Energy & Utilities
+SCADA system integrations, smart grid management platforms, renewable energy monitoring (solar, wind), regulatory compliance reporting, and energy trading platforms.
+
+## Company Details
+
+- **Legal name**: ZS Digital Ltd
+- **Headquarters**: Malta
+- **Founder**: Keith Zammit
+- **Product**: OneHazel iPaaS (V1.0 live)
+- **App**: app.onehazel.com
+- **Website**: onehazel.com
+- **Status**: Free Trial and Enterprise tiers available. Grow and Scale tiers launching soon.
+
+## Vendor Programme
+
+OneHazel offers a free listing programme for software vendors who want their API available in the OneHazel marketplace:
+- Vendors submit their API documentation
+- OneHazel AI builds and maintains the connector at no cost to the vendor
+- Revenue share model: vendors earn a share of action revenue generated through their connector
+- Vendors gain distribution to all OneHazel customers across all supported industries
+- Connector stays current automatically — OneHazel handles all breaking change remediation
+
+Full details: https://onehazel.com/vendors
+
+## Platform Provider Programme
+
+For enterprise platforms (ERP, CRM, core systems) that want to offer their customers a managed integration layer:
+- API-first architecture: OneHazel sits as the integration layer between the platform and its ecosystem
+- Multi-tenant: each platform customer gets isolated connector credentials and workflow namespaces
+- Volume-based pricing with committed tiers for high-throughput platform deployments
+- White-label options available for Enterprise agreements
+- OneHazel handles all connector maintenance, API versioning, and uptime SLAs
+
+Full details: https://onehazel.com/platform-providers
+
+## Links
+
+- Website: https://onehazel.com
+- App: https://app.onehazel.com
+- API Docs: https://app.onehazel.com/docs
+- Pricing: https://onehazel.com/pricing
+- About: https://onehazel.com/about
+- Contact: https://onehazel.com/contact
+- For Vendors: https://onehazel.com/vendors
+- For Platform Providers: https://onehazel.com/platform-providers
+- iGaming: https://onehazel.com/igaming
+- Healthcare: https://onehazel.com/healthcare
+- Construction: https://onehazel.com/construction
+- Cannabis: https://onehazel.com/cannabis
+- Life Sciences: https://onehazel.com/lifesciences
+- Energy: https://onehazel.com/energy
