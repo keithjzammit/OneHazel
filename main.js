@@ -257,20 +257,20 @@
             return (n / 1000) + 'K';
         }
 
-        // Tiers with included allowances
+        // Tiers with included allowances (tokens = API calls + workflow executions)
         var tiers = [
             { name: 'Grow',  monthly: 999,  api: 500000,  ai: 500,  priv: 3  },
             { name: 'Scale', monthly: 2499, api: 2000000, ai: 2000, priv: 10 }
         ];
 
         // Enterprise thresholds: Scale included + largest single pack
-        // API: 2M + 5M = 7M, AI: 2K + 5K = 7K, Private: 10 + 10 = 20
-        var enterpriseLimits = { api: 7000000, ai: 7000, priv: 20 };
+        // Tokens: 2M + 1M = 3M, AI: 2K + 1K = 3K, Private: 10 + 10 = 20
+        var enterpriseLimits = { api: 3000000, ai: 3000, priv: 20 };
 
         // Pack options: [size, price] — sorted smallest to largest
-        var apiPacks =     [[100000, 29], [500000, 119], [1000000, 199], [5000000, 799]];
-        var aiPacks =      [[100, 79], [500, 299], [1000, 499], [5000, 1999]];
-        var privatePacks = [[1, 149], [3, 349], [5, 499], [10, 799]];
+        var apiPacks =     [[100000, 99], [500000, 449], [1000000, 849]];
+        var aiPacks =      [[100, 99], [500, 449], [1000, 849]];
+        var privatePacks = [[1, 199], [5, 899], [10, 1649]];
 
         // Greedy pack cost: covers monthly excess × 12, largest packs first
         function packCost(packs, excessPerMonth, isMonthly) {
