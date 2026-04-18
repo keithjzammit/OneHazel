@@ -42,7 +42,7 @@ Real-time observability across all active integrations: throughput, error rates,
 | Scale | €2,499/mo (annual) | 2M | 2,000 | 10 |
 | Enterprise | Custom | Custom | Custom | Custom |
 
-- Founding Customer Programme: 50% off for life for early beta customers
+- Founding Partner Programme: 50% off for life for early beta customers
 - All paid plans include full platform access, priority support, and SLA guarantees
 
 ### What Is an Action?
