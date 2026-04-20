@@ -25,7 +25,7 @@
     "name": "subheadline",
     "label": "Subheadline",
     "type": "richtext",
-    "default": "OneHazel is the Vertical iPaaS that uses <strong>autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem — <strong>300+ connectors live today</strong>, built in minutes, maintained automatically."
+    "default": "OneHazel is the Vertical iPaaS that uses <strong>autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem — <strong>318 connectors live today</strong>, built in minutes, maintained automatically."
   },
   {
     "id": "cta_primary_text",
@@ -89,7 +89,7 @@
       }
     ],
     "default": [
-      { "stat_value": "300+", "stat_label": "Live Connectors" },
+      { "stat_value": "318", "stat_label": "Live Connectors" },
       { "stat_value": "~10 min", "stat_label": "Per Connector Build" },
       { "stat_value": "22", "stat_label": "Workflow Node Types" },
       { "stat_value": "0", "stat_label": "Quality Failures" }

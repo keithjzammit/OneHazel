@@ -8,7 +8,7 @@ OneHazel connects enterprise platforms to third-party vendor ecosystems through 
 
 ## Key Facts
 
-- 300+ connectors available in the marketplace
+- 318 connectors available in the marketplace
 - AI agents build connectors from API documentation automatically
 - Visual workflow builder with 22 node types
 - AI workflow generation from natural language

@@ -1,0 +1,135 @@
+<h2>ROI Calculator — Layout</h2>
+<p class="subtitle">Inline section between tier cards and top-up packs. Left: inputs, Right: live results.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Pricing Page — ROI Calculator Section</div>
+  <div class="mockup-body" style="padding: 0; background: #0a0a0a; color: #e5e5e5; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;">
+
+    <!-- Mini nav hint -->
+    <div style="background: #111; padding: 8px 20px; font-size: 11px; color: #666; text-align: center; border-bottom: 1px solid #1a1a1a;">
+      ↑ Pricing Tier Cards above ↑
+    </div>
+
+    <!-- Hero anchor button hint -->
+    <div style="background: #111; padding: 6px 20px; font-size: 10px; color: #b45309; text-align: center; border-bottom: 1px solid #1a1a1a;">
+      ⬆ "Calculate Your ROI ↓" anchor link in hero section scrolls here
+    </div>
+
+    <!-- ROI Section -->
+    <div style="padding: 40px 24px;">
+      <!-- Section header -->
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div style="display: inline-block; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); padding: 4px 12px; border-radius: 20px; font-size: 10px; font-family: 'IBM Plex Mono', monospace; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">
+          💰 ROI Calculator
+        </div>
+        <h2 style="font-size: 28px; font-weight: 800; margin: 8px 0; letter-spacing: -0.03em;">
+          See how much you'd <span style="background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">save</span>
+        </h2>
+        <p style="font-size: 14px; color: #888; max-width: 450px; margin: 0 auto;">
+          Compare the cost of building integrations in-house vs using OneHazel
+        </p>
+      </div>
+
+      <!-- Two-column layout -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 820px; margin: 0 auto;">
+
+        <!-- LEFT: Inputs -->
+        <div style="background: #141414; border: 1px solid #222; border-radius: 16px; padding: 24px;">
+          <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; color: #999;">Your Setup</h3>
+
+          <!-- Slider 1 -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 13px; color: #ccc;">Vendor integrations needed</span>
+              <span style="font-size: 13px; font-weight: 700; color: #f59e0b; font-family: 'IBM Plex Mono', monospace;">15</span>
+            </div>
+            <div style="height: 6px; background: #222; border-radius: 3px; position: relative;">
+              <div style="width: 30%; height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 3px;"></div>
+              <div style="position: absolute; top: -4px; left: 28%; width: 14px; height: 14px; background: #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.4);"></div>
+            </div>
+          </div>
+
+          <!-- Slider 2 -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 13px; color: #ccc;">Developers on integrations</span>
+              <span style="font-size: 13px; font-weight: 700; color: #f59e0b; font-family: 'IBM Plex Mono', monospace;">3</span>
+            </div>
+            <div style="height: 6px; background: #222; border-radius: 3px; position: relative;">
+              <div style="width: 25%; height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 3px;"></div>
+              <div style="position: absolute; top: -4px; left: 23%; width: 14px; height: 14px; background: #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.4);"></div>
+            </div>
+          </div>
+
+          <!-- Slider 3 -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 13px; color: #ccc;">Average developer cost</span>
+              <span style="font-size: 13px; font-weight: 700; color: #f59e0b; font-family: 'IBM Plex Mono', monospace;">€85/hr</span>
+            </div>
+            <div style="height: 6px; background: #222; border-radius: 3px; position: relative;">
+              <div style="width: 45%; height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 3px;"></div>
+              <div style="position: absolute; top: -4px; left: 43%; width: 14px; height: 14px; background: #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.4);"></div>
+            </div>
+          </div>
+
+          <!-- Collapsible assumptions -->
+          <div style="border-top: 1px solid #222; padding-top: 16px;">
+            <div style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 12px;">
+              <span style="font-size: 11px; color: #666;">▼</span>
+              <span style="font-size: 12px; color: #666;">Adjust assumptions</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div>
+                <div style="font-size: 10px; color: #555; margin-bottom: 4px;">Hours to build</div>
+                <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #ccc;">120 hrs</div>
+              </div>
+              <div>
+                <div style="font-size: 10px; color: #555; margin-bottom: 4px;">Maintenance/mo</div>
+                <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #ccc;">15 hrs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Results -->
+        <div style="background: #141414; border: 1px solid #222; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+
+          <!-- Big savings number -->
+          <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 10px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 8px;">Annual savings</div>
+            <div style="font-size: 42px; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, #f59e0b, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              €189,000
+            </div>
+          </div>
+
+          <!-- Payback period -->
+          <div style="text-align: center; margin-bottom: 24px; padding: 12px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15); border-radius: 10px;">
+            <div style="font-size: 10px; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: #22c55e; margin-bottom: 4px;">Payback period</div>
+            <div style="font-size: 22px; font-weight: 800; color: #22c55e;">1.8 months</div>
+          </div>
+
+          <!-- Tier recommendation -->
+          <div style="background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.15); border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 16px;">
+            <div style="font-size: 10px; color: #888; margin-bottom: 6px;">Recommended plan</div>
+            <div style="font-size: 16px; font-weight: 700; color: #f59e0b; margin-bottom: 2px;">Scale · €2,499/mo</div>
+            <div style="font-size: 11px; color: #666;">Founding price: €1,249/mo</div>
+          </div>
+
+          <a style="display: block; text-align: center; background: #f5f5f5; color: #0a0a0a; font-size: 13px; font-weight: 700; padding: 12px 20px; border-radius: 10px; text-decoration: none;">
+            Get Started with Scale →
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom hint -->
+    <div style="background: #111; padding: 8px 20px; font-size: 11px; color: #666; text-align: center; border-top: 1px solid #1a1a1a;">
+      ↓ Top-Up Packs below ↓
+    </div>
+
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top: 20px;">Mobile: stacks vertically — inputs on top, results below. Sliders remain full-width.</p>
