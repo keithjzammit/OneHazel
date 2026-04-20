@@ -780,3 +780,19 @@ input[type="range"].roi-slider::-moz-range-track {
     text-align: center;
 }
 .divider { border-color: var(--border); }
+
+/* Screenshot tabs */
+.screenshot-tab {
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+}
+.screenshot-tab:hover { color: var(--text); }
+.screenshot-tab.active {
+    color: var(--accent-bright);
+    background: var(--accent-soft);
+}

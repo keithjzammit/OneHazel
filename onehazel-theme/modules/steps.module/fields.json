@@ -59,7 +59,7 @@
       { "title": "Connector Generation", "description": "Production-grade connector generated with error handling, retry logic, auth flows, and per-endpoint type safety.", "accent_color": "#a855f7" },
       { "title": "Smoke Testing", "description": "Per-endpoint smoke tests auto-generated. Automated validation before production deployment.", "accent_color": "#10b981" },
       { "title": "Workflow Nodes", "description": "Each connector automatically appears as its own node in the visual workflow builder — drag, drop, and chain across 22 node types.", "accent_color": "#ca8a04" },
-      { "title": "Quality Audit", "description": "Multi-stage quality checks: schema validation, auth verification, and response mapping — 0 failures across 300+ builds.", "accent_color": "#ef4444" },
+      { "title": "Quality Audit", "description": "Multi-stage quality checks: schema validation, auth verification, and response mapping — 0 failures across 318 builds.", "accent_color": "#ef4444" },
       { "title": "Marketplace Listing", "description": "Published to the searchable marketplace with logos, docs, and one-click activation for any operator.", "accent_color": "#06b6d4" }
     ]
   }

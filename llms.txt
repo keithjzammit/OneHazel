@@ -1,6 +1,6 @@
 # OneHazel
 
-> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd in Malta.
+> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd (trading as Elevate AI) in Malta.
 
 ## What OneHazel Does
 
@@ -8,13 +8,13 @@ OneHazel connects enterprise platforms to third-party vendor ecosystems through 
 
 ## Key Facts
 
-- 300+ connectors available in the marketplace
+- 318 connectors available in the marketplace
 - AI agents build connectors from API documentation automatically
 - Visual workflow builder with 22 node types
 - AI workflow generation from natural language
 - Self-healing integrations that detect and repair API changes
 - Analytics dashboard with AI co-pilot
-- Headquartered in Malta (ZS Digital Ltd)
+- Headquartered in Malta (ZS Digital Ltd, trading as Elevate AI)
 - Founded by Keith Zammit
 
 ## Pricing
@@ -23,7 +23,7 @@ OneHazel connects enterprise platforms to third-party vendor ecosystems through 
 - Grow: €999/mo (annual) — 500K actions/mo, 500 AI actions/mo, 3 private connections
 - Scale: €2,499/mo (annual) — 2M actions/mo, 2,000 AI actions/mo, 10 private connections
 - Enterprise: Custom pricing on committed volume
-- Founding Partner Programme: 50% off for life for early beta customers
+- Founding Partner Programme: 50% off for life — V1.0 is live, sign up now to lock in founding pricing
 
 ## Industries
 

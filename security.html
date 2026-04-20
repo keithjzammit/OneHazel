@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Security &amp; Compliance — OneHazel</title>
+    <meta name="description" content="OneHazel is Malta-based, EU-hosted, and GDPR-compliant. AES-256-GCM tenant isolation, full DPA available, SOC 2 Type II in progress.">
+    <link rel="canonical" href="https://onehazel.com/security"> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity - canonical link does not load a subresource -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OneHazel">
+    <meta property="og:url" content="https://onehazel.com/security">
+    <meta property="og:title" content="Security &amp; Compliance — OneHazel">
+    <meta property="og:description" content="Malta-based, EU-hosted, GDPR-compliant. Here's exactly how OneHazel protects your data.">
+    <meta property="og:image" content="https://onehazel.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Security &amp; Compliance — OneHazel">
+    <meta name="twitter:description" content="Malta-based, EU-hosted, GDPR-compliant. Here's exactly how OneHazel protects your data.">
+    <meta name="twitter:image" content="https://onehazel.com/og-image.png">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity - Tailwind Play CDN is a dynamic JIT compiler, SRI not possible -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/styles.css">
+<!-- Start of HubSpot Embed Code -->
+<!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
+<!-- End of HubSpot Embed Code -->
+<!-- Start of PostHog Analytics -->
+<!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[]));
+    posthog.init('phc_rDGMjwemeK667KYitaigZmjrWDECzbWcTKUPcnw2WSfL', {
+        api_host: 'https://eu.i.posthog.com',
+        person_profiles: 'identified_only',
+        cross_subdomain_cookie: true,
+    });
+</script>
+<!-- End of PostHog Analytics -->
+</head>
+<body class="antialiased">
+
+    <!-- ===== NAV ===== -->
+    <div id="site-nav"></div>
+
+    <!-- Hero -->
+    <section class="section-base pt-20 md:pt-28 pb-12 border-b divider">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="fade-up badge mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
+                EU-hosted &middot; GDPR-compliant
+            </div>
+            <h1 class="fade-up-1 font-extrabold mb-4 leading-[1.1]" style="font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -0.035em;">
+                Security you can <span class="gradient-text">audit, not just trust.</span>
+            </h1>
+            <p class="fade-up-2 text-lg leading-relaxed" style="color: var(--text-secondary);">
+                OneHazel is Malta-based, EU-hosted, and GDPR-compliant. Here's exactly how we protect your data.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 2: Data Architecture -->
+    <section class="section-alt border-t divider py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-extrabold mb-8" style="letter-spacing: -0.02em;">Data Architecture</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
+                        <i class="fas fa-lock text-sm" style="color: var(--accent-bright);"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Encryption</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">AES-256-GCM tenant isolation. All data encrypted at rest and in transit via TLS 1.2+.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
+                        <i class="fas fa-map-pin text-sm" style="color: var(--accent-bright);"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Data Residency</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">All data hosted on EU infrastructure. No cross-border transfers. Data stays in the EU at all times.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: var(--accent-soft); border: 1px solid var(--accent-border);">
+                        <i class="fas fa-cubes text-sm" style="color: var(--accent-bright);"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Tenant Isolation</h3>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Complete per-tenant data separation at the storage layer. Your data is never co-mingled with another customer's data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Incident Response -->
+    <section class="section-base border-t divider py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-extrabold mb-8" style="letter-spacing: -0.02em;">Incident Response</h2>
+            <div class="card p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            <span class="font-bold">99.9% uptime target</span>
+                        </div>
+                        <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary);">Incidents are disclosed to affected customers within 24 hours. Platform status available at <a href="/status" style="color: var(--accent-bright);">onehazel.com/status</a>.</p>
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-envelope text-sm" style="color: var(--accent-bright);"></i>
+                            <div>
+                                <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--text-muted);">Security contact</div>
+                                <a href="mailto:security@onehazel.com" class="text-sm font-medium" style="color: var(--accent-bright); text-decoration: none;">security@onehazel.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-3 text-sm">Response SLAs</h4>
+                        <div class="flex flex-col gap-3">
+                            <div class="flex justify-between items-center py-2 border-b" style="border-color: var(--border);">
+                                <span class="text-sm" style="color: var(--text-secondary);">Critical vulnerability report</span>
+                                <span class="mono text-[11px] font-semibold" style="color: var(--accent-bright);">&lt; 4 hours</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b" style="border-color: var(--border);">
+                                <span class="text-sm" style="color: var(--text-secondary);">Security inquiry</span>
+                                <span class="mono text-[11px] font-semibold" style="color: var(--accent-bright);">&lt; 24 hours</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-sm" style="color: var(--text-secondary);">Incident notification to customers</span>
+                                <span class="mono text-[11px] font-semibold" style="color: var(--accent-bright);">&lt; 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: GDPR DPA -->
+    <section class="section-alt border-t divider py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-extrabold mb-8" style="letter-spacing: -0.02em;">GDPR Data Processing Agreement</h2>
+            <div class="card p-8">
+                <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary);">
+                    OneHazel acts as a <strong style="color: var(--text);">Data Processor</strong> for your operator data. You remain the Data Controller. We process data solely for the purposes of delivering the OneHazel platform services as described in your agreement. Our DPA covers:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">Sub-processor disclosures</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">Data subject rights procedures</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">Breach notification obligations</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">International transfer safeguards</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">Retention and deletion policies</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-sm mt-0.5" style="color: #10b981;"></i>
+                        <span class="text-sm" style="color: var(--text-secondary);">Security measures documentation</span>
+                    </div>
+                </div>
+                <a href="/contact" class="btn-primary" style="padding: 10px 20px; font-size: 13px;">Request DPA <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="section-base border-t divider py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t divider mb-10">
+                <div>
+                    <div class="font-extrabold text-lg mb-3" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence. Built by Elevate AI.</p>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Product</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/pricing" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                        <a href="/marketplace" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Marketplace</a>
+                        <a href="/vendors" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Vendors</a>
+                        <a href="/platform-providers" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Platform Providers</a>
+                        <a href="https://app.onehazel.com/docs" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">API Docs</a>
+                        <a href="https://app.onehazel.com" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Sign up to BETA</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Company</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/about" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                        <a href="/contact" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                        <a href="/security" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Security</a>
+                        <a href="/status" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Status</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Legal</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/terms" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Terms &amp; Conditions</a>
+                        <a href="/privacy" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-xs" style="color: var(--text-muted);">&copy; 2026 ZS Digital Ltd, trading as Elevate AI. All rights reserved. &middot; <a href="https://logo.dev" style="color: var(--text-muted); text-decoration: none;" class="hover:opacity-70 transition">Logos provided by Logo.dev</a></div>
+        </div>
+    </footer>
+
+    <script src="/main.js"></script>
+</body>
+</html>

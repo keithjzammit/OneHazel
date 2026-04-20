@@ -62,7 +62,7 @@
       }
     ],
     "default": [
-      { "icon": "fa-store", "icon_color": "#3b82f6", "title": "Connector Marketplace", "description": "300+ connectors, searchable with logos. One-click activation." },
+      { "icon": "fa-store", "icon_color": "#3b82f6", "title": "Connector Marketplace", "description": "318 connectors, searchable with logos. One-click activation." },
       { "icon": "fa-project-diagram", "icon_color": "#a855f7", "title": "Visual Workflow Canvas", "description": "Drag-and-drop automation with 22 node types. Like Make.com, but for your stack." },
       { "icon": "fa-magic", "icon_color": "#10b981", "title": "AI Workflow Builder", "description": "Describe what you want in natural language. AI generates the workflow." },
       { "icon": "fa-hammer", "icon_color": "#ca8a04", "title": "Self-Service Build", "description": "Operators build their own connectors from the UI. No engineering tickets." },
