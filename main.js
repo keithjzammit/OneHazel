@@ -44,7 +44,6 @@
                         '</div>' +
                     '</div>' +
                     '<a href="/about" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">About</a>' +
-                    '<a href="/team" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Team</a>' +
                     '<a href="/security" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Security</a>' +
                     '<a href="/contact" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Contact</a>' +
                 '</div>' +
@@ -85,7 +84,6 @@
                     '<a href="/platform-providers"><i class="fas fa-sitemap text-blue-500 w-5 text-center"></i> For Platform Providers</a>' +
                     '<div class="mobile-menu-section">Pages</div>' +
                     '<a href="/about"><i class="fas fa-info-circle w-5 text-center" style="color: var(--accent-bright);"></i> About</a>' +
-                    '<a href="/team"><i class="fas fa-users w-5 text-center" style="color: var(--accent-bright);"></i> Team</a>' +
                     '<a href="/security"><i class="fas fa-shield-halved w-5 text-center" style="color: var(--accent-bright);"></i> Security</a>' +
                     '<a href="/contact"><i class="fas fa-envelope w-5 text-center" style="color: var(--accent-bright);"></i> Contact</a>' +
                     '<div class="mobile-menu-section">Theme</div>' +
