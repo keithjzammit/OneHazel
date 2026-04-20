@@ -11,28 +11,28 @@
     "name": "headline",
     "label": "Headline (line 1)",
     "type": "text",
-    "default": "The Last Integration"
+    "default": "Your integrations backlog"
   },
   {
     "id": "headline_gradient",
     "name": "headline_gradient",
     "label": "Headline (gradient line 2)",
     "type": "text",
-    "default": "You'll Ever Build."
+    "default": "is killing your roadmap."
   },
   {
     "id": "subheadline",
     "name": "subheadline",
     "label": "Subheadline",
     "type": "richtext",
-    "default": "OneHazel is the Vertical iPaaS that uses <strong>autonomous AI agents</strong> to connect your platform to the world's intelligence ecosystem — <strong>318 connectors live today</strong>, built in minutes, maintained automatically."
+    "default": "OneHazel replaces the <strong>2 to 4 week integration cycle</strong> with self-serve builds <strong>in minutes</strong>. 318 connectors for iGaming operators. One API, every vendor."
   },
   {
     "id": "cta_primary_text",
     "name": "cta_primary_text",
     "label": "Primary CTA Text",
     "type": "text",
-    "default": "Get Started Free"
+    "default": "Start free trial, no card"
   },
   {
     "id": "cta_primary_url",
@@ -49,7 +49,7 @@
     "name": "cta_secondary_text",
     "label": "Secondary CTA Text",
     "type": "text",
-    "default": "View Architecture"
+    "default": "Browse the 318 connectors"
   },
   {
     "id": "cta_secondary_url",
