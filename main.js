@@ -26,13 +26,14 @@
                         '</button>' +
                         '<div class="nav-dropdown">' +
                             '<a href="/igaming"><i class="fas fa-dice text-emerald-500 w-4 text-center"></i> iGaming</a>' +
-                            '<a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-4 text-center"></i> Healthcare</a>' +
-                            '<a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-4 text-center"></i> Construction</a>' +
-                            '<a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-4 text-center"></i> Cannabis</a>' +
-                            '<a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-4 text-center"></i> Life Sciences</a>' +
-                            '<a href="/energy"><i class="fas fa-bolt text-yellow-500 w-4 text-center"></i> Energy &amp; Utilities</a>' +
+                            '<a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-4 text-center"></i> Healthcare <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                            '<a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-4 text-center"></i> Construction <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                            '<a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-4 text-center"></i> Cannabis <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                            '<a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-4 text-center"></i> Life Sciences <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                            '<a href="/energy"><i class="fas fa-bolt text-yellow-500 w-4 text-center"></i> Energy &amp; Utilities <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
                         '</div>' +
                     '</div>' +
+                    '<a href="/marketplace" class="hover:opacity-70 transition" style="color: var(--text-secondary); text-decoration: none;">Marketplace</a>' +
                     '<div class="relative nav-dropdown-trigger">' +
                         '<button class="flex items-center gap-1.5 hover:opacity-70 transition py-2" style="color: var(--text-secondary); background: none; border: none; cursor: pointer; font: inherit;">' +
                             'Pricing <i class="fas fa-chevron-down text-[9px]" style="color: var(--text-muted);"></i>' +
@@ -73,11 +74,12 @@
                 '<div class="flex-1 overflow-y-auto">' +
                     '<div class="mobile-menu-section">Industries</div>' +
                     '<a href="/igaming"><i class="fas fa-dice text-emerald-500 w-5 text-center"></i> iGaming</a>' +
-                    '<a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-5 text-center"></i> Healthcare</a>' +
-                    '<a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-5 text-center"></i> Construction</a>' +
-                    '<a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-5 text-center"></i> Cannabis</a>' +
-                    '<a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-5 text-center"></i> Life Sciences</a>' +
-                    '<a href="/energy"><i class="fas fa-bolt text-yellow-500 w-5 text-center"></i> Energy &amp; Utilities</a>' +
+                    '<a href="/healthcare"><i class="fas fa-heartbeat text-cyan-500 w-5 text-center"></i> Healthcare <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                    '<a href="/construction"><i class="fas fa-hard-hat text-amber-500 w-5 text-center"></i> Construction <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                    '<a href="/cannabis"><i class="fas fa-leaf text-lime-500 w-5 text-center"></i> Cannabis <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                    '<a href="/lifesciences"><i class="fas fa-flask text-violet-500 w-5 text-center"></i> Life Sciences <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                    '<a href="/energy"><i class="fas fa-bolt text-yellow-500 w-5 text-center"></i> Energy &amp; Utilities <span style="display:inline-block;background:rgba(234,179,8,0.15);color:#ca8a04;border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;margin-left:4px;line-height:16px;vertical-align:middle;">Soon</span></a>' +
+                    '<a href="/marketplace"><i class="fas fa-store text-amber-500 w-5 text-center"></i> Marketplace</a>' +
                     '<div class="mobile-menu-section">Pricing</div>' +
                     '<a href="/pricing"><i class="fas fa-building text-amber-500 w-5 text-center"></i> For Operators</a>' +
                     '<a href="/vendors"><i class="fas fa-store text-emerald-500 w-5 text-center"></i> For Vendors</a>' +
