@@ -1,6 +1,6 @@
 # OneHazel — Full Context
 
-> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd in Malta.
+> OneHazel is an AI-powered Vertical iPaaS (Integration Platform as a Service) that builds, tests, and maintains vendor integrations automatically. Built by ZS Digital Ltd (trading as Elevate AI) in Malta.
 
 ## What OneHazel Does
 
@@ -14,7 +14,7 @@ OneHazel connects enterprise platforms to third-party vendor ecosystems through 
 - AI workflow generation from natural language
 - Self-healing integrations that detect and repair API changes
 - Analytics dashboard with AI co-pilot
-- Headquartered in Malta (ZS Digital Ltd)
+- Headquartered in Malta (ZS Digital Ltd, trading as Elevate AI)
 - Founded by Keith Zammit
 
 ## Technical Architecture
@@ -95,7 +95,7 @@ SCADA system integrations, smart grid management platforms, renewable energy mon
 
 ## Company Details
 
-- **Legal name**: ZS Digital Ltd
+- **Legal name**: ZS Digital Ltd (trading as Elevate AI)
 - **Headquarters**: Malta
 - **Founder**: Keith Zammit
 - **Product**: OneHazel iPaaS (V1.0 live)
