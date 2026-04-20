@@ -63,17 +63,6 @@
         </div>
     </header>
 
-    <!-- App preview -->
-    <section class="section-alt py-12 border-b divider">
-        <div class="max-w-5xl mx-auto px-6">
-            <p class="text-center text-xs mb-4 mono uppercase tracking-wider" style="color:var(--text-muted);">What it looks like inside the app</p>
-            <div class="rounded-2xl overflow-hidden" style="border:1px solid var(--border); box-shadow:0 16px 48px var(--shadow);">
-                <img src="/screenshots/marketplace-connectors.png" alt="OneHazel connector marketplace inside the app — category filters, real connector logos, one-click connect" class="w-full block" loading="lazy">
-            </div>
-            <p class="text-center text-xs mt-3" style="color:var(--text-muted);">Actual product screenshot &mdash; activate any connector with one click after signup.</p>
-        </div>
-    </section>
-
     <!-- Category filters -->
     <section class="section-base py-8 border-b divider">
         <div class="max-w-7xl mx-auto px-6">
@@ -86,6 +75,7 @@
     <!-- Connector grid -->
     <section class="section-base py-12">
         <div class="max-w-7xl mx-auto px-6">
+            <p id="result-count" class="text-xs mb-6 mono uppercase tracking-wider" style="color:var(--text-muted);"></p>
             <div id="connector-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <!-- injected by JS -->
             </div>
@@ -143,58 +133,336 @@
         </div>
     </footer>
 
-    <!-- TODO: replace with live marketplace API feed when available -->
     <script id="connector-data" type="application/json">
     [
-      {"name":"Evolution Gaming","category":"Game Providers","slug":"evolution-gaming"},
-      {"name":"Pragmatic Play","category":"Game Providers","slug":"pragmatic-play"},
-      {"name":"SoftSwiss","category":"Game Providers","slug":"softswiss"},
-      {"name":"NetEnt","category":"Game Providers","slug":"netent"},
-      {"name":"Playtech","category":"Game Providers","slug":"playtech"},
-      {"name":"Microgaming","category":"Game Providers","slug":"microgaming"},
-      {"name":"IGT","category":"Game Providers","slug":"igt"},
-      {"name":"Stripe","category":"Payments","slug":"stripe"},
-      {"name":"PaySafe","category":"Payments","slug":"paysafe"},
-      {"name":"Nuvei","category":"Payments","slug":"nuvei"},
-      {"name":"Trustly","category":"Payments","slug":"trustly"},
-      {"name":"Paysera","category":"Payments","slug":"paysera"},
-      {"name":"Sumsub","category":"KYC / AML","slug":"sumsub"},
-      {"name":"Onfido","category":"KYC / AML","slug":"onfido"},
-      {"name":"Jumio","category":"KYC / AML","slug":"jumio"},
-      {"name":"LexisNexis","category":"KYC / AML","slug":"lexisnexis"},
-      {"name":"Optimove","category":"CRM / Marketing","slug":"optimove"},
-      {"name":"Salesforce","category":"CRM / Marketing","slug":"salesforce"},
-      {"name":"HubSpot","category":"CRM / Marketing","slug":"hubspot"},
-      {"name":"Braze","category":"CRM / Marketing","slug":"braze"},
-      {"name":"GAN","category":"Responsible Gaming","slug":"gan"},
-      {"name":"Complyze","category":"Responsible Gaming","slug":"complyze"},
-      {"name":"BetBlocker","category":"Responsible Gaming","slug":"betblocker"},
-      {"name":"Google Analytics","category":"Analytics","slug":"google-analytics"},
-      {"name":"Mixpanel","category":"Analytics","slug":"mixpanel"},
-      {"name":"Looker","category":"Analytics","slug":"looker"},
-      {"name":"Tableau","category":"Analytics","slug":"tableau"},
-      {"name":"Twilio","category":"Communications","slug":"twilio"},
-      {"name":"SendGrid","category":"Communications","slug":"sendgrid"},
-      {"name":"Intercom","category":"Communications","slug":"intercom"},
-      {"name":"Mailchimp","category":"Communications","slug":"mailchimp"},
-      {"name":"AWS S3","category":"Infrastructure","slug":"aws-s3"},
-      {"name":"Google Cloud","category":"Infrastructure","slug":"google-cloud"},
-      {"name":"Azure","category":"Infrastructure","slug":"azure"},
-      {"name":"Cloudflare","category":"Infrastructure","slug":"cloudflare"},
-      {"name":"Slack","category":"Productivity","slug":"slack"},
-      {"name":"Jira","category":"Productivity","slug":"jira"},
-      {"name":"Notion","category":"Productivity","slug":"notion"},
-      {"name":"Airtable","category":"Productivity","slug":"airtable"}
+      {"name":"API-Football","category":"iGaming","domain":"api-football.com"},
+      {"name":"Betfair","category":"iGaming","domain":"betfair.com"},
+      {"name":"ComplyAdvantage","category":"iGaming","domain":"complyadvantage.com"},
+      {"name":"Jumio","category":"iGaming","domain":"jumio.com"},
+      {"name":"NOWPayments","category":"iGaming","domain":"nowpayments.io"},
+      {"name":"Nuvei","category":"iGaming","domain":"nuvei.com"},
+      {"name":"OneSignal","category":"iGaming","domain":"onesignal.com"},
+      {"name":"Onfido","category":"iGaming","domain":"onfido.com"},
+      {"name":"OpenSanctions","category":"iGaming","domain":"opensanctions.org"},
+      {"name":"Optimove","category":"iGaming","domain":"optimove.com"},
+      {"name":"PandaScore","category":"iGaming","domain":"pandascore.io"},
+      {"name":"Partnerize","category":"iGaming","domain":"partnerize.com"},
+      {"name":"Paysafe","category":"iGaming","domain":"paysafe.com"},
+      {"name":"Persona","category":"iGaming","domain":"withpersona.com"},
+      {"name":"Pinnacle","category":"iGaming","domain":"pinnacle.com"},
+      {"name":"Scaleo","category":"iGaming","domain":"scaleo.io"},
+      {"name":"Shift4","category":"iGaming","domain":"shift4.com"},
+      {"name":"Shufti Pro","category":"iGaming","domain":"shuftipro.com"},
+      {"name":"Sportradar","category":"iGaming","domain":"sportradar.com"},
+      {"name":"Sumsub","category":"iGaming","domain":"sumsub.com"},
+      {"name":"The Odds API","category":"iGaming","domain":"the-odds-api.com"},
+      {"name":"Trustly","category":"iGaming","domain":"trustly.com"},
+      {"name":"Veriff","category":"iGaming","domain":"veriff.com"},
+      {"name":"Xtremepush","category":"iGaming","domain":"xtremepush.com"},
+      {"name":"Stripe","category":"Payments","domain":"stripe.com"},
+      {"name":"PayPal","category":"Payments","domain":"paypal.com"},
+      {"name":"Square","category":"Payments","domain":"squareup.com"},
+      {"name":"Braintree","category":"Payments","domain":"braintreepayments.com"},
+      {"name":"Adyen","category":"Payments","domain":"adyen.com"},
+      {"name":"Worldpay","category":"Payments","domain":"worldpay.com"},
+      {"name":"Checkout.com","category":"Payments","domain":"checkout.com"},
+      {"name":"Razorpay","category":"Payments","domain":"razorpay.com"},
+      {"name":"Klarna","category":"Payments","domain":"klarna.com"},
+      {"name":"Afterpay","category":"Payments","domain":"afterpay.com"},
+      {"name":"Mollie","category":"Payments","domain":"mollie.com"},
+      {"name":"Payoneer","category":"Payments","domain":"payoneer.com"},
+      {"name":"Wise","category":"Payments","domain":"wise.com"},
+      {"name":"Revolut","category":"Payments","domain":"revolut.com"},
+      {"name":"Plaid","category":"Payments","domain":"plaid.com"},
+      {"name":"GoCardless","category":"Payments","domain":"gocardless.com"},
+      {"name":"Mangopay","category":"Payments","domain":"mangopay.com"},
+      {"name":"Tink","category":"Payments","domain":"tink.com"},
+      {"name":"Finicity","category":"Payments","domain":"finicity.com"},
+      {"name":"Yodlee","category":"Payments","domain":"yodlee.com"},
+      {"name":"Salesforce","category":"CRM / Marketing","domain":"salesforce.com"},
+      {"name":"HubSpot","category":"CRM / Marketing","domain":"hubspot.com"},
+      {"name":"Zoho CRM","category":"CRM / Marketing","domain":"zoho.com"},
+      {"name":"Pipedrive","category":"CRM / Marketing","domain":"pipedrive.com"},
+      {"name":"Freshsales","category":"CRM / Marketing","domain":"freshworks.com"},
+      {"name":"Microsoft Dynamics","category":"CRM / Marketing","domain":"microsoft.com"},
+      {"name":"SugarCRM","category":"CRM / Marketing","domain":"sugarcrm.com"},
+      {"name":"Copper","category":"CRM / Marketing","domain":"copper.com"},
+      {"name":"Mailchimp","category":"CRM / Marketing","domain":"mailchimp.com"},
+      {"name":"Constant Contact","category":"CRM / Marketing","domain":"constantcontact.com"},
+      {"name":"ActiveCampaign","category":"CRM / Marketing","domain":"activecampaign.com"},
+      {"name":"Klaviyo","category":"CRM / Marketing","domain":"klaviyo.com"},
+      {"name":"Marketo","category":"CRM / Marketing","domain":"marketo.com"},
+      {"name":"Braze","category":"CRM / Marketing","domain":"braze.com"},
+      {"name":"Customer.io","category":"CRM / Marketing","domain":"customer.io"},
+      {"name":"Iterable","category":"CRM / Marketing","domain":"iterable.com"},
+      {"name":"Omnisend","category":"CRM / Marketing","domain":"omnisend.com"},
+      {"name":"Drip","category":"CRM / Marketing","domain":"drip.com"},
+      {"name":"Sendinblue","category":"CRM / Marketing","domain":"sendinblue.com"},
+      {"name":"Insightly","category":"CRM / Marketing","domain":"insightly.com"},
+      {"name":"Twilio","category":"Communications","domain":"twilio.com"},
+      {"name":"SendGrid","category":"Communications","domain":"sendgrid.com"},
+      {"name":"Mailgun","category":"Communications","domain":"mailgun.com"},
+      {"name":"Vonage","category":"Communications","domain":"vonage.com"},
+      {"name":"Bandwidth","category":"Communications","domain":"bandwidth.com"},
+      {"name":"Sinch","category":"Communications","domain":"sinch.com"},
+      {"name":"MessageBird","category":"Communications","domain":"messagebird.com"},
+      {"name":"Postmark","category":"Communications","domain":"postmarkapp.com"},
+      {"name":"SparkPost","category":"Communications","domain":"sparkpost.com"},
+      {"name":"Plivo","category":"Communications","domain":"plivo.com"},
+      {"name":"Zendesk","category":"Communications","domain":"zendesk.com"},
+      {"name":"Intercom","category":"Communications","domain":"intercom.com"},
+      {"name":"Freshdesk","category":"Communications","domain":"freshdesk.com"},
+      {"name":"Pushover","category":"Communications","domain":"pushover.net"},
+      {"name":"Telnyx","category":"Communications","domain":"telnyx.com"},
+      {"name":"Google Analytics","category":"Analytics","domain":"analytics.google.com"},
+      {"name":"Mixpanel","category":"Analytics","domain":"mixpanel.com"},
+      {"name":"Amplitude","category":"Analytics","domain":"amplitude.com"},
+      {"name":"Looker","category":"Analytics","domain":"looker.com"},
+      {"name":"Tableau","category":"Analytics","domain":"tableau.com"},
+      {"name":"Metabase","category":"Analytics","domain":"metabase.com"},
+      {"name":"Grafana","category":"Analytics","domain":"grafana.com"},
+      {"name":"Segment","category":"Analytics","domain":"segment.com"},
+      {"name":"RudderStack","category":"Analytics","domain":"rudderstack.com"},
+      {"name":"mParticle","category":"Analytics","domain":"mparticle.com"},
+      {"name":"Heap","category":"Analytics","domain":"heap.io"},
+      {"name":"Hotjar","category":"Analytics","domain":"hotjar.com"},
+      {"name":"FullStory","category":"Analytics","domain":"fullstory.com"},
+      {"name":"Pendo","category":"Analytics","domain":"pendo.io"},
+      {"name":"PostHog","category":"Analytics","domain":"posthog.com"},
+      {"name":"AWS","category":"Cloud Infrastructure","domain":"aws.amazon.com"},
+      {"name":"Google Cloud","category":"Cloud Infrastructure","domain":"cloud.google.com"},
+      {"name":"Azure","category":"Cloud Infrastructure","domain":"azure.microsoft.com"},
+      {"name":"Cloudflare","category":"Cloud Infrastructure","domain":"cloudflare.com"},
+      {"name":"Supabase","category":"Cloud Infrastructure","domain":"supabase.com"},
+      {"name":"Firebase","category":"Cloud Infrastructure","domain":"firebase.google.com"},
+      {"name":"Vercel","category":"Cloud Infrastructure","domain":"vercel.com"},
+      {"name":"Netlify","category":"Cloud Infrastructure","domain":"netlify.com"},
+      {"name":"Heroku","category":"Cloud Infrastructure","domain":"heroku.com"},
+      {"name":"DigitalOcean","category":"Cloud Infrastructure","domain":"digitalocean.com"},
+      {"name":"Linode","category":"Cloud Infrastructure","domain":"linode.com"},
+      {"name":"Vultr","category":"Cloud Infrastructure","domain":"vultr.com"},
+      {"name":"Fastly","category":"Cloud Infrastructure","domain":"fastly.com"},
+      {"name":"Akamai","category":"Cloud Infrastructure","domain":"akamai.com"},
+      {"name":"Cloudinary","category":"Cloud Infrastructure","domain":"cloudinary.com"},
+      {"name":"Slack","category":"Productivity","domain":"slack.com"},
+      {"name":"Microsoft Teams","category":"Productivity","domain":"microsoft.com"},
+      {"name":"Zoom","category":"Productivity","domain":"zoom.us"},
+      {"name":"Notion","category":"Productivity","domain":"notion.so"},
+      {"name":"Airtable","category":"Productivity","domain":"airtable.com"},
+      {"name":"Asana","category":"Productivity","domain":"asana.com"},
+      {"name":"Monday.com","category":"Productivity","domain":"monday.com"},
+      {"name":"ClickUp","category":"Productivity","domain":"clickup.com"},
+      {"name":"Trello","category":"Productivity","domain":"trello.com"},
+      {"name":"Jira","category":"Productivity","domain":"atlassian.com"},
+      {"name":"Confluence","category":"Productivity","domain":"atlassian.com"},
+      {"name":"Linear","category":"Productivity","domain":"linear.app"},
+      {"name":"GitHub","category":"Productivity","domain":"github.com"},
+      {"name":"GitLab","category":"Productivity","domain":"gitlab.com"},
+      {"name":"Basecamp","category":"Productivity","domain":"basecamp.com"},
+      {"name":"Shopify","category":"E-Commerce","domain":"shopify.com"},
+      {"name":"WooCommerce","category":"E-Commerce","domain":"woocommerce.com"},
+      {"name":"BigCommerce","category":"E-Commerce","domain":"bigcommerce.com"},
+      {"name":"Magento","category":"E-Commerce","domain":"magento.com"},
+      {"name":"Squarespace","category":"E-Commerce","domain":"squarespace.com"},
+      {"name":"Wix","category":"E-Commerce","domain":"wix.com"},
+      {"name":"Ecwid","category":"E-Commerce","domain":"ecwid.com"},
+      {"name":"PrestaShop","category":"E-Commerce","domain":"prestashop.com"},
+      {"name":"Volusion","category":"E-Commerce","domain":"volusion.com"},
+      {"name":"OpenCart","category":"E-Commerce","domain":"opencart.com"},
+      {"name":"Workday","category":"HR / Payroll","domain":"workday.com"},
+      {"name":"BambooHR","category":"HR / Payroll","domain":"bamboohr.com"},
+      {"name":"ADP","category":"HR / Payroll","domain":"adp.com"},
+      {"name":"Rippling","category":"HR / Payroll","domain":"rippling.com"},
+      {"name":"Gusto","category":"HR / Payroll","domain":"gusto.com"},
+      {"name":"Paychex","category":"HR / Payroll","domain":"paychex.com"},
+      {"name":"UKG","category":"HR / Payroll","domain":"ukg.com"},
+      {"name":"Ceridian","category":"HR / Payroll","domain":"ceridian.com"},
+      {"name":"Zenefits","category":"HR / Payroll","domain":"zenefits.com"},
+      {"name":"TriNet","category":"HR / Payroll","domain":"trinet.com"},
+      {"name":"SAP","category":"ERP","domain":"sap.com"},
+      {"name":"Oracle ERP","category":"ERP","domain":"oracle.com"},
+      {"name":"NetSuite","category":"ERP","domain":"netsuite.com"},
+      {"name":"Sage","category":"ERP","domain":"sage.com"},
+      {"name":"Epicor","category":"ERP","domain":"epicor.com"},
+      {"name":"Infor","category":"ERP","domain":"infor.com"},
+      {"name":"Acumatica","category":"ERP","domain":"acumatica.com"},
+      {"name":"IFS","category":"ERP","domain":"ifs.com"},
+      {"name":"Odoo","category":"ERP","domain":"odoo.com"},
+      {"name":"Syspro","category":"ERP","domain":"syspro.com"},
+      {"name":"Okta","category":"Security / Identity","domain":"okta.com"},
+      {"name":"Auth0","category":"Security / Identity","domain":"auth0.com"},
+      {"name":"Ping Identity","category":"Security / Identity","domain":"pingidentity.com"},
+      {"name":"CyberArk","category":"Security / Identity","domain":"cyberark.com"},
+      {"name":"SailPoint","category":"Security / Identity","domain":"sailpoint.com"},
+      {"name":"Splunk","category":"Security / Identity","domain":"splunk.com"},
+      {"name":"CrowdStrike","category":"Security / Identity","domain":"crowdstrike.com"},
+      {"name":"Qualys","category":"Security / Identity","domain":"qualys.com"},
+      {"name":"Rapid7","category":"Security / Identity","domain":"rapid7.com"},
+      {"name":"Duo Security","category":"Security / Identity","domain":"duo.com"},
+      {"name":"Snowflake","category":"Data & Warehousing","domain":"snowflake.com"},
+      {"name":"Databricks","category":"Data & Warehousing","domain":"databricks.com"},
+      {"name":"dbt","category":"Data & Warehousing","domain":"getdbt.com"},
+      {"name":"Fivetran","category":"Data & Warehousing","domain":"fivetran.com"},
+      {"name":"Airbyte","category":"Data & Warehousing","domain":"airbyte.com"},
+      {"name":"Talend","category":"Data & Warehousing","domain":"talend.com"},
+      {"name":"MuleSoft","category":"Data & Warehousing","domain":"mulesoft.com"},
+      {"name":"Informatica","category":"Data & Warehousing","domain":"informatica.com"},
+      {"name":"Stitch","category":"Data & Warehousing","domain":"stitchdata.com"},
+      {"name":"Matillion","category":"Data & Warehousing","domain":"matillion.com"},
+      {"name":"Anthropic","category":"AI / ML","domain":"anthropic.com"},
+      {"name":"OpenAI","category":"AI / ML","domain":"openai.com"},
+      {"name":"Cohere","category":"AI / ML","domain":"cohere.com"},
+      {"name":"Hugging Face","category":"AI / ML","domain":"huggingface.co"},
+      {"name":"Replicate","category":"AI / ML","domain":"replicate.com"},
+      {"name":"AssemblyAI","category":"AI / ML","domain":"assemblyai.com"},
+      {"name":"Deepgram","category":"AI / ML","domain":"deepgram.com"},
+      {"name":"Stability AI","category":"AI / ML","domain":"stability.ai"},
+      {"name":"Mistral AI","category":"AI / ML","domain":"mistral.ai"},
+      {"name":"Perplexity","category":"AI / ML","domain":"perplexity.ai"},
+      {"name":"Datadog","category":"Monitoring","domain":"datadoghq.com"},
+      {"name":"New Relic","category":"Monitoring","domain":"newrelic.com"},
+      {"name":"PagerDuty","category":"Monitoring","domain":"pagerduty.com"},
+      {"name":"Dynatrace","category":"Monitoring","domain":"dynatrace.com"},
+      {"name":"AppDynamics","category":"Monitoring","domain":"appdynamics.com"},
+      {"name":"Sumo Logic","category":"Monitoring","domain":"sumologic.com"},
+      {"name":"Elastic","category":"Monitoring","domain":"elastic.co"},
+      {"name":"Sentry","category":"Monitoring","domain":"sentry.io"},
+      {"name":"StatusPage","category":"Monitoring","domain":"atlassian.com"},
+      {"name":"LogRocket","category":"Monitoring","domain":"logrocket.com"},
+      {"name":"Epic","category":"Healthcare","domain":"epic.com"},
+      {"name":"Cerner","category":"Healthcare","domain":"cerner.com"},
+      {"name":"Allscripts","category":"Healthcare","domain":"allscripts.com"},
+      {"name":"Meditech","category":"Healthcare","domain":"meditech.com"},
+      {"name":"athenahealth","category":"Healthcare","domain":"athenahealth.com"},
+      {"name":"DrChrono","category":"Healthcare","domain":"drchrono.com"},
+      {"name":"AdvancedMD","category":"Healthcare","domain":"advancedmd.com"},
+      {"name":"Kareo","category":"Healthcare","domain":"kareo.com"},
+      {"name":"Teladoc","category":"Healthcare","domain":"teladoc.com"},
+      {"name":"Zocdoc","category":"Healthcare","domain":"zocdoc.com"},
+      {"name":"Veeva","category":"Healthcare","domain":"veeva.com"},
+      {"name":"Redox","category":"Healthcare","domain":"redoxengine.com"},
+      {"name":"Health Catalyst","category":"Healthcare","domain":"healthcatalyst.com"},
+      {"name":"NextGen","category":"Healthcare","domain":"nextgen.com"},
+      {"name":"eClinicalWorks","category":"Healthcare","domain":"eclinicalworks.com"},
+      {"name":"ModMed","category":"Healthcare","domain":"modmed.com"},
+      {"name":"Practice Fusion","category":"Healthcare","domain":"practicefusion.com"},
+      {"name":"PointClickCare","category":"Healthcare","domain":"pointclickcare.com"},
+      {"name":"Netsmart","category":"Healthcare","domain":"ntst.com"},
+      {"name":"MatrixCare","category":"Healthcare","domain":"matrixcare.com"},
+      {"name":"Procore","category":"Construction","domain":"procore.com"},
+      {"name":"PlanGrid","category":"Construction","domain":"plangrid.com"},
+      {"name":"Buildertrend","category":"Construction","domain":"buildertrend.com"},
+      {"name":"CoConstruct","category":"Construction","domain":"coconstruct.com"},
+      {"name":"Viewpoint","category":"Construction","domain":"viewpoint.com"},
+      {"name":"Autodesk BIM 360","category":"Construction","domain":"autodesk.com"},
+      {"name":"Bluebeam","category":"Construction","domain":"bluebeam.com"},
+      {"name":"Fieldwire","category":"Construction","domain":"fieldwire.com"},
+      {"name":"Raken","category":"Construction","domain":"rakenapp.com"},
+      {"name":"Knowify","category":"Construction","domain":"knowify.com"},
+      {"name":"Yardi","category":"Construction","domain":"yardi.com"},
+      {"name":"CMiC","category":"Construction","domain":"cmic.ca"},
+      {"name":"InEight","category":"Construction","domain":"ineight.com"},
+      {"name":"eSUB","category":"Construction","domain":"esub.com"},
+      {"name":"Foundation Software","category":"Construction","domain":"foundationsoft.com"},
+      {"name":"Oracle Primavera","category":"Construction","domain":"oracle.com"},
+      {"name":"Trimble Connect","category":"Construction","domain":"trimble.com"},
+      {"name":"Sage 300 CRE","category":"Construction","domain":"sage.com"},
+      {"name":"Jonas Premier","category":"Construction","domain":"jonaspremier.com"},
+      {"name":"ComputerEase","category":"Construction","domain":"computerease.com"},
+      {"name":"Metrc","category":"Cannabis","domain":"metrc.com"},
+      {"name":"BioTrackTHC","category":"Cannabis","domain":"biotrack.com"},
+      {"name":"Weedmaps","category":"Cannabis","domain":"weedmaps.com"},
+      {"name":"Leafly","category":"Cannabis","domain":"leafly.com"},
+      {"name":"Dutchie","category":"Cannabis","domain":"dutchie.com"},
+      {"name":"Flowhub","category":"Cannabis","domain":"flowhub.com"},
+      {"name":"MJ Platform","category":"Cannabis","domain":"mjplatform.com"},
+      {"name":"Distru","category":"Cannabis","domain":"distru.com"},
+      {"name":"LeafLogix","category":"Cannabis","domain":"leaflogix.com"},
+      {"name":"Treez","category":"Cannabis","domain":"treez.io"},
+      {"name":"Alpine IQ","category":"Cannabis","domain":"alpineiq.com"},
+      {"name":"Meadow","category":"Cannabis","domain":"getmeadow.com"},
+      {"name":"Blaze POS","category":"Cannabis","domain":"blaze.tech"},
+      {"name":"Confident Cannabis","category":"Cannabis","domain":"confidentcannabis.com"},
+      {"name":"GrowBuddy","category":"Cannabis","domain":"growbuddy.io"},
+      {"name":"Veeva Vault","category":"Life Sciences","domain":"veeva.com"},
+      {"name":"Medidata","category":"Life Sciences","domain":"medidata.com"},
+      {"name":"Oracle Argus","category":"Life Sciences","domain":"oracle.com"},
+      {"name":"Benchling","category":"Life Sciences","domain":"benchling.com"},
+      {"name":"Dotmatics","category":"Life Sciences","domain":"dotmatics.com"},
+      {"name":"IDBS","category":"Life Sciences","domain":"idbs.com"},
+      {"name":"Sapio Sciences","category":"Life Sciences","domain":"sapiosciences.com"},
+      {"name":"Quartzy","category":"Life Sciences","domain":"quartzy.com"},
+      {"name":"CloudLIMS","category":"Life Sciences","domain":"cloudlims.com"},
+      {"name":"LabWare","category":"Life Sciences","domain":"labware.com"},
+      {"name":"Labvantage","category":"Life Sciences","domain":"labvantage.com"},
+      {"name":"Thermo Fisher Scientific","category":"Life Sciences","domain":"thermofisher.com"},
+      {"name":"Certara","category":"Life Sciences","domain":"certara.com"},
+      {"name":"PAREXEL","category":"Life Sciences","domain":"parexel.com"},
+      {"name":"Covance","category":"Life Sciences","domain":"covance.com"},
+      {"name":"Schneider Electric","category":"Energy","domain":"se.com"},
+      {"name":"Siemens","category":"Energy","domain":"siemens.com"},
+      {"name":"ABB","category":"Energy","domain":"abb.com"},
+      {"name":"Emerson Electric","category":"Energy","domain":"emerson.com"},
+      {"name":"Honeywell","category":"Energy","domain":"honeywell.com"},
+      {"name":"OSIsoft PI","category":"Energy","domain":"osisoft.com"},
+      {"name":"AspenTech","category":"Energy","domain":"aspentech.com"},
+      {"name":"GE Digital","category":"Energy","domain":"ge.com"},
+      {"name":"Yokogawa","category":"Energy","domain":"yokogawa.com"},
+      {"name":"Rockwell Automation","category":"Energy","domain":"rockwellautomation.com"},
+      {"name":"AVEVA","category":"Energy","domain":"aveva.com"},
+      {"name":"UpKeep","category":"Energy","domain":"upkeep.com"},
+      {"name":"Limble CMMS","category":"Energy","domain":"limblecmms.com"},
+      {"name":"eMaint","category":"Energy","domain":"emaint.com"},
+      {"name":"IBM Maximo","category":"Energy","domain":"ibm.com"},
+      {"name":"DocuSign","category":"Legal / Document","domain":"docusign.com"},
+      {"name":"HelloSign","category":"Legal / Document","domain":"hellosign.com"},
+      {"name":"Adobe Sign","category":"Legal / Document","domain":"adobe.com"},
+      {"name":"Clio","category":"Legal / Document","domain":"clio.com"},
+      {"name":"MyCase","category":"Legal / Document","domain":"mycase.com"},
+      {"name":"PandaDoc","category":"Legal / Document","domain":"pandadoc.com"},
+      {"name":"Box","category":"Legal / Document","domain":"box.com"},
+      {"name":"Dropbox","category":"Legal / Document","domain":"dropbox.com"},
+      {"name":"NetDocuments","category":"Legal / Document","domain":"netdocuments.com"},
+      {"name":"iManage","category":"Legal / Document","domain":"imanage.com"},
+      {"name":"Amazon Pay","category":"Payments","domain":"pay.amazon.com"},
+      {"name":"Authorize.net","category":"Payments","domain":"authorize.net"},
+      {"name":"2Checkout","category":"Payments","domain":"2checkout.com"},
+      {"name":"WePay","category":"Payments","domain":"wepay.com"},
+      {"name":"Payme","category":"Payments","domain":"payme.com"},
+      {"name":"Keap","category":"CRM / Marketing","domain":"keap.com"},
+      {"name":"Nimble","category":"CRM / Marketing","domain":"nimble.com"},
+      {"name":"Agile CRM","category":"CRM / Marketing","domain":"agilecrm.com"},
+      {"name":"Freshmarketer","category":"CRM / Marketing","domain":"freshworks.com"},
+      {"name":"Autopilot","category":"CRM / Marketing","domain":"autopilothq.com"},
+      {"name":"Miro","category":"Productivity","domain":"miro.com"},
+      {"name":"Figma","category":"Productivity","domain":"figma.com"},
+      {"name":"Loom","category":"Productivity","domain":"loom.com"},
+      {"name":"Coda","category":"Productivity","domain":"coda.io"},
+      {"name":"Whimsical","category":"Productivity","domain":"whimsical.com"},
+      {"name":"Domo","category":"Analytics","domain":"domo.com"},
+      {"name":"Looker Studio","category":"Analytics","domain":"datastudio.google.com"},
+      {"name":"Chartio","category":"Analytics","domain":"chartio.com"},
+      {"name":"Rollbar","category":"Monitoring","domain":"rollbar.com"},
+      {"name":"Honeybadger","category":"Monitoring","domain":"honeybadger.io"},
+      {"name":"Bugsnag","category":"Monitoring","domain":"bugsnag.com"},
+      {"name":"Weights & Biases","category":"AI / ML","domain":"wandb.ai"},
+      {"name":"Scale AI","category":"AI / ML","domain":"scale.com"},
+      {"name":"LlamaIndex","category":"AI / ML","domain":"llamaindex.ai"},
+      {"name":"Together AI","category":"AI / ML","domain":"together.ai"},
+      {"name":"Hetzner","category":"Cloud Infrastructure","domain":"hetzner.com"},
+      {"name":"Render","category":"Cloud Infrastructure","domain":"render.com"},
+      {"name":"Railway","category":"Cloud Infrastructure","domain":"railway.app"},
+      {"name":"Fly.io","category":"Cloud Infrastructure","domain":"fly.io"}
     ]
     </script>
 
     <script src="/main.js"></script>
     <script>
     (function() {
+        var TOKEN = 'pk_R6vnpyQtT9GKLf2AwgzFFQ';
         var connectors = JSON.parse(document.getElementById('connector-data').textContent);
         var activeCategory = 'All';
 
-        // Extract unique categories in insertion order
         var categories = ['All'];
         connectors.forEach(function(c) {
             if (categories.indexOf(c.category) === -1) categories.push(c.category);
@@ -203,9 +471,9 @@
         var filtersEl = document.getElementById('category-filters');
         var gridEl = document.getElementById('connector-grid');
         var noResultsEl = document.getElementById('no-results');
+        var countEl = document.getElementById('result-count');
         var searchEl = document.getElementById('connector-search');
 
-        // Render category filter pills
         categories.forEach(function(cat) {
             var btn = document.createElement('button');
             btn.textContent = cat;
@@ -231,24 +499,31 @@
             filtersEl.appendChild(btn);
         });
 
-        // Build a connector card using safe DOM methods
         function buildCard(c) {
-            // TODO: update href to /marketplace/[slug] once individual connector pages exist
             var a = document.createElement('a');
             a.href = '#';
             a.title = c.name;
             a.className = 'card p-4 text-center hover:border-[var(--accent-bright)] transition group';
             a.style.textDecoration = 'none';
 
-            var iconWrap = document.createElement('div');
-            iconWrap.className = 'w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center';
-            iconWrap.style.background = 'var(--bg-subtle)';
-            iconWrap.style.border = '1px solid var(--border)';
+            var logoWrap = document.createElement('div');
+            logoWrap.className = 'w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center overflow-hidden';
+            logoWrap.style.background = 'var(--bg-subtle)';
+            logoWrap.style.border = '1px solid var(--border)';
 
-            var icon = document.createElement('i');
-            icon.className = 'fas fa-plug text-sm';
-            icon.style.color = 'var(--accent-bright)';
-            iconWrap.appendChild(icon);
+            var img = document.createElement('img');
+            img.src = 'https://img.logo.dev/' + c.domain + '?token=' + TOKEN + '&size=40';
+            img.alt = c.name;
+            img.className = 'w-8 h-8 object-contain';
+            img.loading = 'lazy';
+            img.onerror = function() {
+                this.style.display = 'none';
+                var icon = document.createElement('i');
+                icon.className = 'fas fa-plug text-sm';
+                icon.style.color = 'var(--accent-bright)';
+                logoWrap.appendChild(icon);
+            };
+            logoWrap.appendChild(img);
 
             var nameDiv = document.createElement('div');
             nameDiv.className = 'text-xs font-bold truncate';
@@ -260,7 +535,7 @@
             catDiv.style.color = 'var(--text-muted)';
             catDiv.textContent = c.category;
 
-            a.appendChild(iconWrap);
+            a.appendChild(logoWrap);
             a.appendChild(nameDiv);
             a.appendChild(catDiv);
             return a;
@@ -278,9 +553,11 @@
 
             if (filtered.length === 0) {
                 noResultsEl.classList.remove('hidden');
+                countEl.textContent = '';
                 return;
             }
             noResultsEl.classList.add('hidden');
+            countEl.textContent = filtered.length + ' connector' + (filtered.length !== 1 ? 's' : '');
 
             filtered.forEach(function(c) {
                 gridEl.appendChild(buildCard(c));
