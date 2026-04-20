@@ -23,7 +23,7 @@ OneHazel connects enterprise platforms to third-party vendor ecosystems through 
 - Grow: €999/mo (annual) — 500K actions/mo, 500 AI actions/mo, 3 private connections
 - Scale: €2,499/mo (annual) — 2M actions/mo, 2,000 AI actions/mo, 10 private connections
 - Enterprise: Custom pricing on committed volume
-- Founding Partner Programme: 50% off for life for early beta customers
+- Founding Partner Programme: 50% off for life — V1.0 is live, sign up now to lock in founding pricing
 
 ## Industries
 
