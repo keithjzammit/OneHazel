@@ -403,4 +403,16 @@
     }
 
     initROICalculator();
+
+    // ===== SCREENSHOT TABS =====
+    var tabs = document.querySelectorAll('.screenshot-tab');
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) { t.classList.remove('active'); });
+            document.querySelectorAll('.screenshot-panel').forEach(function (p) { p.classList.add('hidden'); });
+            tab.classList.add('active');
+            var panel = document.getElementById('tab-' + tab.dataset.tab);
+            if (panel) panel.classList.remove('hidden');
+        });
+    });
 })();

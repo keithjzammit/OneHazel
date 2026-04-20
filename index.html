@@ -164,6 +164,40 @@
         </div>
     </header>
 
+    <!-- ===== PRODUCT PREVIEW ===== -->
+    <section class="section-base py-16 border-b divider">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <div class="badge mb-4"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span> Live product</div>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-2" style="letter-spacing: -0.02em;">See it working</h2>
+                <p class="text-sm" style="color: var(--text-secondary);">Real workflows. Real connectors. No demo environment.</p>
+            </div>
+            <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--border); box-shadow: 0 20px 60px var(--shadow);">
+                <!-- Tab bar -->
+                <div class="flex border-b" style="background: var(--bg-card); border-color: var(--border); overflow-x: auto;">
+                    <button class="screenshot-tab flex-shrink-0 px-4 py-3 text-xs font-semibold border-r" style="border-color: var(--border);" data-tab="workflow">Workflow Builder</button>
+                    <button class="screenshot-tab flex-shrink-0 px-4 py-3 text-xs font-semibold border-r" style="border-color: var(--border);" data-tab="marketplace">Marketplace</button>
+                    <button class="screenshot-tab flex-shrink-0 px-4 py-3 text-xs font-semibold border-r" style="border-color: var(--border);" data-tab="analytics">Analytics + AI</button>
+                    <button class="screenshot-tab flex-shrink-0 px-4 py-3 text-xs font-semibold" data-tab="connections">My Connections</button>
+                </div>
+                <!-- Panels -->
+                <div id="tab-workflow" class="screenshot-panel">
+                    <img src="/screenshots/workflow-builder.png" alt="OneHazel visual workflow builder — iGaming VIP player session pipeline" class="w-full block" loading="lazy">
+                </div>
+                <div id="tab-marketplace" class="screenshot-panel hidden">
+                    <img src="/screenshots/marketplace-connectors.png" alt="OneHazel connector marketplace — 318 live connectors with category filters" class="w-full block" loading="lazy">
+                </div>
+                <div id="tab-analytics" class="screenshot-panel hidden">
+                    <img src="/screenshots/analytics-dashboard.png" alt="OneHazel iGaming analytics dashboard with AI copilot" class="w-full block" loading="lazy">
+                </div>
+                <div id="tab-connections" class="screenshot-panel hidden">
+                    <img src="/screenshots/my-connections.png" alt="OneHazel My Connections — active vendor connections dashboard" class="w-full block" loading="lazy">
+                </div>
+            </div>
+            <p class="text-center text-xs mt-4" style="color: var(--text-muted);">Actual product screenshots &mdash; not mockups.</p>
+        </div>
+    </section>
+
     <!-- ===== ARCHITECTURE VISUAL ===== -->
     <section class="py-20 md:py-28 section-alt relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none" style="opacity: 0.35; background-image: radial-gradient(circle, var(--border) 1px, transparent 1px); background-size: 24px 24px;"></div>
@@ -542,6 +576,23 @@
                     <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">ERP, asset management, compliance, GIS &mdash; bridging the IT side of OT/IT convergence.</p>
                     <span class="text-yellow-500 text-sm font-semibold mt-4 inline-block">Learn more &rarr;</span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTING CONSOLE CALLOUT ===== -->
+    <section class="section-base border-t divider py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="badge mb-5"><i class="fas fa-terminal"></i> Built-in Testing Console</div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold mb-4" style="letter-spacing: -0.02em;">Test any endpoint before you build</h2>
+                    <p class="text-sm leading-relaxed mb-6" style="color: var(--text-secondary);">Every connector ships with a live testing console. Fire real API calls, inspect responses, and validate auth — without leaving OneHazel. 200 OK in 688ms.</p>
+                    <a href="https://app.onehazel.com" class="btn-primary" style="font-size: 13px; padding: 10px 20px;"><!-- TODO: update to /signup?plan=trial once route exists -->Try it free &rarr;</a>
+                </div>
+                <div class="rounded-xl overflow-hidden" style="border: 1px solid var(--border); box-shadow: 0 12px 40px var(--shadow);">
+                    <img src="/screenshots/testing-console.png" alt="OneHazel API testing console — firing a live Anthropic endpoint call and seeing 200 OK response" class="w-full block" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
