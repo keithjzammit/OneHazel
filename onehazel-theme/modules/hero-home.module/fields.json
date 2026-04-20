@@ -91,8 +91,7 @@
     "default": [
       { "stat_value": "318", "stat_label": "Live Connectors" },
       { "stat_value": "~10 min", "stat_label": "Per Connector Build" },
-      { "stat_value": "22", "stat_label": "Workflow Node Types" },
-      { "stat_value": "0", "stat_label": "Quality Failures" }
+      { "stat_value": "22", "stat_label": "Workflow Node Types" }
     ]
   }
 ]
