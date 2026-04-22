@@ -17,17 +17,14 @@
 
 {% block body %}
 
-<!-- ===== HERO (DnD) ===== -->
-{% dnd_area "hero" label="Hero Section" %}
-    {% dnd_module path="onehazel-theme/modules/hero-home.module",
-        badge_text="V1.0 Live",
-        headline="The Last Integration",
-        headline_gradient="You'll Ever Build.",
-        cta_primary_text="Start free trial, no card",
-        cta_secondary_text="Browse the 318 connectors"
-    %}
-    {% end_dnd_module %}
-{% end_dnd_area %}
+<!-- ===== HERO ===== -->
+{% module "hero" path="onehazel-theme/modules/hero-home.module",
+    badge_text="V1.0 Live",
+    headline="The Last Integration",
+    headline_gradient="You'll Ever Build.",
+    cta_primary_text="Start free trial, no card",
+    cta_secondary_text="Browse the 318 connectors"
+%}
 
 <!-- ===== ARCHITECTURE VISUAL ===== -->
 <section class="py-20 md:py-28 section-alt relative overflow-hidden">
