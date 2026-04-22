@@ -67,9 +67,9 @@
     "label": "Stats Bar",
     "type": "group",
     "occurrence": {
-      "min": 4,
+      "min": 3,
       "max": 4,
-      "default": 4,
+      "default": 3,
       "sorting_label_field": "stat_value"
     },
     "children": [
