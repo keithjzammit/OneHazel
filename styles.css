@@ -298,6 +298,26 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg-subtle);
 }
 
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--accent-bright);
+    border: 1px solid var(--accent-bright);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+}
+
+.btn-ghost:hover {
+    background: var(--accent-bright);
+    color: #fff;
+}
+
 /* ===== VENDOR TAGS (industry pages) ===== */
 .vendor-tag {
     display: inline-flex;
@@ -780,19 +800,3 @@ input[type="range"].roi-slider::-moz-range-track {
     text-align: center;
 }
 .divider { border-color: var(--border); }
-
-/* Screenshot tabs */
-.screenshot-tab {
-    color: var(--text-muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.15s, background 0.15s;
-    font-family: inherit;
-    white-space: nowrap;
-}
-.screenshot-tab:hover { color: var(--text); }
-.screenshot-tab.active {
-    color: var(--accent-bright);
-    background: var(--accent-soft);
-}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>How OneHazel builds &amp; audits every connector</title>
+    <meta name="description" content="The spec-first, AI-built, audit-gated pipeline behind every OneHazel connector. Coverage gates, live endpoint probes, admin review, and continuous health monitoring — so operators can trust what they activate.">
+    <link rel="canonical" href="https://onehazel.com/how-we-build-connectors"> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity - canonical link does not load a subresource -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OneHazel">
+    <meta property="og:url" content="https://onehazel.com/how-we-build-connectors">
+    <meta property="og:title" content="How OneHazel builds &amp; audits every connector">
+    <meta property="og:description" content="Spec-first probe, AI-built code, coverage gate, admin review, live audit. The trust layer behind every connector in the marketplace.">
+    <meta property="og:image" content="https://onehazel.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="OneHazel — How we build connectors">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How OneHazel builds &amp; audits every connector">
+    <meta name="twitter:description" content="Spec-first probe, AI-built code, coverage gate, admin review, live audit. The trust layer behind every connector in the marketplace.">
+    <meta name="twitter:image" content="https://onehazel.com/og-image.png">
+    <meta name="twitter:image:alt" content="OneHazel — How we build connectors">
+
+    <script src="https://cdn.tailwindcss.com"></script> <!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity - Tailwind Play CDN is a dynamic JIT compiler, SRI not possible -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/styles.css">
+<!-- Start of HubSpot Embed Code -->
+<!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146772601.js"></script>
+<!-- End of HubSpot Embed Code -->
+<!-- Start of PostHog Analytics -->
+<!-- nosemgrep: html.security.audit.missing-integrity.missing-integrity -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[]));
+    posthog.init('phc_rDGMjwemeK667KYitaigZmjrWDECzbWcTKUPcnw2WSfL', {
+        api_host: 'https://eu.i.posthog.com',
+        person_profiles: 'identified_only',
+        cross_subdomain_cookie: true,
+    });
+</script>
+<!-- End of PostHog Analytics -->
+</head>
+<body class="antialiased">
+
+    <!-- ===== NAV ===== -->
+    <div id="site-nav"></div>
+
+    <!-- ===== HERO ===== -->
+    <header class="relative pt-20 md:pt-28 pb-16 overflow-hidden" style="background: var(--bg);">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-up badge mb-6">
+                <i class="fas fa-shield-halved"></i>
+                Trust layer
+            </div>
+            <h1 class="fade-up-1 font-extrabold mb-6 leading-[1.05]" style="font-size: clamp(2.2rem, 5.5vw, 4.2rem); letter-spacing: -0.035em;">
+                How we build &amp; audit<br>
+                <span class="gradient-text">every connector.</span>
+            </h1>
+            <p class="fade-up-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style="color: var(--text-secondary);">
+                Connector counts mean nothing without quality. Every OneHazel integration goes through the same spec-first, AI-built, audit-gated pipeline &mdash; so operators can trust what they activate.
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== PIPELINE ===== -->
+    <section class="py-20 section-base border-t divider">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-14">
+                <div class="badge mb-5"><i class="fas fa-cogs"></i> The 5-stage pipeline</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3" style="letter-spacing: -0.02em;">From <span class="gradient-text">vendor docs</span> to <span class="gradient-text">production-ready</span>, gated at every step</h2>
+                <p class="text-base max-w-2xl mx-auto" style="color: var(--text-secondary);">No connector hits the marketplace without passing every gate. Failures kick back to the build agent automatically &mdash; nothing ships half-finished.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: var(--accent-soft);"><span class="font-bold text-lg" style="color: var(--accent-bright);">1</span></div>
+                    <h3 class="font-bold mb-2 text-sm">Spec-first probe</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">We ingest the vendor's OpenAPI spec, probe every endpoint against the live API, and reconcile drift before any code is written.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(168,85,247,0.07);"><span class="font-bold text-lg text-purple-500">2</span></div>
+                    <h3 class="font-bold mb-2 text-sm">AI agent build</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">An autonomous agent generates the connector &mdash; auth flows, retries, types, error handling &mdash; with full traceability back to the spec.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(16,185,129,0.07);"><span class="font-bold text-lg text-emerald-500">3</span></div>
+                    <h3 class="font-bold mb-2 text-sm">Coverage gate</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Every endpoint must pass an auto-generated smoke test against the real provider. Below threshold? The build is rejected and the agent retries.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(234,179,8,0.07);"><span class="font-bold text-lg text-yellow-600">4</span></div>
+                    <h3 class="font-bold mb-2 text-sm">Admin review</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">A human reviewer inspects the diff, the audit report, and any flagged endpoints before the connector is promoted to the marketplace.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(6,182,212,0.07);"><span class="font-bold text-lg text-cyan-500">5</span></div>
+                    <h3 class="font-bold mb-2 text-sm">Live audit</h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Connectors are re-probed on a schedule. Spec drift, auth failures, or schema changes trigger an automatic re-build &mdash; before customers notice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRUST PROOFS ===== -->
+    <section class="py-20 section-alt border-t divider">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="badge mb-5"><i class="fas fa-clipboard-check"></i> What that means in practice</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3" style="letter-spacing: -0.02em;">What operators get, <span class="gradient-text">per connector</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="card p-7">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-file-lines text-lg" style="color: var(--accent-bright);"></i>
+                        <h3 class="font-bold">A live audit report</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Per-endpoint pass/fail status, last probe timestamp, response latency. Visible to every operator before they activate the connector.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-vial text-lg" style="color: var(--accent-bright);"></i>
+                        <h3 class="font-bold">Auto-generated smoke tests</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Every endpoint ships with a smoke test runnable from the in-app testing console. Fire a real call before you build a workflow.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-arrow-rotate-right text-lg" style="color: var(--accent-bright);"></i>
+                        <h3 class="font-bold">Continuous health checks</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Scheduled re-probes catch spec drift the moment a vendor changes their API &mdash; before your workflows break in production.</p>
+                </div>
+                <div class="card p-7">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-history text-lg" style="color: var(--accent-bright);"></i>
+                        <h3 class="font-bold">Full execution history</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">Every request and response captured for every workflow run. Debug anything, defend any compliance review, replay any failure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <section class="section-base border-t divider py-16">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="card p-10 mb-12 text-center" style="border-color: var(--accent-border);">
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-3">See the audit for any connector</h3>
+                <p class="mb-7 max-w-xl mx-auto" style="color: var(--text-secondary);">Browse the marketplace and inspect the audit report on any of the 318 connectors before you activate. No card required.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <!-- TODO: update href to https://app.onehazel.com/signup?plan=trial once route exists on app -->
+                    <a href="https://app.onehazel.com" class="btn-primary">Start free trial <span class="ml-2">&rarr;</span></a>
+                    <a href="/contact" class="btn-secondary">Talk to us</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t divider mb-10">
+                <div>
+                    <div class="font-extrabold text-lg mb-3" style="letter-spacing: -0.02em;">OneHazel</div>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-muted);">The Vertical iPaaS for Data Intelligence. Built by Elevate AI.</p>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Product</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/pricing" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+                        <a href="/marketplace" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Marketplace</a>
+                        <a href="/vendors" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Vendors</a>
+                        <a href="/platform-providers" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Platform Providers</a>
+                        <a href="https://app.onehazel.com/docs" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">API Docs</a>
+                        <a href="https://app.onehazel.com" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Sign up to BETA</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Company</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/about" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                        <a href="/contact" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                        <a href="/security" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Security</a>
+                        <a href="/status" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Status</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">Legal</div>
+                    <div class="flex flex-col gap-2">
+                        <a href="/terms" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Terms &amp; Conditions</a>
+                        <a href="/privacy" class="text-sm transition hover:opacity-70" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-xs" style="color: var(--text-muted);">&copy; 2026 ZS Digital Ltd, trading as Elevate AI. All rights reserved. &middot; <a href="https://logo.dev" style="color: var(--text-muted); text-decoration: none;" class="hover:opacity-70 transition">Logos provided by Logo.dev</a></div>
+        </div>
+    </section>
+
+    <script src="/main.js"></script>
+
+</body>
+</html>
