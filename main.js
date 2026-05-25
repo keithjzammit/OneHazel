@@ -54,7 +54,7 @@
                         '<i class="fas fa-moon icon-moon"></i>' +
                     '</button>' +
                     '<a href="https://app.onehazel.com" class="btn-primary hidden md:inline-flex" style="padding: 8px 18px; font-size: 13px; border-radius: 8px;">' +
-                        'Sign up to BETA <i class="fas fa-arrow-right ml-2 text-xs"></i>' +
+                        'Sign up free <i class="fas fa-arrow-right ml-2 text-xs"></i>' +
                     '</a>' +
                     '<button id="burger-btn" class="burger-btn" aria-label="Open menu">' +
                         '<i class="fas fa-bars"></i>' +
@@ -93,7 +93,7 @@
                 '</div>' +
                 '<div class="pt-4 mt-4" style="border-top: 1px solid var(--border);">' +
                     '<a href="https://app.onehazel.com" class="btn-primary w-full text-center" style="text-decoration: none;">' +
-                        'Sign up to BETA <i class="fas fa-arrow-right ml-2 text-xs"></i>' +
+                        'Sign up free <i class="fas fa-arrow-right ml-2 text-xs"></i>' +
                     '</a>' +
                 '</div>' +
             '</div>';
