@@ -13,6 +13,14 @@ Static marketing website for OneHazel — an AI-powered Vertical iPaaS (Integrat
 - **Font Awesome 6.5.1** — via CDN with SRI integrity hash
 - **Google Fonts** — Plus Jakarta Sans (body) + IBM Plex Mono (stats/labels)
 - **HubSpot** — analytics embed on all pages, form embed on contact page (portal 146772601)
+- **PostHog** — product analytics on all pages
+- **Logo.dev** — vendor logo images (`img.logo.dev`, token `pk_R6vnpyQtT9GKLf2AwgzFFQ`)
+
+## Quick Start
+
+```bash
+python3 -m http.server 8765   # http://localhost:8765
+```
 
 ## File Structure
 
@@ -30,6 +38,15 @@ Static marketing website for OneHazel — an AI-powered Vertical iPaaS (Integrat
 | `contact.html` | Contact with HubSpot embedded form |
 | `terms.html` | Terms & Conditions |
 | `privacy.html` | Privacy Policy (GDPR) |
+| `how-we-build-connectors.html` | Trust/explainer — 5-stage connector build pipeline |
+| `marketplace.html` | Connector marketplace |
+| `vendors.html` | Vendor directory |
+| `platform-providers.html` | Platform providers listing |
+| `security.html` | Security posture |
+| `status.html` | System status |
+| `404.html` | Custom 404 page |
+| `og-image.html` | OG image generator |
+| `og-image.svg` | OG image source |
 | `styles.css` | Shared design system — ALL visual styling |
 | `main.js` | Shared JS — theme toggle, mobile menu, sector decorations |
 | `favicon.svg` | SVG favicon (gold 1 + black H) |
@@ -61,6 +78,7 @@ Industry pages set `data-sector="igaming"` (etc.) on `<html>`. This activates:
 | `badge-sector` | Sector-colored badge variant |
 | `btn-primary` | Dark bg button (inverts in dark mode) |
 | `btn-secondary` | Border-only button |
+| `btn-ghost` | Accent-colored outline button (lower visual weight than secondary) |
 | `gradient-text` | Amber-to-gold gradient on text |
 | `gradient-text-sector` | Sector-colored text gradient |
 | `stat-num` | IBM Plex Mono stat numbers in accent color |
@@ -73,14 +91,14 @@ Industry pages set `data-sector="igaming"` (etc.) on `<html>`. This activates:
 
 ### Shared Nav Pattern
 
-Every page uses the identical nav from `index.html`:
+Every page uses a JS-injected nav via `<div id="site-nav"></div>` populated by `main.js`:
 - Desktop: logo, Industries dropdown, Pricing, About, Contact, theme toggle, Sign up CTA
 - Mobile (<768px): logo + burger button that opens full-screen off-canvas menu
 - Logo: `<span class="gradient-text">ONE</span>HAZEL`
 
 ### Shared Footer Pattern
 
-4-column grid: OneHazel brand | Product (Pricing, API Docs, Sign up) | Company (About, Contact) | Legal (Terms, Privacy). Copyright: ZS Digital Ltd.
+4-column grid: OneHazel brand | Product (Pricing, API Docs, Sign up) | Company (About, Contact, How we build connectors) | Legal (Terms, Privacy). Copyright: ZS Digital Ltd. Footer is hardcoded in each page (not JS-injected like nav).
 
 ## Conventions
 
@@ -115,4 +133,4 @@ Every page uses the identical nav from `index.html`:
 - **App**: app.onehazel.com (separate repo)
 - **API Docs**: app.onehazel.com/docs
 - **Status**: V1.0 live. Free + Enterprise tiers available. Pro + Teams coming soon.
-- **CTA text**: "Sign up to BETA" (not "Launch App")
+- **CTA text**: Hero uses "Start free trial, no card →". Nav uses "Sign up free".
