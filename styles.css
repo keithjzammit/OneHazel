@@ -800,3 +800,100 @@ input[type="range"].roi-slider::-moz-range-track {
     text-align: center;
 }
 .divider { border-color: var(--border); }
+
+/* ===== Award seals (SiGMA Asia Pitch + Next.io Pitch) ===== */
+.awards-strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+.awards-strip__label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+}
+.awards-strip__seals {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.award-seal {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2px solid var(--accent-bright);
+    box-shadow: 0 5px 16px var(--shadow),
+                inset 0 0 0 3px var(--bg-card),
+                inset 0 0 0 4px var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.award-seal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px var(--shadow),
+                inset 0 0 0 3px var(--bg-card),
+                inset 0 0 0 4px var(--accent-soft);
+}
+.award-seal__laurel {
+    position: absolute;
+    inset: 0;
+    width: 96px;
+    height: 96px;
+    color: var(--accent-bright);
+    pointer-events: none;
+}
+.award-seal__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    text-align: center;
+    line-height: 1;
+}
+.award-seal__label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 7px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+}
+.award-seal__event {
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-top: 1px;
+    white-space: nowrap;
+}
+.award-seal__event--first { margin-top: 4px; }
+.award-seal__year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+/* Footer awards spacing — sits between the link grid and the copyright line */
+.footer-awards {
+    margin: 0 0 2.5rem;
+    padding-top: 0.5rem;
+}
+@media (max-width: 360px) {
+    .awards-strip__seals { gap: 10px; }
+    .award-seal { transform: scale(0.88); }
+}

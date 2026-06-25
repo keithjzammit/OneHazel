@@ -101,6 +101,60 @@
 
     renderNav();
 
+    // ===== AWARD SEALS (SiGMA Asia Pitch + Next.io Pitch) =====
+    // Injected into every page footer (above the copyright line) so the awards
+    // appear site-wide from one source. The homepage hero hardcodes its own
+    // copy for guaranteed first paint.
+    function laurelSVG() {
+        var leaf = 'M0,0 C-4,-3 -5,-9 0,-14 C5,-9 4,-3 0,0Z';
+        var leaves = [
+            'translate(32.6,88.2) rotate(-56)',
+            'translate(21.4,76.7) rotate(-32.8)',
+            'translate(15.5,61.6) rotate(-9.5)',
+            'translate(16.1,45.6) rotate(13.6)',
+            'translate(23,31) rotate(36.8)',
+            'translate(35,20.4) rotate(60)'
+        ].map(function (t) { return '<path d="' + leaf + '" transform="' + t + '"></path>'; }).join('');
+        var branch = '<path d="M34,88 C21,81 13,67 16,51 C18,37 27,27 37,20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>' +
+                     '<g fill="currentColor">' + leaves + '</g>';
+        return '<svg class="award-seal__laurel" viewBox="0 0 110 110" aria-hidden="true">' +
+                    '<g>' + branch + '</g>' +
+                    '<g transform="translate(110,0) scale(-1,1)">' + branch + '</g>' +
+               '</svg>';
+    }
+    function awardSeal(line1, line2) {
+        return '<span class="award-seal" role="img" aria-label="Winner of ' + line1 + ' ' + line2 + ', 2026">' +
+                    laurelSVG() +
+                    '<span class="award-seal__body">' +
+                        '<span class="award-seal__label">WINNER</span>' +
+                        '<span class="award-seal__event award-seal__event--first">' + line1 + '</span>' +
+                        '<span class="award-seal__event">' + line2 + '</span>' +
+                        '<span class="award-seal__year">2026</span>' +
+                    '</span>' +
+               '</span>';
+    }
+    // Security: innerHTML is safe here — content is 100% hardcoded static HTML,
+    // no user input or external data is interpolated.
+    function injectFooterAwards() {
+        var nodes = document.querySelectorAll('.text-center.text-xs');
+        var copyright = null;
+        for (var i = 0; i < nodes.length; i++) {
+            if (/ZS Digital/.test(nodes[i].textContent)) { copyright = nodes[i]; break; }
+        }
+        if (!copyright) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'awards-strip footer-awards';
+        /* eslint-disable no-unsanitized/property */
+        wrap.innerHTML = /* static awards HTML — no user input */
+            '<span class="awards-strip__label">Award-winning startup</span>' +
+            '<span class="awards-strip__seals">' +
+                awardSeal('SiGMA Asia', 'Pitch') +
+                awardSeal('Next.io', 'Pitch') +
+            '</span>';
+        copyright.parentNode.insertBefore(wrap, copyright);
+    }
+    injectFooterAwards();
+
     // ===== THEME TOGGLE =====
     var toggle = document.getElementById('theme-toggle');
     function setTheme(t) {
