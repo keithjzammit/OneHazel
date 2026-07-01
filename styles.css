@@ -30,6 +30,18 @@
     --glow-1: rgba(217, 119, 6, 0.25);
     --glow-2: rgba(234, 88, 12, 0.15);
     --glow-3: rgba(251, 191, 36, 0.12);
+    /* Redesign aliases (OneHazel Site design system) */
+    --brand-gradient: linear-gradient(120deg, #B45309, #D97706 55%, #F59E0B);
+    --amber-300: #FCD34D;
+    --amber-400: #FBBF24;
+    --teal-accent: #10b981;
+    --error: #DC2626;
+    --zinc-300: #D4D4D8;
+    --zinc-400: #A1A1AA;
+    --zinc-500: #71717A;
+    --zinc-600: #52525B;
+    --zinc-800: #27272A;
+    --zinc-950: #09090B;
 }
 
 .dark {
@@ -60,6 +72,18 @@
     --glow-1: rgba(251, 191, 36, 0.18);
     --glow-2: rgba(245, 158, 11, 0.10);
     --glow-3: rgba(217, 119, 6, 0.07);
+    /* Redesign aliases (OneHazel Site design system) */
+    --brand-gradient: linear-gradient(120deg, #FBBF24, #FCD34D 55%, #FDE68A);
+    --amber-300: #FCD34D;
+    --amber-400: #FBBF24;
+    --teal-accent: #34d399;
+    --error: #F87171;
+    --zinc-300: #3F3F46;
+    --zinc-400: #52525B;
+    --zinc-500: #71717A;
+    --zinc-600: #A1A1AA;
+    --zinc-800: #D4D4D8;
+    --zinc-950: #FAFAFA;
 }
 
 /* ===== SECTOR-SPECIFIC ACCENT OVERRIDES =====
@@ -897,3 +921,87 @@ input[type="range"].roi-slider::-moz-range-track {
     .awards-strip__seals { gap: 10px; }
     .award-seal { transform: scale(0.88); }
 }
+
+/* ===== REDESIGN HELPERS (OneHazel Site direction) ===== */
+
+/* Numbered section header: "01 · WHERE INTEGRATION STARTS" with underline */
+.sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 36px;
+}
+.sec-head__num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 13px; color: var(--accent-bright); }
+.sec-head__label {
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+}
+/* dark-band variant (inside .outcomes-band) */
+.outcomes-band .sec-head { border-bottom-color: rgba(255,255,255,0.12); }
+.outcomes-band .sec-head__num { color: var(--amber-400); }
+.outcomes-band .sec-head__label { color: rgba(255,255,255,0.5); }
+
+/* Pill chip used in iGaming / security / capability rows */
+.oh-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border-radius: 999px;
+    border: 1px solid var(--border); background: var(--bg-card);
+    font-weight: 600; font-size: 14px; color: var(--text-secondary);
+    transition: border-color 0.2s, color 0.2s;
+}
+.oh-chip:hover { border-color: var(--accent-border); color: var(--text); }
+
+/* Dark outcomes / stats band — intentionally dark in BOTH themes */
+.outcomes-band { background: #161618; color: #FAFAFA; }
+.dark .outcomes-band { background: #000000; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.outcomes-band .outcome-num {
+    font-weight: 800; font-size: 40px; letter-spacing: -0.03em; color: #FFFFFF;
+}
+.outcomes-band .outcome-label { font-weight: 500; font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 8px; }
+/* Buttons sitting on the always-dark band must read in both themes */
+.outcomes-band .btn-primary { background: #FFFFFF; color: #161618; border-color: #FFFFFF; }
+.outcomes-band .btn-primary:hover { background: #E4E4E7; }
+.outcomes-band .btn-secondary { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.3); }
+.outcomes-band .btn-secondary:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.06); }
+
+/* Agent avatar (placeholder monogram until real portraits are wired) */
+.agent-avatar {
+    width: 100%; aspect-ratio: 1 / 1; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--brand-gradient); color: #fff;
+    font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em;
+    box-shadow: 0 6px 18px var(--shadow);
+    object-fit: cover; /* when rendered as <img> portrait */
+}
+img.agent-avatar { background: var(--bg-subtle); border: 1px solid var(--border); }
+
+/* Brand gradient text/background utilities */
+.brand-gradient-bg { background: var(--brand-gradient); }
+
+/* Connector marquee chip */
+.connector-chip {
+    height: 64px; min-width: 132px; padding: 0 28px; border-radius: 12px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; gap: 12px; flex: none;
+}
+.connector-chip img { height: 30px; max-width: 120px; width: auto; object-fit: contain; }
+/* Dark mode: keep brand logos legible by sitting them on a light pill */
+.dark .connector-chip { background: #F4F4F5; border-color: transparent; }
+.connector-chip span { font-weight: 700; font-size: 15px; color: var(--text); }
+
+/* FAQ accordion row */
+.faq-row {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+    cursor: pointer; width: 100%; text-align: left; background: none; border-left: 0; border-right: 0; border-top: 0;
+}
+.faq-row__q { font-weight: 700; font-size: 17px; color: var(--text); }
+.faq-row__toggle { font-weight: 400; font-size: 22px; color: var(--text-muted); transition: transform 0.2s; flex: none; }
+.faq-row[aria-expanded="true"] .faq-row__toggle { transform: rotate(45deg); }
+.faq-answer {
+    font-size: 15px; line-height: 1.6; color: var(--text-secondary);
+    overflow: hidden; max-height: 0; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0;
+}
+.faq-row[aria-expanded="true"] + .faq-answer { max-height: 240px; padding: 0 0 18px; }
