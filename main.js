@@ -139,7 +139,7 @@
         var nodes = document.querySelectorAll('.text-center.text-xs');
         var copyright = null;
         for (var i = 0; i < nodes.length; i++) {
-            if (/ZS Digital/.test(nodes[i].textContent)) { copyright = nodes[i]; break; }
+            if (/All rights reserved/.test(nodes[i].textContent)) { copyright = nodes[i]; break; }
         }
         if (!copyright) return;
         var wrap = document.createElement('div');
@@ -457,4 +457,16 @@
     }
 
     initROICalculator();
+
+    // ===== FAQ accordion (Foundation / Vendors pages) =====
+    function initFAQ() {
+        document.querySelectorAll('.faq-row').forEach(function (row) {
+            row.addEventListener('click', function () {
+                var open = row.getAttribute('aria-expanded') === 'true';
+                row.setAttribute('aria-expanded', open ? 'false' : 'true');
+            });
+        });
+    }
+
+    initFAQ();
 })();
